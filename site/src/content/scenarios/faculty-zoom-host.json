@@ -1,0 +1,55 @@
+{
+  "title": "Faculty Member (No AI, Hosts 1 Zoom Meeting)",
+  "slug": "faculty-zoom-host",
+  "audienceLabel": "Faculty scenario",
+  "summary": "No AI use, but one hosted Zoom meeting with around ten participants plus ordinary web and streaming activity.",
+  "serverEnergyWh": 223,
+  "totalEnergyWh": 490,
+  "directWaterMl": 223,
+  "totalWaterMl": 1338,
+  "confidence": "estimated",
+  "lastReviewed": "2026-03-08",
+  "heroStat": "One hosted Zoom meeting can outweigh a student's whole scrolling day.",
+  "comparisonNote": "This profile matters because it challenges the idea that avoiding AI means avoiding the larger issue.",
+  "activities": [
+    {
+      "label": "Hosted Zoom meeting",
+      "durationOrVolume": "50 minutes, 10 participants",
+      "serverEnergyWh": 192,
+      "totalEnergyWh": 358,
+      "directWaterMl": 192,
+      "totalWaterMl": 1152,
+      "estimated": true,
+      "sourceIds": ["mytton-zoom", "scenario-methods"]
+    },
+    {
+      "label": "Instagram scrolling",
+      "durationOrVolume": "1 hour",
+      "serverEnergyWh": 5,
+      "totalEnergyWh": 25,
+      "directWaterMl": 5,
+      "totalWaterMl": 30,
+      "estimated": true,
+      "sourceIds": ["scenario-methods"]
+    },
+    {
+      "label": "Netflix streaming",
+      "durationOrVolume": "1 hour",
+      "serverEnergyWh": 22,
+      "totalEnergyWh": 77,
+      "directWaterMl": 22,
+      "totalWaterMl": 132,
+      "sourceIds": ["iea-energy-and-ai"]
+    },
+    {
+      "label": "Email, cloud docs, and browsing",
+      "durationOrVolume": "Light daily use",
+      "serverEnergyWh": 4,
+      "totalEnergyWh": 30,
+      "directWaterMl": 4,
+      "totalWaterMl": 24,
+      "estimated": true,
+      "sourceIds": ["scenario-methods"]
+    }
+  ]
+}

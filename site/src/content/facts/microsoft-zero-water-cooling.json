@@ -1,0 +1,18 @@
+{
+  "section": "Section 1",
+  "topic": "Cooling tradeoffs",
+  "claim": "Microsoft describes its zero-water cooling design as saving about 125 million liters per facility each year and targeting zero-water evaporation as a standard for new builds by late 2027.",
+  "shortLabel": "Microsoft is pushing zero-water cooling",
+  "value": "125 million liters/year",
+  "displayValue": "~125M liters saved per facility each year",
+  "comparisonContext": "This gives the page a concrete example of companies trying to break the old 'less water always means more energy' tradeoff.",
+  "status": "verified",
+  "scopeNote": "This is a company-reported design claim; independent performance verification is still limited.",
+  "sourceTier": "Tier 2",
+  "sourceTitle": "Sustainable by Design: Zero Water Cooling",
+  "sourceOrg": "Microsoft / Serverion summary",
+  "sourceUrl": "https://www.serverion.com/uncategorized/microsofts-zero-water-cooling-lessons-for-data-centers/",
+  "sourceDate": "2024-12-09",
+  "lastVerified": "2026-03-08",
+  "tags": ["how-data-centers-work", "benefit"]
+}

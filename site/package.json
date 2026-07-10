@@ -1,0 +1,22 @@
+{
+  "name": "ai-water-energy-guide-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "test:routes": "node scripts/verify-route-contract.mjs",
+    "cf:preview": "npm run build && wrangler dev --local"
+  },
+  "dependencies": {
+    "astro": "7.0.7"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.9",
+    "typescript": "^5.9.2",
+    "wrangler": "4.110.0"
+  }
+}

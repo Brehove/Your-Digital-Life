@@ -1,0 +1,19 @@
+{
+  "section": "Section 1",
+  "topic": "Projected demand",
+  "claim": "In the United States, data centres account for nearly half of electricity-demand growth to 2030, and by the end of the decade the country is expected to use more electricity for data centres than for all energy-intensive goods production combined.",
+  "shortLabel": "Data centres drive nearly half of U.S. demand growth",
+  "value": "Nearly half",
+  "displayValue": "Nearly half of U.S. demand growth through 2030",
+  "comparisonContext": "This is the cleanest current way to explain why the U.S. grid story is more severe than the global one.",
+  "status": "verified",
+  "scopeNote": "Share of growth, not share of total U.S. electricity demand.",
+  "sourceTier": "Tier 1",
+  "sourceTitle": "Energy and AI",
+  "sourceOrg": "International Energy Agency",
+  "sourceUrl": "https://iea.blob.core.windows.net/assets/dd7c2387-2f60-4b60-8c5f-6563b6aa1e4c/EnergyandAI.pdf",
+  "sourceDate": "2026-01-01",
+  "lastVerified": "2026-03-07",
+  "tags": ["how-data-centers-work", "start-here"]
+}
+

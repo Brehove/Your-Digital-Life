@@ -1,0 +1,59 @@
+{
+  "id": "preset-notes",
+  "notes": [
+    "Gen Z (no AI use) matches the non-AI student scenario directly and stores the phone-versus-laptop split used in Section 3.",
+    "Gen Z (moderate AI use) uses the scenario's prompt, image, media, and Zoom quantities, then stores a laptop browsing bundle because the calculator still treats homework and browsing as one row.",
+    "Gen Z (vibe coder) uses the scenario's actual quantities, including 8 high-reasoning prompts, and stores the scenario's phone, laptop, and coding-agent device context for future UI use.",
+    "Worker (hosts Zoom meetings) stores TV Netflix, phone Instagram, laptop browsing, and the hosted-meeting device bundle even though the live row remains fixed."
+  ],
+  "order": 5,
+  "sourceIds": [
+    "scenario-methods",
+    "simon-couch-coding-agent",
+    "mytton-zoom"
+  ],
+  "summary": "The presets use the four Section 3 scenarios as their names and activity patterns, and now also apply the intended device context in the live device-aware streaming rows.",
+  "tables": [
+    {
+      "columns": [
+        "Preset",
+        "Intended basis",
+        "Current loaded values",
+        "Stored device context",
+        "Maintenance note"
+      ],
+      "rows": [
+        [
+          "Gen Z (no AI use)",
+          "Scenario 1 in Section 3",
+          "1.5 TikTok, 1.25 YouTube, 0.75 Instagram, 0.5 Snapchat, 1.5 Netflix, 1 Zoom participant",
+          "Phone social media, phone YouTube, laptop Netflix, laptop Zoom",
+          "Direct quantity match to the non-AI student scenario"
+        ],
+        [
+          "Gen Z (moderate AI use)",
+          "Scenario 2 in Section 3",
+          "25 text prompts, 3 images, 1 TikTok, 1 YouTube, 0.5 Instagram, 0.5 Snapchat, 1.5 Netflix, 1 browsing block, 1 Zoom participant",
+          "Phone social media, phone YouTube, laptop Netflix, laptop browsing, laptop Zoom",
+          "Uses the live browsing bundle as a whole row rather than scaling it to 0.75 hours of homework"
+        ],
+        [
+          "Gen Z (vibe coder)",
+          "Scenario 3 in Section 3",
+          "1 coding-agent hour, 8 reasoning prompts, 15 text prompts, 2 images, 0.25 TikTok, 1 YouTube, 0.75 Netflix, 1 browsing block, 1 Zoom participant",
+          "Laptop coding, phone TikTok, phone YouTube, laptop Netflix, laptop browsing, laptop Zoom",
+          "Uses the scenario's actual prompt counts under the live calculator's heavier reasoning row"
+        ],
+        [
+          "Worker (hosts Zoom meetings)",
+          "Scenario 4 in Section 3",
+          "1 hosted Zoom meeting, 1 Instagram, 1 Netflix, 1 browsing block",
+          "Meeting bundle Zoom, phone Instagram, TV Netflix, laptop browsing",
+          "Uses the live browsing bundle as-is for the mixed workday activities"
+        ]
+      ],
+      "title": "Preset intent"
+    }
+  ],
+  "title": "Starter mix provenance"
+}

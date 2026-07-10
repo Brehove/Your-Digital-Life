@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://your-digital-life.org/schemas/activity.schema.json",
+  "title": "Your Digital Life calculator activity",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "order",
+    "label",
+    "category",
+    "unitLabel",
+    "unitHint",
+    "step",
+    "serverWhPerUnit",
+    "totalWhPerUnit",
+    "directWaterMlPerUnit",
+    "totalWaterMlPerUnit",
+    "status",
+    "note",
+    "deviceMode",
+    "deviceNote",
+    "sourceIds",
+    "systemBoundary",
+    "lastReviewed"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "order": { "type": "integer", "minimum": 1 },
+    "label": { "type": "string", "minLength": 1 },
+    "category": { "enum": ["AI tasks", "Media and search", "Meetings"] },
+    "unitLabel": { "enum": ["prompts", "images", "hours", "daily blocks", "meetings"] },
+    "unitHint": { "type": "string", "minLength": 1 },
+    "step": { "type": "number", "exclusiveMinimum": 0 },
+    "serverWhPerUnit": { "type": "number", "minimum": 0 },
+    "totalWhPerUnit": { "type": "number", "minimum": 0 },
+    "directWaterMlPerUnit": { "type": "number", "minimum": 0 },
+    "totalWaterMlPerUnit": { "type": "number", "minimum": 0 },
+    "status": { "enum": ["verified", "inferred", "estimated", "contested"] },
+    "note": { "type": "string", "minLength": 1 },
+    "deviceMode": { "enum": ["not-modeled", "fixed", "selectable"] },
+    "defaultDeviceId": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "deviceSelectableIds": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+      "uniqueItems": true
+    },
+    "deviceTotalWhOverrides": {
+      "type": "object",
+      "additionalProperties": { "type": "number", "minimum": 0 }
+    },
+    "deviceSelectionAffects": {
+      "type": "array",
+      "items": { "const": "totalWhPerUnit" },
+      "uniqueItems": true
+    },
+    "deviceNote": { "type": "string", "minLength": 1 },
+    "sourceIds": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+      "uniqueItems": true
+    },
+    "systemBoundary": { "const": "legacy-row-specific" },
+    "lastReviewed": { "type": "string", "format": "date" }
+  }
+}

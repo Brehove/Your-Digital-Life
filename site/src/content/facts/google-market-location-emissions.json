@@ -1,0 +1,18 @@
+{
+  "section": "Section 4",
+  "topic": "Carbon accounting",
+  "claim": "Google's own reporting shows how accounting method changes the story: market-based data-centre energy emissions fell 12% in 2024 even while location-based Scope 2 emissions nearly doubled between 2020 and 2024.",
+  "shortLabel": "Market-based and location-based tell different stories",
+  "value": "12% down vs. nearly 2x since 2020",
+  "displayValue": "12% down market-based, nearly doubled location-based",
+  "comparisonContext": "This is why the carbon story must distinguish accounting method from physical grid impact and long-run grid emissions trends.",
+  "status": "verified",
+  "scopeNote": "Different accounting methods answer different questions; they should not be collapsed into one trend line.",
+  "sourceTier": "Tier 2",
+  "sourceTitle": "2025 Environmental Report",
+  "sourceOrg": "Google",
+  "sourceUrl": "https://www.gstatic.com/gumdrop/sustainability/google-2025-environmental-report.pdf",
+  "sourceDate": "2025-07-01",
+  "lastVerified": "2026-03-08",
+  "tags": ["risk"]
+}

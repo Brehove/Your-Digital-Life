@@ -1,0 +1,23 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  chart: CollectionEntry<"charts">;
+}
+
+const { chart } = Astro.props;
+const data = chart.data;
+---
+
+<article class="card chart-card">
+  <div class="card__topline">
+    <p class="eyebrow">Chart plan</p>
+    <span class="chart-pill">{data.chartType}</span>
+  </div>
+
+  <h3>{data.title}</h3>
+  <p>{data.summary}</p>
+  <p class="note">Data file: <code>{data.dataFile}</code></p>
+  {data.note && <p class="muted">{data.note}</p>}
+</article>
+

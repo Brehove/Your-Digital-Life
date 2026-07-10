@@ -1,0 +1,8 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "your-digital-life",
+  "compatibility_date": "2026-03-07",
+  "assets": {
+    "directory": "./dist"
+  }
+}

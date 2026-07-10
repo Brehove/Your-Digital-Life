@@ -1,0 +1,18 @@
+{
+  "section": "Section 1",
+  "topic": "Water-stress siting",
+  "claim": "The cited analysis reports that the number of global data centres in high water-stress areas grew from about 200 in 1995 to about 3,300 in 2025.",
+  "shortLabel": "Growth in water-stressed locations",
+  "value": "200 to 3,300",
+  "displayValue": "~200 sites in 1995 to ~3,300 in 2025",
+  "comparisonContext": "This is a stronger public-facing way to explain why regional siting matters more than a single per-prompt anecdote.",
+  "status": "verified",
+  "scopeNote": "Global site-count framing from reported analysis, not a direct measure of water withdrawals.",
+  "sourceTier": "Tier 2",
+  "sourceTitle": "AI Is Draining Water From Areas That Need It Most",
+  "sourceOrg": "Bloomberg",
+  "sourceUrl": "https://archive.is/6d76D",
+  "sourceDate": "2026-01-19",
+  "lastVerified": "2026-03-07",
+  "tags": []
+}

@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "David Mytton"
+  ],
+  "id": "mytton-zoom",
+  "notes": "Used for Zoom scenario modeling; should stay labeled as an estimate rather than a direct measurement of every meeting type.",
+  "order": 9,
+  "organization": "David Mytton",
+  "publishedDate": "2023-01-01",
+  "sourceTier": "Tier 3",
+  "sourceType": "Expert analysis",
+  "tags": [
+    "scenarios"
+  ],
+  "title": "Zoom, video conferencing, energy, and emissions",
+  "url": "https://davidmytton.blog/zoom-video-conferencing-energy-and-emissions/",
+  "usedFor": [
+    "Zoom participant row",
+    "Zoom host row",
+    "hosted Zoom derivation table",
+    "worker-hosted-Zoom preset"
+  ]
+}

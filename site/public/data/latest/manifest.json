@@ -1,0 +1,92 @@
+{
+  "collectionsDeferred": [
+    "scenarios",
+    "claims",
+    "charts",
+    "general site sources"
+  ],
+  "collectionsIncluded": [
+    "activities",
+    "deviceProfiles",
+    "presets",
+    "methodSections",
+    "sources"
+  ],
+  "counts": {
+    "activities": 12,
+    "deviceProfiles": 5,
+    "methodSections": 6,
+    "presets": 5,
+    "sources": 12
+  },
+  "datasetVersion": "0.1.0",
+  "generatedFrom": {
+    "commit": "063322e93e27704b447a495a838e552067928127",
+    "fixtureRepositoryPath": "tests/fixtures/deployed-calculator-063322e.json",
+    "fixtureSha256": "5aff3d655a2b3b5aa1199f5d86477e75876bc97500552e5a84428609d3b4a5d1",
+    "productionUrl": "https://your-digital-life.org"
+  },
+  "lastReviewed": "2026-03-09",
+  "migrationMode": "canonical",
+  "name": "your-digital-life-calculator-data",
+  "notes": [
+    "This is the first canonical public calculator-data release.",
+    "The website reads a generated snapshot produced from the same root records.",
+    "The scenario-methods URL is the sole source-record correction from the frozen deployed baseline; public provenance and maintenance metadata were also migrated, while numeric and behavioral fields are unchanged.",
+    "Scenarios, claims, and charts remain deferred to the later normalization gates."
+  ],
+  "order": {
+    "activities": [
+      "text-prompts",
+      "reasoning-prompts",
+      "image-generation",
+      "vibe-coding",
+      "tiktok",
+      "instagram",
+      "snapchat",
+      "youtube",
+      "netflix",
+      "cloud-docs-browsing",
+      "zoom-participant",
+      "zoom-host"
+    ],
+    "deviceProfiles": [
+      "phone",
+      "laptop",
+      "desktop",
+      "tv",
+      "meeting-bundle"
+    ],
+    "methodSections": [
+      "boundary-rules",
+      "device-control-plan",
+      "water-method",
+      "zoom-host-method",
+      "preset-notes",
+      "maintenance-notes"
+    ],
+    "presets": [
+      "clear",
+      "gen-z-no-ai",
+      "gen-z-moderate-ai",
+      "gen-z-vibe-coder",
+      "worker-zoom-host"
+    ],
+    "sources": [
+      "epoch-chatgpt-energy",
+      "jegham-how-hungry-is-ai",
+      "scenario-methods",
+      "ifri-ai-dc-energy",
+      "simon-couch-coding-agent",
+      "greenspector-social-media-2021",
+      "adam-holter-tiktok",
+      "kamiya-streaming-video",
+      "mytton-zoom",
+      "verdecchia-video-call-energy",
+      "schneider-google-scale",
+      "lbnl-data-center-report"
+    ]
+  },
+  "schemaVersion": "0.1.0",
+  "status": "canonical"
+}

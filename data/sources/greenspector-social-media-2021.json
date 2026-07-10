@@ -1,0 +1,21 @@
+{
+  "authors": [],
+  "id": "greenspector-social-media-2021",
+  "notes": "Used for device-side social-media energy measurements, especially TikTok.",
+  "order": 6,
+  "organization": "Greenspector",
+  "publishedDate": "2021-10-01",
+  "sourceTier": "Tier 2",
+  "sourceType": "Industry measurement",
+  "tags": [
+    "scenarios",
+    "prompting"
+  ],
+  "title": "What is the environmental footprint for social media applications? 2021 Edition",
+  "url": "https://greenspector.com/en/social-media-2021/",
+  "usedFor": [
+    "TikTok, Instagram, and Snapchat directional rows",
+    "cloud-side versus total-system bridge for social-video estimates",
+    "maintenance note on low-confidence social rows"
+  ]
+}

@@ -1,0 +1,176 @@
+{
+  "name": "your-digital-life-calculator-data",
+  "datasetVersion": "0.1.0",
+  "schemaVersion": "0.1.0",
+  "status": "canonical",
+  "migrationMode": "canonical",
+  "siteConsumer": "generated-snapshot",
+  "baseline": {
+    "commit": "063322e93e27704b447a495a838e552067928127",
+    "fixture": "tests/fixtures/deployed-calculator-063322e.json",
+    "fixtureSha256": "5aff3d655a2b3b5aa1199f5d86477e75876bc97500552e5a84428609d3b4a5d1",
+    "gitRefAtCapture": "origin/main",
+    "legacyPath": "site/src/content/calculators/digital-inventory.md",
+    "productionUrl": "https://your-digital-life.org",
+    "allowedMetadataDeltas": [
+      {
+        "collection": "sourceCatalog",
+        "recordId": "scenario-methods",
+        "field": "url",
+        "baselineValue": "https://example.com/internal-scenario-method",
+        "canonicalValue": "https://your-digital-life.org/sources-and-method/",
+        "reason": "Replace the pre-publication placeholder with the public methodology page; no numeric or behavioral field changes."
+      },
+      {
+        "field": "sourceFiles",
+        "baselineSha256": "a5e3039cdb2c8712319d6788ed6fd97b32dbfa88b7ff023e0ea621956d1a5520",
+        "canonicalValue": [
+          {
+            "title": "Your Digital Life open calculator data",
+            "path": "https://your-digital-life.org/data/",
+            "sections": [
+              "Versioned data exports",
+              "JSON Schemas and checksums"
+            ],
+            "notes": [
+              "Public download index for the canonical calculator records and portable v0.1.0 release.",
+              "The root data directory in the GitHub repository is the update authority."
+            ]
+          },
+          {
+            "title": "Your Digital Life sources and method",
+            "path": "https://your-digital-life.org/sources-and-method/",
+            "sections": [
+              "Calculator activity reference",
+              "Calculator sources",
+              "Calculator methods"
+            ],
+            "notes": [
+              "Public explanation of the source relationships, row boundaries, and calculator method."
+            ]
+          }
+        ],
+        "reason": "Replace removed private research-file pointers with stable public data and methodology pages."
+      },
+      {
+        "field": "updateInstructions",
+        "baselineSha256": "28caf0fcd0320fbb9c39b2a7871913722cc7efe8b72dbba04cf9e163f623ae0b",
+        "canonicalValue": [
+          "Edit canonical records under root data/; never edit generated calculator or export files by hand.",
+          "Update data/sources before changing any row that depends on a new or revised study.",
+          "Preserve stable IDs, explicit system boundaries, source relationships, and collection order.",
+          "When total-system energy changes, update device fields and affected preset device selections together.",
+          "Run npm run data:build, npm run data:export, and npm run data:verify before the Astro checks and build."
+        ],
+        "reason": "Point maintenance instructions at canonical root data and deterministic generators."
+      }
+    ]
+  },
+  "calculator": {
+    "title": "Digital Inventory Calculator Source of Truth",
+    "calculatorId": "digital-inventory",
+    "description": "Canonical activity rows, presets, source records, and method tables for the public digital inventory calculator.",
+    "lastReviewed": "2026-03-09",
+    "sourceFiles": [
+      {
+        "title": "Your Digital Life open calculator data",
+        "path": "https://your-digital-life.org/data/",
+        "sections": ["Versioned data exports", "JSON Schemas and checksums"],
+        "notes": [
+          "Public download index for the canonical calculator records and portable v0.1.0 release.",
+          "The root data directory in the GitHub repository is the update authority."
+        ]
+      },
+      {
+        "title": "Your Digital Life sources and method",
+        "path": "https://your-digital-life.org/sources-and-method/",
+        "sections": ["Calculator activity reference", "Calculator sources", "Calculator methods"],
+        "notes": [
+          "Public explanation of the source relationships, row boundaries, and calculator method."
+        ]
+      }
+    ],
+    "updateInstructions": [
+      "Edit canonical records under root data/; never edit generated calculator or export files by hand.",
+      "Update data/sources before changing any row that depends on a new or revised study.",
+      "Preserve stable IDs, explicit system boundaries, source relationships, and collection order.",
+      "When total-system energy changes, update device fields and affected preset device selections together.",
+      "Run npm run data:build, npm run data:export, and npm run data:verify before the Astro checks and build."
+    ]
+  },
+  "counts": {
+    "sources": 12,
+    "deviceProfiles": 5,
+    "activities": 12,
+    "presets": 5,
+    "methodSections": 6
+  },
+  "order": {
+    "sources": [
+      "epoch-chatgpt-energy",
+      "jegham-how-hungry-is-ai",
+      "scenario-methods",
+      "ifri-ai-dc-energy",
+      "simon-couch-coding-agent",
+      "greenspector-social-media-2021",
+      "adam-holter-tiktok",
+      "kamiya-streaming-video",
+      "mytton-zoom",
+      "verdecchia-video-call-energy",
+      "schneider-google-scale",
+      "lbnl-data-center-report"
+    ],
+    "deviceProfiles": ["phone", "laptop", "desktop", "tv", "meeting-bundle"],
+    "activities": [
+      "text-prompts",
+      "reasoning-prompts",
+      "image-generation",
+      "vibe-coding",
+      "tiktok",
+      "instagram",
+      "snapchat",
+      "youtube",
+      "netflix",
+      "cloud-docs-browsing",
+      "zoom-participant",
+      "zoom-host"
+    ],
+    "presets": [
+      "clear",
+      "gen-z-no-ai",
+      "gen-z-moderate-ai",
+      "gen-z-vibe-coder",
+      "worker-zoom-host"
+    ],
+    "methodSections": [
+      "boundary-rules",
+      "device-control-plan",
+      "water-method",
+      "zoom-host-method",
+      "preset-notes",
+      "maintenance-notes"
+    ]
+  },
+  "metricBoundaries": {
+    "serverWhPerUnit": "The deployed calculator's row-specific cloud/server or server-plus-network boundary; exact scope remains in each legacy note and method record.",
+    "totalWhPerUnit": "The deployed calculator's row-specific total-system boundary, including configured device overrides where modeled.",
+    "directWaterMlPerUnit": "The deployed calculator's direct-water metric for the row.",
+    "totalWaterMlPerUnit": "The deployed calculator's broader total-water metric for the row."
+  },
+  "knownDuplicateRepresentations": {
+    "calculatorSourceCatalog": "Twelve calculator source records also have site/src/content/sources representations. All twelve match on shared fields; root records additionally carry stable IDs, order, and calculator-specific usedFor relationships. The root data record is canonical for calculator generation.",
+    "siteScenarios": "Four site scenario records remain separate from calculator presets because their totals differ under the device-aware calculator.",
+    "charts": "Chart metadata and numeric data remain split across site/src/content/charts, site/src/data/charts, and runtime code. Gate 12 will normalize them separately."
+  },
+  "deferredCollections": ["scenarios", "claims", "charts", "general site sources"],
+  "generated": {
+    "calculator": "generated/calculator.json",
+    "calculatorPayload": "generated/calculator-payload.json",
+    "latestExports": "exports/latest",
+    "versionedExports": "exports/v0.1.0",
+    "archive": "exports/your-digital-life-data-v0.1.0.zip",
+    "siteCalculator": "../site/src/content/calculators/digital-inventory.json",
+    "publicDownloads": "../site/public/data",
+    "publicSchemas": "../site/public/schemas"
+  }
+}

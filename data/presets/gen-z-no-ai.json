@@ -1,0 +1,22 @@
+{
+  "description": "Section 3 scenario with heavy social media, evening streaming, one Zoom class, and no AI.",
+  "deviceSelections": {
+    "instagram": "phone",
+    "netflix": "laptop",
+    "snapchat": "phone",
+    "tiktok": "phone",
+    "youtube": "phone",
+    "zoom-participant": "laptop"
+  },
+  "id": "gen-z-no-ai",
+  "label": "Gen Z (no AI use)",
+  "order": 2,
+  "values": {
+    "instagram": 0.75,
+    "netflix": 1.5,
+    "snapchat": 0.5,
+    "tiktok": 1.5,
+    "youtube": 1.25,
+    "zoom-participant": 1
+  }
+}

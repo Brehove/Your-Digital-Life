@@ -1,0 +1,37 @@
+{
+  "category": "Media and search",
+  "defaultDeviceId": "laptop",
+  "deviceMode": "selectable",
+  "deviceNote": "The default total assumes laptop viewing, while phone and TV options preserve the lower and higher ends already used in the scenario work.",
+  "deviceSelectableIds": [
+    "phone",
+    "laptop",
+    "tv"
+  ],
+  "deviceSelectionAffects": [
+    "totalWhPerUnit"
+  ],
+  "deviceTotalWhOverrides": {
+    "laptop": 37,
+    "phone": 26,
+    "tv": 77
+  },
+  "directWaterMlPerUnit": 22,
+  "id": "netflix",
+  "label": "Netflix streaming",
+  "lastReviewed": "2026-03-09",
+  "note": "Uses the IEA/Kamiya 22 Wh cloud-side and 77 Wh total benchmark used throughout the site's streaming comparisons.",
+  "order": 9,
+  "serverWhPerUnit": 22,
+  "sourceIds": [
+    "kamiya-streaming-video",
+    "scenario-methods"
+  ],
+  "status": "inferred",
+  "step": 0.25,
+  "systemBoundary": "legacy-row-specific",
+  "totalWaterMlPerUnit": 132,
+  "totalWhPerUnit": 37,
+  "unitHint": "One hour streamed",
+  "unitLabel": "hours"
+}

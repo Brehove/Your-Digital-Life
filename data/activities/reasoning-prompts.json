@@ -1,0 +1,23 @@
+{
+  "category": "AI tasks",
+  "deviceMode": "not-modeled",
+  "deviceNote": "The live calculator keeps the reasoning row equal to cloud-side energy until a separate prompt-device model is justified.",
+  "directWaterMlPerUnit": 33.8,
+  "id": "reasoning-prompts",
+  "label": "High-reasoning prompts",
+  "lastReviewed": "2026-03-09",
+  "note": "Uses the long high-reasoning 33.8 Wh benchmark rather than the much smaller medium-query comparison value, so this row stays an intentional outlier.",
+  "order": 2,
+  "serverWhPerUnit": 33.8,
+  "sourceIds": [
+    "jegham-how-hungry-is-ai",
+    "scenario-methods"
+  ],
+  "status": "inferred",
+  "step": 1,
+  "systemBoundary": "legacy-row-specific",
+  "totalWaterMlPerUnit": 202.8,
+  "totalWhPerUnit": 33.8,
+  "unitHint": "Long, high-reasoning queries",
+  "unitLabel": "prompts"
+}

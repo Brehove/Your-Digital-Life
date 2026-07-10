@@ -1,0 +1,21 @@
+{
+  "authors": [
+    "Ian Schneider"
+  ],
+  "id": "schneider-google-scale",
+  "notes": "Primary source for WUE framing, cooling tradeoffs, and provider-scoped production prompt metrics.",
+  "order": 11,
+  "organization": "arXiv / Google Research",
+  "publishedDate": "2025-08-01",
+  "sourceTier": "Tier 1",
+  "sourceType": "Research paper",
+  "tags": [
+    "data-centers",
+    "prompting"
+  ],
+  "title": "Measuring the environmental impact of delivering AI at Google Scale",
+  "url": "https://arxiv.org/html/2508.15734v1",
+  "usedFor": [
+    "water methodology context on direct cooling versus broader electricity water"
+  ]
+}

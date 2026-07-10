@@ -1,0 +1,68 @@
+name: Website bug
+description: Report reproducible incorrect behavior on your-digital-life.org.
+title: "[Website bug]: "
+labels:
+  - "area:website"
+  - "type:bug"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not use this form for questionable data values; use the Data correction form. Do not post credentials or private information.
+  - type: input
+    id: url
+    attributes:
+      label: Affected URL
+      placeholder: https://your-digital-life.org/...
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: What happened
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction steps
+      placeholder: |
+        1. Open ...
+        2. Select ...
+        3. Observe ...
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Browser and device
+      placeholder: Safari 20 on macOS 27; or Chrome 150 on Android
+    validations:
+      required: true
+  - type: textarea
+    id: record_ids
+    attributes:
+      label: Related record IDs
+      description: List any calculator, source, scenario, or chart IDs involved; write "None" if not applicable.
+    validations:
+      required: true
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots or console output
+      description: Remove personal information, credentials, and private URLs before attaching anything.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Final checks
+      options:
+        - label: I reproduced this on the current public website and searched existing issues.
+          required: true
+        - label: This report contains no credentials, private URLs, or personal information.
+          required: true

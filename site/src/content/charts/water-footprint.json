@@ -1,0 +1,15 @@
+{
+  "title": "Direct vs. Indirect Water",
+  "slug": "water-footprint",
+  "chartType": "stacked-bar",
+  "summary": "Show that the total water story is larger than direct cooling because electricity generation adds substantial indirect water demand.",
+  "dataFile": "src/data/charts/water-footprint.json",
+  "xField": "type",
+  "yField": "litersPerKwh",
+  "unit": "L/kWh",
+  "sourceIds": ["iea-energy-and-ai", "lbnl-data-center-report"],
+  "note": "A stacked or side-by-side view is enough; the key job is to correct the intuition that water equals cooling only.",
+  "lastReviewed": "2026-03-07",
+  "tags": ["how-data-centers-work"]
+}
+

@@ -1,0 +1,33 @@
+{
+  "category": "Media and search",
+  "defaultDeviceId": "phone",
+  "deviceMode": "fixed",
+  "deviceNote": "Treat Snapchat as a phone-default row in the initial device model.",
+  "deviceSelectableIds": [
+    "phone"
+  ],
+  "deviceSelectionAffects": [
+    "totalWhPerUnit"
+  ],
+  "deviceTotalWhOverrides": {
+    "phone": 20
+  },
+  "directWaterMlPerUnit": 4,
+  "id": "snapchat",
+  "label": "Snapchat",
+  "lastReviewed": "2026-03-09",
+  "note": "Another low-confidence social-media estimate built from broader comparison logic rather than a platform disclosure.",
+  "order": 7,
+  "serverWhPerUnit": 4,
+  "sourceIds": [
+    "greenspector-social-media-2021",
+    "scenario-methods"
+  ],
+  "status": "estimated",
+  "step": 0.25,
+  "systemBoundary": "legacy-row-specific",
+  "totalWaterMlPerUnit": 24,
+  "totalWhPerUnit": 20,
+  "unitHint": "Short-form messaging and video",
+  "unitLabel": "hours"
+}

@@ -1,0 +1,85 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { resolveChartData } from "../lib/chart-data";
+
+interface Props {
+  chart: CollectionEntry<"charts">;
+}
+
+const { chart } = Astro.props;
+const resolved = resolveChartData(chart.data.slug);
+const maxValue = Math.max(...resolved.items.map((item) => item.value), 1);
+
+function widthPercent(value: number) {
+  if (resolved.scale === "log") {
+    return (Math.log10(value + 1) / Math.log10(maxValue + 1)) * 100;
+  }
+
+  return (value / maxValue) * 100;
+}
+---
+
+<article class="card chart-card">
+  <div class="card__topline">
+    <p class="eyebrow">Chart</p>
+    <span class="chart-pill">{chart.data.chartType}</span>
+  </div>
+
+  <h3>{chart.data.title}</h3>
+  <p>{chart.data.summary}</p>
+
+  {resolved.takeaway && <p class="chart-takeaway">{resolved.takeaway}</p>}
+
+  {resolved.insights && resolved.insights.length > 0 && (
+    <div class="chart-insights">
+      {resolved.insights.map((insight) => (
+        <div class="chart-insight">
+          <span>{insight.label}</span>
+          <strong>{insight.value}</strong>
+        </div>
+      ))}
+    </div>
+  )}
+
+  <div class="bar-chart" role="img" aria-label={`${chart.data.title}. ${chart.data.summary}`}>
+    {resolved.items.map((item) => (
+      <div class:list={["bar-chart__row", { "is-highlighted": item.highlight }]}>
+        <div class="bar-chart__labels">
+          <div class="bar-chart__label-stack">
+            <span>{item.label}</span>
+            {item.detail && <small class="bar-chart__detail">{item.detail}</small>}
+          </div>
+          <strong>{item.displayValue}</strong>
+        </div>
+        <div class="bar-chart__track" aria-hidden="true">
+          <div
+            class:list={["bar-chart__fill", { "is-highlighted": item.highlight }]}
+            style={`width: ${Math.max(widthPercent(item.value), 4)}%`}
+          />
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <div class="table-wrap chart-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Label</th>
+          <th>{resolved.metricLabel}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {resolved.items.map((item) => (
+          <tr>
+            <td>{item.label}</td>
+            <td>{item.displayValue}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  {resolved.scaleNote && <p class="note">{resolved.scaleNote}</p>}
+  {chart.data.note && <p class="muted">{chart.data.note}</p>}
+</article>

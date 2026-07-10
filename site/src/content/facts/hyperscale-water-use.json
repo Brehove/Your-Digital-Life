@@ -1,0 +1,19 @@
+{
+  "section": "Section 1",
+  "topic": "Water footprint",
+  "claim": "A 100 MW hyperscale data centre in the United States can consume around 2 million litres of water per day, with more than 60% of the total water footprint showing up indirectly through electricity generation.",
+  "shortLabel": "Hyperscale water demand",
+  "value": "2 million litres/day",
+  "displayValue": "~2 million litres/day",
+  "comparisonContext": "The indirect share matters because water use is not just a cooling story.",
+  "status": "verified",
+  "scopeNote": "Illustrative hyperscale facility figure, not a universal site average.",
+  "sourceTier": "Tier 1",
+  "sourceTitle": "Energy and AI",
+  "sourceOrg": "International Energy Agency",
+  "sourceUrl": "https://iea.blob.core.windows.net/assets/dd7c2387-2f60-4b60-8c5f-6563b6aa1e4c/EnergyandAI.pdf",
+  "sourceDate": "2026-01-01",
+  "lastVerified": "2026-03-07",
+  "tags": ["home", "how-data-centers-work"]
+}
+

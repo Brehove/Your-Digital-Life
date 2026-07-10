@@ -1,0 +1,53 @@
+{
+  "id": "zoom-host-method",
+  "notes": [
+    "The server term is intentionally small because the model assumes SFU-style routing rather than heavy re-encoding.",
+    "The network term dominates the cloud-side figure and the participant devices dominate the total-system add-on.",
+    "This remains an estimate and should stay visibly separate from directly measured prompt benchmarks."
+  ],
+  "order": 4,
+  "sourceIds": [
+    "mytton-zoom",
+    "verdecchia-video-call-energy",
+    "scenario-methods"
+  ],
+  "summary": "The calculator's hosted Zoom row combines a small routing/server term, a larger network term, and participant-device energy.",
+  "tables": [
+    {
+      "columns": [
+        "Energy component",
+        "Per-meeting energy (Wh)",
+        "Basis"
+      ],
+      "rows": [
+        [
+          "Zoom server routing",
+          "7",
+          "SFU-style routing estimate"
+        ],
+        [
+          "Network across all participants",
+          "185",
+          "Mytton energy-per-GB framing"
+        ],
+        [
+          "Devices across all participants",
+          "166",
+          "Laptop-energy assumption used for participant devices"
+        ],
+        [
+          "Server + network subtotal",
+          "192",
+          "Cloud-side figure used in the calculator"
+        ],
+        [
+          "Total-system energy",
+          "358",
+          "Hosted meeting figure used in the calculator"
+        ]
+      ],
+      "title": "One hosted Zoom meeting with 10 participants over 50 minutes"
+    }
+  ],
+  "title": "Hosted Zoom meeting derivation"
+}

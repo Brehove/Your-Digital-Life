@@ -1,0 +1,23 @@
+{
+  "category": "AI tasks",
+  "deviceMode": "not-modeled",
+  "deviceNote": "The image row currently keeps total energy equal to cloud-side energy rather than adding a device-specific term.",
+  "directWaterMlPerUnit": 0.48,
+  "id": "image-generation",
+  "label": "AI image generation",
+  "lastReviewed": "2026-03-09",
+  "note": "Uses an open-model image-generation average and the same water-conversion rule used across the broader comparison set.",
+  "order": 3,
+  "serverWhPerUnit": 0.48,
+  "sourceIds": [
+    "ifri-ai-dc-energy",
+    "scenario-methods"
+  ],
+  "status": "inferred",
+  "step": 1,
+  "systemBoundary": "legacy-row-specific",
+  "totalWaterMlPerUnit": 2.88,
+  "totalWhPerUnit": 0.48,
+  "unitHint": "One generated image",
+  "unitLabel": "images"
+}

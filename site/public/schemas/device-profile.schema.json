@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://your-digital-life.org/schemas/device-profile.schema.json",
+  "title": "Your Digital Life calculator device profile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "order", "label"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "order": { "type": "integer", "minimum": 1 },
+    "label": { "type": "string", "minLength": 1 },
+    "note": { "type": "string", "minLength": 1 }
+  }
+}

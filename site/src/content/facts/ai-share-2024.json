@@ -1,0 +1,19 @@
+{
+  "section": "Section 1",
+  "topic": "AI share",
+  "claim": "AI accounted for about 15% of data centre electricity demand in 2024 in the framing used for this project.",
+  "shortLabel": "AI share of data centre demand",
+  "value": 15,
+  "unit": "%",
+  "displayValue": "15% in 2024",
+  "comparisonContext": "The other 80-85% represents the broader digital economy faculty and students already use: streaming, video calls, email, social media, enterprise software, and cloud services.",
+  "status": "verified",
+  "scopeNote": "Share of data centre demand, not share of all electricity demand.",
+  "sourceTier": "Tier 1",
+  "sourceTitle": "Energy and AI",
+  "sourceOrg": "International Energy Agency",
+  "sourceUrl": "https://iea.blob.core.windows.net/assets/dd7c2387-2f60-4b60-8c5f-6563b6aa1e4c/EnergyandAI.pdf",
+  "sourceDate": "2026-01-01",
+  "lastVerified": "2026-03-07",
+  "tags": ["start-here", "how-data-centers-work"]
+}

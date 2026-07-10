@@ -1,0 +1,267 @@
+[
+  {
+    "authors": [],
+    "id": "epoch-chatgpt-energy",
+    "notes": "Used for the 0.3 Wh everyday text-prompt estimate and related prompt-volume framing.",
+    "order": 1,
+    "organization": "Epoch AI",
+    "publishedDate": "2025-02-01",
+    "sourceTier": "Tier 3",
+    "sourceType": "Expert analysis",
+    "tags": [
+      "prompting"
+    ],
+    "title": "How Much Energy Does ChatGPT Use?",
+    "url": "https://epoch.ai/gradient-updates/how-much-energy-does-chatgpt-use",
+    "usedFor": [
+      "0.3 Wh AI text-prompt row",
+      "prompt-specific comparison language in the boundary and water method sections"
+    ]
+  },
+  {
+    "authors": [
+      "Nidhal Jegham",
+      "Marwen Abdelatti",
+      "Lassad Elmoubarki",
+      "Abdeltawab Hendawi"
+    ],
+    "id": "jegham-how-hungry-is-ai",
+    "notes": "Primary inference benchmark for reasoning-heavy prompt classes and environmental multipliers.",
+    "order": 2,
+    "organization": "arXiv / ACM FAccT context",
+    "publishedDate": "2025-05-01",
+    "sourceTier": "Tier 1",
+    "sourceType": "Peer-reviewed or preprint benchmark",
+    "tags": [
+      "prompting"
+    ],
+    "title": "How Hungry is AI? Benchmarking Energy, Water, and Carbon Footprint of LLM Inference",
+    "url": "https://arxiv.org/pdf/2505.09598",
+    "usedFor": [
+      "33.8 Wh high-reasoning prompt row",
+      "direct and total water framing for prompt-heavy rows",
+      "maintenance note preserving the long high-reasoning benchmark"
+    ]
+  },
+  {
+    "authors": [
+      "Joel Gladd"
+    ],
+    "id": "scenario-methods",
+    "notes": "Site-built method model that combines prompt benchmarks, streaming comparisons, meeting estimates, and water-conversion rules into the live calculator.",
+    "order": 3,
+    "organization": "Digital Habits site method model",
+    "publishedDate": "2026-03-07",
+    "sourceTier": "Tier 3",
+    "sourceType": "Internal synthesis",
+    "tags": [
+      "scenarios",
+      "calculator"
+    ],
+    "title": "Digital inventory calculator and scenario method",
+    "url": "https://your-digital-life.org/sources-and-method/",
+    "usedFor": [
+      "scenario-style 1 mL direct to 6 mL total water bridge",
+      "browsing bundle row",
+      "preset mix logic",
+      "total-system add-ons for non-AI rows"
+    ]
+  },
+  {
+    "authors": [
+      "Laure De Roucy-Rochegonde",
+      "Adrien Buffard"
+    ],
+    "id": "ifri-ai-dc-energy",
+    "notes": "Useful for prompt comparison tables and the Jevons framing, but should be paired with Tier 1 sources where possible.",
+    "order": 4,
+    "organization": "IFRI",
+    "publishedDate": "2025-02-01",
+    "sourceTier": "Tier 2",
+    "sourceType": "Policy report",
+    "tags": [
+      "prompting",
+      "debates"
+    ],
+    "title": "AI, Data Centers and Energy Demand: Reassessing and Exploring the Trends",
+    "url": "https://www.ifri.org/sites/default/files/2025-02/ifri_buffard-rochegonde_ai_data_centers_energy_2025_2.pdf",
+    "usedFor": [
+      "image-generation benchmark row",
+      "comparison logic in the cloud-side versus total-system bridge"
+    ]
+  },
+  {
+    "authors": [
+      "Simon P. Couch"
+    ],
+    "id": "simon-couch-coding-agent",
+    "notes": "Useful for the vibe-coding scenario but should remain marked as estimated and napkin-math-derived.",
+    "order": 5,
+    "organization": "Simon P. Couch",
+    "publishedDate": "2026-01-20",
+    "sourceTier": "Tier 3",
+    "sourceType": "Expert analysis",
+    "tags": [
+      "scenarios",
+      "prompting"
+    ],
+    "title": "Electricity use of AI coding agents",
+    "url": "https://www.simonpcouch.com/blog/2026-01-20-cc-impact/",
+    "usedFor": [
+      "coding-agent use row",
+      "Gen Z vibe-coder preset",
+      "cloud-side versus total-system bridge for high-intensity AI use"
+    ]
+  },
+  {
+    "authors": [],
+    "id": "greenspector-social-media-2021",
+    "notes": "Used for device-side social-media energy measurements, especially TikTok.",
+    "order": 6,
+    "organization": "Greenspector",
+    "publishedDate": "2021-10-01",
+    "sourceTier": "Tier 2",
+    "sourceType": "Industry measurement",
+    "tags": [
+      "scenarios",
+      "prompting"
+    ],
+    "title": "What is the environmental footprint for social media applications? 2021 Edition",
+    "url": "https://greenspector.com/en/social-media-2021/",
+    "usedFor": [
+      "TikTok, Instagram, and Snapchat directional rows",
+      "cloud-side versus total-system bridge for social-video estimates",
+      "maintenance note on low-confidence social rows"
+    ]
+  },
+  {
+    "authors": [
+      "Adam Holter"
+    ],
+    "id": "adam-holter-tiktok",
+    "notes": "Directional comparison used only as a low-confidence reference for TikTok total-system estimates.",
+    "order": 7,
+    "organization": "Adam Holter",
+    "publishedDate": "2025-05-01",
+    "sourceTier": "Tier 4",
+    "sourceType": "Opinion or blog analysis",
+    "tags": [
+      "scenarios",
+      "prompting"
+    ],
+    "title": "Why Your ChatGPT Prompt Uses Half the Energy of a TikTok Video",
+    "url": "https://adam.holter.com/why-your-chatgpt-prompt-uses-half-the-energy-of-a-tiktok-video/",
+    "usedFor": [
+      "TikTok total-system estimate cross-check"
+    ]
+  },
+  {
+    "authors": [
+      "George Kamiya"
+    ],
+    "id": "kamiya-streaming-video",
+    "notes": "Used for the 77 Wh total streaming baseline and the ~22 Wh server-plus-network split adopted for Netflix and YouTube comparisons.",
+    "order": 8,
+    "organization": "International Energy Agency",
+    "publishedDate": "2020-12-01",
+    "sourceTier": "Tier 1",
+    "sourceType": "Institutional commentary",
+    "tags": [
+      "prompting",
+      "scenarios"
+    ],
+    "title": "The carbon footprint of streaming video: fact-checking the headlines",
+    "url": "https://www.iea.org/commentaries/the-carbon-footprint-of-streaming-video-fact-checking-the-headlines",
+    "usedFor": [
+      "Netflix row",
+      "YouTube row",
+      "streaming-side values used to anchor TikTok and Instagram estimates"
+    ]
+  },
+  {
+    "authors": [
+      "David Mytton"
+    ],
+    "id": "mytton-zoom",
+    "notes": "Used for Zoom scenario modeling; should stay labeled as an estimate rather than a direct measurement of every meeting type.",
+    "order": 9,
+    "organization": "David Mytton",
+    "publishedDate": "2023-01-01",
+    "sourceTier": "Tier 3",
+    "sourceType": "Expert analysis",
+    "tags": [
+      "scenarios"
+    ],
+    "title": "Zoom, video conferencing, energy, and emissions",
+    "url": "https://davidmytton.blog/zoom-video-conferencing-energy-and-emissions/",
+    "usedFor": [
+      "Zoom participant row",
+      "Zoom host row",
+      "hosted Zoom derivation table",
+      "worker-hosted-Zoom preset"
+    ]
+  },
+  {
+    "authors": [
+      "Roberto Verdecchia",
+      "et al."
+    ],
+    "id": "verdecchia-video-call-energy",
+    "notes": "Used for device-side video-call energy and camera-on versus camera-off impacts in the Zoom estimates.",
+    "order": 10,
+    "organization": "ACM MobileSoft",
+    "publishedDate": "2022-05-01",
+    "sourceTier": "Tier 1",
+    "sourceType": "Peer-reviewed paper",
+    "tags": [
+      "scenarios",
+      "prompting"
+    ],
+    "title": "Video Calls in Mobile Applications: Energy Consumption and Performance Analysis",
+    "url": "https://robertoverdecchia.github.io/papers/MobileSoft_2022.pdf",
+    "usedFor": [
+      "participant device add-on for Zoom",
+      "total-system device add-on in the hosted Zoom derivation"
+    ]
+  },
+  {
+    "authors": [
+      "Ian Schneider"
+    ],
+    "id": "schneider-google-scale",
+    "notes": "Primary source for WUE framing, cooling tradeoffs, and provider-scoped production prompt metrics.",
+    "order": 11,
+    "organization": "arXiv / Google Research",
+    "publishedDate": "2025-08-01",
+    "sourceTier": "Tier 1",
+    "sourceType": "Research paper",
+    "tags": [
+      "data-centers",
+      "prompting"
+    ],
+    "title": "Measuring the environmental impact of delivering AI at Google Scale",
+    "url": "https://arxiv.org/html/2508.15734v1",
+    "usedFor": [
+      "water methodology context on direct cooling versus broader electricity water"
+    ]
+  },
+  {
+    "authors": [],
+    "id": "lbnl-data-center-report",
+    "notes": "Primary U.S. demand and water-intensity context for the macro-risk pages.",
+    "order": 12,
+    "organization": "Lawrence Berkeley National Laboratory",
+    "publishedDate": "2024-12-01",
+    "sourceTier": "Tier 1",
+    "sourceType": "National laboratory report",
+    "tags": [
+      "data-centers",
+      "debates"
+    ],
+    "title": "2024 United States Data Center Energy Usage Report",
+    "url": "https://eta.lbl.gov/publications/2024-lbnl-data-center-energy-usage-report",
+    "usedFor": [
+      "water methodology context on electricity-side water intensity"
+    ]
+  }
+]

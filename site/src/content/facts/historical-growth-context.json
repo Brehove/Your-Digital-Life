@@ -1,0 +1,19 @@
+{
+  "section": "Section 1",
+  "topic": "Historical growth context",
+  "claim": "From 2014 to 2024, data centres added about 250 TWh of global electricity demand, while space cooling added about 700 TWh over the same period.",
+  "shortLabel": "Data centres matter, but air conditioning grew faster",
+  "value": "250 vs 700",
+  "unit": "TWh",
+  "displayValue": "250 TWh vs 700 TWh",
+  "comparisonContext": "This context helps avoid both minimization and exaggeration when comparing digital infrastructure with other demand growth.",
+  "status": "verified",
+  "scopeNote": "Incremental demand over a decade, not total electricity use in 2024.",
+  "sourceTier": "Tier 1",
+  "sourceTitle": "Energy and AI",
+  "sourceOrg": "International Energy Agency",
+  "sourceUrl": "https://iea.blob.core.windows.net/assets/dd7c2387-2f60-4b60-8c5f-6563b6aa1e4c/EnergyandAI.pdf",
+  "sourceDate": "2026-01-01",
+  "lastVerified": "2026-03-07",
+  "tags": ["how-data-centers-work", "start-here"]
+}

@@ -1,0 +1,75 @@
+{
+  "id": "water-method",
+  "notes": [
+    "The current model rounds direct cooling water to roughly 1 mL per Wh of server energy and total water to roughly 6 mL per Wh once indirect electricity water is added back.",
+    "Text prompts keep their own prompt-specific direct and total water values instead of using the generic 1-to-6 rule.",
+    "Reasoning prompts, image generation, social video, streaming, browsing, and Zoom rows currently follow the broader proportional water rule unless a stronger prompt-specific figure exists."
+  ],
+  "order": 3,
+  "sourceIds": [
+    "schneider-google-scale",
+    "lbnl-data-center-report",
+    "epoch-chatgpt-energy",
+    "jegham-how-hungry-is-ai",
+    "ifri-ai-dc-energy",
+    "scenario-methods"
+  ],
+  "summary": "The calculator keeps prompt-specific direct and total water figures where they exist, then uses a broader electricity-to-water bridge for most of the remaining rows.",
+  "tables": [
+    {
+      "columns": [
+        "Row family",
+        "Direct water",
+        "Total water",
+        "Basis",
+        "Maintenance note"
+      ],
+      "rows": [
+        [
+          "Text prompts",
+          "0.26 mL per prompt",
+          "1.3 mL per prompt",
+          "Prompt-specific water estimate",
+          "Keep this special case unless the underlying prompt benchmark changes"
+        ],
+        [
+          "Reasoning prompts",
+          "33.8 mL per prompt",
+          "202.8 mL per prompt",
+          "33.8 Wh energy row with a 1:6 water bridge",
+          "33.8 x 6 = 202.8"
+        ],
+        [
+          "Image generation",
+          "0.48 mL per image",
+          "2.88 mL per image",
+          "0.48 Wh image benchmark with a 1:6 water bridge",
+          "0.48 x 6 = 2.88"
+        ],
+        [
+          "Social media / streaming / browsing rows",
+          "1 mL per Wh",
+          "6 mL per Wh",
+          "Rounded direct-plus-indirect water bridge",
+          "Used for TikTok, Instagram, Snapchat, YouTube, Netflix, and browsing"
+        ],
+        [
+          "Zoom participant / host",
+          "1 mL per Wh",
+          "6 mL per Wh",
+          "Rounded direct-plus-indirect water bridge",
+          "Used for both meeting rows"
+        ],
+        [
+          "Coding-agent use",
+          "325 mL per hour",
+          "1,950 mL per hour",
+          "1:6 water bridge",
+          "325 x 6 = 1,950"
+        ]
+      ],
+      "title": "Water conversion rules used by the live calculator"
+    }
+  ],
+  "title": "Water methodology carried into the calculator"
+}

@@ -1,0 +1,18 @@
+{
+  "section": "Section 1",
+  "topic": "Local water stress",
+  "claim": "The Dalles is a clear local-burden example: by 2024, roughly one-third of the city's water went to Google's three local data-centre sites.",
+  "shortLabel": "The Dalles water concentration",
+  "value": "1/3 of city water",
+  "displayValue": "~1/3 of city water",
+  "comparisonContext": "This is one of the clearest local examples for explaining why regional siting matters.",
+  "status": "verified",
+  "scopeNote": "Local case study, not a generic proxy for all data-centre communities.",
+  "sourceTier": "Tier 1",
+  "sourceTitle": "As Google's Water Demands Grow, The Dalles Aims to Pull More from Mount Hood Forest",
+  "sourceOrg": "Oregon Public Broadcasting",
+  "sourceUrl": "https://www.opb.org/article/2026/01/15/as-googles-water-demands-grow-the-dalles-aims-to-pull-more-from-mount-hood-forest/",
+  "sourceDate": "2026-01-15",
+  "lastVerified": "2026-03-08",
+  "tags": ["risk"]
+}

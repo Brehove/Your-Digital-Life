@@ -1,0 +1,35 @@
+{
+  "category": "Media and search",
+  "defaultDeviceId": "phone",
+  "deviceMode": "fixed",
+  "deviceNote": "This row already behaves like a mobile-default social-feed estimate and should stay fixed in the first device pass.",
+  "deviceSelectableIds": [
+    "phone"
+  ],
+  "deviceSelectionAffects": [
+    "totalWhPerUnit"
+  ],
+  "deviceTotalWhOverrides": {
+    "phone": 36
+  },
+  "directWaterMlPerUnit": 7.5,
+  "id": "tiktok",
+  "label": "TikTok or short-video scrolling",
+  "lastReviewed": "2026-03-09",
+  "note": "Built from device-side social-video measurement plus streaming-style infrastructure assumptions; keep this row estimated until a platform-specific cloud-side benchmark exists.",
+  "order": 5,
+  "serverWhPerUnit": 7.5,
+  "sourceIds": [
+    "greenspector-social-media-2021",
+    "adam-holter-tiktok",
+    "kamiya-streaming-video",
+    "scenario-methods"
+  ],
+  "status": "estimated",
+  "step": 0.25,
+  "systemBoundary": "legacy-row-specific",
+  "totalWaterMlPerUnit": 45,
+  "totalWhPerUnit": 36,
+  "unitHint": "Video-heavy social feed",
+  "unitLabel": "hours"
+}

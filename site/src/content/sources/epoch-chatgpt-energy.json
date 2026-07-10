@@ -1,0 +1,11 @@
+{
+  "title": "How Much Energy Does ChatGPT Use?",
+  "organization": "Epoch AI",
+  "authors": [],
+  "url": "https://epoch.ai/gradient-updates/how-much-energy-does-chatgpt-use",
+  "publishedDate": "2025-02-01",
+  "sourceTier": "Tier 3",
+  "sourceType": "Expert analysis",
+  "notes": "Used for the 0.3 Wh everyday text-prompt estimate and related prompt-volume framing.",
+  "tags": ["prompting"]
+}

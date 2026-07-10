@@ -1,0 +1,13 @@
+.DS_Store
+~$*.pptx
+*.pptx
+*.xlsx
+.env
+.env.*
+!.env.example
+node_modules
+site/node_modules
+site/.astro
+site/dist
+site/.wrangler
+work

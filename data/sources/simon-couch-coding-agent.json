@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "Simon P. Couch"
+  ],
+  "id": "simon-couch-coding-agent",
+  "notes": "Useful for the vibe-coding scenario but should remain marked as estimated and napkin-math-derived.",
+  "order": 5,
+  "organization": "Simon P. Couch",
+  "publishedDate": "2026-01-20",
+  "sourceTier": "Tier 3",
+  "sourceType": "Expert analysis",
+  "tags": [
+    "scenarios",
+    "prompting"
+  ],
+  "title": "Electricity use of AI coding agents",
+  "url": "https://www.simonpcouch.com/blog/2026-01-20-cc-impact/",
+  "usedFor": [
+    "coding-agent use row",
+    "Gen Z vibe-coder preset",
+    "cloud-side versus total-system bridge for high-intensity AI use"
+  ]
+}

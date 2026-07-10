@@ -1,0 +1,11 @@
+{
+  "title": "Digital inventory calculator and scenario method",
+  "organization": "Digital Habits site method model",
+  "authors": ["Joel Gladd"],
+  "url": "https://your-digital-life.org/sources-and-method/",
+  "publishedDate": "2026-03-07",
+  "sourceTier": "Tier 3",
+  "sourceType": "Internal synthesis",
+  "notes": "Site-built method model that combines prompt benchmarks, streaming comparisons, meeting estimates, and water-conversion rules into the live calculator.",
+  "tags": ["scenarios", "calculator"]
+}

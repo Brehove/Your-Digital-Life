@@ -1,0 +1,108 @@
+name: Data correction
+description: Propose a sourced correction to an existing value, boundary, calculation, or status.
+title: "[Data correction]: "
+labels:
+  - "area:data"
+  - "type:correction"
+  - "status:needs-evidence"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for checking the evidence. Complete every applicable field so another person can reproduce the proposed value. Do not paste paywalled text, confidential information, or publisher-rendered figures.
+  - type: input
+    id: record_id
+    attributes:
+      label: Stable record ID
+      description: The exact ID used in the dataset or calculator.
+      placeholder: activity.example-id
+    validations:
+      required: true
+  - type: textarea
+    id: current_value
+    attributes:
+      label: Current value
+      description: Include value, unit, system boundary, and current status.
+    validations:
+      required: true
+  - type: textarea
+    id: proposed_value
+    attributes:
+      label: Proposed value
+      description: Include value, unit, system boundary, and proposed status.
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source URL or DOI
+      placeholder: https://doi.org/...
+    validations:
+      required: true
+  - type: input
+    id: locator
+    attributes:
+      label: Exact source locator
+      description: Page, table, figure, appendix, dataset row, or section.
+      placeholder: Table 3, p. 17
+    validations:
+      required: true
+  - type: input
+    id: dates
+    attributes:
+      label: Publication and access dates
+      placeholder: Published YYYY-MM-DD; accessed YYYY-MM-DD
+    validations:
+      required: true
+  - type: textarea
+    id: calculation
+    attributes:
+      label: Calculation and intermediate values
+      description: Show conversions, assumptions, intermediate numbers, and rounding.
+      render: text
+    validations:
+      required: true
+  - type: dropdown
+    id: confidence
+    attributes:
+      label: Proposed confidence or status
+      options:
+        - Verified measurement
+        - Derived estimate
+        - Illustrative estimate
+        - Contested
+        - Needs review
+    validations:
+      required: true
+  - type: textarea
+    id: affected
+    attributes:
+      label: Affected records and public outputs
+      description: List scenarios, charts, pages, downloads, or method sections that must change.
+    validations:
+      required: true
+  - type: textarea
+    id: affiliation
+    attributes:
+      label: Relevant affiliation or conflict of interest
+      description: State relevant employment, funding, authorship, vendor, or advocacy relationships; write "None" when none apply.
+    validations:
+      required: true
+  - type: checkboxes
+    id: rights
+    attributes:
+      label: Rights affirmation
+      options:
+        - label: I have the right to submit this material, and I have not copied confidential information, paywalled full text, publisher charts, logos, screenshots, or substantial excerpts without documented permission.
+          required: true
+        - label: I understand that linked sources and quotations retain their original rights and are not relicensed by this project.
+          required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Final checks
+      options:
+        - label: I searched existing issues and Discussions for this record and evidence.
+          required: true
+        - label: I supplied enough information for an independent reviewer to reproduce the proposal.
+          required: true

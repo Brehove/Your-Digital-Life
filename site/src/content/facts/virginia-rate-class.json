@@ -1,0 +1,18 @@
+{
+  "section": "Archived Section 4",
+  "topic": "Rate impacts",
+  "claim": "Virginia's new data-centre rate class requires large AI data centres to pay at least 85% of contracted transmission and distribution demand and 60% of generation demand.",
+  "shortLabel": "Virginia's new data-centre rate class",
+  "value": "85% and 60%",
+  "displayValue": "85% T&D demand, 60% generation demand",
+  "comparisonContext": "This is one example of regulators trying to keep hyperscale demand from shifting too much cost to other customers.",
+  "status": "verified",
+  "scopeNote": "Virginia-specific regulatory response, not a national standard.",
+  "sourceTier": "Tier 2",
+  "sourceTitle": "Virginia's new data center electricity rate class",
+  "sourceOrg": "American Action Forum",
+  "sourceUrl": "https://www.americanactionforum.org/insight/virginias-new-data-center-electricity-rate-class/",
+  "sourceDate": "2025-12-01",
+  "lastVerified": "2026-03-07",
+  "tags": []
+}

@@ -1,0 +1,92 @@
+{
+  "title": "Gen Z Medium AI User",
+  "slug": "medium-ai-user",
+  "audienceLabel": "Student scenario",
+  "summary": "Moderate social-media use plus roughly 25 text prompts and 3 generated images.",
+  "serverEnergyWh": 119,
+  "totalEnergyWh": 291,
+  "directWaterMl": 119,
+  "totalWaterMl": 714,
+  "confidence": "estimated",
+  "lastReviewed": "2026-03-08",
+  "heroStat": "A typical student AI profile can still sit below a non-AI media day.",
+  "comparisonNote": "The AI additions are small enough that replacing some scrolling time with AI leaves the day below the non-AI scenario.",
+  "activities": [
+    {
+      "label": "TikTok scrolling",
+      "durationOrVolume": "1 hour",
+      "serverEnergyWh": 8,
+      "totalEnergyWh": 36,
+      "directWaterMl": 8,
+      "totalWaterMl": 48,
+      "estimated": true,
+      "sourceIds": ["scenario-methods"]
+    },
+    {
+      "label": "YouTube watching",
+      "durationOrVolume": "1 hour",
+      "serverEnergyWh": 22,
+      "totalEnergyWh": 77,
+      "directWaterMl": 22,
+      "totalWaterMl": 132,
+      "sourceIds": ["iea-energy-and-ai"]
+    },
+    {
+      "label": "Instagram scrolling",
+      "durationOrVolume": "0.5 hours",
+      "serverEnergyWh": 3,
+      "totalEnergyWh": 13,
+      "directWaterMl": 3,
+      "totalWaterMl": 18,
+      "estimated": true,
+      "sourceIds": ["scenario-methods"]
+    },
+    {
+      "label": "Snapchat",
+      "durationOrVolume": "0.25 hours",
+      "serverEnergyWh": 1,
+      "totalEnergyWh": 5,
+      "directWaterMl": 1,
+      "totalWaterMl": 6,
+      "estimated": true,
+      "sourceIds": ["scenario-methods"]
+    },
+    {
+      "label": "Netflix or YouTube evening streaming",
+      "durationOrVolume": "1 hour",
+      "serverEnergyWh": 22,
+      "totalEnergyWh": 77,
+      "directWaterMl": 22,
+      "totalWaterMl": 132,
+      "sourceIds": ["iea-energy-and-ai"]
+    },
+    {
+      "label": "Zoom class",
+      "durationOrVolume": "1 hour",
+      "serverEnergyWh": 54,
+      "totalEnergyWh": 74,
+      "directWaterMl": 54,
+      "totalWaterMl": 324,
+      "estimated": true,
+      "sourceIds": ["mytton-zoom", "scenario-methods"]
+    },
+    {
+      "label": "ChatGPT text prompts",
+      "durationOrVolume": "25 prompts",
+      "serverEnergyWh": 8,
+      "totalEnergyWh": 8,
+      "directWaterMl": 8,
+      "totalWaterMl": 48,
+      "sourceIds": ["iea-energy-and-ai", "jegham-how-hungry-is-ai"]
+    },
+    {
+      "label": "AI image generation",
+      "durationOrVolume": "3 images",
+      "serverEnergyWh": 1,
+      "totalEnergyWh": 1,
+      "directWaterMl": 1,
+      "totalWaterMl": 6,
+      "sourceIds": ["ifri-ai-dc-energy"]
+    }
+  ]
+}

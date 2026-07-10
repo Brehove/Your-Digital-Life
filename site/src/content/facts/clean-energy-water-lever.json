@@ -1,0 +1,18 @@
+{
+  "section": "Section 1",
+  "topic": "Benefits",
+  "claim": "The current methodology makes a narrower point than a generic clean-energy claim: the lowest-water path combines non-evaporative cooling with low-water electricity such as wind and solar plus storage.",
+  "shortLabel": "Lowest-water path combines cooling and power choices",
+  "value": "Near-zero generation water",
+  "displayValue": "Non-evaporative cooling plus low-water electricity",
+  "comparisonContext": "This keeps the water story from collapsing into cooling alone or electricity supply alone.",
+  "status": "verified",
+  "scopeNote": "Conceptual pathway synthesis from the cited cooling and electricity evidence rather than a single site-specific guarantee.",
+  "sourceTier": "Tier 1",
+  "sourceTitle": "Energy and AI",
+  "sourceOrg": "International Energy Agency",
+  "sourceUrl": "https://iea.blob.core.windows.net/assets/dd7c2387-2f60-4b60-8c5f-6563b6aa1e4c/EnergyandAI.pdf",
+  "sourceDate": "2026-01-01",
+  "lastVerified": "2026-03-08",
+  "tags": ["benefit", "how-data-centers-work"]
+}

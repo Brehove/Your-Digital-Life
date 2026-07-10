@@ -1,0 +1,19 @@
+{
+  "section": "Archived Section 4",
+  "topic": "Rate impacts",
+  "claim": "Monitoring Analytics estimated that existing and forecast data-centre load added $9.332 billion to 2025/2026 PJM auction revenues and that removing that load would have lowered the result by 63.5%.",
+  "shortLabel": "PJM cost shift from data-centre load",
+  "value": 9.332,
+  "unit": "billion USD",
+  "displayValue": "$9.332B added to auction revenues",
+  "comparisonContext": "This primary-source estimate helps explain how local rate impacts can emerge from data-centre growth.",
+  "status": "verified",
+  "scopeNote": "Auction-revenue impact estimate in PJM, not a household bill estimate by itself.",
+  "sourceTier": "Tier 1",
+  "sourceTitle": "Analysis of the 2025/2026 RPM Base Residual Auction: Part G (Revised)",
+  "sourceOrg": "Monitoring Analytics",
+  "sourceUrl": "https://www.monitoringanalytics.com/reports/Reports/2025/IMM_Analysis_of_the_20252026_RPM_Base_Residual_Auction_Part_G_20250603_Revised.pdf",
+  "sourceDate": "2025-06-03",
+  "lastVerified": "2026-03-07",
+  "tags": []
+}

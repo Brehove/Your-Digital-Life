@@ -1,0 +1,19 @@
+{
+  "section": "Section 1",
+  "topic": "PUE benchmark",
+  "claim": "Hyperscale data centres now operate just under 1.15 PUE, while legacy enterprise facilities are closer to 2.0. Google's own fleet-wide figure is about 1.09.",
+  "shortLabel": "Hyperscale vs. enterprise PUE",
+  "value": "1.09 vs 2.0",
+  "unit": "PUE",
+  "displayValue": "~1.09 hyperscale vs ~2.0 enterprise",
+  "comparisonContext": "PUE describes how much non-IT overhead sits on top of computing. On older enterprise infrastructure, overhead can be as large as the computing load itself.",
+  "status": "verified",
+  "scopeNote": "IEA provides the enterprise-versus-hyperscale framing; Google's paper provides the company-specific 1.09 figure.",
+  "sourceTier": "Tier 1",
+  "sourceTitle": "Energy and AI",
+  "sourceOrg": "International Energy Agency",
+  "sourceUrl": "https://iea.blob.core.windows.net/assets/dd7c2387-2f60-4b60-8c5f-6563b6aa1e4c/EnergyandAI.pdf",
+  "sourceDate": "2026-01-01",
+  "lastVerified": "2026-03-07",
+  "tags": ["how-data-centers-work"]
+}

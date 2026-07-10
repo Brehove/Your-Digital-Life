@@ -1,0 +1,120 @@
+name: New data or source
+description: Propose a new activity, record, source, or evidence-backed addition.
+title: "[Data addition]: "
+labels:
+  - "area:data"
+  - "type:addition"
+  - "status:needs-evidence"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Propose the smallest reusable addition. Link to sources instead of uploading protected full text, screenshots, or charts.
+  - type: dropdown
+    id: addition_type
+    attributes:
+      label: Addition type
+      options:
+        - New digital activity
+        - New source for an existing record
+        - New scenario
+        - New chart or comparison
+        - New method or boundary
+        - Other structured-data addition
+    validations:
+      required: true
+  - type: input
+    id: proposed_id
+    attributes:
+      label: Proposed stable ID
+      description: Use a short, durable, lowercase identifier; maintainers may revise it.
+      placeholder: activity.example-id
+    validations:
+      required: true
+  - type: textarea
+    id: value_boundary
+    attributes:
+      label: Proposed value, unit, and system boundary
+      description: Be explicit about what is included and excluded.
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source URL or DOI
+      placeholder: https://doi.org/...
+    validations:
+      required: true
+  - type: input
+    id: locator
+    attributes:
+      label: Exact source locator
+      description: Page, table, figure, appendix, dataset row, or section.
+    validations:
+      required: true
+  - type: input
+    id: dates
+    attributes:
+      label: Publication and access dates
+      placeholder: Published YYYY-MM-DD; accessed YYYY-MM-DD
+    validations:
+      required: true
+  - type: textarea
+    id: calculation
+    attributes:
+      label: Calculation and intermediate values
+      description: Show conversions, assumptions, intermediate numbers, and rounding. Write "Direct source value" only when no derivation is needed.
+      render: text
+    validations:
+      required: true
+  - type: dropdown
+    id: confidence
+    attributes:
+      label: Proposed confidence or status
+      options:
+        - Verified measurement
+        - Derived estimate
+        - Illustrative estimate
+        - Contested
+        - Needs review
+    validations:
+      required: true
+  - type: textarea
+    id: value_to_project
+    attributes:
+      label: Why this belongs in the project
+      description: Explain user value, comparison value, and how it fits existing boundaries.
+    validations:
+      required: true
+  - type: textarea
+    id: affected
+    attributes:
+      label: Related records and outputs
+      description: List scenarios, charts, pages, or method sections this could affect.
+    validations:
+      required: true
+  - type: textarea
+    id: affiliation
+    attributes:
+      label: Relevant affiliation or conflict of interest
+      description: State relevant employment, funding, authorship, vendor, or advocacy relationships; write "None" when none apply.
+    validations:
+      required: true
+  - type: checkboxes
+    id: rights
+    attributes:
+      label: Rights affirmation
+      options:
+        - label: I have the right to submit this material, and I have not copied confidential information, paywalled full text, publisher charts, logos, screenshots, or substantial excerpts without documented permission.
+          required: true
+        - label: I understand that linked sources and quotations retain their original rights and are not relicensed by this project.
+          required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Final checks
+      options:
+        - label: I searched existing records, issues, and Discussions for this activity or source.
+          required: true
+        - label: I supplied enough information for an independent reviewer to reproduce the proposal.
+          required: true

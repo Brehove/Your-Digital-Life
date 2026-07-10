@@ -1,0 +1,32 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  resource: CollectionEntry<"resources">;
+}
+
+const { resource } = Astro.props;
+const data = resource.data;
+---
+
+<article class="card resource-card">
+  <div class="card__topline">
+    <p class="eyebrow">{data.resourceType}</p>
+    {data.featured && <span class="featured-pill">Featured</span>}
+  </div>
+
+  <h3>
+    <a href={data.url} target="_blank" rel="noreferrer">
+      {data.title}
+    </a>
+  </h3>
+  <p>{data.summary}</p>
+  <p class="note">{data.whyItMatters}</p>
+
+  {data.cautions.length > 0 && (
+    <ul class="compact-list">
+      {data.cautions.map((caution) => <li>{caution}</li>)}
+    </ul>
+  )}
+</article>
+

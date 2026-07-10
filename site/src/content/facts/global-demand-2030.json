@@ -1,0 +1,19 @@
+{
+  "section": "Section 1",
+  "topic": "Projected demand",
+  "claim": "The IEA projects global data centre electricity demand at about 945 TWh by 2030.",
+  "shortLabel": "2030 projection",
+  "value": 945,
+  "unit": "TWh",
+  "displayValue": "945 TWh by 2030",
+  "comparisonContext": "The IEA compares this to Japan's total electricity consumption today.",
+  "status": "verified",
+  "scopeNote": "Projection, not an observed value.",
+  "sourceTier": "Tier 1",
+  "sourceTitle": "Energy and AI",
+  "sourceOrg": "International Energy Agency",
+  "sourceUrl": "https://iea.blob.core.windows.net/assets/dd7c2387-2f60-4b60-8c5f-6563b6aa1e4c/EnergyandAI.pdf",
+  "sourceDate": "2026-01-01",
+  "lastVerified": "2026-03-07",
+  "tags": ["home", "how-data-centers-work"]
+}

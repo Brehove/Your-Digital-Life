@@ -1,0 +1,18 @@
+{
+  "section": "Section 1",
+  "topic": "Demand drivers",
+  "claim": "Globally, the IEA identifies data centres as the smallest of four major electricity-demand growth drivers: industrial output growth, electric vehicles, space cooling, and data centres.",
+  "shortLabel": "Globally, data centres are not the largest growth driver",
+  "value": "~8-10% of global demand growth",
+  "displayValue": "Smallest of the four major global growth drivers",
+  "comparisonContext": "This comparison makes the regional asymmetry clearer: moderate globally, much sharper in the United States.",
+  "status": "verified",
+  "scopeNote": "Global comparison. The U.S. picture is much more concentrated and should be treated separately.",
+  "sourceTier": "Tier 1",
+  "sourceTitle": "Energy and AI",
+  "sourceOrg": "International Energy Agency",
+  "sourceUrl": "https://iea.blob.core.windows.net/assets/dd7c2387-2f60-4b60-8c5f-6563b6aa1e4c/EnergyandAI.pdf",
+  "sourceDate": "2026-01-01",
+  "lastVerified": "2026-03-07",
+  "tags": ["how-data-centers-work", "start-here"]
+}

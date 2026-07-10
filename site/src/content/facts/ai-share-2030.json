@@ -1,0 +1,19 @@
+{
+  "section": "Section 1",
+  "topic": "AI share",
+  "claim": "Current projections put AI-optimized servers at roughly 35-44% of total data-centre power by 2030, making AI the largest single category but still not the majority of all data-centre demand.",
+  "shortLabel": "AI could reach roughly 35-44% by 2030",
+  "value": "35% to 44%",
+  "unit": "%",
+  "displayValue": "~35-44% by 2030",
+  "comparisonContext": "This keeps the site from implying that all data-centre growth is AI-only growth while still showing that AI becomes the largest single slice.",
+  "status": "inferred",
+  "scopeNote": "The lower end is inferred from IEA accelerated-server projections; the 44% high end depends on proprietary Gartner-style estimates that are not publicly verifiable.",
+  "sourceTier": "Tier 1",
+  "sourceTitle": "Energy and AI",
+  "sourceOrg": "International Energy Agency",
+  "sourceUrl": "https://iea.blob.core.windows.net/assets/dd7c2387-2f60-4b60-8c5f-6563b6aa1e4c/EnergyandAI.pdf",
+  "sourceDate": "2026-01-01",
+  "lastVerified": "2026-03-07",
+  "tags": ["how-data-centers-work", "start-here"]
+}

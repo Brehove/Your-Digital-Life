@@ -1,0 +1,19 @@
+{
+  "section": "Section 2",
+  "topic": "Measurement scope",
+  "claim": "Google's Gemini environmental paper is important less for a single universal number than because it reports production per-prompt energy, emissions, and water while explicitly excluding training and storage from scope.",
+  "shortLabel": "Provider metrics still depend on scope",
+  "value": "Inference-only scope",
+  "displayValue": "Production metrics are still scoped metrics",
+  "comparisonContext": "This is the clearest way to teach why one provider's prompt number cannot simply be generalized to all AI use.",
+  "status": "verified",
+  "scopeNote": "The paper is explicit that it covers inference and serving rather than full lifecycle analysis.",
+  "sourceTier": "Tier 1",
+  "sourceTitle": "Measuring the environmental impact of delivering AI at Google Scale",
+  "sourceOrg": "Ian Schneider et al.",
+  "sourceUrl": "https://arxiv.org/html/2508.15734v1",
+  "sourceDate": "2025-08-01",
+  "lastVerified": "2026-03-07",
+  "tags": ["what-a-prompt-costs", "sources-and-method"]
+}
+

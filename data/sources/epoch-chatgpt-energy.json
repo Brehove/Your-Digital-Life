@@ -1,0 +1,19 @@
+{
+  "authors": [],
+  "id": "epoch-chatgpt-energy",
+  "notes": "Used for the 0.3 Wh everyday text-prompt estimate and related prompt-volume framing.",
+  "order": 1,
+  "organization": "Epoch AI",
+  "publishedDate": "2025-02-01",
+  "sourceTier": "Tier 3",
+  "sourceType": "Expert analysis",
+  "tags": [
+    "prompting"
+  ],
+  "title": "How Much Energy Does ChatGPT Use?",
+  "url": "https://epoch.ai/gradient-updates/how-much-energy-does-chatgpt-use",
+  "usedFor": [
+    "0.3 Wh AI text-prompt row",
+    "prompt-specific comparison language in the boundary and water method sections"
+  ]
+}

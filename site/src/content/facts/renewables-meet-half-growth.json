@@ -1,0 +1,18 @@
+{
+  "section": "Section 1",
+  "topic": "Benefits",
+  "claim": "The IEA projects renewables as the fastest-growing power source for data centres, meeting nearly half of additional demand through 2030 while power-sector emissions for data-centre electricity peak around 2030 and then decline modestly.",
+  "shortLabel": "Renewables meet about half of added demand",
+  "value": "~50% of added demand",
+  "displayValue": "Nearly half of added demand through 2030",
+  "comparisonContext": "This system-scale projection keeps demand growth and cleaner supply growth in the same frame.",
+  "status": "verified",
+  "scopeNote": "Projected additional supply contribution in the IEA Base Case, not a claim that total data-centre power becomes mostly renewable by 2030.",
+  "sourceTier": "Tier 1",
+  "sourceTitle": "Energy and AI",
+  "sourceOrg": "International Energy Agency",
+  "sourceUrl": "https://iea.blob.core.windows.net/assets/dd7c2387-2f60-4b60-8c5f-6563b6aa1e4c/EnergyandAI.pdf",
+  "sourceDate": "2026-01-01",
+  "lastVerified": "2026-03-08",
+  "tags": ["benefit", "how-data-centers-work"]
+}

@@ -1,0 +1,18 @@
+{
+  "section": "Section 4",
+  "topic": "Rate impacts",
+  "claim": "Reported PJM bill impacts show how aggregate data-centre growth can reach households: roughly +$21 per month in Pepco, +$18 in western Maryland, and +$16 in Ohio.",
+  "shortLabel": "Current household bill impacts in PJM",
+  "value": "$21 / $18 / $16",
+  "displayValue": "About +$21, +$18, and +$16 per month",
+  "comparisonContext": "These regional examples make the difference between per-unit estimates and aggregate system effects concrete.",
+  "status": "verified",
+  "scopeNote": "Regional bill impacts tied to current PJM outcomes, not a nationwide forecast.",
+  "sourceTier": "Tier 2",
+  "sourceTitle": "Projected data center growth spurs PJM capacity prices by factor of 10",
+  "sourceOrg": "IEEFA",
+  "sourceUrl": "https://ieefa.org/resources/projected-data-center-growth-spurs-pjm-capacity-prices-factor-10",
+  "sourceDate": "2025-10-01",
+  "lastVerified": "2026-03-08",
+  "tags": ["risk"]
+}

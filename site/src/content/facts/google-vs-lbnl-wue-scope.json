@@ -1,0 +1,18 @@
+{
+  "section": "Section 1",
+  "topic": "Metric scope",
+  "claim": "Google's 1.15 L/kWh WUE Category 2 figure should not be treated as contradictory to LBNL's much lower site-WUE values because the metrics likely measure different things.",
+  "shortLabel": "WUE comparisons are scope-sensitive",
+  "value": "1.15 vs 0.32/0.36",
+  "displayValue": "Google 1.15 is not directly comparable to LBNL site WUE",
+  "comparisonContext": "This helps prevent one of the easiest chart and slide mistakes in this topic area: comparing unlike water metrics as if they are the same benchmark.",
+  "status": "verified",
+  "scopeNote": "This is a methodological comparison of two cited metrics; the point is metric discipline rather than a single benchmark value.",
+  "sourceTier": "Tier 1",
+  "sourceTitle": "2024 United States Data Center Energy Usage Report",
+  "sourceOrg": "Lawrence Berkeley National Laboratory / Google",
+  "sourceUrl": "https://escholarship.org/uc/item/32d6m0d1",
+  "sourceDate": "2024-12-01",
+  "lastVerified": "2026-03-07",
+  "tags": ["how-data-centers-work", "sources-and-method"]
+}

@@ -1,0 +1,34 @@
+{
+  "category": "Meetings",
+  "defaultDeviceId": "meeting-bundle",
+  "deviceMode": "fixed",
+  "deviceNote": "This row is a shared meeting bundle, not a single host-device toggle, so keep it fixed.",
+  "deviceSelectableIds": [
+    "meeting-bundle"
+  ],
+  "deviceSelectionAffects": [
+    "totalWhPerUnit"
+  ],
+  "deviceTotalWhOverrides": {
+    "meeting-bundle": 358
+  },
+  "directWaterMlPerUnit": 192,
+  "id": "zoom-host",
+  "label": "Zoom as host",
+  "lastReviewed": "2026-03-09",
+  "note": "Uses a hosted Zoom estimate that counts all participant devices in the total-system column.",
+  "order": 12,
+  "serverWhPerUnit": 192,
+  "sourceIds": [
+    "mytton-zoom",
+    "verdecchia-video-call-energy",
+    "scenario-methods"
+  ],
+  "status": "estimated",
+  "step": 1,
+  "systemBoundary": "legacy-row-specific",
+  "totalWaterMlPerUnit": 1152,
+  "totalWhPerUnit": 358,
+  "unitHint": "One 50-minute, 10-person hosted session",
+  "unitLabel": "meetings"
+}

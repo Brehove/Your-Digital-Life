@@ -1,0 +1,18 @@
+{
+  "section": "Section 1",
+  "topic": "Benefits",
+  "claim": "The IEA reports that 80% hourly matching of data-centre demand with wind, solar, and batteries can already be cost-competitive with U.S. grid retail prices.",
+  "shortLabel": "80% hourly matching is already cost-competitive",
+  "value": "$80/MWh",
+  "displayValue": "Around $80/MWh in the United States",
+  "comparisonContext": "This is stronger than generic annual renewable matching because it is about hourly physical matching, not just buying certificates.",
+  "status": "verified",
+  "scopeNote": "Modeled hybrid wind, solar, and battery portfolios in the IEA analysis; not a claim that every project is already built this way.",
+  "sourceTier": "Tier 1",
+  "sourceTitle": "Energy and AI",
+  "sourceOrg": "International Energy Agency",
+  "sourceUrl": "https://iea.blob.core.windows.net/assets/dd7c2387-2f60-4b60-8c5f-6563b6aa1e4c/EnergyandAI.pdf",
+  "sourceDate": "2026-01-01",
+  "lastVerified": "2026-03-08",
+  "tags": ["benefit"]
+}

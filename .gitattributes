@@ -1,0 +1,2 @@
+# Deterministic release archives are generated, tracked binary assets.
+*.zip binary

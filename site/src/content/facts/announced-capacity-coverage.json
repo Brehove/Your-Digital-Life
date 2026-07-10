@@ -1,0 +1,19 @@
+{
+  "section": "Section 1",
+  "topic": "Projected demand",
+  "claim": "The IEA notes that announced or in-development projects would cover only about 15% of projected data-centre electricity-demand growth through 2030.",
+  "shortLabel": "Only part of projected growth is covered",
+  "value": 15,
+  "unit": "%",
+  "displayValue": "~15% of projected growth covered",
+  "comparisonContext": "This is a concise way to show why supply and permitting pressure remain central to the long-term story.",
+  "status": "verified",
+  "scopeNote": "Coverage of projected growth, not coverage of total demand.",
+  "sourceTier": "Tier 1",
+  "sourceTitle": "Energy and AI",
+  "sourceOrg": "International Energy Agency",
+  "sourceUrl": "https://iea.blob.core.windows.net/assets/dd7c2387-2f60-4b60-8c5f-6563b6aa1e4c/EnergyandAI.pdf",
+  "sourceDate": "2026-01-01",
+  "lastVerified": "2026-03-07",
+  "tags": ["how-data-centers-work", "risk"]
+}

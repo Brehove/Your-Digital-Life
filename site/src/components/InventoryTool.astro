@@ -1,0 +1,677 @@
+---
+import {
+  createCalculatorSourceMap,
+  getCalculatorById,
+  resolveCalculatorSources,
+  type CalculatorActivity,
+  type CalculatorPreset
+} from "../lib/calculators";
+import { getSourceLabel, hasPublicUrl } from "../lib/source-utils";
+import StatusBadge from "./StatusBadge.astro";
+
+interface Props {
+  calculatorId?: string;
+}
+
+const { calculatorId = "digital-inventory" } = Astro.props as Props;
+const calculator = await getCalculatorById(calculatorId);
+
+if (!calculator) {
+  throw new Error(`Missing calculator content entry: ${calculatorId}`);
+}
+
+const calculatorEntry = calculator;
+const sourceMap = createCalculatorSourceMap(calculatorEntry);
+const deviceProfiles = calculatorEntry.data.deviceProfiles;
+const deviceProfileMap = new Map(deviceProfiles.map((profile) => [profile.id, profile]));
+
+function getActivitySources(activity: CalculatorActivity) {
+  return resolveCalculatorSources(
+    activity.sourceIds,
+    sourceMap,
+    `calculator row "${activity.label}" in ${calculatorEntry.data.calculatorId}`
+  );
+}
+
+const activities: CalculatorActivity[] = calculatorEntry.data.activities;
+const presets: CalculatorPreset[] = calculatorEntry.data.presets;
+const groupOrder: CalculatorActivity["category"][] = ["AI tasks", "Media and search", "Meetings"];
+
+const groupedActivities = groupOrder.map((category) => ({
+  category,
+  items: activities.filter((activity) => activity.category === category)
+}));
+
+const inventoryId = "inventory-tool";
+const inventoryPayload = JSON.stringify({ activities, presets, deviceProfiles }).replace(/</g, "\\u003c");
+---
+
+<article class="card inventory-tool" id={inventoryId}>
+  <div class="inventory-layout">
+    <div class="inventory-inputs-panel">
+      <div class="inventory-group-grid">
+        {groupedActivities.map((group) => (
+          <section class="inventory-group">
+            <div class="inventory-group__header">
+              <p class="section-label">{group.category}</p>
+            </div>
+
+            <div class="inventory-input-list">
+              {group.items.map((activity) => {
+                const defaultDevice = activity.defaultDeviceId
+                  ? deviceProfileMap.get(activity.defaultDeviceId)
+                  : null;
+
+                return (
+                  <div class="inventory-input">
+                    <label class="inventory-input__copy" for={`${inventoryId}-${activity.id}`}>
+                      <strong>{activity.label}</strong>
+                      <small>
+                        <span class="inventory-input__unit-label">Unit: {activity.unitLabel}</span>
+                        <span>{activity.unitHint}</span>
+                        {activity.deviceMode === "fixed" && defaultDevice ? (
+                          <span>Device: {defaultDevice.label}</span>
+                        ) : null}
+                      </small>
+                    </label>
+                    <div class="inventory-input__controls">
+                      <input
+                        id={`${inventoryId}-${activity.id}`}
+                        type="number"
+                        min="0"
+                        step={activity.step}
+                        value="0"
+                        inputmode="decimal"
+                        data-activity-input={activity.id}
+                      />
+                      {activity.deviceMode === "selectable" && activity.deviceSelectableIds.length > 0 ? (
+                        <select
+                          id={`${inventoryId}-${activity.id}-device`}
+                          aria-label={`${activity.label} device`}
+                          data-device-select={activity.id}
+                        >
+                          {activity.deviceSelectableIds.map((deviceId) => {
+                            const profile = deviceProfileMap.get(deviceId);
+
+                            if (!profile) return null;
+
+                            return (
+                              <option
+                                value={deviceId}
+                                selected={deviceId === activity.defaultDeviceId}
+                              >
+                                {profile.label}
+                              </option>
+                            );
+                          })}
+                        </select>
+                      ) : null}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+        ))}
+      </div>
+    </div>
+
+    <aside class="inventory-summary-panel">
+      <div class="inventory-summary-grid">
+        <div class="inventory-metric-card">
+          <span>Server + network energy</span>
+          <strong data-summary="server-energy">0 Wh</strong>
+        </div>
+        <div class="inventory-metric-card">
+          <span>Total-system energy</span>
+          <strong data-summary="total-energy">0 Wh</strong>
+        </div>
+        <div class="inventory-metric-card">
+          <span>Direct water</span>
+          <strong data-summary="direct-water">0 mL</strong>
+        </div>
+        <div class="inventory-metric-card">
+          <span>Total water</span>
+          <strong data-summary="total-water">0 mL</strong>
+        </div>
+      </div>
+
+      <div class="inventory-anchor-grid">
+        <section class="inventory-anchor-card inventory-anchor-card--energy" aria-label="Total-system energy anchors">
+          <div class="inventory-anchor-card__header">
+            <p class="section-label">Quick anchor</p>
+            <h3 class="inventory-anchor-card__title">Total-system energy, translated</h3>
+            <p class="note">Reference points use a 60W bulb, a 10W LED, and a 50Wh laptop battery.</p>
+          </div>
+          <div class="inventory-anchor-list">
+            <div class="inventory-anchor-item">
+              <span class="inventory-anchor-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 18h6" />
+                  <path d="M10 21h4" />
+                  <path d="M8.5 14.8c-1.3-1.2-2.1-2.9-2.1-4.8a5.6 5.6 0 1 1 11.2 0c0 1.9-.8 3.6-2.1 4.8-.8.7-1.3 1.7-1.3 2.7H9.8c0-1-.5-2-1.3-2.7Z" />
+                </svg>
+              </span>
+              <div class="inventory-anchor-copy">
+                <strong data-summary="energy-bulb">0 hours</strong>
+                <span>60W incandescent bulb</span>
+              </div>
+            </div>
+            <div class="inventory-anchor-item">
+              <span class="inventory-anchor-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 18h6" />
+                  <path d="M10 21h4" />
+                  <path d="M8.5 14.8c-1.3-1.2-2.1-2.9-2.1-4.8a5.6 5.6 0 1 1 11.2 0c0 1.9-.8 3.6-2.1 4.8-.8.7-1.3 1.7-1.3 2.7H9.8c0-1-.5-2-1.3-2.7Z" />
+                  <path d="M12 5.8v4.4" />
+                </svg>
+              </span>
+              <div class="inventory-anchor-copy">
+                <strong data-summary="energy-led">0 hours</strong>
+                <span>10W LED bulb</span>
+              </div>
+            </div>
+            <div class="inventory-anchor-item">
+              <span class="inventory-anchor-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="7" width="16" height="10" rx="2" />
+                  <path d="M21 10v4" />
+                  <path d="M6.5 10.5h6" />
+                  <path d="M6.5 13.5h8" />
+                </svg>
+              </span>
+              <div class="inventory-anchor-copy">
+                <strong data-summary="energy-laptop">0 batteries</strong>
+                <span>50Wh laptop batteries</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="inventory-anchor-card inventory-anchor-card--water" aria-label="Total water anchors">
+          <div class="inventory-anchor-card__header">
+            <p class="section-label">Quick anchor</p>
+            <h3 class="inventory-anchor-card__title">Total water, translated</h3>
+            <p class="note">These anchors switch the raw milliliters into kitchen and everyday units.</p>
+          </div>
+          <div class="inventory-anchor-list">
+            <div class="inventory-anchor-item">
+              <span class="inventory-anchor-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 3.5c-2.9 3.7-5 6.8-5 9.5a5 5 0 0 0 10 0c0-2.7-2.1-5.8-5-9.5Z" />
+                </svg>
+              </span>
+              <div class="inventory-anchor-copy">
+                <strong data-summary="water-drops">0 drops</strong>
+                <span>Eyedropper drops</span>
+              </div>
+            </div>
+            <div class="inventory-anchor-item">
+              <span class="inventory-anchor-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M7 6h10" />
+                  <path d="M8 6v11a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V6" />
+                  <path d="M10 10h4" />
+                  <path d="M10 13h4" />
+                </svg>
+              </span>
+              <div class="inventory-anchor-copy">
+                <strong data-summary="water-cups">0 cups</strong>
+                <span>US measuring cups</span>
+              </div>
+            </div>
+            <div class="inventory-anchor-item">
+              <span class="inventory-anchor-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 4h6" />
+                  <path d="M10 4v3" />
+                  <path d="M14 4v3" />
+                  <path d="M8 7h8l1.2 10.2a2 2 0 0 1-2 2.3H8.8a2 2 0 0 1-2-2.3L8 7Z" />
+                  <path d="M9.5 11.5h5" />
+                </svg>
+              </span>
+              <div class="inventory-anchor-copy">
+                <strong data-summary="water-gallons">0 gallons</strong>
+                <span>US gallons</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="inventory-secondary">
+        <p><strong>Bulb-time anchor:</strong> <span data-summary="bulb-time">0 minutes at 60W.</span></p>
+        <p><strong>Indirect-water add-on:</strong> <span data-summary="water-gap">0 mL beyond cooling.</span></p>
+        <p><strong>Confidence mix:</strong> <span data-summary="status-mix">No active rows yet.</span></p>
+      </div>
+
+      <div class="inventory-preset-block">
+        <p class="section-label">Starter mixes</p>
+        <div class="metric-toggle-group">
+          {presets.map((preset, index) => (
+            <button
+              type="button"
+              class:list={["metric-toggle", { "is-active": index === 0 }]}
+              data-preset={preset.id}
+              title={preset.description}
+            >
+              {preset.label}
+            </button>
+          ))}
+        </div>
+        <p class="note">
+          These are teaching starters inspired by the scenario file and the current high-reasoning
+          benchmark. They are useful for exploration, not for citation.
+        </p>
+      </div>
+    </aside>
+  </div>
+
+  <div class="inventory-table-heading">
+    <div>
+      <p class="section-label">Assumptions and sources</p>
+      <p class="note">
+        The lower table shows each activity's current row values, confidence label, and source links.
+      </p>
+    </div>
+  </div>
+
+  <div class="table-wrap inventory-table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Activity</th>
+          <th>Qty</th>
+          <th>Status</th>
+          <th>Server + network</th>
+          <th>Total energy</th>
+          <th>Direct water</th>
+          <th>Total water</th>
+        </tr>
+      </thead>
+      <tbody>
+        {activities.map((activity) => (
+          <tr class="inventory-row is-inactive" data-activity-row={activity.id}>
+            <td>
+              <div class="inventory-row__label">
+                <strong>{activity.label}</strong>
+                <span class="note">{activity.note}</span>
+                {(() => {
+                  const activitySources = getActivitySources(activity);
+
+                  if (activitySources.length === 0) return null;
+
+                  return (
+                    <div class="inventory-citations">
+                      <span class="inventory-citations__label">Sources</span>
+                      {activitySources.map((source) =>
+                        hasPublicUrl(source) ? (
+                          <a
+                            class="inventory-citation"
+                            href={source.url}
+                            target="_blank"
+                            rel="noreferrer"
+                            title={source.title}
+                          >
+                            {getSourceLabel(source)}
+                          </a>
+                        ) : (
+                          <span class="inventory-citation" title={source.title}>
+                            {getSourceLabel(source)}
+                          </span>
+                        )
+                      )}
+                    </div>
+                  );
+                })()}
+              </div>
+            </td>
+            <td data-cell="quantity">0 {activity.unitLabel}</td>
+            <td>
+              <StatusBadge status={activity.status} />
+            </td>
+            <td data-cell="server-energy">0 Wh</td>
+            <td data-cell="total-energy">0 Wh</td>
+            <td data-cell="direct-water">0 mL</td>
+            <td data-cell="total-water">0 mL</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <p class="muted">
+    Method note: The first energy column is a cloud-side view that usually combines server and
+    network demand, not a pure server-only accounting. The tool keeps direct-versus-total water
+    explicit, but many non-AI rows still use broader electricity-based water conversions because
+    most platforms do not disclose their own water use.
+  </p>
+
+  <script
+    is:inline
+    type="application/json"
+    data-inventory-data
+    set:html={inventoryPayload}
+  ></script>
+</article>
+
+<script is:inline>
+  (() => {
+    const script = document.currentScript;
+    const root = script?.previousElementSibling;
+
+    if (!(root instanceof HTMLElement)) return;
+
+    const dataNode = root.querySelector("[data-inventory-data]");
+    if (!(dataNode instanceof HTMLScriptElement)) return;
+
+    let payload;
+
+    try {
+      payload = JSON.parse(dataNode.textContent || "{}");
+    } catch (error) {
+      console.error("Inventory tool payload parse failed.", error);
+      return;
+    }
+
+    const activities = payload.activities || [];
+    const presets = payload.presets || [];
+    const deviceProfiles = payload.deviceProfiles || [];
+    const inputs = Array.from(root.querySelectorAll("[data-activity-input]"));
+    const deviceSelects = Array.from(root.querySelectorAll("[data-device-select]"));
+    const presetButtons = Array.from(root.querySelectorAll("[data-preset]"));
+    const activityMap = new Map(activities.map((activity) => [activity.id, activity]));
+    const deviceProfileMap = new Map(deviceProfiles.map((profile) => [profile.id, profile]));
+    const summaryNodes = {
+      serverEnergy: root.querySelector("[data-summary='server-energy']"),
+      totalEnergy: root.querySelector("[data-summary='total-energy']"),
+      directWater: root.querySelector("[data-summary='direct-water']"),
+      totalWater: root.querySelector("[data-summary='total-water']"),
+      energyBulb: root.querySelector("[data-summary='energy-bulb']"),
+      energyLed: root.querySelector("[data-summary='energy-led']"),
+      energyLaptop: root.querySelector("[data-summary='energy-laptop']"),
+      waterDrops: root.querySelector("[data-summary='water-drops']"),
+      waterCups: root.querySelector("[data-summary='water-cups']"),
+      waterGallons: root.querySelector("[data-summary='water-gallons']"),
+      bulbTime: root.querySelector("[data-summary='bulb-time']"),
+      waterGap: root.querySelector("[data-summary='water-gap']"),
+      statusMix: root.querySelector("[data-summary='status-mix']")
+    };
+
+    const rowMap = new Map(
+      Array.from(root.querySelectorAll("[data-activity-row]")).map((row) => [row.getAttribute("data-activity-row"), row])
+    );
+
+    const formatter = new Intl.NumberFormat(undefined, {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 2
+    });
+    const compactFormatter = new Intl.NumberFormat(undefined, {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 1
+    });
+
+    function formatNumber(value) {
+      return formatter.format(value);
+    }
+
+    function formatAnchorNumber(value) {
+      const absolute = Math.abs(value);
+
+      if (absolute >= 100) {
+        return new Intl.NumberFormat(undefined, { maximumFractionDigits: 0 }).format(value);
+      }
+
+      if (absolute >= 10) {
+        return compactFormatter.format(value);
+      }
+
+      return formatter.format(value);
+    }
+
+    function formatMetric(value, unit) {
+      return `${formatNumber(value)} ${unit}`;
+    }
+
+    function formatAnchorLabel(value, singular, plural) {
+      const unit = Math.abs(value - 1) < 0.05 ? singular : plural;
+      return `${formatAnchorNumber(value)} ${unit}`;
+    }
+
+    function setPresetState(activeId) {
+      presetButtons.forEach((button) => {
+        button.classList.toggle("is-active", button.getAttribute("data-preset") === activeId);
+      });
+    }
+
+    function readQuantities() {
+      return Object.fromEntries(
+        inputs.map((input) => {
+          const id = input.getAttribute("data-activity-input");
+          const value = Number.parseFloat(input.value || "0");
+          return [id, Number.isFinite(value) && value > 0 ? value : 0];
+        })
+      );
+    }
+
+    function readDeviceSelections() {
+      return Object.fromEntries(
+        deviceSelects.map((select) => {
+          const id = select.getAttribute("data-device-select");
+          const activity = activityMap.get(id);
+          const fallback = activity?.defaultDeviceId || activity?.deviceSelectableIds?.[0] || "";
+          return [id, select.value || fallback];
+        })
+      );
+    }
+
+    function getSelectedDevice(activity, deviceSelections) {
+      if (activity.deviceMode === "not-modeled") {
+        return null;
+      }
+
+      const selectedId =
+        deviceSelections[activity.id] ||
+        activity.defaultDeviceId ||
+        activity.deviceSelectableIds?.[0] ||
+        null;
+
+      if (!selectedId) return null;
+
+      return {
+        id: selectedId,
+        label: deviceProfileMap.get(selectedId)?.label || selectedId
+      };
+    }
+
+    function statusSummary(activeRows) {
+      if (activeRows.length === 0) {
+        return "No active rows yet.";
+      }
+
+      const counts = activeRows.reduce(
+        (acc, row) => {
+          acc[row.status] = (acc[row.status] || 0) + 1;
+          return acc;
+        },
+        { verified: 0, inferred: 0, estimated: 0, contested: 0 }
+      );
+
+      const parts = [];
+      if (counts.verified) parts.push(`${counts.verified} verified`);
+      if (counts.inferred) parts.push(`${counts.inferred} inferred`);
+      if (counts.estimated) parts.push(`${counts.estimated} estimated`);
+      if (counts.contested) parts.push(`${counts.contested} contested`);
+
+      return parts.join(", ");
+    }
+
+    function render() {
+      const quantities = readQuantities();
+      const deviceSelections = readDeviceSelections();
+
+      const computed = activities.map((activity) => {
+        const quantity = quantities[activity.id] || 0;
+        const selectedDevice = getSelectedDevice(activity, deviceSelections);
+        const totalWhPerUnit =
+          selectedDevice && activity.deviceSelectionAffects?.includes("totalWhPerUnit")
+            ? activity.deviceTotalWhOverrides?.[selectedDevice.id] ?? activity.totalWhPerUnit
+            : activity.totalWhPerUnit;
+
+        return {
+          ...activity,
+          quantity,
+          selectedDevice,
+          serverEnergy: quantity * activity.serverWhPerUnit,
+          totalEnergy: quantity * totalWhPerUnit,
+          directWater: quantity * activity.directWaterMlPerUnit,
+          totalWater: quantity * activity.totalWaterMlPerUnit
+        };
+      });
+
+      const activeRows = computed.filter((activity) => activity.quantity > 0);
+      const totals = computed.reduce(
+        (acc, activity) => {
+          acc.serverEnergy += activity.serverEnergy;
+          acc.totalEnergy += activity.totalEnergy;
+          acc.directWater += activity.directWater;
+          acc.totalWater += activity.totalWater;
+          return acc;
+        },
+        { serverEnergy: 0, totalEnergy: 0, directWater: 0, totalWater: 0 }
+      );
+
+      if (summaryNodes.serverEnergy) summaryNodes.serverEnergy.textContent = formatMetric(totals.serverEnergy, "Wh");
+      if (summaryNodes.totalEnergy) summaryNodes.totalEnergy.textContent = formatMetric(totals.totalEnergy, "Wh");
+      if (summaryNodes.directWater) summaryNodes.directWater.textContent = formatMetric(totals.directWater, "mL");
+      if (summaryNodes.totalWater) summaryNodes.totalWater.textContent = formatMetric(totals.totalWater, "mL");
+
+      const waterGap = Math.max(totals.totalWater - totals.directWater, 0);
+      const totalBulbMinutes = totals.totalEnergy;
+      const bulbHours = totals.totalEnergy / 60;
+      const ledHours = totals.totalEnergy / 10;
+      const laptopBatteries = totals.totalEnergy / 50;
+      const waterDrops = totals.totalWater / 0.05;
+      const waterCups = totals.totalWater / 236.588;
+      const waterGallons = totals.totalWater / 3785.412;
+
+      if (summaryNodes.energyBulb) {
+        summaryNodes.energyBulb.textContent = formatAnchorLabel(bulbHours, "hour", "hours");
+      }
+
+      if (summaryNodes.energyLed) {
+        summaryNodes.energyLed.textContent = formatAnchorLabel(ledHours, "hour", "hours");
+      }
+
+      if (summaryNodes.energyLaptop) {
+        summaryNodes.energyLaptop.textContent = formatAnchorLabel(
+          laptopBatteries,
+          "battery",
+          "batteries"
+        );
+      }
+
+      if (summaryNodes.waterDrops) {
+        summaryNodes.waterDrops.textContent = formatAnchorLabel(waterDrops, "drop", "drops");
+      }
+
+      if (summaryNodes.waterCups) {
+        summaryNodes.waterCups.textContent = formatAnchorLabel(waterCups, "cup", "cups");
+      }
+
+      if (summaryNodes.waterGallons) {
+        summaryNodes.waterGallons.textContent = formatAnchorLabel(
+          waterGallons,
+          "gallon",
+          "gallons"
+        );
+      }
+
+      if (summaryNodes.bulbTime) {
+        summaryNodes.bulbTime.textContent = `${formatNumber(totalBulbMinutes)} minutes at 60W.`;
+      }
+
+      if (summaryNodes.waterGap) {
+        summaryNodes.waterGap.textContent = `${formatNumber(waterGap)} mL beyond direct cooling.`;
+      }
+
+      if (summaryNodes.statusMix) {
+        summaryNodes.statusMix.textContent = statusSummary(activeRows);
+      }
+
+      computed.forEach((activity) => {
+        const row = rowMap.get(activity.id);
+        if (!(row instanceof HTMLElement)) return;
+
+        row.classList.toggle("is-inactive", activity.quantity === 0);
+        row.classList.toggle("is-active", activity.quantity > 0);
+
+        const quantityCell = row.querySelector("[data-cell='quantity']");
+        const serverCell = row.querySelector("[data-cell='server-energy']");
+        const totalCell = row.querySelector("[data-cell='total-energy']");
+        const directWaterCell = row.querySelector("[data-cell='direct-water']");
+        const totalWaterCell = row.querySelector("[data-cell='total-water']");
+
+        if (quantityCell) {
+          const deviceSuffix =
+            activity.quantity > 0 && activity.selectedDevice
+              ? ` (${activity.selectedDevice.label})`
+              : "";
+          quantityCell.textContent = `${formatNumber(activity.quantity)} ${activity.unitLabel}${deviceSuffix}`;
+        }
+        if (serverCell) serverCell.textContent = formatMetric(activity.serverEnergy, "Wh");
+        if (totalCell) totalCell.textContent = formatMetric(activity.totalEnergy, "Wh");
+        if (directWaterCell) directWaterCell.textContent = formatMetric(activity.directWater, "mL");
+        if (totalWaterCell) totalWaterCell.textContent = formatMetric(activity.totalWater, "mL");
+      });
+    }
+
+    function applyPreset(presetId) {
+      const preset = presets.find((item) => item.id === presetId);
+      if (!preset) return;
+
+      const values = preset.values || {};
+      const deviceSelections = preset.deviceSelections || {};
+
+      inputs.forEach((input) => {
+        const id = input.getAttribute("data-activity-input");
+        const value = values[id] ?? 0;
+        input.value = String(value);
+      });
+
+      deviceSelects.forEach((select) => {
+        const id = select.getAttribute("data-device-select");
+        const activity = activityMap.get(id);
+        const fallback = activity?.defaultDeviceId || activity?.deviceSelectableIds?.[0] || "";
+        select.value = deviceSelections[id] ?? fallback;
+      });
+
+      setPresetState(presetId);
+      render();
+    }
+
+    function handleInputChange() {
+      setPresetState("");
+      render();
+    }
+
+    inputs.forEach((input) => {
+      input.addEventListener("input", handleInputChange);
+      input.addEventListener("change", handleInputChange);
+    });
+
+    deviceSelects.forEach((select) => {
+      select.addEventListener("input", handleInputChange);
+      select.addEventListener("change", handleInputChange);
+    });
+
+    presetButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const presetId = button.getAttribute("data-preset");
+        if (presetId) applyPreset(presetId);
+      });
+    });
+
+    applyPreset("clear");
+  })();
+</script>

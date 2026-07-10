@@ -1,0 +1,43 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  scenario: CollectionEntry<"scenarios">;
+}
+
+const { scenario } = Astro.props;
+const data = scenario.data;
+---
+
+<article class="card scenario-card">
+  <div class="card__topline">
+    <p class="eyebrow">{data.audienceLabel}</p>
+    <span class="confidence-pill">Confidence: {data.confidence}</span>
+  </div>
+
+  <h3>{data.title}</h3>
+  <p class="scenario-stat">{data.heroStat}</p>
+  <p>{data.summary}</p>
+
+  <dl class="metric-grid">
+    <div>
+      <dt>Server energy</dt>
+      <dd>{data.serverEnergyWh} Wh/day</dd>
+    </div>
+    <div>
+      <dt>Total energy</dt>
+      <dd>{data.totalEnergyWh} Wh/day</dd>
+    </div>
+    <div>
+      <dt>Direct water</dt>
+      <dd>{data.directWaterMl} mL/day</dd>
+    </div>
+    <div>
+      <dt>Total water</dt>
+      <dd>{data.totalWaterMl} mL/day</dd>
+    </div>
+  </dl>
+
+  <p class="note">{data.comparisonNote}</p>
+</article>
+

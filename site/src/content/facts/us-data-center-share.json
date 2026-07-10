@@ -1,0 +1,18 @@
+{
+  "section": "Archived Section 4",
+  "topic": "US electricity share",
+  "claim": "U.S. data centres consumed 176 TWh in 2023, representing 4.4% of total U.S. electricity use, with scenarios reaching 6.7% to 12.0% by 2028.",
+  "shortLabel": "U.S. data-centre electricity share",
+  "value": "4.4%",
+  "displayValue": "4.4% in 2023",
+  "comparisonContext": "The same report models a rise to 6.7% to 12.0% by 2028.",
+  "status": "verified",
+  "scopeNote": "All U.S. data centres, not AI-only demand.",
+  "sourceTier": "Tier 1",
+  "sourceTitle": "2024 United States Data Center Energy Usage Report",
+  "sourceOrg": "LBNL",
+  "sourceUrl": "https://eta.lbl.gov/publications/2024-lbnl-data-center-energy-usage-report",
+  "sourceDate": "2024-12-01",
+  "lastVerified": "2026-03-07",
+  "tags": []
+}

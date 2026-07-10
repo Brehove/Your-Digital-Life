@@ -1,0 +1,20 @@
+{
+  "section": "Section 1",
+  "topic": "Non-AI workloads",
+  "claim": "If AI is about 15% of total data-centre electricity in 2024, then roughly 80-85% still powers the digital economy people already use: streaming, video calls, email, cloud storage, social feeds, enterprise software, and e-commerce.",
+  "shortLabel": "Most data-centre demand is still non-AI",
+  "value": "80-85%",
+  "unit": "%",
+  "displayValue": "~80-85% non-AI workloads",
+  "comparisonContext": "This is the pedagogical counterweight to narratives that make data centres sound like an AI-only phenomenon.",
+  "status": "verified",
+  "scopeNote": "There is no single authoritative share breakdown for every non-AI workload category; the broad picture is what matters here.",
+  "sourceTier": "Tier 1",
+  "sourceTitle": "Energy and AI",
+  "sourceOrg": "International Energy Agency",
+  "sourceUrl": "https://iea.blob.core.windows.net/assets/dd7c2387-2f60-4b60-8c5f-6563b6aa1e4c/EnergyandAI.pdf",
+  "sourceDate": "2026-01-01",
+  "lastVerified": "2026-03-07",
+  "tags": ["how-data-centers-work", "start-here"]
+}
+

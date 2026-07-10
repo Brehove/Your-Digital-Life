@@ -1,0 +1,20 @@
+{
+  "section": "Section 2",
+  "topic": "Task comparison",
+  "claim": "The IFRI/Luccioni comparison table puts image captioning at 0.109 Wh and speech recognition at 0.025 Wh, above baseline question answering but below image generation.",
+  "shortLabel": "Other AI task costs",
+  "value": "0.109 and 0.025",
+  "unit": "Wh",
+  "displayValue": "0.109 Wh and 0.025 Wh",
+  "comparisonContext": "These task types help break the false binary between 'text' and 'image.'",
+  "status": "verified",
+  "scopeNote": "Benchmark figures across open-source models rather than proprietary product averages.",
+  "sourceTier": "Tier 1",
+  "sourceTitle": "AI, Data Centers and Energy Demand",
+  "sourceOrg": "IFRI",
+  "sourceUrl": "https://www.ifri.org/sites/default/files/2025-02/ifri_buffard-rochegonde_ai_data_centers_energy_2025_2.pdf",
+  "sourceDate": "2025-02-01",
+  "lastVerified": "2026-03-07",
+  "tags": ["what-a-prompt-costs"]
+}
+

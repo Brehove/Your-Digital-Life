@@ -1,0 +1,19 @@
+{
+  "section": "Archived Section 4",
+  "topic": "Benefits",
+  "claim": "AI-driven electricity demand is already being tied to nuclear power-purchase agreements, including the accelerated restart of Three Mile Island Unit 1 under a 20-year Microsoft deal.",
+  "shortLabel": "Nuclear revival signal",
+  "value": 835,
+  "unit": "MW",
+  "displayValue": "835 MW restart tied to a 20-year Microsoft PPA",
+  "comparisonContext": "This is one concrete example of AI-related demand driving new or restarted energy infrastructure.",
+  "status": "verified",
+  "scopeNote": "Industry announcement corroborated across multiple outlets.",
+  "sourceTier": "Tier 2",
+  "sourceTitle": "Constellation Energy newsroom update",
+  "sourceOrg": "Constellation Energy",
+  "sourceUrl": "https://www.constellationenergy.com/newsroom/2025/09/one-year-later-crane-clean-energy-center-still-in-the-spotlight-and-ahead-of-schedule.html",
+  "sourceDate": "2025-09-01",
+  "lastVerified": "2026-03-07",
+  "tags": []
+}

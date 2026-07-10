@@ -1,0 +1,18 @@
+{
+  "section": "Section 2",
+  "topic": "Task comparison",
+  "claim": "The video-model literature reinforces that video generation is significantly more energy-intensive than text generation, extending the text-to-image hierarchy even further.",
+  "shortLabel": "Video generation is another order of magnitude problem",
+  "value": "Video > image > text",
+  "displayValue": "Video generation is far above text generation",
+  "comparisonContext": "This matters for classroom guidance because public 'prompt cost' conversations often ignore non-text AI modalities.",
+  "status": "verified",
+  "scopeNote": "Comparative directional finding; the current evidence does not support one single canonical Wh value for all video models.",
+  "sourceTier": "Tier 1",
+  "sourceTitle": "Video Killed the Energy Budget",
+  "sourceOrg": "arXiv",
+  "sourceUrl": "https://arxiv.org/html/2509.19222v1",
+  "sourceDate": "2025-09-01",
+  "lastVerified": "2026-03-07",
+  "tags": ["what-a-prompt-costs", "start-here"]
+}

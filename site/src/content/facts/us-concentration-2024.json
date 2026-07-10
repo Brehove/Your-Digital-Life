@@ -1,0 +1,19 @@
+{
+  "section": "Section 1",
+  "topic": "U.S. concentration",
+  "claim": "The United States consumed about 180 TWh of data-centre electricity in 2024, nearly 45% of the global total and more than 4% of all U.S. electricity consumption.",
+  "shortLabel": "The U.S. hosts nearly 45% of global data-centre demand",
+  "value": "180 TWh / 45%",
+  "displayValue": "180 TWh and nearly 45% of the global total",
+  "comparisonContext": "This is why the U.S. experience can feel much more intense than the global averages suggest.",
+  "status": "verified",
+  "scopeNote": "All U.S. data centres in 2024, not AI-only demand.",
+  "sourceTier": "Tier 1",
+  "sourceTitle": "Energy and AI",
+  "sourceOrg": "International Energy Agency",
+  "sourceUrl": "https://iea.blob.core.windows.net/assets/dd7c2387-2f60-4b60-8c5f-6563b6aa1e4c/EnergyandAI.pdf",
+  "sourceDate": "2026-01-01",
+  "lastVerified": "2026-03-07",
+  "tags": ["how-data-centers-work", "start-here"]
+}
+

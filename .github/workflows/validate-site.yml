@@ -1,0 +1,56 @@
+name: Validate site
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-site-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate-site:
+    name: validate-site
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+        with:
+          node-version-file: site/.node-version
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            site/package-lock.json
+
+      - name: Install locked data-tool dependencies
+        run: npm ci
+
+      - name: Validate canonical data and generated products
+        run: npm run data:verify
+
+      - name: Install locked site dependencies
+        working-directory: site
+        run: npm ci
+
+      - name: Check Astro and TypeScript
+        working-directory: site
+        run: ASTRO_TELEMETRY_DISABLED=1 npm run check
+
+      - name: Build static site
+        working-directory: site
+        run: ASTRO_TELEMETRY_DISABLED=1 npm run build
+
+      - name: Verify route and redirect contract
+        working-directory: site
+        run: npm run test:routes

@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Methodology discussion
+    url: https://github.com/Brehove/Your-Digital-Life/discussions/categories/methodology
+    about: Discuss system boundaries, assumptions, and evidence before proposing a concrete change.
+  - name: Questions and support
+    url: https://github.com/Brehove/Your-Digital-Life/discussions/categories/q-a
+    about: Ask how to interpret, reuse, or cite the data.
+  - name: New research and source watch
+    url: https://github.com/Brehove/Your-Digital-Life/discussions/categories/new-research-source-watch
+    about: Share relevant new publications that are not yet a specific data proposal.
+  - name: Private security report
+    url: https://github.com/Brehove/Your-Digital-Life/security/advisories/new
+    about: Privately report vulnerabilities, credentials, personal information, or non-public URLs.

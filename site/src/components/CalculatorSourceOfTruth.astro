@@ -1,0 +1,216 @@
+---
+import {
+  createCalculatorSourceMap,
+  resolveCalculatorSources,
+  type CalculatorEntry
+} from "../lib/calculators";
+import { getSourceLabel, hasPublicUrl } from "../lib/source-utils";
+import StatusBadge from "./StatusBadge.astro";
+
+interface Props {
+  calculator: CalculatorEntry;
+}
+
+const { calculator } = Astro.props as Props;
+const sourceMap = createCalculatorSourceMap(calculator);
+const publicMethodSectionIds = new Set(["boundary-rules", "water-method", "zoom-host-method"]);
+const publicMethodSections = calculator.data.methodSections.filter((section) =>
+  publicMethodSectionIds.has(section.id)
+);
+
+function getSources(sourceIds: string[], context: string) {
+  return resolveCalculatorSources(sourceIds, sourceMap, context);
+}
+---
+
+<section class="section-block">
+  <p class="section-label">Calculator methods</p>
+
+  <article class="card calculator-method-card">
+    <p class="eyebrow">Live row values</p>
+    <h3>Calculator activity reference</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Activity</th>
+            <th>Unit</th>
+            <th>Status</th>
+            <th>Server + network</th>
+            <th>Total-system</th>
+            <th>Direct water</th>
+            <th>Total water</th>
+            <th>Sources</th>
+          </tr>
+        </thead>
+        <tbody>
+          {calculator.data.activities.map((activity) => {
+            const activitySources = getSources(
+              activity.sourceIds,
+              `calculator activity "${activity.label}"`
+            );
+
+            return (
+              <tr>
+                <td>
+                  <div class="inventory-row__label">
+                    <strong>{activity.label}</strong>
+                    <span class="note">{activity.note}</span>
+                  </div>
+                </td>
+                <td>
+                  <strong>{activity.unitLabel}</strong>
+                  <div class="note">{activity.unitHint}</div>
+                </td>
+                <td>
+                  <StatusBadge status={activity.status} />
+                </td>
+                <td>{activity.serverWhPerUnit} Wh</td>
+                <td>{activity.totalWhPerUnit} Wh</td>
+                <td>{activity.directWaterMlPerUnit} mL</td>
+                <td>{activity.totalWaterMlPerUnit} mL</td>
+                <td>
+                  {activitySources.length > 0 && (
+                    <div class="inventory-citations">
+                      {activitySources.map((source) =>
+                        hasPublicUrl(source) ? (
+                          <a
+                            class="inventory-citation"
+                            href={source.url}
+                            target="_blank"
+                            rel="noreferrer"
+                            title={source.title}
+                          >
+                            {getSourceLabel(source)}
+                          </a>
+                        ) : (
+                          <span class="inventory-citation" title={source.title}>
+                            {getSourceLabel(source)}
+                          </span>
+                        )
+                      )}
+                    </div>
+                  )}
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <article class="card calculator-method-card">
+    <p class="eyebrow">Source list</p>
+    <h3>Calculator sources</h3>
+    <p>
+      This table lists the main sources used in the calculator and the role each one plays in the
+      comparison model.
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Source</th>
+            <th>Used for</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          {calculator.data.sourceCatalog.map((source) => (
+            <tr>
+              <td>
+                <div class="inventory-row__label">
+                  <strong>
+                    {hasPublicUrl(source) ? (
+                      <a href={source.url} target="_blank" rel="noreferrer">
+                        {source.title}
+                      </a>
+                    ) : (
+                      source.title
+                    )}
+                  </strong>
+                  <span class="note">
+                    {getSourceLabel(source)} · {source.sourceTier} · {source.sourceType}
+                  </span>
+                </div>
+              </td>
+              <td>
+                {source.usedFor.length > 0 ? (
+                  <ul class="compact-list">
+                    {source.usedFor.map((item) => <li>{item}</li>)}
+                  </ul>
+                ) : (
+                  <span class="note">No usage note yet.</span>
+                )}
+              </td>
+              <td>{source.notes ?? <span class="note">No note yet.</span>}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  {publicMethodSections.map((section) => {
+    const sectionSources = getSources(section.sourceIds, `method section "${section.title}"`);
+
+    return (
+      <article class="card calculator-method-card">
+        <h3>{section.title}</h3>
+        {section.summary && <p>{section.summary}</p>}
+
+        {section.notes.length > 0 && (
+          <ul class="compact-list">
+            {section.notes.map((note) => <li>{note}</li>)}
+          </ul>
+        )}
+
+        {section.tables.map((table) => (
+          <section class="calculator-method-table">
+            <p class="eyebrow">{table.title}</p>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    {table.columns.map((column) => <th>{column}</th>)}
+                  </tr>
+                </thead>
+                <tbody>
+                  {table.rows.map((row) => (
+                    <tr>
+                      {row.map((cell) => <td>{cell}</td>)}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+        ))}
+
+        {sectionSources.length > 0 && (
+          <div class="inventory-citations">
+            <span class="inventory-citations__label">Sources</span>
+            {sectionSources.map((source) =>
+              hasPublicUrl(source) ? (
+                <a
+                  class="inventory-citation"
+                  href={source.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  title={source.title}
+                >
+                  {getSourceLabel(source)}
+                </a>
+              ) : (
+                <span class="inventory-citation" title={source.title}>
+                  {getSourceLabel(source)}
+                </span>
+              )
+            )}
+          </div>
+        )}
+      </article>
+    );
+  })}
+</section>

@@ -1,0 +1,19 @@
+{
+  "section": "Section 1",
+  "topic": "Grid reliability",
+  "claim": "PJM reported that the 2027/2028 auction was the first time the entire region fell short of the reliability requirement, and nearly 5,100 MW of the load increase since the prior auction came from data centres.",
+  "shortLabel": "PJM reliability shortfall",
+  "value": 5100,
+  "unit": "MW",
+  "displayValue": "Nearly 5,100 MW of load growth",
+  "comparisonContext": "PJM described the auction as the first time the entire region fell short of the reliability requirement.",
+  "status": "verified",
+  "scopeNote": "Regional grid operator evidence, not a national estimate.",
+  "sourceTier": "Tier 1",
+  "sourceTitle": "2027/2028 Base Residual Auction news release",
+  "sourceOrg": "PJM Interconnection",
+  "sourceUrl": "https://www.pjm.com/-/media/DotCom/about-pjm/newsroom/2025-releases/20251217-pjm-auction-procures-134479-mw-of-generation-resources.pdf",
+  "sourceDate": "2025-12-17",
+  "lastVerified": "2026-03-08",
+  "tags": ["risk"]
+}

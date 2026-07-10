@@ -1,0 +1,20 @@
+{
+  "section": "Section 2",
+  "topic": "Prompt classes",
+  "claim": "The IEA summary used in this project puts text generation at roughly 0.3 Wh for a small language model and around 5 Wh for a medium-sized model.",
+  "shortLabel": "Small vs. medium text generation",
+  "value": "0.3 to 5",
+  "unit": "Wh",
+  "displayValue": "~0.3 Wh to ~5 Wh",
+  "comparisonContext": "That range shows why a single prompt number can be misleading without model class and task context.",
+  "status": "verified",
+  "scopeNote": "Illustrative model-task range rather than one platform-specific benchmark.",
+  "sourceTier": "Tier 1",
+  "sourceTitle": "Energy and AI",
+  "sourceOrg": "International Energy Agency",
+  "sourceUrl": "https://iea.blob.core.windows.net/assets/dd7c2387-2f60-4b60-8c5f-6563b6aa1e4c/EnergyandAI.pdf",
+  "sourceDate": "2026-01-01",
+  "lastVerified": "2026-03-07",
+  "tags": ["what-a-prompt-costs", "start-here"]
+}
+

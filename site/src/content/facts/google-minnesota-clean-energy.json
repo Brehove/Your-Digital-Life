@@ -1,0 +1,19 @@
+{
+  "section": "Archived Section 4",
+  "topic": "Benefits",
+  "claim": "Google's February 2026 Minnesota package pairs a new data centre with 1.9 GW of clean energy, including a 300 MW / 30 GWh iron-air battery designed for roughly 100 hours of storage.",
+  "shortLabel": "Google's Minnesota clean-energy package",
+  "value": 1.9,
+  "unit": "GW",
+  "displayValue": "1.9 GW package with 30 GWh storage",
+  "comparisonContext": "This is a concrete example of a hyperscale project being designed around renewables plus long-duration storage rather than only around firm thermal generation.",
+  "status": "verified",
+  "scopeNote": "Industry announcement and reporting; regulatory approval and project execution still matter.",
+  "sourceTier": "Tier 2",
+  "sourceTitle": "A new Google data center triggers 1.9 GW of clean energy in Minnesota",
+  "sourceOrg": "Electrek / Xcel Energy",
+  "sourceUrl": "https://electrek.co/2026/02/26/google-data-center-triggers-1-9-gw-clean-energy-minnesota/",
+  "sourceDate": "2026-02-26",
+  "lastVerified": "2026-03-07",
+  "tags": []
+}

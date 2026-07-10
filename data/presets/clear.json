@@ -1,0 +1,8 @@
+{
+  "description": "Reset every input to zero.",
+  "deviceSelections": {},
+  "id": "clear",
+  "label": "Clear",
+  "order": 1,
+  "values": {}
+}

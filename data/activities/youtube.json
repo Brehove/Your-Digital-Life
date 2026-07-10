@@ -1,0 +1,37 @@
+{
+  "category": "Media and search",
+  "defaultDeviceId": "phone",
+  "deviceMode": "selectable",
+  "deviceNote": "The default total assumes phone viewing, while the stored laptop and TV options let the row reflect the much larger device spread behind video streaming.",
+  "deviceSelectableIds": [
+    "phone",
+    "laptop",
+    "tv"
+  ],
+  "deviceSelectionAffects": [
+    "totalWhPerUnit"
+  ],
+  "deviceTotalWhOverrides": {
+    "laptop": 37,
+    "phone": 26,
+    "tv": 77
+  },
+  "directWaterMlPerUnit": 22,
+  "id": "youtube",
+  "label": "YouTube watching",
+  "lastReviewed": "2026-03-09",
+  "note": "Uses the same CDN-style video benchmark as Netflix so the calculator keeps an apples-to-apples streaming anchor for the cloud-side and total-system columns.",
+  "order": 8,
+  "serverWhPerUnit": 22,
+  "sourceIds": [
+    "kamiya-streaming-video",
+    "scenario-methods"
+  ],
+  "status": "inferred",
+  "step": 0.25,
+  "systemBoundary": "legacy-row-specific",
+  "totalWaterMlPerUnit": 132,
+  "totalWhPerUnit": 26,
+  "unitHint": "Streaming video hour",
+  "unitLabel": "hours"
+}

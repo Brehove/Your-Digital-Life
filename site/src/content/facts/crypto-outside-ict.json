@@ -1,0 +1,20 @@
+{
+  "section": "Section 1",
+  "topic": "Comparison context",
+  "claim": "Cryptocurrencies consumed about 125 TWh in 2023 and are tracked separately from data centres by the IEA, which means the 415 TWh data-centre baseline excludes crypto entirely.",
+  "shortLabel": "Crypto alone was 125 TWh",
+  "value": 125,
+  "unit": "TWh",
+  "displayValue": "125 TWh in 2023",
+  "comparisonContext": "This is a useful reminder that AI is adding to an already large digital-infrastructure base rather than creating electricity demand from zero.",
+  "status": "verified",
+  "scopeNote": "Crypto is counted outside the ICT/data-centre total in the IEA framing used here.",
+  "sourceTier": "Tier 1",
+  "sourceTitle": "Energy and AI",
+  "sourceOrg": "International Energy Agency",
+  "sourceUrl": "https://iea.blob.core.windows.net/assets/dd7c2387-2f60-4b60-8c5f-6563b6aa1e4c/EnergyandAI.pdf",
+  "sourceDate": "2026-01-01",
+  "lastVerified": "2026-03-07",
+  "tags": ["how-data-centers-work"]
+}
+

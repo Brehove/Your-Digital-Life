@@ -1,0 +1,15 @@
+{
+  "title": "Global Data Centre Demand",
+  "slug": "global-demand",
+  "chartType": "bar",
+  "summary": "Show the current 2024 baseline against the 2030 projection to anchor the scale of the buildout discussion.",
+  "dataFile": "src/data/charts/global-demand.json",
+  "xField": "label",
+  "yField": "twh",
+  "unit": "TWh",
+  "sourceIds": ["iea-energy-and-ai"],
+  "note": "A two-point chart is enough at launch because the argument is about scale and trajectory, not historical granularity.",
+  "lastReviewed": "2026-03-07",
+  "tags": ["how-data-centers-work"]
+}
+

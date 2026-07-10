@@ -1,0 +1,19 @@
+{
+  "section": "Archived Section 4",
+  "topic": "Scientific upside",
+  "claim": "The cited evidence treats AI-enabled drug discovery and materials science as a real potential benefit, with about $7.6 billion invested in AI drug discovery in 2024-2025 and strong claims about accelerated biological progress.",
+  "shortLabel": "Drug discovery and materials upside",
+  "value": 7.6,
+  "unit": "billion USD",
+  "displayValue": "$7.6B invested in 2024-2025",
+  "comparisonContext": "This belongs on the site because the long-term debate is not just about infrastructure burdens.",
+  "status": "verified",
+  "scopeNote": "Investment is real; outcomes remain uncertain and should be framed as promising rather than proven.",
+  "sourceTier": "Tier 3",
+  "sourceTitle": "Machines of Loving Grace and linked reporting",
+  "sourceOrg": "Dario Amodei / Latent Space Science",
+  "sourceUrl": "https://www.darioamodei.com/essay/machines-of-loving-grace",
+  "sourceDate": "2024-10-01",
+  "lastVerified": "2026-03-07",
+  "tags": []
+}

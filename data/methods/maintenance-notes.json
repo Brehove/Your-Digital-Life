@@ -1,0 +1,16 @@
+{
+  "id": "maintenance-notes",
+  "notes": [
+    "The reasoning row intentionally uses the 33.8 Wh long high-reasoning benchmark, not the much smaller medium-reasoning comparison value.",
+    "The browsing row is a teaching bundle, not a platform disclosure, and should not be rewritten as if it were a direct measurement.",
+    "The TikTok, Instagram, and Snapchat rows remain estimated because the underlying platform-specific cloud-side numbers are still absent.",
+    "If stronger prompt, streaming, or meeting research appears, update the supporting note here before changing the rendered calculator values."
+  ],
+  "order": 6,
+  "sourceIds": [
+    "jegham-how-hungry-is-ai",
+    "greenspector-social-media-2021",
+    "scenario-methods"
+  ],
+  "title": "Current synthesis choices to preserve or revisit deliberately"
+}

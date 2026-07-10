@@ -1,0 +1,72 @@
+{
+  "title": "Gen Z Heavy AI User (Vibe Coder)",
+  "slug": "vibe-coder",
+  "audienceLabel": "Student scenario",
+  "summary": "A high-intensity AI user with one hour of coding-agent use plus reasoning prompts and lighter media consumption.",
+  "serverEnergyWh": 402,
+  "totalEnergyWh": 508,
+  "directWaterMl": 402,
+  "totalWaterMl": 2412,
+  "confidence": "estimated",
+  "lastReviewed": "2026-03-08",
+  "heroStat": "Vibe coding dominates the whole profile.",
+  "comparisonNote": "Without coding-agent use, this day falls much closer to the other student profiles.",
+  "activities": [
+    {
+      "label": "TikTok scrolling",
+      "durationOrVolume": "0.25 hours",
+      "serverEnergyWh": 2,
+      "totalEnergyWh": 9,
+      "directWaterMl": 2,
+      "totalWaterMl": 12,
+      "estimated": true,
+      "sourceIds": ["scenario-methods"]
+    },
+    {
+      "label": "YouTube watching",
+      "durationOrVolume": "0.5 hours",
+      "serverEnergyWh": 11,
+      "totalEnergyWh": 39,
+      "directWaterMl": 11,
+      "totalWaterMl": 66,
+      "sourceIds": ["iea-energy-and-ai"]
+    },
+    {
+      "label": "Netflix or evening streaming",
+      "durationOrVolume": "0.75 hours",
+      "serverEnergyWh": 17,
+      "totalEnergyWh": 58,
+      "directWaterMl": 17,
+      "totalWaterMl": 102,
+      "sourceIds": ["iea-energy-and-ai"]
+    },
+    {
+      "label": "Reasoning prompts",
+      "durationOrVolume": "8 prompts",
+      "serverEnergyWh": 41,
+      "totalEnergyWh": 41,
+      "directWaterMl": 41,
+      "totalWaterMl": 246,
+      "sourceIds": ["jegham-how-hungry-is-ai"]
+    },
+    {
+      "label": "Text prompts + image generation",
+      "durationOrVolume": "15 text prompts, 2 images",
+      "serverEnergyWh": 6,
+      "totalEnergyWh": 6,
+      "directWaterMl": 6,
+      "totalWaterMl": 36,
+      "sourceIds": ["iea-energy-and-ai", "ifri-ai-dc-energy"]
+    },
+    {
+      "label": "Vibe coding",
+      "durationOrVolume": "1 hour",
+      "serverEnergyWh": 325,
+      "totalEnergyWh": 355,
+      "directWaterMl": 325,
+      "totalWaterMl": 1950,
+      "estimated": true,
+      "sourceIds": ["simon-couch-coding-agent", "scenario-methods"]
+    }
+  ]
+}

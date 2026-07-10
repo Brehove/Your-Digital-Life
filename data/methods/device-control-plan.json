@@ -1,0 +1,87 @@
+{
+  "id": "device-control-plan",
+  "notes": [
+    "Device selectors now change total-system energy for YouTube and Netflix while leaving cloud-side energy and water untouched.",
+    "Future device selectors should continue to change total-system energy first; do not change cloud-side energy or water until that method is explicitly revised.",
+    "Fixed rows capture the current teaching assumption, while selectable rows now store and expose the device-specific totals that matter most for realism."
+  ],
+  "order": 2,
+  "sourceIds": [
+    "scenario-methods",
+    "greenspector-social-media-2021",
+    "kamiya-streaming-video",
+    "verdecchia-video-call-energy"
+  ],
+  "summary": "Device metadata now lives in this record and now powers the first device-aware controls in the live calculator for the rows where the effect is largest.",
+  "tables": [
+    {
+      "columns": [
+        "Row family",
+        "Current default device",
+        "Future control",
+        "Stored total-system options",
+        "Maintenance note"
+      ],
+      "rows": [
+        [
+          "Text / reasoning / image prompts",
+          "No separate device term",
+          "No device control",
+          "Cloud-side equals total-system for now",
+          "Add prompt-device terms only if the evidence gets stronger"
+        ],
+        [
+          "TikTok / Instagram / Snapchat",
+          "Phone",
+          "Keep fixed",
+          "Phone-only in the first device pass",
+          "These rows already behave like mobile-default comparisons"
+        ],
+        [
+          "YouTube",
+          "Phone",
+          "Selectable",
+          "26 phone, 37 laptop, 77 TV",
+          "Keep cloud-side at 22 Wh and vary only total-system energy"
+        ],
+        [
+          "Netflix",
+          "Laptop",
+          "Selectable",
+          "26 phone, 37 laptop, 77 TV",
+          "Keep cloud-side at 22 Wh and vary only total-system energy"
+        ],
+        [
+          "Coding-agent use",
+          "Laptop",
+          "Keep fixed",
+          "Laptop total stored",
+          "This row is already tied to a one-hour laptop-style coding session"
+        ],
+        [
+          "Browsing bundle",
+          "Laptop",
+          "Keep fixed for now",
+          "Laptop bundle only",
+          "Split the row before adding cleaner device options"
+        ],
+        [
+          "Zoom participant",
+          "Laptop-style class session",
+          "Keep fixed for now",
+          "Laptop total stored",
+          "Add phone only if a clearer participant-device bridge is chosen"
+        ],
+        [
+          "Hosted Zoom",
+          "Meeting bundle",
+          "Keep fixed",
+          "Meeting bundle only",
+          "This row counts all participant devices, not just the host"
+        ]
+      ],
+      "title": "Device metadata plan now stored in the calculator record"
+    }
+  ],
+  "title": "Device assumptions and planned device controls"
+}

@@ -1,0 +1,15 @@
+{
+  "title": "Prompt and Task Comparison",
+  "slug": "prompt-comparison",
+  "chartType": "bar",
+  "summary": "Compare text prompting, image generation, reasoning prompts, and coding-agent sessions without pretending they belong in one average.",
+  "dataFile": "src/data/charts/prompt-comparison.json",
+  "xField": "label",
+  "yField": "wh",
+  "unit": "Wh",
+  "sourceIds": ["iea-energy-and-ai", "ifri-ai-dc-energy", "jegham-how-hungry-is-ai", "simon-couch-coding-agent"],
+  "note": "Keep this visually simple and pair it with a scope note under the chart.",
+  "lastReviewed": "2026-03-07",
+  "tags": ["what-a-prompt-costs"]
+}
+

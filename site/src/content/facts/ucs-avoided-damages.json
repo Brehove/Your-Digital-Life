@@ -1,0 +1,19 @@
+{
+  "section": "Archived Section 4",
+  "topic": "Benefits",
+  "claim": "A Union of Concerned Scientists analysis projects $1.6 trillion in avoided climate and health damages by 2035 if data centres are powered by clean energy, with much larger avoided damages by 2050.",
+  "shortLabel": "Avoided damages with clean-power buildout",
+  "value": 1.6,
+  "unit": "trillion USD",
+  "displayValue": "$1.6T avoided by 2035",
+  "comparisonContext": "This is the strongest quantified upside claim in the new benefits material, though it remains model-based.",
+  "status": "verified",
+  "scopeNote": "Modeled scenario result rather than an observed outcome.",
+  "sourceTier": "Tier 2",
+  "sourceTitle": "Powering Data Centers with Clean Energy Could Avoid Trillions in Climate and Health Costs",
+  "sourceOrg": "Union of Concerned Scientists",
+  "sourceUrl": "https://blog.ucs.org/steve-clemmer/powering-data-centers-with-clean-energy-could-avoid-trillions-in-climate-and-health-costs/",
+  "sourceDate": "2026-01-21",
+  "lastVerified": "2026-03-07",
+  "tags": []
+}

@@ -1,0 +1,74 @@
+{
+  "title": "Gen Z Non-AI User",
+  "slug": "gen-z-non-ai",
+  "audienceLabel": "Student scenario",
+  "summary": "Heavy social-media and streaming use, one Zoom class, and no AI usage.",
+  "serverEnergyWh": 132,
+  "totalEnergyWh": 369,
+  "directWaterMl": 132,
+  "totalWaterMl": 792,
+  "confidence": "estimated",
+  "lastReviewed": "2026-03-08",
+  "heroStat": "Scrolling and streaming alone can outrun moderate AI use.",
+  "comparisonNote": "This profile exceeds the medium AI user because video-heavy media time dominates the day.",
+  "activities": [
+    {
+      "label": "TikTok scrolling",
+      "durationOrVolume": "1.5 hours",
+      "serverEnergyWh": 11,
+      "totalEnergyWh": 54,
+      "directWaterMl": 11,
+      "totalWaterMl": 66,
+      "estimated": true,
+      "sourceIds": ["greenspector-social", "scenario-methods"]
+    },
+    {
+      "label": "YouTube watching",
+      "durationOrVolume": "1.25 hours",
+      "serverEnergyWh": 28,
+      "totalEnergyWh": 96,
+      "directWaterMl": 28,
+      "totalWaterMl": 168,
+      "sourceIds": ["iea-energy-and-ai"]
+    },
+    {
+      "label": "Instagram scrolling",
+      "durationOrVolume": "0.75 hours",
+      "serverEnergyWh": 4,
+      "totalEnergyWh": 19,
+      "directWaterMl": 4,
+      "totalWaterMl": 24,
+      "estimated": true,
+      "sourceIds": ["scenario-methods"]
+    },
+    {
+      "label": "Snapchat",
+      "durationOrVolume": "0.5 hours",
+      "serverEnergyWh": 2,
+      "totalEnergyWh": 10,
+      "directWaterMl": 2,
+      "totalWaterMl": 12,
+      "estimated": true,
+      "sourceIds": ["scenario-methods"]
+    },
+    {
+      "label": "Netflix streaming",
+      "durationOrVolume": "1.5 hours",
+      "serverEnergyWh": 33,
+      "totalEnergyWh": 116,
+      "directWaterMl": 33,
+      "totalWaterMl": 198,
+      "sourceIds": ["iea-energy-and-ai"]
+    },
+    {
+      "label": "Zoom class",
+      "durationOrVolume": "1 hour",
+      "serverEnergyWh": 54,
+      "totalEnergyWh": 74,
+      "directWaterMl": 54,
+      "totalWaterMl": 324,
+      "estimated": true,
+      "sourceIds": ["mytton-zoom", "scenario-methods"]
+    }
+  ]
+}

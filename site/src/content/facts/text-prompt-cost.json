@@ -1,0 +1,20 @@
+{
+  "section": "Section 2",
+  "topic": "Text prompting",
+  "claim": "A basic text prompt is often in the neighborhood of 0.3 Wh in the estimates used throughout this project.",
+  "shortLabel": "Basic text prompt",
+  "value": 0.3,
+  "unit": "Wh",
+  "displayValue": "~0.3 Wh per prompt",
+  "comparisonContext": "That is small relative to streaming or Zoom, but it is not representative of every AI task.",
+  "status": "verified",
+  "scopeNote": "Inference-focused figure used for everyday prompting comparisons.",
+  "sourceTier": "Tier 1",
+  "sourceTitle": "Energy and AI",
+  "sourceOrg": "International Energy Agency",
+  "sourceUrl": "https://iea.blob.core.windows.net/assets/dd7c2387-2f60-4b60-8c5f-6563b6aa1e4c/EnergyandAI.pdf",
+  "sourceDate": "2026-01-01",
+  "lastVerified": "2026-03-07",
+  "tags": ["home", "start-here", "what-a-prompt-costs"]
+}
+

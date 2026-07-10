@@ -1,0 +1,19 @@
+{
+  "section": "Section 2",
+  "topic": "Task comparison",
+  "claim": "The Luccioni/IFRI table puts baseline question answering at around 0.001 Wh, far below image generation and below the larger text-generation examples used elsewhere.",
+  "shortLabel": "Question answering baseline",
+  "value": 0.001,
+  "unit": "Wh",
+  "displayValue": "~0.001 Wh",
+  "comparisonContext": "This helps explain why 'AI' should not be treated as one flat cost category.",
+  "status": "verified",
+  "scopeNote": "Benchmark task baseline across open-source models rather than a named commercial chatbot session.",
+  "sourceTier": "Tier 1",
+  "sourceTitle": "AI, Data Centers and Energy Demand",
+  "sourceOrg": "IFRI",
+  "sourceUrl": "https://www.ifri.org/sites/default/files/2025-02/ifri_buffard-rochegonde_ai_data_centers_energy_2025_2.pdf",
+  "sourceDate": "2025-02-01",
+  "lastVerified": "2026-03-07",
+  "tags": ["what-a-prompt-costs"]
+}

@@ -1,0 +1,380 @@
+[
+  {
+    "category": "AI tasks",
+    "deviceMode": "not-modeled",
+    "deviceNote": "The live calculator does not add a separate end-user device term for everyday text prompts.",
+    "directWaterMlPerUnit": 0.26,
+    "id": "text-prompts",
+    "label": "AI text prompts",
+    "lastReviewed": "2026-03-09",
+    "note": "Uses an everyday text-prompt estimate of about 0.3 Wh while keeping a separate prompt-specific water estimate of 0.26 mL direct and 1.3 mL total.",
+    "order": 1,
+    "serverWhPerUnit": 0.3,
+    "sourceIds": [
+      "epoch-chatgpt-energy",
+      "jegham-how-hungry-is-ai"
+    ],
+    "status": "estimated",
+    "step": 1,
+    "systemBoundary": "legacy-row-specific",
+    "totalWaterMlPerUnit": 1.3,
+    "totalWhPerUnit": 0.3,
+    "unitHint": "Basic text questions",
+    "unitLabel": "prompts"
+  },
+  {
+    "category": "AI tasks",
+    "deviceMode": "not-modeled",
+    "deviceNote": "The live calculator keeps the reasoning row equal to cloud-side energy until a separate prompt-device model is justified.",
+    "directWaterMlPerUnit": 33.8,
+    "id": "reasoning-prompts",
+    "label": "High-reasoning prompts",
+    "lastReviewed": "2026-03-09",
+    "note": "Uses the long high-reasoning 33.8 Wh benchmark rather than the much smaller medium-query comparison value, so this row stays an intentional outlier.",
+    "order": 2,
+    "serverWhPerUnit": 33.8,
+    "sourceIds": [
+      "jegham-how-hungry-is-ai",
+      "scenario-methods"
+    ],
+    "status": "inferred",
+    "step": 1,
+    "systemBoundary": "legacy-row-specific",
+    "totalWaterMlPerUnit": 202.8,
+    "totalWhPerUnit": 33.8,
+    "unitHint": "Long, high-reasoning queries",
+    "unitLabel": "prompts"
+  },
+  {
+    "category": "AI tasks",
+    "deviceMode": "not-modeled",
+    "deviceNote": "The image row currently keeps total energy equal to cloud-side energy rather than adding a device-specific term.",
+    "directWaterMlPerUnit": 0.48,
+    "id": "image-generation",
+    "label": "AI image generation",
+    "lastReviewed": "2026-03-09",
+    "note": "Uses an open-model image-generation average and the same water-conversion rule used across the broader comparison set.",
+    "order": 3,
+    "serverWhPerUnit": 0.48,
+    "sourceIds": [
+      "ifri-ai-dc-energy",
+      "scenario-methods"
+    ],
+    "status": "inferred",
+    "step": 1,
+    "systemBoundary": "legacy-row-specific",
+    "totalWaterMlPerUnit": 2.88,
+    "totalWhPerUnit": 0.48,
+    "unitHint": "One generated image",
+    "unitLabel": "images"
+  },
+  {
+    "category": "AI tasks",
+    "defaultDeviceId": "laptop",
+    "deviceMode": "fixed",
+    "deviceNote": "Keep this fixed to a laptop-style coding session unless stronger desktop or thin-client evidence appears.",
+    "deviceSelectableIds": [
+      "laptop"
+    ],
+    "deviceSelectionAffects": [
+      "totalWhPerUnit"
+    ],
+    "deviceTotalWhOverrides": {
+      "laptop": 355
+    },
+    "directWaterMlPerUnit": 325,
+    "id": "vibe-coding",
+    "label": "Coding-agent use",
+    "lastReviewed": "2026-03-09",
+    "note": "Uses the current one-hour coding-agent benchmark and adds a 30 Wh device allowance in the total-system column.",
+    "order": 4,
+    "serverWhPerUnit": 325,
+    "sourceIds": [
+      "simon-couch-coding-agent",
+      "scenario-methods"
+    ],
+    "status": "estimated",
+    "step": 0.25,
+    "systemBoundary": "legacy-row-specific",
+    "totalWaterMlPerUnit": 1950,
+    "totalWhPerUnit": 355,
+    "unitHint": "Hours of sustained agent use, not prompts",
+    "unitLabel": "hours"
+  },
+  {
+    "category": "Media and search",
+    "defaultDeviceId": "phone",
+    "deviceMode": "fixed",
+    "deviceNote": "This row already behaves like a mobile-default social-feed estimate and should stay fixed in the first device pass.",
+    "deviceSelectableIds": [
+      "phone"
+    ],
+    "deviceSelectionAffects": [
+      "totalWhPerUnit"
+    ],
+    "deviceTotalWhOverrides": {
+      "phone": 36
+    },
+    "directWaterMlPerUnit": 7.5,
+    "id": "tiktok",
+    "label": "TikTok or short-video scrolling",
+    "lastReviewed": "2026-03-09",
+    "note": "Built from device-side social-video measurement plus streaming-style infrastructure assumptions; keep this row estimated until a platform-specific cloud-side benchmark exists.",
+    "order": 5,
+    "serverWhPerUnit": 7.5,
+    "sourceIds": [
+      "greenspector-social-media-2021",
+      "adam-holter-tiktok",
+      "kamiya-streaming-video",
+      "scenario-methods"
+    ],
+    "status": "estimated",
+    "step": 0.25,
+    "systemBoundary": "legacy-row-specific",
+    "totalWaterMlPerUnit": 45,
+    "totalWhPerUnit": 36,
+    "unitHint": "Video-heavy social feed",
+    "unitLabel": "hours"
+  },
+  {
+    "category": "Media and search",
+    "defaultDeviceId": "phone",
+    "deviceMode": "fixed",
+    "deviceNote": "Keep Instagram locked to a phone-style total unless the row is split into cleaner photo versus video cases.",
+    "deviceSelectableIds": [
+      "phone"
+    ],
+    "deviceSelectionAffects": [
+      "totalWhPerUnit"
+    ],
+    "deviceTotalWhOverrides": {
+      "phone": 25
+    },
+    "directWaterMlPerUnit": 5,
+    "id": "instagram",
+    "label": "Instagram scrolling",
+    "lastReviewed": "2026-03-09",
+    "note": "This remains an analogy-based estimate built from social-media measurement plus streaming comparisons, useful for relative scale rather than platform accounting.",
+    "order": 6,
+    "serverWhPerUnit": 5,
+    "sourceIds": [
+      "greenspector-social-media-2021",
+      "kamiya-streaming-video",
+      "scenario-methods"
+    ],
+    "status": "estimated",
+    "step": 0.25,
+    "systemBoundary": "legacy-row-specific",
+    "totalWaterMlPerUnit": 30,
+    "totalWhPerUnit": 25,
+    "unitHint": "Mixed image and short-video feed",
+    "unitLabel": "hours"
+  },
+  {
+    "category": "Media and search",
+    "defaultDeviceId": "phone",
+    "deviceMode": "fixed",
+    "deviceNote": "Treat Snapchat as a phone-default row in the initial device model.",
+    "deviceSelectableIds": [
+      "phone"
+    ],
+    "deviceSelectionAffects": [
+      "totalWhPerUnit"
+    ],
+    "deviceTotalWhOverrides": {
+      "phone": 20
+    },
+    "directWaterMlPerUnit": 4,
+    "id": "snapchat",
+    "label": "Snapchat",
+    "lastReviewed": "2026-03-09",
+    "note": "Another low-confidence social-media estimate built from broader comparison logic rather than a platform disclosure.",
+    "order": 7,
+    "serverWhPerUnit": 4,
+    "sourceIds": [
+      "greenspector-social-media-2021",
+      "scenario-methods"
+    ],
+    "status": "estimated",
+    "step": 0.25,
+    "systemBoundary": "legacy-row-specific",
+    "totalWaterMlPerUnit": 24,
+    "totalWhPerUnit": 20,
+    "unitHint": "Short-form messaging and video",
+    "unitLabel": "hours"
+  },
+  {
+    "category": "Media and search",
+    "defaultDeviceId": "phone",
+    "deviceMode": "selectable",
+    "deviceNote": "The default total assumes phone viewing, while the stored laptop and TV options let the row reflect the much larger device spread behind video streaming.",
+    "deviceSelectableIds": [
+      "phone",
+      "laptop",
+      "tv"
+    ],
+    "deviceSelectionAffects": [
+      "totalWhPerUnit"
+    ],
+    "deviceTotalWhOverrides": {
+      "laptop": 37,
+      "phone": 26,
+      "tv": 77
+    },
+    "directWaterMlPerUnit": 22,
+    "id": "youtube",
+    "label": "YouTube watching",
+    "lastReviewed": "2026-03-09",
+    "note": "Uses the same CDN-style video benchmark as Netflix so the calculator keeps an apples-to-apples streaming anchor for the cloud-side and total-system columns.",
+    "order": 8,
+    "serverWhPerUnit": 22,
+    "sourceIds": [
+      "kamiya-streaming-video",
+      "scenario-methods"
+    ],
+    "status": "inferred",
+    "step": 0.25,
+    "systemBoundary": "legacy-row-specific",
+    "totalWaterMlPerUnit": 132,
+    "totalWhPerUnit": 26,
+    "unitHint": "Streaming video hour",
+    "unitLabel": "hours"
+  },
+  {
+    "category": "Media and search",
+    "defaultDeviceId": "laptop",
+    "deviceMode": "selectable",
+    "deviceNote": "The default total assumes laptop viewing, while phone and TV options preserve the lower and higher ends already used in the scenario work.",
+    "deviceSelectableIds": [
+      "phone",
+      "laptop",
+      "tv"
+    ],
+    "deviceSelectionAffects": [
+      "totalWhPerUnit"
+    ],
+    "deviceTotalWhOverrides": {
+      "laptop": 37,
+      "phone": 26,
+      "tv": 77
+    },
+    "directWaterMlPerUnit": 22,
+    "id": "netflix",
+    "label": "Netflix streaming",
+    "lastReviewed": "2026-03-09",
+    "note": "Uses the IEA/Kamiya 22 Wh cloud-side and 77 Wh total benchmark used throughout the site's streaming comparisons.",
+    "order": 9,
+    "serverWhPerUnit": 22,
+    "sourceIds": [
+      "kamiya-streaming-video",
+      "scenario-methods"
+    ],
+    "status": "inferred",
+    "step": 0.25,
+    "systemBoundary": "legacy-row-specific",
+    "totalWaterMlPerUnit": 132,
+    "totalWhPerUnit": 37,
+    "unitHint": "One hour streamed",
+    "unitLabel": "hours"
+  },
+  {
+    "category": "Media and search",
+    "defaultDeviceId": "laptop",
+    "deviceMode": "fixed",
+    "deviceNote": "Keep this mixed-work row fixed to a laptop-style bundle until it is split into narrower activity rows.",
+    "deviceSelectableIds": [
+      "laptop"
+    ],
+    "deviceSelectionAffects": [
+      "totalWhPerUnit"
+    ],
+    "deviceTotalWhOverrides": {
+      "laptop": 30
+    },
+    "directWaterMlPerUnit": 4,
+    "id": "cloud-docs-browsing",
+    "label": "Email, cloud docs, and browsing",
+    "lastReviewed": "2026-03-09",
+    "note": "This is a teaching bundle for light browsing, email, and cloud documents rather than a per-click benchmark.",
+    "order": 10,
+    "serverWhPerUnit": 4,
+    "sourceIds": [
+      "scenario-methods"
+    ],
+    "status": "estimated",
+    "step": 1,
+    "systemBoundary": "legacy-row-specific",
+    "totalWaterMlPerUnit": 24,
+    "totalWhPerUnit": 30,
+    "unitHint": "A light mixed-work block",
+    "unitLabel": "daily blocks"
+  },
+  {
+    "category": "Meetings",
+    "defaultDeviceId": "laptop",
+    "deviceMode": "fixed",
+    "deviceNote": "The current participant row assumes a laptop-style class session; add a phone option only when a clearer participant-device bridge is chosen.",
+    "deviceSelectableIds": [
+      "laptop"
+    ],
+    "deviceSelectionAffects": [
+      "totalWhPerUnit"
+    ],
+    "deviceTotalWhOverrides": {
+      "laptop": 74
+    },
+    "directWaterMlPerUnit": 54,
+    "id": "zoom-participant",
+    "label": "Zoom as participant",
+    "lastReviewed": "2026-03-09",
+    "note": "Uses a one-hour participant meeting estimate in which network plus platform routing form the cloud-side figure and participant device energy is added back for the total-system column.",
+    "order": 11,
+    "serverWhPerUnit": 54,
+    "sourceIds": [
+      "mytton-zoom",
+      "verdecchia-video-call-energy",
+      "scenario-methods"
+    ],
+    "status": "estimated",
+    "step": 0.25,
+    "systemBoundary": "legacy-row-specific",
+    "totalWaterMlPerUnit": 324,
+    "totalWhPerUnit": 74,
+    "unitHint": "Joining a class or meeting",
+    "unitLabel": "hours"
+  },
+  {
+    "category": "Meetings",
+    "defaultDeviceId": "meeting-bundle",
+    "deviceMode": "fixed",
+    "deviceNote": "This row is a shared meeting bundle, not a single host-device toggle, so keep it fixed.",
+    "deviceSelectableIds": [
+      "meeting-bundle"
+    ],
+    "deviceSelectionAffects": [
+      "totalWhPerUnit"
+    ],
+    "deviceTotalWhOverrides": {
+      "meeting-bundle": 358
+    },
+    "directWaterMlPerUnit": 192,
+    "id": "zoom-host",
+    "label": "Zoom as host",
+    "lastReviewed": "2026-03-09",
+    "note": "Uses a hosted Zoom estimate that counts all participant devices in the total-system column.",
+    "order": 12,
+    "serverWhPerUnit": 192,
+    "sourceIds": [
+      "mytton-zoom",
+      "verdecchia-video-call-energy",
+      "scenario-methods"
+    ],
+    "status": "estimated",
+    "step": 1,
+    "systemBoundary": "legacy-row-specific",
+    "totalWaterMlPerUnit": 1152,
+    "totalWhPerUnit": 358,
+    "unitHint": "One 50-minute, 10-person hosted session",
+    "unitLabel": "meetings"
+  }
+]

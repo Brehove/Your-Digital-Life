@@ -1,0 +1,18 @@
+{
+  "section": "Section 2",
+  "topic": "Comparison debate",
+  "claim": "The simple 'ChatGPT uses 10x a Google search' comparison is contested: some sources still repeat it, while others argue basic queries are now in the same ballpark and that reasoning tasks are the real outlier.",
+  "shortLabel": "Google search comparison is contested",
+  "value": "Contested framing",
+  "displayValue": "Do not present one fixed multiplier",
+  "comparisonContext": "The public takeaway should focus on task class and model size rather than a single evergreen ratio.",
+  "status": "contested",
+  "scopeNote": "The disagreement is about configuration, model size, batch utilization, and whether newer estimates supersede older comparisons.",
+  "sourceTier": "Tier 1",
+  "sourceTitle": "Synthesis of IFRI, IEA, Jegham, and newer commentary",
+  "sourceOrg": "Digital Habits site synthesis",
+  "sourceUrl": "https://ai-impact-risk.com/ai_energy_water_impact.html",
+  "sourceDate": "2026-03-07",
+  "lastVerified": "2026-03-07",
+  "tags": ["what-a-prompt-costs", "start-here"]
+}

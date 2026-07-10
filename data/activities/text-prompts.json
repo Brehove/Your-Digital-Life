@@ -1,0 +1,23 @@
+{
+  "category": "AI tasks",
+  "deviceMode": "not-modeled",
+  "deviceNote": "The live calculator does not add a separate end-user device term for everyday text prompts.",
+  "directWaterMlPerUnit": 0.26,
+  "id": "text-prompts",
+  "label": "AI text prompts",
+  "lastReviewed": "2026-03-09",
+  "note": "Uses an everyday text-prompt estimate of about 0.3 Wh while keeping a separate prompt-specific water estimate of 0.26 mL direct and 1.3 mL total.",
+  "order": 1,
+  "serverWhPerUnit": 0.3,
+  "sourceIds": [
+    "epoch-chatgpt-energy",
+    "jegham-how-hungry-is-ai"
+  ],
+  "status": "estimated",
+  "step": 1,
+  "systemBoundary": "legacy-row-specific",
+  "totalWaterMlPerUnit": 1.3,
+  "totalWhPerUnit": 0.3,
+  "unitHint": "Basic text questions",
+  "unitLabel": "prompts"
+}

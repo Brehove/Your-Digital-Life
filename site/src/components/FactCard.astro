@@ -1,0 +1,34 @@
+---
+import type { CollectionEntry } from "astro:content";
+import StatusBadge from "./StatusBadge.astro";
+
+interface Props {
+  fact: CollectionEntry<"facts">;
+}
+
+const { fact } = Astro.props;
+const data = fact.data;
+---
+
+<article class="card fact-card">
+  <div class="card__topline">
+    <p class="eyebrow">{data.topic}</p>
+    <StatusBadge status={data.status} />
+  </div>
+
+  <h3>{data.shortLabel}</h3>
+  <p class="metric">{data.displayValue}</p>
+  <p>{data.claim}</p>
+
+  {data.comparisonContext && <p class="muted">{data.comparisonContext}</p>}
+  {data.scopeNote && <p class="note">Scope: {data.scopeNote}</p>}
+
+  <div class="card__meta">
+    <span>{data.sourceTier}</span>
+    <a href={data.sourceUrl} target="_blank" rel="noreferrer">
+      {data.sourceOrg}
+    </a>
+    <span>Verified {data.lastVerified}</span>
+  </div>
+</article>
+

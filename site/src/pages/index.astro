@@ -1,0 +1,100 @@
+---
+import InventoryTool from "../components/InventoryTool.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getPageById } from "../lib/content";
+
+const homePage = await getPageById("home");
+const inventoryPage = await getPageById("inventory-your-day");
+const aboutPage = await getPageById("about-this-site");
+
+const pageTitle = homePage?.data.title ?? "What Your Digital Life Uses";
+const pageDescription =
+  homePage?.data.description ??
+  "A public-facing guide to how prompts, streaming, meetings, and everyday online activity connect to energy, water, and infrastructure.";
+const heroTitle = homePage?.data.heroTitle ?? pageTitle;
+const heroSummary =
+  homePage?.data.heroSummary ??
+  "How much energy and water does it take to scroll TikTok, watch YouTube, join a Zoom call, or prompt ChatGPT?";
+const aboutHref = `/${aboutPage?.data.slug ?? aboutPage?.id ?? "about-this-site"}/`;
+const inventoryIntroTitle = inventoryPage?.data.toolIntroTitle ?? "Calculator overview";
+const inventoryIntroBody =
+  inventoryPage?.data.toolIntroBody.length
+    ? inventoryPage.data.toolIntroBody
+    : [
+        "This calculator is a rough teaching tool for estimating a day of cloud-connected activity. It is meant to make hidden digital habits visible, not to function as an exact personal meter.",
+        "Each row uses the site's current energy and water estimates for a specific activity type. As you enter values, the summary updates so you can compare server-only versus total-system energy and direct versus total water."
+      ];
+const inventoryIntroListTitle = inventoryPage?.data.toolIntroListTitle ?? "How to use it";
+const inventoryIntroPrompts =
+  inventoryPage?.data.toolIntroPrompts.length
+    ? inventoryPage.data.toolIntroPrompts
+    : [
+        "Enter rough amounts for the activities you actually use in a typical day.",
+        "Watch the summary cards update as you add prompts, streaming, meetings, or social-media time.",
+        "Use the quick anchors to translate the totals into everyday reference points."
+      ];
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  pageClass="page-frame--landing"
+  shellClass="site-shell--landing"
+  bodyClass="body--landing"
+  hideFooter={true}
+  hideNav={true}
+  hideHeader={true}
+>
+  <div class="landing-shell">
+    <section class="landing-hero" aria-labelledby="landing-title">
+      <nav class="landing-menu" aria-label="Landing">
+        <a href="/sources-and-method/">Sources & Method</a>
+        <a href={aboutHref}>About This Site</a>
+      </nav>
+
+      <div class="landing-hero__panel">
+        <div class="landing-hero__inner">
+          <div class="landing-hero__title-block">
+            <h1 id="landing-title">{heroTitle}</h1>
+            <p class="landing-hero__questions">{heroSummary}</p>
+          </div>
+
+          <a class="landing-scroll" href="#landing-calculator">
+            <span>Calculate Your Digital Habits</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="landing-calculator" id="landing-calculator">
+      <div class="landing-calculator__inner">
+        <div class="landing-calculator__header">
+          <p class="section-label">Digital inventory</p>
+        </div>
+
+        {(inventoryIntroTitle || inventoryIntroBody.length > 0) && (
+          <section class="activity-intro card activity-intro--landing activity-intro--wide">
+            {inventoryIntroTitle && <h3>{inventoryIntroTitle}</h3>}
+
+            {inventoryIntroBody.map((paragraph) => (
+              <p>{paragraph}</p>
+            ))}
+
+            {inventoryIntroPrompts.length > 0 && (
+              <div class="activity-intro__prompt-block">
+                <p class="eyebrow">{inventoryIntroListTitle}</p>
+                <ul class="compact-list">
+                  {inventoryIntroPrompts.map((prompt) => <li>{prompt}</li>)}
+                </ul>
+              </div>
+            )}
+          </section>
+        )}
+
+        <section class="landing-calculator__tool">
+          <InventoryTool />
+        </section>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

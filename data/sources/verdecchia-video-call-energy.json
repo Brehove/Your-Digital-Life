@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "Roberto Verdecchia",
+    "et al."
+  ],
+  "id": "verdecchia-video-call-energy",
+  "notes": "Used for device-side video-call energy and camera-on versus camera-off impacts in the Zoom estimates.",
+  "order": 10,
+  "organization": "ACM MobileSoft",
+  "publishedDate": "2022-05-01",
+  "sourceTier": "Tier 1",
+  "sourceType": "Peer-reviewed paper",
+  "tags": [
+    "scenarios",
+    "prompting"
+  ],
+  "title": "Video Calls in Mobile Applications: Energy Consumption and Performance Analysis",
+  "url": "https://robertoverdecchia.github.io/papers/MobileSoft_2022.pdf",
+  "usedFor": [
+    "participant device add-on for Zoom",
+    "total-system device add-on in the hosted Zoom derivation"
+  ]
+}

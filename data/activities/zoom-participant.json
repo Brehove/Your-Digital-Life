@@ -1,0 +1,34 @@
+{
+  "category": "Meetings",
+  "defaultDeviceId": "laptop",
+  "deviceMode": "fixed",
+  "deviceNote": "The current participant row assumes a laptop-style class session; add a phone option only when a clearer participant-device bridge is chosen.",
+  "deviceSelectableIds": [
+    "laptop"
+  ],
+  "deviceSelectionAffects": [
+    "totalWhPerUnit"
+  ],
+  "deviceTotalWhOverrides": {
+    "laptop": 74
+  },
+  "directWaterMlPerUnit": 54,
+  "id": "zoom-participant",
+  "label": "Zoom as participant",
+  "lastReviewed": "2026-03-09",
+  "note": "Uses a one-hour participant meeting estimate in which network plus platform routing form the cloud-side figure and participant device energy is added back for the total-system column.",
+  "order": 11,
+  "serverWhPerUnit": 54,
+  "sourceIds": [
+    "mytton-zoom",
+    "verdecchia-video-call-energy",
+    "scenario-methods"
+  ],
+  "status": "estimated",
+  "step": 0.25,
+  "systemBoundary": "legacy-row-specific",
+  "totalWaterMlPerUnit": 324,
+  "totalWhPerUnit": 74,
+  "unitHint": "Joining a class or meeting",
+  "unitLabel": "hours"
+}

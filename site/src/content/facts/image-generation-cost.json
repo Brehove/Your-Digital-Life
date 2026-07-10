@@ -1,0 +1,20 @@
+{
+  "section": "Section 2",
+  "topic": "Image generation",
+  "claim": "Average image generation in the Luccioni and IFRI comparison set is about 0.477 Wh, dramatically above a basic text task.",
+  "shortLabel": "Average image generation cost",
+  "value": 0.477,
+  "unit": "Wh",
+  "displayValue": "0.477 Wh per image",
+  "comparisonContext": "The benchmarked average is many times higher than a baseline text-classification task.",
+  "status": "verified",
+  "scopeNote": "Average across benchmarked open-source models, not every commercial image workflow.",
+  "sourceTier": "Tier 1",
+  "sourceTitle": "AI, Data Centers and Energy Demand",
+  "sourceOrg": "IFRI",
+  "sourceUrl": "https://www.ifri.org/sites/default/files/2025-02/ifri_buffard-rochegonde_ai_data_centers_energy_2025_2.pdf",
+  "sourceDate": "2025-02-01",
+  "lastVerified": "2026-03-07",
+  "tags": ["what-a-prompt-costs"]
+}
+

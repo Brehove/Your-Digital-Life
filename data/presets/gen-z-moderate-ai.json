@@ -1,0 +1,26 @@
+{
+  "description": "Section 3 scenario with 25 text prompts, 3 images, lighter scrolling, and one Zoom class.",
+  "deviceSelections": {
+    "cloud-docs-browsing": "laptop",
+    "instagram": "phone",
+    "netflix": "laptop",
+    "snapchat": "phone",
+    "tiktok": "phone",
+    "youtube": "phone",
+    "zoom-participant": "laptop"
+  },
+  "id": "gen-z-moderate-ai",
+  "label": "Gen Z (moderate AI use)",
+  "order": 3,
+  "values": {
+    "cloud-docs-browsing": 1,
+    "image-generation": 3,
+    "instagram": 0.5,
+    "netflix": 1.5,
+    "snapchat": 0.5,
+    "text-prompts": 25,
+    "tiktok": 1,
+    "youtube": 1,
+    "zoom-participant": 1
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "id": "meeting-bundle",
+  "label": "Meeting bundle",
+  "note": "Shared meeting row that includes the participant-device bundle, not just one person's device.",
+  "order": 5
+}

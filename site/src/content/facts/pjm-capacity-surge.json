@@ -1,0 +1,19 @@
+{
+  "section": "Archived Section 4",
+  "topic": "Rate impacts",
+  "claim": "Monitoring Analytics reports that PJM capacity prices rose from $28.92/MW-day to $269.92/MW-day between the 2024/2025 and 2025/2026 auctions, an 833% increase.",
+  "shortLabel": "PJM capacity price surge",
+  "value": 833,
+  "unit": "%",
+  "displayValue": "833% increase",
+  "comparisonContext": "This makes the regional consumer-cost discussion much more concrete than abstract grid-pressure language alone.",
+  "status": "verified",
+  "scopeNote": "Auction-price change in PJM, not a national average consumer bill increase.",
+  "sourceTier": "Tier 1",
+  "sourceTitle": "Analysis of the 2025/2026 RPM Base Residual Auction: Part G (Revised)",
+  "sourceOrg": "Monitoring Analytics",
+  "sourceUrl": "https://www.monitoringanalytics.com/reports/Reports/2025/IMM_Analysis_of_the_20252026_RPM_Base_Residual_Auction_Part_G_20250603_Revised.pdf",
+  "sourceDate": "2025-06-03",
+  "lastVerified": "2026-03-07",
+  "tags": []
+}

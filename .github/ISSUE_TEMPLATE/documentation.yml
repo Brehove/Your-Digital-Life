@@ -1,0 +1,47 @@
+name: Documentation
+description: Report unclear, missing, contradictory, or broken documentation.
+title: "[Documentation]: "
+labels:
+  - "area:documentation"
+  - "type:proposal"
+body:
+  - type: input
+    id: location
+    attributes:
+      label: Document or URL
+      placeholder: CONTRIBUTING.md or https://your-digital-life.org/...
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: Quote only the minimum text needed to locate the problem.
+    validations:
+      required: true
+  - type: textarea
+    id: proposed
+    attributes:
+      label: Proposed improvement
+      description: Explain the desired correction or clarification.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Supporting evidence
+      description: Provide links or record IDs if the documentation makes a factual claim.
+  - type: checkboxes
+    id: rights
+    attributes:
+      label: Rights affirmation
+      options:
+        - label: I have the right to submit any proposed wording, and I have not copied substantial third-party text without permission.
+          required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Final checks
+      options:
+        - label: I searched existing issues and Discussions for this problem.
+          required: true

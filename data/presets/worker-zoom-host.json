@@ -1,0 +1,18 @@
+{
+  "description": "Section 3 scenario with one hosted Zoom meeting, routine browsing, Instagram, and Netflix.",
+  "deviceSelections": {
+    "cloud-docs-browsing": "laptop",
+    "instagram": "phone",
+    "netflix": "tv",
+    "zoom-host": "meeting-bundle"
+  },
+  "id": "worker-zoom-host",
+  "label": "Worker (hosts Zoom meetings)",
+  "order": 5,
+  "values": {
+    "cloud-docs-browsing": 1,
+    "instagram": 1,
+    "netflix": 1,
+    "zoom-host": 1
+  }
+}

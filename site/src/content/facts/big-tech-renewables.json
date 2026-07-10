@@ -1,0 +1,19 @@
+{
+  "section": "Archived Section 4",
+  "topic": "Benefits",
+  "claim": "As of February 2025, Amazon, Microsoft, Meta, and Google held a combined 84 GW of tracked large-scale clean-energy contracts and accounted for 98.7% of the non-utility U.S. corporate PPA market in that dataset.",
+  "shortLabel": "Big Tech renewable procurement scale",
+  "value": 84,
+  "unit": "GW",
+  "displayValue": "84 GW under contract",
+  "comparisonContext": "This shows that the same firms driving data-centre growth are also dominating corporate clean-energy procurement.",
+  "status": "verified",
+  "scopeNote": "Tracked large-scale corporate PPA market figure, not a claim that all data-centre load is already matched hour-by-hour.",
+  "sourceTier": "Tier 2",
+  "sourceTitle": "Meta, Amazon, Google, and Microsoft Dominate Clean Energy Deals",
+  "sourceOrg": "Carbon Credits",
+  "sourceUrl": "https://carboncredits.com/meta-amazon-google-and-microsoft-dominate-clean-energy-deals-as-global-buying-slips-in-2025/",
+  "sourceDate": "2025-02-01",
+  "lastVerified": "2026-03-07",
+  "tags": []
+}

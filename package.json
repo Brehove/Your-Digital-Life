@@ -1,0 +1,20 @@
+{
+  "name": "your-digital-life-data",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "data:build": "node scripts/build-data.mjs",
+    "data:export": "node scripts/export-data.mjs",
+    "data:validate": "node scripts/validate-data.mjs",
+    "data:parity": "node scripts/compare-legacy-data.mjs",
+    "data:check-generated": "node scripts/build-data.mjs --check && node scripts/export-data.mjs --check",
+    "data:test": "node --test tests/data/*.test.mjs",
+    "data:verify": "npm run data:validate && npm run data:parity && npm run data:check-generated && npm run data:test"
+  },
+  "devDependencies": {
+    "ajv": "8.20.0",
+    "ajv-formats": "3.0.1",
+    "yaml": "2.9.0"
+  }
+}

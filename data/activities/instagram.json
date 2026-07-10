@@ -1,0 +1,34 @@
+{
+  "category": "Media and search",
+  "defaultDeviceId": "phone",
+  "deviceMode": "fixed",
+  "deviceNote": "Keep Instagram locked to a phone-style total unless the row is split into cleaner photo versus video cases.",
+  "deviceSelectableIds": [
+    "phone"
+  ],
+  "deviceSelectionAffects": [
+    "totalWhPerUnit"
+  ],
+  "deviceTotalWhOverrides": {
+    "phone": 25
+  },
+  "directWaterMlPerUnit": 5,
+  "id": "instagram",
+  "label": "Instagram scrolling",
+  "lastReviewed": "2026-03-09",
+  "note": "This remains an analogy-based estimate built from social-media measurement plus streaming comparisons, useful for relative scale rather than platform accounting.",
+  "order": 6,
+  "serverWhPerUnit": 5,
+  "sourceIds": [
+    "greenspector-social-media-2021",
+    "kamiya-streaming-video",
+    "scenario-methods"
+  ],
+  "status": "estimated",
+  "step": 0.25,
+  "systemBoundary": "legacy-row-specific",
+  "totalWaterMlPerUnit": 30,
+  "totalWhPerUnit": 25,
+  "unitHint": "Mixed image and short-video feed",
+  "unitLabel": "hours"
+}

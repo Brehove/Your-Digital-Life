@@ -1,0 +1,18 @@
+{
+  "section": "Section 1",
+  "topic": "Definitions",
+  "claim": "In the cited Google and Jegham sources, WUE is water used per unit of IT energy, and Google's paper specifies the consumptive-use variant of WUE.",
+  "shortLabel": "WUE definition",
+  "value": "Water per IT energy",
+  "displayValue": "Water used per unit of IT energy",
+  "comparisonContext": "This matters because many public comparisons talk about water without defining what part of the system is being counted.",
+  "status": "verified",
+  "scopeNote": "The site should keep clear whether WUE refers to consumptive use and whether figures are facility-only or broader water footprints.",
+  "sourceTier": "Tier 1",
+  "sourceTitle": "Measuring the environmental impact of delivering AI at Google Scale",
+  "sourceOrg": "Ian Schneider et al.",
+  "sourceUrl": "https://arxiv.org/html/2508.15734v1",
+  "sourceDate": "2025-08-01",
+  "lastVerified": "2026-03-07",
+  "tags": ["how-data-centers-work"]
+}

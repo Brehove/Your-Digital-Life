@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "Joel Gladd"
+  ],
+  "id": "scenario-methods",
+  "notes": "Site-built method model that combines prompt benchmarks, streaming comparisons, meeting estimates, and water-conversion rules into the live calculator.",
+  "order": 3,
+  "organization": "Digital Habits site method model",
+  "publishedDate": "2026-03-07",
+  "sourceTier": "Tier 3",
+  "sourceType": "Internal synthesis",
+  "tags": [
+    "scenarios",
+    "calculator"
+  ],
+  "title": "Digital inventory calculator and scenario method",
+  "url": "https://your-digital-life.org/sources-and-method/",
+  "usedFor": [
+    "scenario-style 1 mL direct to 6 mL total water bridge",
+    "browsing bundle row",
+    "preset mix logic",
+    "total-system add-ons for non-AI rows"
+  ]
+}

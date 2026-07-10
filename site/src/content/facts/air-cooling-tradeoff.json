@@ -1,0 +1,18 @@
+{
+  "section": "Section 1",
+  "topic": "Cooling tradeoffs",
+  "claim": "Google commits new water-stressed facilities to air-cooled systems during normal operations, while Microsoft's zero-water cooling design aims to eliminate evaporative water entirely and claims 125 million liters saved per facility per year.",
+  "shortLabel": "Zero-water cooling is becoming a real design path",
+  "value": "125 million liters/year",
+  "displayValue": "Up to 125M liters saved per facility each year",
+  "comparisonContext": "The tradeoff remains real, but zero-water cooling is emerging as an engineering path rather than only a sacrifice story.",
+  "status": "verified",
+  "scopeNote": "Google's air-cooling commitment is well supported; Microsoft's zero-water performance claims remain company-reported rather than independently benchmarked.",
+  "sourceTier": "Tier 2",
+  "sourceTitle": "Measuring the environmental impact of delivering AI at Google Scale",
+  "sourceOrg": "Ian Schneider et al.",
+  "sourceUrl": "https://arxiv.org/html/2508.15734v1",
+  "sourceDate": "2025-08-01",
+  "lastVerified": "2026-03-07",
+  "tags": ["how-data-centers-work", "start-here"]
+}

@@ -1,0 +1,99 @@
+{
+  "id": "boundary-rules",
+  "notes": [
+    "The cloud-side column usually combines server and network demand where the underlying source does not isolate pure data-center energy.",
+    "AI text, reasoning, and image rows currently keep server and total-system energy equal because the live calculator does not model a separate end-user device add-on for those actions.",
+    "Media and Zoom rows use a larger bridge from cloud-side to total-system values, which is why those rows show a bigger gap between columns."
+  ],
+  "order": 1,
+  "sourceIds": [
+    "epoch-chatgpt-energy",
+    "jegham-how-hungry-is-ai",
+    "ifri-ai-dc-energy",
+    "kamiya-streaming-video",
+    "greenspector-social-media-2021",
+    "mytton-zoom",
+    "verdecchia-video-call-energy",
+    "simon-couch-coding-agent",
+    "scenario-methods"
+  ],
+  "summary": "The calculator keeps the first energy column as a cloud-side comparison view and then adds a second total-system column where the research basis supports it.",
+  "tables": [
+    {
+      "columns": [
+        "Row family",
+        "Cloud-side basis",
+        "Total-system basis",
+        "Current calculator result",
+        "Maintenance note"
+      ],
+      "rows": [
+        [
+          "AI text / reasoning / image prompts",
+          "Inference benchmarks used for everyday prompting",
+          "Kept equal to cloud-side in the live calculator",
+          "0.3/0.3, 33.8/33.8, 0.48/0.48",
+          "No separate end-user device model is currently applied"
+        ],
+        [
+          "Coding-agent use",
+          "High-intensity coding-agent benchmark",
+          "Adds a 30 Wh device allowance",
+          "325/355 Wh per hour",
+          "Keep this tied to the current coding-agent estimate, not to prompt counts"
+        ],
+        [
+          "Netflix / YouTube",
+          "22 Wh per hour server + network",
+          "77 Wh per hour total-system benchmark",
+          "22/77 Wh per hour",
+          "Uses the IEA/Kamiya streaming split already adopted on the site"
+        ],
+        [
+          "TikTok",
+          "Estimated 7.5 Wh per hour cloud-side",
+          "Estimated 36 Wh per hour total-system",
+          "7.5/36 Wh per hour",
+          "Built from social-video measurement plus streaming-style inference"
+        ],
+        [
+          "Instagram",
+          "Estimated 5 Wh per hour cloud-side",
+          "Estimated 25 Wh per hour total-system",
+          "5/25 Wh per hour",
+          "Analogy-based row; keep estimated status"
+        ],
+        [
+          "Snapchat",
+          "Estimated 4 Wh per hour cloud-side",
+          "Estimated 20 Wh per hour total-system",
+          "4/20 Wh per hour",
+          "Lowest-confidence social-media row in the calculator"
+        ],
+        [
+          "Email / cloud docs / browsing",
+          "Internal light-work bundle",
+          "Bundle with device add-on",
+          "4/30 Wh per daily block",
+          "Not a per-click measurement"
+        ],
+        [
+          "Zoom as participant",
+          "One-hour participant estimate",
+          "Adds participant device energy",
+          "54/74 Wh per hour",
+          "One-hour meeting framing"
+        ],
+        [
+          "Zoom as host",
+          "Hosted meeting derivation used on the site",
+          "Adds all participant devices",
+          "192/358 Wh per meeting",
+          "One 50-minute hosted session with 10 people"
+        ]
+      ],
+      "title": "Current bridge rules used in the calculator"
+    }
+  ],
+  "title": "Cloud-side versus total-system bridge"
+}

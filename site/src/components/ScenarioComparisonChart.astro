@@ -1,0 +1,185 @@
+---
+import type { CollectionEntry } from "astro:content";
+import scenarioComparison from "../data/charts/scenario-comparison.json";
+
+interface Props {
+  chart: CollectionEntry<"charts">;
+}
+
+const { chart } = Astro.props;
+const chartId = `scenario-chart-${chart.data.slug}`;
+
+const metrics = [
+  {
+    key: "serverEnergyWh",
+    label: "Server energy",
+    unit: "Wh/day",
+    takeaway:
+      "Apples-to-apples cloud comparison: the medium AI user stays below the non-AI media day, while vibe coding and hosted Zoom dominate."
+  },
+  {
+    key: "totalEnergyWh",
+    label: "Total energy",
+    unit: "Wh/day",
+    takeaway:
+      "Once device energy is included, streaming and Zoom keep the non-AI and faculty profiles much closer to the heavy AI case."
+  },
+  {
+    key: "directWaterMl",
+    label: "Direct water",
+    unit: "mL/day",
+    takeaway:
+      "Direct water tracks server energy in the current scenario model, so the ranking remains similar to the cloud-energy view."
+  },
+  {
+    key: "totalWaterMl",
+    label: "Total water",
+    unit: "mL/day",
+    takeaway:
+      "Adding indirect water magnifies the same ordering and makes the infrastructure side of the story harder to ignore."
+  }
+] as const;
+
+type MetricKey = (typeof metrics)[number]["key"];
+
+function sortByMetric(metric: MetricKey) {
+  return [...scenarioComparison].sort((left, right) => right[metric] - left[metric]);
+}
+
+function widthPercent(value: number, metric: MetricKey) {
+  const maxValue = Math.max(...scenarioComparison.map((item) => item[metric]), 1);
+  return (value / maxValue) * 100;
+}
+---
+
+<article class="card chart-card scenario-chart" id={chartId}>
+  <div class="card__topline">
+    <p class="eyebrow">Interactive chart</p>
+    <span class="chart-pill">{chart.data.chartType}</span>
+  </div>
+
+  <h3>{chart.data.title}</h3>
+  <p>{chart.data.summary}</p>
+
+  <div class="chart-insights">
+    <div class="chart-insight">
+      <span>Default ranking</span>
+      <strong>Server + network energy</strong>
+    </div>
+    <div class="chart-insight">
+      <span>Best use</span>
+      <strong>Compare one metric at a time</strong>
+    </div>
+    <div class="chart-insight">
+      <span>Public takeaway</span>
+      <strong>Moderate AI is not the outlier</strong>
+    </div>
+  </div>
+
+  <div class="metric-toggle-group" role="tablist" aria-label="Scenario chart metrics">
+    {metrics.map((metric, index) => (
+      <button
+        type="button"
+        class:list={["metric-toggle", { "is-active": index === 0 }]}
+        role="tab"
+        aria-selected={index === 0 ? "true" : "false"}
+        aria-controls={`${chartId}-${metric.key}`}
+        data-metric-toggle={metric.key}
+      >
+        {metric.label}
+      </button>
+    ))}
+  </div>
+
+  {
+    metrics.map((metric, index) => {
+      const items = sortByMetric(metric.key);
+
+      return (
+        <section
+          class="scenario-chart__panel"
+          id={`${chartId}-${metric.key}`}
+          data-metric-panel={metric.key}
+          hidden={index === 0 ? undefined : true}
+        >
+          <p class="chart-takeaway">{metric.takeaway}</p>
+
+          <div class="bar-chart" role="img" aria-label={`${chart.data.title}. ${metric.label}. ${metric.takeaway}`}>
+            {items.map((item, itemIndex) => (
+              <div class:list={["bar-chart__row", "bar-chart__row--scenario", { "is-highlighted": itemIndex === 0 }]}>
+                <div class="bar-chart__labels">
+                  <div class="bar-chart__label-stack">
+                    <span>{item.scenario}</span>
+                    {itemIndex === 0 && <small class="bar-chart__detail">Highest in this view</small>}
+                  </div>
+                  <strong>
+                    {item[metric.key]} {metric.unit}
+                  </strong>
+                </div>
+                <div class="bar-chart__track" aria-hidden="true">
+                  <div
+                    class:list={["bar-chart__fill", "bar-chart__fill--scenario", { "is-highlighted": itemIndex === 0 }]}
+                    style={`width: ${Math.max(widthPercent(item[metric.key], metric.key), 4)}%`}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div class="table-wrap chart-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Label</th>
+                  <th>{metric.label}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {items.map((item) => (
+                  <tr>
+                    <td>{item.scenario}</td>
+                    <td>
+                      {item[metric.key]} {metric.unit}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      );
+    })
+  }
+
+  {chart.data.note && <p class="muted">{chart.data.note}</p>}
+</article>
+
+<script is:inline>
+  (() => {
+    const script = document.currentScript;
+    const root = script?.previousElementSibling;
+    if (!(root instanceof HTMLElement)) return;
+
+    const buttons = Array.from(root.querySelectorAll("[data-metric-toggle]"));
+    const panels = Array.from(root.querySelectorAll("[data-metric-panel]"));
+
+    function activate(metric) {
+      buttons.forEach((button) => {
+        const active = button.getAttribute("data-metric-toggle") === metric;
+        button.classList.toggle("is-active", active);
+        button.setAttribute("aria-selected", active ? "true" : "false");
+      });
+
+      panels.forEach((panel) => {
+        panel.hidden = panel.getAttribute("data-metric-panel") !== metric;
+      });
+    }
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const metric = button.getAttribute("data-metric-toggle");
+        if (metric) activate(metric);
+      });
+    });
+  })();
+</script>

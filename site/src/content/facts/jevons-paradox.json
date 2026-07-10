@@ -1,0 +1,17 @@
+{
+  "section": "Archived Section 4",
+  "topic": "Rebound effects",
+  "claim": "Peer-reviewed and policy sources in the webinar frame AI as a Jevons paradox problem: efficiency gains may lower per-task costs while still increasing total demand.",
+  "shortLabel": "Jevons paradox framing",
+  "value": "AI as rebound case",
+  "displayValue": "Efficiency can increase total demand",
+  "comparisonContext": "This is one reason per-prompt efficiency gains do not settle the broader debate.",
+  "status": "verified",
+  "sourceTier": "Tier 1",
+  "sourceTitle": "From Efficiency Gains to Rebound Effects",
+  "sourceOrg": "ACM FAccT / Luccioni, Strubell, Crawford",
+  "sourceUrl": "https://arxiv.org/abs/2501.16548",
+  "sourceDate": "2025-01-01",
+  "lastVerified": "2026-03-07",
+  "tags": []
+}

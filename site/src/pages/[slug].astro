@@ -1,0 +1,151 @@
+---
+import { getCollection, render } from "astro:content";
+import FactCard from "../components/FactCard.astro";
+import ResourceCard from "../components/ResourceCard.astro";
+import SimpleBarChart from "../components/SimpleBarChart.astro";
+import InventoryTool from "../components/InventoryTool.astro";
+import CalculatorSourceOfTruth from "../components/CalculatorSourceOfTruth.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCalculatorById } from "../lib/calculators";
+import { getPageSlug, isPublicPage, sortByTitle } from "../lib/content";
+
+export async function getStaticPaths() {
+  const pages = await getCollection("pages");
+
+  return pages
+    .filter(isPublicPage)
+    .map((page) => ({
+      params: { slug: getPageSlug(page) },
+      props: { page }
+    }));
+}
+
+const { page } = Astro.props;
+const { Content } = await render(page);
+const slug = getPageSlug(page);
+
+const allFacts = await getCollection("facts");
+const allCharts = await getCollection("charts");
+const allResources = await getCollection("resources");
+const allSources = sortByTitle(await getCollection("sources"));
+const digitalInventoryCalculator = await getCalculatorById("digital-inventory");
+const calculatorSourceIds = new Set(digitalInventoryCalculator?.data.sourceCatalog.map((source) => source.id) ?? []);
+const nonCalculatorSources = allSources.filter((source) => !calculatorSourceIds.has(source.id));
+
+const pageFacts = allFacts
+  .filter((fact) => fact.data.tags.includes(slug))
+  .sort((left, right) => left.id.localeCompare(right.id));
+const pageCharts = allCharts.filter((chart) => chart.data.tags.includes(slug));
+const featuredResources = [...allResources].sort(
+  (left, right) => left.data.order - right.data.order
+);
+
+---
+
+<BaseLayout
+  title={`${page.data.title} | Digital Life Calculator`}
+  description={page.data.description}
+>
+  <div class="page-stack">
+    {slug !== "about-this-site" && (
+      <section class="hero">
+        <div class="page-header">
+          <p class="section-label">{page.data.navLabel ?? page.data.title}</p>
+          <h1>{page.data.heroTitle ?? page.data.title}</h1>
+          <p>{page.data.heroSummary ?? page.data.description}</p>
+          {page.data.keyTakeaways.length > 0 && (
+            <ul class="key-takeaways">
+              {page.data.keyTakeaways.map((takeaway) => <li>{takeaway}</li>)}
+            </ul>
+          )}
+        </div>
+      </section>
+    )}
+
+    {slug === "inventory-your-day" ? (
+      <>
+        {(page.data.toolIntroTitle || page.data.toolIntroBody.length > 0) && (
+          <section class="activity-intro card activity-intro--wide">
+            {page.data.toolIntroTitle && <h2>{page.data.toolIntroTitle}</h2>}
+
+            {page.data.toolIntroBody.map((paragraph) => (
+              <p>{paragraph}</p>
+            ))}
+
+            {page.data.toolIntroPrompts.length > 0 && (
+              <div class="activity-intro__prompt-block">
+                <p class="eyebrow">{page.data.toolIntroListTitle ?? "How to use it"}</p>
+                <ul class="compact-list">
+                  {page.data.toolIntroPrompts.map((prompt) => <li>{prompt}</li>)}
+                </ul>
+              </div>
+            )}
+          </section>
+        )}
+
+        <section class="section-block">
+          <InventoryTool />
+        </section>
+      </>
+    ) : (
+      <section class="page-copy">
+        <Content />
+      </section>
+    )}
+
+    {slug === "what-a-prompt-costs" && pageFacts.length > 0 && (
+      <section class="section-block">
+        <p class="section-label">Fact cards</p>
+        <div class="card-grid">
+          {pageFacts.map((fact) => <FactCard fact={fact} />)}
+        </div>
+      </section>
+    )}
+
+    {slug === "what-a-prompt-costs" && pageCharts.length > 0 && (
+      <section class="section-block">
+        <p class="section-label">Charts</p>
+        <div class="card-grid">
+          {pageCharts.map((chart) => <SimpleBarChart chart={chart} />)}
+        </div>
+      </section>
+    )}
+
+    {slug === "resources" && (
+      <section class="section-block">
+        <p class="section-label">External resources</p>
+        <div class="card-grid">
+          {featuredResources.map((resource) => <ResourceCard resource={resource} />)}
+        </div>
+      </section>
+    )}
+
+    {slug === "sources-and-method" && (
+      <>
+        {digitalInventoryCalculator && <CalculatorSourceOfTruth calculator={digitalInventoryCalculator} />}
+
+        {nonCalculatorSources.length > 0 && (
+          <section class="section-block">
+            <p class="section-label">Broader site source registry</p>
+            <div class="card-grid">
+              {nonCalculatorSources.map((source) => (
+                <article class="card">
+                  <div class="card__topline">
+                    <p class="eyebrow">{source.data.sourceTier}</p>
+                    <span class="chart-pill">{source.data.sourceType}</span>
+                  </div>
+                  <h3>
+                    <a href={source.data.url} target="_blank" rel="noreferrer">
+                      {source.data.title}
+                    </a>
+                  </h3>
+                  <p>{source.data.organization}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+        )}
+      </>
+    )}
+  </div>
+</BaseLayout>

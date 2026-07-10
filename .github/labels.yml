@@ -1,0 +1,45 @@
+# Desired repository labels. This file is an inert, reviewable manifest; it does
+# not change GitHub settings by itself. Apply these labels deliberately before
+# enabling public issue forms, because a form cannot attach a missing label.
+- name: area:data
+  color: "1d76db"
+  description: Data records, schemas, calculations, or exports
+- name: area:methodology
+  color: "5319e7"
+  description: System boundaries, assumptions, or evidence policy
+- name: area:website
+  color: "0e8a16"
+  description: Public website behavior, design, or accessibility
+- name: area:documentation
+  color: "0075ca"
+  description: Repository or website documentation
+- name: type:correction
+  color: "d73a4a"
+  description: Corrects an existing record or claim
+- name: type:addition
+  color: "a2eeef"
+  description: Proposes a new record, source, or feature
+- name: type:bug
+  color: "b60205"
+  description: Reproducible incorrect behavior
+- name: type:proposal
+  color: "fbca04"
+  description: Proposal requiring scoping or discussion
+- name: status:needs-evidence
+  color: "f9d0c4"
+  description: Needs stronger or more precise source evidence
+- name: status:needs-review
+  color: "fef2c0"
+  description: Ready for maintainer or subject-matter review
+- name: status:blocked
+  color: "e99695"
+  description: Cannot proceed until a stated dependency is resolved
+- name: impact:breaking-data
+  color: "b60205"
+  description: Changes schema or meaning in a compatibility-breaking way
+- name: good first issue
+  color: "7057ff"
+  description: Suitable for a new contributor with limited project context
+- name: help wanted
+  color: "008672"
+  description: Maintainers welcome community implementation help

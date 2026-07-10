@@ -1,0 +1,19 @@
+{
+  "section": "Section 1",
+  "topic": "Water accounting",
+  "claim": "LBNL estimates direct U.S. data-centre water use at roughly 66 billion liters and indirect water use around 800 billion liters, a ratio of about 12 to 1.",
+  "shortLabel": "Indirect water dominates",
+  "value": "66B vs 800B",
+  "unit": "liters",
+  "displayValue": "66B direct vs ~800B indirect",
+  "comparisonContext": "This is the strongest numerical reason not to reduce the water issue to cooling alone.",
+  "status": "verified",
+  "scopeNote": "U.S. data-centre water accounting context from the LBNL report; not a global estimate.",
+  "sourceTier": "Tier 1",
+  "sourceTitle": "2024 United States Data Center Energy Usage Report",
+  "sourceOrg": "LBNL",
+  "sourceUrl": "https://eta.lbl.gov/publications/2024-lbnl-data-center-energy-usage-report",
+  "sourceDate": "2024-12-01",
+  "lastVerified": "2026-03-08",
+  "tags": ["risk", "how-data-centers-work"]
+}

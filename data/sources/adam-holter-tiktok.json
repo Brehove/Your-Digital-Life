@@ -1,0 +1,21 @@
+{
+  "authors": [
+    "Adam Holter"
+  ],
+  "id": "adam-holter-tiktok",
+  "notes": "Directional comparison used only as a low-confidence reference for TikTok total-system estimates.",
+  "order": 7,
+  "organization": "Adam Holter",
+  "publishedDate": "2025-05-01",
+  "sourceTier": "Tier 4",
+  "sourceType": "Opinion or blog analysis",
+  "tags": [
+    "scenarios",
+    "prompting"
+  ],
+  "title": "Why Your ChatGPT Prompt Uses Half the Energy of a TikTok Video",
+  "url": "https://adam.holter.com/why-your-chatgpt-prompt-uses-half-the-energy-of-a-tiktok-video/",
+  "usedFor": [
+    "TikTok total-system estimate cross-check"
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "contributors": [
+    {
+      "role": "author",
+      "title": "Joel Gladd"
+    }
+  ],
+  "custom": {
+    "licenseScope": {
+      "dataRecordsAndExports": "CC0-1.0",
+      "originalProjectProseFields": "CC-BY-4.0",
+      "thirdPartyTitlesAndBibliographicMetadata": "Not relicensed; included only as source metadata"
+    },
+    "migrationMode": "canonical",
+    "productionBaseline": {
+      "commit": "063322e93e27704b447a495a838e552067928127",
+      "fixtureRepositoryPath": "tests/fixtures/deployed-calculator-063322e.json",
+      "fixtureSha256": "5aff3d655a2b3b5aa1199f5d86477e75876bc97500552e5a84428609d3b4a5d1",
+      "productionUrl": "https://your-digital-life.org"
+    },
+    "schemaVersion": "0.1.0",
+    "siteConsumer": "generated-snapshot"
+  },
+  "description": "The canonical, machine-readable records behind the Your Digital Life calculator, with deterministic public exports and a generated website snapshot.",
+  "homepage": "https://your-digital-life.org",
+  "licenses": [
+    {
+      "name": "CC0-1.0",
+      "path": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "title": "CC0 1.0 Universal"
+    },
+    {
+      "name": "CC-BY-4.0",
+      "path": "https://creativecommons.org/licenses/by/4.0/",
+      "title": "Creative Commons Attribution 4.0 International"
+    }
+  ],
+  "name": "your-digital-life",
+  "profile": "data-package",
+  "resources": [
+    {
+      "custom": {
+        "jsonSchema": "schemas/activity.schema.json"
+      },
+      "format": "json",
+      "mediatype": "application/json",
+      "name": "activities-json",
+      "path": "activities.json"
+    },
+    {
+      "format": "csv",
+      "mediatype": "text/csv",
+      "name": "activities-csv",
+      "path": "activities.csv",
+      "schema": "schemas/activities-table.schema.json"
+    },
+    {
+      "custom": {
+        "jsonSchema": "schemas/source.schema.json"
+      },
+      "format": "json",
+      "mediatype": "application/json",
+      "name": "sources",
+      "path": "sources.json"
+    },
+    {
+      "custom": {
+        "jsonSchema": "schemas/device-profile.schema.json"
+      },
+      "format": "json",
+      "mediatype": "application/json",
+      "name": "device-profiles",
+      "path": "device-profiles.json"
+    },
+    {
+      "custom": {
+        "jsonSchema": "schemas/preset.schema.json"
+      },
+      "format": "json",
+      "mediatype": "application/json",
+      "name": "presets",
+      "path": "presets.json"
+    },
+    {
+      "custom": {
+        "jsonSchema": "schemas/method.schema.json"
+      },
+      "format": "json",
+      "mediatype": "application/json",
+      "name": "methods",
+      "path": "methods.json"
+    }
+  ],
+  "sources": [
+    {
+      "path": "https://your-digital-life.org/sources-and-method/",
+      "title": "Your Digital Life sources and methodology"
+    },
+    {
+      "path": "README.md",
+      "title": "Dataset documentation"
+    }
+  ],
+  "title": "Your Digital Life calculator data",
+  "version": "0.1.0"
+}

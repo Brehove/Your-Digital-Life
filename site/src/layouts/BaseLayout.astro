@@ -1,0 +1,109 @@
+---
+import { getNavPages, getPageSlug } from "../lib/content";
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+  pageClass?: string;
+  shellClass?: string;
+  bodyClass?: string;
+  hideFooter?: boolean;
+  hideNav?: boolean;
+  hideHeader?: boolean;
+}
+
+const {
+  title,
+  description,
+  pageClass,
+  shellClass,
+  bodyClass,
+  hideFooter = false,
+  hideNav = false,
+  hideHeader = false
+} = Astro.props;
+const navPages = await getNavPages("header");
+const footerPages = await getNavPages("footer");
+const currentPath = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description ?? "Guide to digital habits, water, energy, and infrastructure"} />
+    <title>{title}</title>
+  </head>
+  <body class={bodyClass}>
+    <div class:list={["site-shell", shellClass]}>
+      {!hideHeader && (
+        <header class="site-header">
+          <div class="site-header__inner">
+            <a class="site-brand" href="/">
+              <span class="site-brand__title">Digital Life Calculator</span>
+            </a>
+
+            {!hideNav && (
+              <nav class="site-nav" aria-label="Primary">
+                {
+                  navPages.map((page) => {
+                    const href = `/${getPageSlug(page)}/`;
+                    const active = currentPath === href;
+
+                    return (
+                      <a class:list={["site-nav__link", { "is-active": active }]} href={href}>
+                        {page.data.navLabel ?? page.data.title}
+                      </a>
+                    );
+                  })
+                }
+              </nav>
+            )}
+          </div>
+        </header>
+      )}
+
+      <main class:list={["page-frame", pageClass]}>
+        <slot />
+      </main>
+
+      {!hideFooter && (
+        <footer class="site-footer">
+          <div>
+            <p class="site-footer__title">Digital Life Calculator</p>
+            <p class="site-footer__text">
+              A focused guide to prompts, streaming, meetings, and everyday online activity through energy, water, and infrastructure.
+            </p>
+            <p class="site-footer__text site-footer__meta">
+              Original project prose is licensed under{" "}
+              <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">
+                CC BY 4.0
+              </a>;{" "}
+              project-created data is offered under{" "}
+              <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noreferrer">
+                CC0
+              </a>;{" "}
+              and website code is MIT licensed. Third-party material retains its original terms.{" "}
+              Inspiration and early blueprint:{" "}
+              <a href="https://what-uses-more.com/" target="_blank" rel="noreferrer">
+                What Uses More?
+              </a>{" "}
+              by Jon Ippolito.{" "}
+              <a href="/about-this-site/">Credits and license details</a>.
+            </p>
+          </div>
+
+          <div class="site-footer__links">
+            {
+              footerPages.map((page) => (
+                <a href={`/${getPageSlug(page)}/`}>{page.data.navLabel ?? page.data.title}</a>
+              ))
+            }
+          </div>
+        </footer>
+      )}
+    </div>
+  </body>
+</html>

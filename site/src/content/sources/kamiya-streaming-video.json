@@ -1,0 +1,11 @@
+{
+  "title": "The carbon footprint of streaming video: fact-checking the headlines",
+  "organization": "International Energy Agency",
+  "authors": ["George Kamiya"],
+  "url": "https://www.iea.org/commentaries/the-carbon-footprint-of-streaming-video-fact-checking-the-headlines",
+  "publishedDate": "2020-12-01",
+  "sourceTier": "Tier 1",
+  "sourceType": "Institutional commentary",
+  "notes": "Used for the 77 Wh total streaming baseline and the ~22 Wh server-plus-network split adopted for Netflix and YouTube comparisons.",
+  "tags": ["prompting", "scenarios"]
+}

@@ -1,0 +1,33 @@
+{
+  "category": "AI tasks",
+  "defaultDeviceId": "laptop",
+  "deviceMode": "fixed",
+  "deviceNote": "Keep this fixed to a laptop-style coding session unless stronger desktop or thin-client evidence appears.",
+  "deviceSelectableIds": [
+    "laptop"
+  ],
+  "deviceSelectionAffects": [
+    "totalWhPerUnit"
+  ],
+  "deviceTotalWhOverrides": {
+    "laptop": 355
+  },
+  "directWaterMlPerUnit": 325,
+  "id": "vibe-coding",
+  "label": "Coding-agent use",
+  "lastReviewed": "2026-03-09",
+  "note": "Uses the current one-hour coding-agent benchmark and adds a 30 Wh device allowance in the total-system column.",
+  "order": 4,
+  "serverWhPerUnit": 325,
+  "sourceIds": [
+    "simon-couch-coding-agent",
+    "scenario-methods"
+  ],
+  "status": "estimated",
+  "step": 0.25,
+  "systemBoundary": "legacy-row-specific",
+  "totalWaterMlPerUnit": 1950,
+  "totalWhPerUnit": 355,
+  "unitHint": "Hours of sustained agent use, not prompts",
+  "unitLabel": "hours"
+}

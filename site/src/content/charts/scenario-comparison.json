@@ -1,0 +1,16 @@
+{
+  "title": "Scenario Comparison",
+  "slug": "scenario-comparison",
+  "chartType": "grouped-bar",
+  "summary": "Compare the four modeled user profiles across server energy, total energy, and water totals.",
+  "dataFile": "src/data/charts/scenario-comparison.json",
+  "xField": "scenario",
+  "yField": "serverEnergyWh",
+  "seriesField": "metric",
+  "unit": "Wh / mL",
+  "sourceIds": ["scenario-methods"],
+  "note": "The public page should default to server energy and let visitors toggle to total energy or water.",
+  "lastReviewed": "2026-03-07",
+  "tags": ["compare-daily-use"]
+}
+

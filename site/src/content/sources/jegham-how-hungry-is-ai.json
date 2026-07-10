@@ -1,0 +1,12 @@
+{
+  "title": "How Hungry is AI? Benchmarking Energy, Water, and Carbon Footprint of LLM Inference",
+  "organization": "arXiv / ACM FAccT context",
+  "authors": ["Nidhal Jegham", "Marwen Abdelatti", "Lassad Elmoubarki", "Abdeltawab Hendawi"],
+  "url": "https://arxiv.org/pdf/2505.09598",
+  "publishedDate": "2025-05-01",
+  "sourceTier": "Tier 1",
+  "sourceType": "Peer-reviewed or preprint benchmark",
+  "notes": "Primary inference benchmark for reasoning-heavy prompt classes and environmental multipliers.",
+  "tags": ["prompting"]
+}
+

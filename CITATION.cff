@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: >-
+  If you use the Your Digital Life data, please cite it using this metadata and
+  preserve the record-level source citations for values you reuse. Project-created
+  structured data and schemas are CC0; original prose fields are CC BY 4.0;
+  third-party titles and bibliographic metadata are not relicensed.
+title: Your Digital Life data
+type: dataset
+version: 0.1.0
+date-released: "2026-07-10"
+authors:
+  - family-names: Gladd
+    given-names: Joel
+repository-code: https://github.com/Brehove/Your-Digital-Life
+url: https://your-digital-life.org/
+license: CC0-1.0
+abstract: >-
+  An evidence-traceable dataset for comparing the energy and water implications
+  of common digital activities, with explicit units, system boundaries, source
+  metadata, calculation methods, and verification status. The dataset license
+  field applies to project-created structured data and schemas. Original project
+  prose fields are CC BY 4.0, and third-party metadata retains its original terms.
+keywords:
+  - digital activity
+  - energy
+  - water
+  - data centers
+  - artificial intelligence
+  - environmental impact

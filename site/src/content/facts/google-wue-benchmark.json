@@ -1,0 +1,19 @@
+{
+  "section": "Section 1",
+  "topic": "WUE benchmark",
+  "claim": "Google's reported fleet-wide WUE Category 2 value is 1.15 L/kWh for both 2023 and 2024; the often-cited 0.18 L/kWh figure should not be used as the fleet benchmark.",
+  "shortLabel": "Google's actual WUE is 1.15 L/kWh",
+  "value": 1.15,
+  "unit": "L/kWh",
+  "displayValue": "1.15 L/kWh",
+  "comparisonContext": "The corrected point here is not that Google is 10x better than average. It is that WUE definitions vary and a commonly repeated low figure should not be used.",
+  "status": "verified",
+  "scopeNote": "Google's figure is WUE Category 2 consumptive use and is not directly comparable to LBNL's site-WUE numbers.",
+  "sourceTier": "Tier 2",
+  "sourceTitle": "Measuring the environmental impact of delivering AI at Google Scale",
+  "sourceOrg": "Ian Schneider et al.",
+  "sourceUrl": "https://arxiv.org/html/2508.15734v1",
+  "sourceDate": "2025-08-01",
+  "lastVerified": "2026-03-07",
+  "tags": ["how-data-centers-work"]
+}

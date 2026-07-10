@@ -1,0 +1,12 @@
+{
+  "title": "Video Killed the Energy Budget: Characterizing the Latency and Power Regimes of Open Text-to-Video Models",
+  "organization": "arXiv",
+  "authors": [],
+  "url": "https://arxiv.org/html/2509.19222v1",
+  "publishedDate": "2025-09-01",
+  "sourceTier": "Tier 1",
+  "sourceType": "Research paper",
+  "notes": "Use for the directional claim that video generation is substantially more energy-intensive than text generation.",
+  "tags": ["prompting"]
+}
+

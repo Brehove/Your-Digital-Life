@@ -1,0 +1,18 @@
+{
+  "section": "Section 2",
+  "topic": "Emerging high-cost use",
+  "claim": "Coding agents are best treated as a distinct high-cost AI category because they chain many API calls, tool operations, and iterations instead of one isolated prompt.",
+  "shortLabel": "Coding agents are a separate cost class",
+  "value": "Agentic workflows",
+  "displayValue": "Coding agents cost far more than single prompts",
+  "comparisonContext": "This is the conceptual bridge between the prompt-comparison page and the heavy-use scenario page.",
+  "status": "verified",
+  "scopeNote": "This is a use-pattern claim backed by expert analysis rather than one universal benchmark number.",
+  "sourceTier": "Tier 3",
+  "sourceTitle": "Electricity Use of AI Coding Agents",
+  "sourceOrg": "Simon Willison / Simon P. Couch",
+  "sourceUrl": "https://simonwillison.net/2026/Jan/20/electricity-use-of-ai-coding-agents/",
+  "sourceDate": "2026-01-20",
+  "lastVerified": "2026-03-07",
+  "tags": ["what-a-prompt-costs", "start-here", "compare-daily-use"]
+}

@@ -1,0 +1,19 @@
+{
+  "section": "Archived Section 4",
+  "topic": "Economic scale",
+  "claim": "Data centre investment accounted for 92% of U.S. GDP growth in the first half of 2025 in the Furman analysis cited in the webinar materials.",
+  "shortLabel": "GDP growth concentration",
+  "value": 92,
+  "unit": "%",
+  "displayValue": "92% of H1 2025 GDP growth",
+  "comparisonContext": "That is the macroeconomic backdrop for why data-centre growth matters beyond individual behavior.",
+  "status": "verified",
+  "scopeNote": "Data-centre-related information-processing investment, not AI-only output.",
+  "sourceTier": "Tier 1",
+  "sourceTitle": "Fortune coverage of Jason Furman analysis",
+  "sourceOrg": "Fortune / Jason Furman",
+  "sourceUrl": "https://fortune.com/2025/10/07/data-centers-gdp-growth-zero-first-half-2025-jason-furman-harvard-economist/",
+  "sourceDate": "2025-10-07",
+  "lastVerified": "2026-03-07",
+  "tags": []
+}

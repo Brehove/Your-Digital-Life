@@ -1,0 +1,18 @@
+{
+  "section": "Section 1",
+  "topic": "Efficiency vs. growth",
+  "claim": "Google reports a 33x reduction in median Gemini prompt energy while its environmental report says data-centre electricity consumption rose 27% year over year, a concrete example of the rebound problem.",
+  "shortLabel": "Efficiency gains do not settle demand growth",
+  "value": "33x and 27%",
+  "displayValue": "33x per-prompt drop, 27% total growth",
+  "comparisonContext": "This is one of the clearest concrete examples of why rebound effects remain central to the debate.",
+  "status": "verified",
+  "scopeNote": "The 33x figure and the 27% figure come from different Google sources and should stay explicitly separated.",
+  "sourceTier": "Tier 2",
+  "sourceTitle": "Google research and Google environmental report",
+  "sourceOrg": "Google",
+  "sourceUrl": "https://www.gstatic.com/gumdrop/sustainability/google-2025-environmental-report.pdf",
+  "sourceDate": "2025-07-01",
+  "lastVerified": "2026-03-08",
+  "tags": ["risk"]
+}

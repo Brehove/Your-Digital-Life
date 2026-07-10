@@ -1,0 +1,19 @@
+{
+  "section": "Archived Section 4",
+  "topic": "Rate impacts",
+  "claim": "Monitoring Analytics identifies a near-term cumulative figure of $23.10 billion added to other PJM customers across the last three base residual auctions.",
+  "shortLabel": "Cumulative PJM cost pressure",
+  "value": 23.1,
+  "unit": "billion USD",
+  "displayValue": "$23.10B across the last three BRAs",
+  "comparisonContext": "This is the better number to foreground when talking about near-term redistribution effects in PJM.",
+  "status": "verified",
+  "scopeNote": "Cumulative Monitoring Analytics figure for recent PJM auctions, not a national consumer total.",
+  "sourceTier": "Tier 1",
+  "sourceTitle": "Analysis of the 2027/2028 RPM Base Residual Auction: Part A",
+  "sourceOrg": "Monitoring Analytics",
+  "sourceUrl": "https://www.monitoringanalytics.com/reports/Reports/2026/IMM_Analysis_of_the_20272028_RPM_Base_Residual_Auction_Part_A_20260105.pdf",
+  "sourceDate": "2026-01-05",
+  "lastVerified": "2026-03-07",
+  "tags": []
+}

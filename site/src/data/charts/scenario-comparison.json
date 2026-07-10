@@ -1,0 +1,30 @@
+[
+  {
+    "scenario": "Gen Z Non-AI User",
+    "serverEnergyWh": 132,
+    "totalEnergyWh": 369,
+    "directWaterMl": 132,
+    "totalWaterMl": 792
+  },
+  {
+    "scenario": "Gen Z Medium AI User",
+    "serverEnergyWh": 119,
+    "totalEnergyWh": 291,
+    "directWaterMl": 119,
+    "totalWaterMl": 714
+  },
+  {
+    "scenario": "Gen Z Heavy AI User (Vibe Coder)",
+    "serverEnergyWh": 402,
+    "totalEnergyWh": 508,
+    "directWaterMl": 402,
+    "totalWaterMl": 2412
+  },
+  {
+    "scenario": "Faculty Member (No AI, Hosts 1 Zoom Meeting)",
+    "serverEnergyWh": 223,
+    "totalEnergyWh": 490,
+    "directWaterMl": 223,
+    "totalWaterMl": 1338
+  }
+]

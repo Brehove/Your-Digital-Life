@@ -1,0 +1,32 @@
+{
+  "category": "Media and search",
+  "defaultDeviceId": "laptop",
+  "deviceMode": "fixed",
+  "deviceNote": "Keep this mixed-work row fixed to a laptop-style bundle until it is split into narrower activity rows.",
+  "deviceSelectableIds": [
+    "laptop"
+  ],
+  "deviceSelectionAffects": [
+    "totalWhPerUnit"
+  ],
+  "deviceTotalWhOverrides": {
+    "laptop": 30
+  },
+  "directWaterMlPerUnit": 4,
+  "id": "cloud-docs-browsing",
+  "label": "Email, cloud docs, and browsing",
+  "lastReviewed": "2026-03-09",
+  "note": "This is a teaching bundle for light browsing, email, and cloud documents rather than a per-click benchmark.",
+  "order": 10,
+  "serverWhPerUnit": 4,
+  "sourceIds": [
+    "scenario-methods"
+  ],
+  "status": "estimated",
+  "step": 1,
+  "systemBoundary": "legacy-row-specific",
+  "totalWaterMlPerUnit": 24,
+  "totalWhPerUnit": 30,
+  "unitHint": "A light mixed-work block",
+  "unitLabel": "daily blocks"
+}

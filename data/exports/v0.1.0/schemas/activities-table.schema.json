@@ -1,0 +1,16 @@
+{
+  "fields": [
+    { "name": "id", "type": "string", "constraints": { "required": true, "unique": true } },
+    { "name": "activity", "type": "string", "constraints": { "required": true } },
+    { "name": "unit", "type": "string", "constraints": { "required": true } },
+    { "name": "server_network_energy_wh", "type": "number", "constraints": { "required": true } },
+    { "name": "total_system_energy_wh", "type": "number", "constraints": { "required": true } },
+    { "name": "direct_water_ml", "type": "number", "constraints": { "required": true } },
+    { "name": "total_water_ml", "type": "number", "constraints": { "required": true } },
+    { "name": "status", "type": "string", "constraints": { "required": true } },
+    { "name": "system_boundary", "type": "string", "constraints": { "required": true } },
+    { "name": "source_ids", "type": "string", "constraints": { "required": true } },
+    { "name": "last_reviewed", "type": "date", "constraints": { "required": true } }
+  ],
+  "primaryKey": "id"
+}

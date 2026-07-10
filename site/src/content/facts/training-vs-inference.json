@@ -1,0 +1,20 @@
+{
+  "section": "Section 2",
+  "topic": "Lifecycle framing",
+  "claim": "Jegham et al. note that inference can account for up to 90% of a model's total lifecycle energy use in aggregate.",
+  "shortLabel": "Inference can dominate lifecycle energy",
+  "value": 90,
+  "unit": "%",
+  "displayValue": "Up to 90% from inference",
+  "comparisonContext": "This is why everyday classroom use is better explained through inference than through one-time training headlines.",
+  "status": "verified",
+  "scopeNote": "Applies to deployed-model lifecycle framing, not every model or deployment pattern.",
+  "sourceTier": "Tier 1",
+  "sourceTitle": "How Hungry is AI?",
+  "sourceOrg": "Jegham et al.",
+  "sourceUrl": "https://arxiv.org/pdf/2505.09598",
+  "sourceDate": "2025-05-01",
+  "lastVerified": "2026-03-07",
+  "tags": ["start-here", "what-a-prompt-costs"]
+}
+

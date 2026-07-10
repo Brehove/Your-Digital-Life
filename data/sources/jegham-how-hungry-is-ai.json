@@ -1,0 +1,25 @@
+{
+  "authors": [
+    "Nidhal Jegham",
+    "Marwen Abdelatti",
+    "Lassad Elmoubarki",
+    "Abdeltawab Hendawi"
+  ],
+  "id": "jegham-how-hungry-is-ai",
+  "notes": "Primary inference benchmark for reasoning-heavy prompt classes and environmental multipliers.",
+  "order": 2,
+  "organization": "arXiv / ACM FAccT context",
+  "publishedDate": "2025-05-01",
+  "sourceTier": "Tier 1",
+  "sourceType": "Peer-reviewed or preprint benchmark",
+  "tags": [
+    "prompting"
+  ],
+  "title": "How Hungry is AI? Benchmarking Energy, Water, and Carbon Footprint of LLM Inference",
+  "url": "https://arxiv.org/pdf/2505.09598",
+  "usedFor": [
+    "33.8 Wh high-reasoning prompt row",
+    "direct and total water framing for prompt-heavy rows",
+    "maintenance note preserving the long high-reasoning benchmark"
+  ]
+}

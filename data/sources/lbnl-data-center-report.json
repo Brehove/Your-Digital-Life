@@ -1,0 +1,19 @@
+{
+  "authors": [],
+  "id": "lbnl-data-center-report",
+  "notes": "Primary U.S. demand and water-intensity context for the macro-risk pages.",
+  "order": 12,
+  "organization": "Lawrence Berkeley National Laboratory",
+  "publishedDate": "2024-12-01",
+  "sourceTier": "Tier 1",
+  "sourceType": "National laboratory report",
+  "tags": [
+    "data-centers",
+    "debates"
+  ],
+  "title": "2024 United States Data Center Energy Usage Report",
+  "url": "https://eta.lbl.gov/publications/2024-lbnl-data-center-energy-usage-report",
+  "usedFor": [
+    "water methodology context on electricity-side water intensity"
+  ]
+}
