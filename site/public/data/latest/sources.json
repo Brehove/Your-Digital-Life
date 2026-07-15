@@ -73,7 +73,7 @@
       "Adrien Buffard"
     ],
     "id": "ifri-ai-dc-energy",
-    "notes": "Useful for prompt comparison tables and the Jevons framing, but should be paired with Tier 1 sources where possible.",
+    "notes": "Historical comparator for the pre-v0.2 image coefficient and useful for broader Jevons framing; it is not the source of the current image value and should be paired with Tier 1 sources.",
     "order": 4,
     "organization": "IFRI",
     "publishedDate": "2025-02-01",
@@ -86,7 +86,7 @@
     "title": "AI, Data Centers and Energy Demand: Reassessing and Exploring the Trends",
     "url": "https://www.ifri.org/sites/default/files/2025-02/ifri_buffard-rochegonde_ai_data_centers_energy_2025_2.pdf",
     "usedFor": [
-      "image-generation benchmark row",
+      "historical comparison for the pre-v0.2 image-generation row",
       "comparison logic in the cloud-side versus total-system bridge"
     ]
   },
@@ -262,6 +262,119 @@
     "url": "https://eta.lbl.gov/publications/2024-lbnl-data-center-energy-usage-report",
     "usedFor": [
       "water methodology context on electricity-side water intensity"
+    ]
+  },
+  {
+    "authors": [
+      "Jon Ippolito"
+    ],
+    "id": "ippolito-what-uses-more",
+    "notes": "External comparison and provenance source. Ippolito's spreadsheet prompted the image and water review, but underlying studies remain the evidentiary authority for adopted values.",
+    "order": 13,
+    "organization": "Learn with AI",
+    "publishedDate": "2025-06-25",
+    "sourceTier": "Tier 3",
+    "sourceType": "Secondary calculator synthesis",
+    "tags": [
+      "comparators",
+      "prompting",
+      "water"
+    ],
+    "title": "What Uses More? AI Impact Calculator: sources",
+    "url": "https://docs.google.com/spreadsheets/d/1xgvGhd6rmnBAEk9t2lesKlJeUy4TRQHrW6uWDSEVDFY/edit?gid=0#gid=0",
+    "usedFor": [
+      "provenance for the image-generation evidence review",
+      "external comparison for the generic water-conversion method"
+    ]
+  },
+  {
+    "authors": [
+      "Laura Cozzi",
+      "Thomas Spencer",
+      "Siddharth Singh"
+    ],
+    "id": "iea-energy-and-ai",
+    "notes": "Primary institutional source for the adopted 1.7 Wh image-generation benchmark; the reported boundary is controlled H100 testing and GPU electricity only. Also used for global electricity-demand context.",
+    "order": 14,
+    "organization": "International Energy Agency",
+    "publishedDate": "2025-04-10",
+    "sourceTier": "Tier 1",
+    "sourceType": "International agency report",
+    "tags": [
+      "data-centers",
+      "image-generation",
+      "prompting"
+    ],
+    "title": "Energy and AI",
+    "url": "https://www.iea.org/reports/energy-and-ai",
+    "usedFor": [
+      "global electricity-demand and infrastructure context",
+      "1.7 Wh per image benchmark for SD-XL 1.0-base under controlled H100 test conditions"
+    ]
+  },
+  {
+    "authors": [
+      "Jae-Won Chung",
+      "Mosharaf Chowdhury"
+    ],
+    "id": "ml-energy-leaderboard",
+    "notes": "Academic benchmark used as comparative evidence for how model, steps, hardware, batching, and resolution change image-generation energy. Current leaderboard results must not be substituted silently for historical configurations cited by other calculators.",
+    "order": 15,
+    "organization": "ML.ENERGY",
+    "publishedDate": "2026-05-06",
+    "sourceTier": "Tier 1",
+    "sourceType": "Academic benchmark and dataset",
+    "tags": [
+      "image-generation",
+      "measurement"
+    ],
+    "title": "The ML.ENERGY Leaderboard v3.0",
+    "url": "https://ml.energy/leaderboard/",
+    "usedFor": [
+      "comparative image-generation evidence and configuration sensitivity"
+    ]
+  },
+  {
+    "authors": [
+      "James O'Donnell",
+      "Casey Crownhart"
+    ],
+    "id": "odonnell-ai-energy-footprint",
+    "notes": "Secondary technical analysis used as a comparison point, including an image-generation estimate derived from measured joules. It does not replace a pinned primary benchmark.",
+    "order": 16,
+    "organization": "MIT Technology Review",
+    "publishedDate": "2025-05-20",
+    "sourceTier": "Tier 2",
+    "sourceType": "Technical journalism and analysis",
+    "tags": [
+      "image-generation",
+      "prompting"
+    ],
+    "title": "We did the math on AI's energy footprint. Here's the story you haven't heard",
+    "url": "https://www.technologyreview.com/2025/05/20/1116327/ai-energy-usage-climate-footprint-big-tech/",
+    "usedFor": [
+      "comparative image-generation estimate in the Ippolito crosswalk"
+    ]
+  },
+  {
+    "authors": [
+      "Mistral AI"
+    ],
+    "id": "mistral-environmental-standard",
+    "notes": "Provider environmental assessment reporting 45 mL water and 1.14 gCO2e for a 400-token Le Chat response. It is useful for bounding water estimates but does not directly report mL per Wh.",
+    "order": 17,
+    "organization": "Mistral AI",
+    "publishedDate": "2025-07-22",
+    "sourceTier": "Tier 2",
+    "sourceType": "Industry environmental assessment",
+    "tags": [
+      "prompting",
+      "water"
+    ],
+    "title": "Our contribution to a global environmental standard for AI",
+    "url": "https://mistral.ai/news/our-contribution-to-a-global-environmental-standard-for-ai",
+    "usedFor": [
+      "upper-bound context in the generic water-conversion review"
     ]
   }
 ]

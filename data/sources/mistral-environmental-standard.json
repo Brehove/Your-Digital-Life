@@ -1,0 +1,21 @@
+{
+  "authors": [
+    "Mistral AI"
+  ],
+  "id": "mistral-environmental-standard",
+  "notes": "Provider environmental assessment reporting 45 mL water and 1.14 gCO2e for a 400-token Le Chat response. It is useful for bounding water estimates but does not directly report mL per Wh.",
+  "order": 17,
+  "organization": "Mistral AI",
+  "publishedDate": "2025-07-22",
+  "sourceTier": "Tier 2",
+  "sourceType": "Industry environmental assessment",
+  "tags": [
+    "prompting",
+    "water"
+  ],
+  "title": "Our contribution to a global environmental standard for AI",
+  "url": "https://mistral.ai/news/our-contribution-to-a-global-environmental-standard-for-ai",
+  "usedFor": [
+    "upper-bound context in the generic water-conversion review"
+  ]
+}

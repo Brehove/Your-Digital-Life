@@ -4,7 +4,7 @@ slug: contribute
 navLabel: Contribute
 description: Propose data corrections, new sources, methodology changes, or website improvements through the public GitHub workflow.
 order: 7
-lastReviewed: "2026-07-10"
+lastReviewed: "2026-07-14"
 heroSummary: Contributions are reviewed in public so the evidence, calculations, scope, and licensing can be checked before the site changes.
 keyTakeaways:
   - Use an Issue for a correction, addition, bug, or documentation problem.
@@ -14,7 +14,9 @@ keyTakeaways:
 
 ## Choose a contribution path
 
-- [Open a GitHub Issue](https://github.com/Brehove/Your-Digital-Life/issues) for a questionable value, missing activity or source, website defect, or documentation problem.
+- [Propose a data correction](https://github.com/Brehove/Your-Digital-Life/issues/new?template=data-correction.yml) for a questionable value, calculation, source, or boundary.
+- [Propose a new activity or source](https://github.com/Brehove/Your-Digital-Life/issues/new?template=new-data-or-source.yml) when the record does not yet exist.
+- [Open a general GitHub Issue](https://github.com/Brehove/Your-Digital-Life/issues) for a website defect or documentation problem.
 - [Start a GitHub Discussion](https://github.com/Brehove/Your-Digital-Life/discussions) for an open-ended methodology question or proposal.
 - Read [CONTRIBUTING.md](https://github.com/Brehove/Your-Digital-Life/blob/main/CONTRIBUTING.md) before preparing a pull request.
 

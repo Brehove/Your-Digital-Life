@@ -97,6 +97,8 @@ const calculators = defineCollection({
         step: z.number(),
         serverWhPerUnit: z.number(),
         totalWhPerUnit: z.number(),
+        serverEnergyBoundary: z.string().optional(),
+        totalEnergyBoundary: z.string().optional(),
         directWaterMlPerUnit: z.number(),
         totalWaterMlPerUnit: z.number(),
         status: statusSchema,

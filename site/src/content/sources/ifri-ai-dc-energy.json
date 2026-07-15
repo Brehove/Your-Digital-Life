@@ -6,7 +6,6 @@
   "publishedDate": "2025-02-01",
   "sourceTier": "Tier 2",
   "sourceType": "Policy report",
-  "notes": "Useful for prompt comparison tables and the Jevons framing, but should be paired with Tier 1 sources where possible.",
+  "notes": "Historical comparator for the pre-v0.2 image coefficient and useful for broader Jevons framing; it is not the source of the current image value and should be paired with Tier 1 sources.",
   "tags": ["prompting", "debates"]
 }
-

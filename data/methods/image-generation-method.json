@@ -1,0 +1,63 @@
+{
+  "id": "image-generation-method",
+  "notes": [
+    "Jon Ippolito's What Uses More? spreadsheet prompted this review by selecting 2 Wh for a 1024x1024 image and exposing several candidate estimates.",
+    "The calculator does not treat Ippolito's 2 Wh synthesis as a primary measurement. It adopts the underlying IEA report's 1.7 Wh benchmark because the report identifies the model, H100 test hardware, controlled experimental context, and GPU-only boundary.",
+    "The IEA report does not establish a full production-serving or total-system value. The calculator keeps server and total energy equal for this row and labels the result inferred.",
+    "The image water figures are internal 1 mL/Wh direct and 6 mL/Wh broader conversions. None of the image-energy sources measures image-specific water use."
+  ],
+  "order": 7,
+  "sourceIds": [
+    "iea-energy-and-ai",
+    "ippolito-what-uses-more",
+    "ml-energy-leaderboard",
+    "odonnell-ai-energy-footprint",
+    "ifri-ai-dc-energy",
+    "scenario-methods"
+  ],
+  "summary": "The image row now uses a pinned 1.7 Wh IEA benchmark discovered through comparison with Jon Ippolito's What Uses More? source sheet, while keeping Ippolito's 2 Wh figure and other published estimates visible as comparison evidence.",
+  "tables": [
+    {
+      "columns": [
+        "Evidence",
+        "Figure",
+        "Workload and boundary",
+        "Decision role"
+      ],
+      "rows": [
+        [
+          "International Energy Agency, Energy and AI, Figure 1.16 and accompanying text",
+          "1.7 Wh per image",
+          "SD-XL 1.0-base on H100 GPUs; controlled experimental conditions; GPU electricity only",
+          "Adopted v0.2.0 energy coefficient"
+        ],
+        [
+          "Jon Ippolito, What Uses More? source sheet",
+          "2 Wh per 1024x1024 image",
+          "Secondary synthesis of multiple image estimates",
+          "Prompted the review and remains an explicit comparator; not treated as direct measurement"
+        ],
+        [
+          "O'Donnell and Crownhart",
+          "1.2 Wh from 4,400 J",
+          "Stable Diffusion 3 with 50 denoising steps as summarized in Ippolito's sheet",
+          "Supporting comparison"
+        ],
+        [
+          "ML.ENERGY historical result summarized by Ippolito",
+          "0.42 Wh from 1,500 J",
+          "Stable Diffusion 3 with 15 denoising steps; historical configuration must remain pinned",
+          "Lower comparison point; current leaderboard is versioned separately"
+        ],
+        [
+          "Prior Your Digital Life coefficient",
+          "0.48 Wh per image",
+          "Exact model, hardware, dimensions, and derivation were not recoverable from the included Ifri source",
+          "Replaced in v0.2.0"
+        ]
+      ],
+      "title": "Image-generation evidence decision"
+    }
+  ],
+  "title": "Image-generation evidence and Ippolito crosswalk"
+}

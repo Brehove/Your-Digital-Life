@@ -14,8 +14,10 @@ import {
 } from "./lib/data.mjs";
 import {
   ACTIVITY_REVIEW_SCHEMA_PATH,
+  EXTERNAL_COMPARISON_SCHEMA_PATH,
   REVIEW_SCHEMA_PATH,
   loadActivityEvidence,
+  loadExternalComparisons,
   loadSourceEvidence
 } from "./lib/review-guide.mjs";
 
@@ -102,6 +104,91 @@ const validateActivityEvidence = ajv.compile(readJson(ACTIVITY_REVIEW_SCHEMA_PAT
 if (!validateActivityEvidence(activityEvidence)) {
   const details = ajv.errorsText(validateActivityEvidence.errors, { separator: "; " });
   fail(`review/activity-evidence.json failed activity-evidence.schema.json: ${details}`);
+}
+
+const externalComparisons = loadExternalComparisons();
+const validateExternalComparisons = ajv.compile(readJson(EXTERNAL_COMPARISON_SCHEMA_PATH));
+if (!validateExternalComparisons(externalComparisons)) {
+  const details = ajv.errorsText(validateExternalComparisons.errors, { separator: "; " });
+  fail(`review/external-comparisons.json failed external-comparisons.schema.json: ${details}`);
+}
+if (externalComparisons.datasetVersion !== canonical.manifest.datasetVersion) {
+  fail(
+    `external comparison datasetVersion ${externalComparisons.datasetVersion} differs from manifest ${canonical.manifest.datasetVersion}`
+  );
+}
+if (externalComparisons.reviewedOn !== sourceEvidence.reviewedOn) {
+  fail(
+    `external comparison review date ${externalComparisons.reviewedOn} differs from source review date ${sourceEvidence.reviewedOn}`
+  );
+}
+const comparatorIds = new Set();
+for (const comparator of externalComparisons.comparators) {
+  if (comparatorIds.has(comparator.id)) fail(`Duplicate external comparator ID: ${comparator.id}`);
+  comparatorIds.add(comparator.id);
+  if (!sourceIds.has(comparator.sourceId)) {
+    fail(`External comparator ${comparator.id} references unknown source ${comparator.sourceId}`);
+  }
+}
+const comparisonIds = new Set();
+const methodIds = new Set(canonical.methodSections.map(({ record }) => record.id));
+for (const comparison of externalComparisons.records) {
+  if (comparisonIds.has(comparison.id)) fail(`Duplicate external comparison ID: ${comparison.id}`);
+  comparisonIds.add(comparison.id);
+  if (!comparatorIds.has(comparison.comparatorId)) {
+    fail(`External comparison ${comparison.id} references unknown comparator ${comparison.comparatorId}`);
+  }
+  if (comparison.targetType === "activity" && !activityMap.has(comparison.targetId)) {
+    fail(`External comparison ${comparison.id} references unknown activity ${comparison.targetId}`);
+  }
+  if (comparison.targetType === "activity" && comparison.targetField) {
+    const targetValue = activityMap.get(comparison.targetId)?.[comparison.targetField];
+    const recordedValue = Number(comparison.projectClaimAfter.displayValue);
+    if (!Number.isFinite(recordedValue) || targetValue !== recordedValue) {
+      fail(
+        `External comparison ${comparison.id} projectClaimAfter ${comparison.projectClaimAfter.displayValue} does not match ${comparison.targetId}.${comparison.targetField} ${targetValue}`
+      );
+    }
+  }
+  if (comparison.targetType === "method" && !methodIds.has(comparison.targetId)) {
+    fail(`External comparison ${comparison.id} references unknown method ${comparison.targetId}`);
+  }
+  for (const sourceId of comparison.evidenceSourceIds) {
+    if (!sourceIds.has(sourceId)) {
+      fail(`External comparison ${comparison.id} references unknown source ${sourceId}`);
+    }
+  }
+}
+
+const releasePath = path.join(DATA_DIR, "releases", `v${version}.json`);
+if (!fs.existsSync(releasePath)) {
+  fail(`Missing release decision data/releases/v${version}.json`);
+} else {
+  const releaseSchema = readJson(path.join(DATA_DIR, "schemas/release.schema.json"));
+  const validateRelease = ajv.compile(releaseSchema);
+  const release = readJson(releasePath);
+  if (!validateRelease(release)) {
+    const details = ajv.errorsText(validateRelease.errors, { separator: "; " });
+    fail(`releases/v${version}.json failed release.schema.json: ${details}`);
+  }
+  if (release.version !== version) fail(`Release decision ${release.version} differs from ${version}`);
+  if (release.schemaVersion !== canonical.manifest.schemaVersion) {
+    fail(`Release schemaVersion ${release.schemaVersion} differs from manifest ${canonical.manifest.schemaVersion}`);
+  }
+  const previousManifestPath = path.join(
+    DATA_DIR,
+    "exports",
+    `v${release.previousVersion}`,
+    "manifest.json"
+  );
+  if (fs.existsSync(previousManifestPath)) {
+    const previousManifest = readJson(previousManifestPath);
+    if (release.previousSchemaVersion !== previousManifest.schemaVersion) {
+      fail(
+        `Release previousSchemaVersion ${release.previousSchemaVersion} differs from v${release.previousVersion} manifest ${previousManifest.schemaVersion}`
+      );
+    }
+  }
 }
 if (activityEvidence.datasetVersion !== canonical.manifest.datasetVersion) {
   fail(

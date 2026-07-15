@@ -2,13 +2,16 @@
   "id": "boundary-rules",
   "notes": [
     "The cloud-side column usually combines server and network demand where the underlying source does not isolate pure data-center energy.",
-    "AI text, reasoning, and image rows currently keep server and total-system energy equal because the live calculator does not model a separate end-user device add-on for those actions.",
+    "AI text and reasoning rows currently keep cloud-side and broader-system energy equal because the live calculator does not model a separate end-user device add-on for those actions.",
+    "The image row is narrower: its 1.7 Wh source covers GPU electricity only. That value is carried through both energy columns as a conservative floor and must not be described as measured server-plus-network or total-system energy.",
     "Media and Zoom rows use a larger bridge from cloud-side to total-system values, which is why those rows show a bigger gap between columns."
   ],
   "order": 1,
   "sourceIds": [
     "epoch-chatgpt-energy",
     "jegham-how-hungry-is-ai",
+    "iea-energy-and-ai",
+    "ippolito-what-uses-more",
     "ifri-ai-dc-energy",
     "kamiya-streaming-video",
     "greenspector-social-media-2021",
@@ -29,11 +32,18 @@
       ],
       "rows": [
         [
-          "AI text / reasoning / image prompts",
+          "AI text / reasoning prompts",
           "Inference benchmarks used for everyday prompting",
           "Kept equal to cloud-side in the live calculator",
-          "0.3/0.3, 33.8/33.8, 0.48/0.48",
+          "0.3/0.3 and 33.8/33.8",
           "No separate end-user device model is currently applied"
+        ],
+        [
+          "AI image generation",
+          "1.7 Wh GPU-only IEA benchmark",
+          "No boundary-matched broader-system benchmark; GPU-only value carried through as a conservative floor",
+          "1.7/1.7 Wh per image",
+          "Do not label either stored value as a measured server-plus-network or total-system result"
         ],
         [
           "Coding-agent use",

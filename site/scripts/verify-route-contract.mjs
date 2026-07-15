@@ -4,6 +4,9 @@ import { relative, resolve, sep } from "node:path";
 import process from "node:process";
 
 const distDirectory = resolve(process.cwd(), "dist");
+const currentVersion = (
+  await readFile(resolve(distDirectory, "data/latest/VERSION"), "utf8")
+).trim();
 
 const expectedPages = new Set([
   "index.html",
@@ -13,6 +16,7 @@ const expectedPages = new Set([
   "inventory-your-day/index.html",
   "resources/index.html",
   "sources-and-method/index.html",
+  "updates/index.html",
   "what-a-prompt-costs/index.html",
 ]);
 
@@ -20,31 +24,40 @@ const intentional404Pages = [
   "compare-daily-use/index.html",
   "how-data-centers-work/index.html",
   "start-here/index.html",
-  "updates/index.html",
 ];
 
 const expectedDownloads = [
   "data/SHA256SUMS",
   "data/your-digital-life-data-v0.1.0.zip",
+  `data/your-digital-life-data-v${currentVersion}.zip`,
   "data/latest/activities.json",
   "data/latest/activities.csv",
   "data/latest/sources.json",
   "data/latest/device-profiles.json",
   "data/latest/presets.json",
   "data/latest/methods.json",
+  "data/latest/release.json",
+  "data/latest/external-comparisons.json",
   "data/latest/manifest.json",
   "data/latest/datapackage.json",
   "data/latest/SHA256SUMS",
   "data/latest/schemas/activity.schema.json",
   "data/latest/schemas/activities-table.schema.json",
+  "data/latest/schemas/external-comparisons.schema.json",
   "data/v0.1.0/manifest.json",
   "data/v0.1.0/datapackage.json",
   "data/v0.1.0/SHA256SUMS",
+  `data/v${currentVersion}/manifest.json`,
+  `data/v${currentVersion}/release.json`,
+  `data/v${currentVersion}/external-comparisons.json`,
+  `data/v${currentVersion}/SHA256SUMS`,
   "schemas/activity.schema.json",
   "schemas/device-profile.schema.json",
   "schemas/method.schema.json",
   "schemas/preset.schema.json",
   "schemas/source.schema.json",
+  "schemas/release.schema.json",
+  "schemas/external-comparisons.schema.json",
 ];
 
 async function collectIndexFiles(directory) {
@@ -92,14 +105,19 @@ for (const download of expectedDownloads) {
   if (downloadStat.size === 0) throw new Error(`Generated download is empty: ${download}`);
 }
 
-const archiveName = "your-digital-life-data-v0.1.0.zip";
-const archive = await readFile(resolve(distDirectory, "data", archiveName));
-const archiveChecksum = createHash("sha256").update(archive).digest("hex");
-const publishedChecksum = (
+const publishedChecksums = (
   await readFile(resolve(distDirectory, "data/SHA256SUMS"), "utf8")
-).trim();
-if (publishedChecksum !== `${archiveChecksum}  ${archiveName}`) {
-  throw new Error("Published ZIP archive does not match data/SHA256SUMS.");
+)
+  .trim()
+  .split(/\r?\n/);
+for (const checksumLine of publishedChecksums) {
+  const match = checksumLine.match(/^([a-f0-9]{64})  (your-digital-life-data-v\d+\.\d+\.\d+\.zip)$/);
+  if (!match) throw new Error(`Invalid published archive checksum line: ${checksumLine}`);
+  const archive = await readFile(resolve(distDirectory, "data", match[2]));
+  const archiveChecksum = createHash("sha256").update(archive).digest("hex");
+  if (archiveChecksum !== match[1]) {
+    throw new Error(`Published ZIP archive ${match[2]} does not match data/SHA256SUMS.`);
+  }
 }
 
 const redirects = (await readFile(resolve(distDirectory, "_redirects"), "utf8"))

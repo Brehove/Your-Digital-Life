@@ -1,0 +1,118 @@
+{
+  "overlayVersion": "0.1.0",
+  "datasetVersion": "0.2.0",
+  "reviewedOn": "2026-07-14",
+  "status": "review-overlay",
+  "compatibility": {
+    "calculatorInput": false,
+    "websiteInput": false,
+      "releaseArtifact": true
+  },
+  "comparators": [
+    {
+      "id": "jon-ippolito-what-uses-more",
+      "name": "What Uses More?",
+      "author": "Jon Ippolito",
+      "calculatorUrl": "https://what-uses-more.com/",
+      "evidenceUrl": "https://docs.google.com/spreadsheets/d/1xgvGhd6rmnBAEk9t2lesKlJeUy4TRQHrW6uWDSEVDFY/edit?gid=0#gid=0",
+      "sourceId": "ippolito-what-uses-more"
+    }
+  ],
+  "records": [
+    {
+      "id": "ippolito-image-generation-2026-07",
+      "comparatorId": "jon-ippolito-what-uses-more",
+      "topic": "Image-generation energy",
+      "targetType": "activity",
+      "targetId": "image-generation",
+      "targetField": "serverWhPerUnit",
+      "disposition": "adapt",
+      "comparatorClaim": {
+        "displayValue": "2",
+        "unit": "Wh per 1024x1024 image",
+        "boundary": "Ippolito synthesis across several model benchmarks",
+        "derivation": "Selected by Ippolito after comparing IEA 1.7 Wh, O'Donnell 1.2 Wh, and ML.ENERGY 0.42 Wh estimates."
+      },
+      "projectClaimBefore": {
+        "displayValue": "0.48",
+        "unit": "Wh per generated image",
+        "boundary": "Legacy row with no pinned model, hardware, image settings, or exact derivation",
+        "derivation": "Stored coefficient associated with a secondary Ifri report that states a rounded 0.5 Wh figure."
+      },
+      "projectClaimAfter": {
+        "displayValue": "1.7",
+        "unit": "Wh per SD-XL 1.0-base image",
+        "boundary": "Controlled H100 experimental testing; GPU electricity only",
+        "derivation": "Adopts the underlying IEA Figure 1.16 benchmark surfaced by the Ippolito comparison rather than Ippolito's rounded 2 Wh synthesis."
+      },
+      "evidenceSourceIds": [
+        "iea-energy-and-ai",
+        "ippolito-what-uses-more",
+        "ml-energy-leaderboard",
+        "odonnell-ai-energy-footprint",
+        "ifri-ai-dc-energy"
+      ],
+      "evidenceUrl": "https://docs.google.com/spreadsheets/d/1xgvGhd6rmnBAEk9t2lesKlJeUy4TRQHrW6uWDSEVDFY/edit?gid=0#gid=0",
+      "evidenceLocator": "Measurements sheet, Image generation row and its IEA, O'Donnell, and ML.ENERGY comparison notes",
+      "accessedOn": "2026-07-14",
+      "decisionSummary": "Replace the unreconstructable 0.48 Wh image coefficient with the IEA's pinned 1.7 Wh benchmark, while crediting Ippolito for the comparison that led to the source review.",
+      "rationale": [
+        "The IEA identifies the model, H100 hardware, controlled test context, and GPU-only measurement boundary.",
+        "Ippolito's 2 Wh selection is useful synthesis but is not itself a measured value.",
+        "The previous 0.48 Wh coefficient cannot be reconstructed from the included source chain."
+      ],
+      "unresolvedQuestions": [
+        "The IEA report does not state the image dimensions in the Figure 1.16 note.",
+        "A future production-serving benchmark could justify adding facility overhead or replacing the GPU-only coefficient."
+      ],
+      "lastReviewed": "2026-07-14"
+    },
+    {
+      "id": "ippolito-water-conversion-2026-07",
+      "comparatorId": "jon-ippolito-what-uses-more",
+      "topic": "Generic electricity-to-water conversion",
+      "targetType": "method",
+      "targetId": "water-method",
+      "disposition": "retain",
+      "comparatorClaim": {
+        "displayValue": "7",
+        "unit": "mL per Wh",
+        "boundary": "Universal conversion applied to task energy in What Uses More?",
+        "derivation": "Midpoint between about 1 mL/Wh derived from Google and 13 mL/Wh derived from Mistral through a carbon-intensity conversion."
+      },
+      "projectClaimBefore": {
+        "displayValue": "1 direct / 6 broader",
+        "unit": "mL per cloud-side Wh",
+        "boundary": "Rounded project bridge separating direct cooling water from broader electricity water",
+        "derivation": "Internal teaching heuristic with prompt-specific exceptions."
+      },
+      "projectClaimAfter": {
+        "displayValue": "1 direct / 6 broader",
+        "unit": "mL per cloud-side Wh",
+        "boundary": "Rounded project bridge separating direct cooling water from broader electricity water",
+        "derivation": "Retained while the method record now exposes Google, Mistral, LBNL, Ippolito, and the corrected 11.84 mL/Wh cross-metric arithmetic."
+      },
+      "evidenceSourceIds": [
+        "schneider-google-scale",
+        "mistral-environmental-standard",
+        "lbnl-data-center-report",
+        "ippolito-what-uses-more",
+        "scenario-methods"
+      ],
+      "evidenceUrl": "https://docs.google.com/spreadsheets/d/1xgvGhd6rmnBAEk9t2lesKlJeUy4TRQHrW6uWDSEVDFY/edit?gid=1688264219#gid=1688264219",
+      "evidenceLocator": "Conversions sheet, water-conversion section comparing Google, Mistral, and the selected 7 mL/Wh midpoint",
+      "accessedOn": "2026-07-14",
+      "decisionSummary": "Retain the existing split water method, add Ippolito's 7 mL/Wh result as an explicit comparator, and document that the stated Mistral bridge evaluates to 11.84 rather than 13 mL/Wh when 0.3 gCO2/Wh is used.",
+      "rationale": [
+        "Ippolito's 7 mL/Wh is a midpoint heuristic rather than an activity-specific measurement.",
+        "Mistral reports water and carbon per response, not water per Wh.",
+        "Keeping direct and broader water separate preserves a distinction that the comparator collapses."
+      ],
+      "unresolvedQuestions": [
+        "A boundary-matched direct-plus-indirect water coefficient should replace the generic 6 mL/Wh heuristic when available.",
+        "Future activity-specific provider measurements may replace generic conversions row by row."
+      ],
+      "lastReviewed": "2026-07-14"
+    }
+  ]
+}

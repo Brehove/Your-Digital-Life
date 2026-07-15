@@ -1,6 +1,6 @@
 {
-  "overlayVersion": "0.1.0",
-  "datasetVersion": "0.1.0",
+  "overlayVersion": "0.2.0",
+  "datasetVersion": "0.2.0",
   "reviewedOn": "2026-07-14",
   "status": "review-overlay",
   "compatibility": {
@@ -141,15 +141,15 @@
         },
         {
           "locator": "Footnotes 17-20 surrounding Figure 6",
-          "relevance": "Provides the report's wider energy-demand context but not a reproducible derivation of the calculator's exact 0.48 Wh value."
+          "relevance": "Provides wider energy-demand context but not a reproducible derivation of the historical pre-v0.2 calculator coefficient of 0.48 Wh."
         }
       ],
       "measurementBoundary": "Policy-report synthesis of AI task-level and data-center energy estimates; the image figure is a secondary citation rather than a measurement conducted by Ifri.",
       "workloadAndHardware": "The figure labels an image-generation task but does not, in the cited passage, specify the model, image dimensions, number of inference steps, hardware, utilization, or data-center overhead needed to reproduce it.",
       "geography": "The task-level image estimate is not tied to a specific facility or grid region; the report's broader scope is international.",
-      "derivation": "The report supports only the rough magnitude of the calculator's 0.48 Wh image row by stating 0.5 Wh per generated image. It does not document the exact 0.48 Wh coefficient or the calculator's water conversion.",
+      "derivation": "The report supports only the rough magnitude of the historical pre-v0.2 image row by stating 0.5 Wh per generated image. It does not document the exact former 0.48 Wh coefficient or the calculator's water conversion and is not the source of the current 1.7 Wh value.",
       "limitations": [
-        "A primary benchmark should replace this secondary report as the exact source for the image row.",
+        "The historical pre-v0.2 coefficient required a primary benchmark; v0.2.0 replaces it with the IEA benchmark.",
         "The report's nearby 0.0005 Wh ChatGPT text-demand statement is inconsistent with stronger contemporary prompt estimates and should not be imported into the calculator.",
         "The workload and hardware boundary for the image figure is underspecified."
       ]
@@ -454,6 +454,145 @@
         "Indirect electricity water and direct facility water must not be added without consistent consumptive-versus-withdrawal boundaries.",
         "The report is macro-scale evidence, not a per-activity benchmark.",
         "The legacy source record has no authors; this overlay supplies the report's full credited author list without altering v0.1.0."
+      ]
+    },
+    {
+      "sourceId": "ippolito-what-uses-more",
+      "citation": {
+        "title": "What Uses More? AI Impact Calculator: sources",
+        "authors": ["Jon Ippolito"],
+        "organization": "Learn with AI",
+        "publishedDate": "2025-06-25",
+        "url": "https://docs.google.com/spreadsheets/d/1xgvGhd6rmnBAEk9t2lesKlJeUy4TRQHrW6uWDSEVDFY/edit?gid=0#gid=0"
+      },
+      "evidenceType": "secondary-synthesis",
+      "reviewStatus": "reviewed-with-limitations",
+      "preciseLocators": [
+        {
+          "locator": "Measurements sheet, 1024x1024 AI image row",
+          "relevance": "Selects 2 Wh and compares IEA, O'Donnell, and ML.ENERGY image-generation estimates."
+        },
+        {
+          "locator": "Conversions sheet, cubic centimeters per watt-hour row",
+          "relevance": "Selects 7 mL/Wh and explains the Google, Mistral, LBNL, and older water evidence considered."
+        }
+      ],
+      "measurementBoundary": "A teaching calculator synthesis that applies selected task-energy coefficients and a universal water conversion. Boundaries vary across the underlying sources and are not standardized into one measured production system.",
+      "workloadAndHardware": "Workloads are named in the Measurements sheet. The image row is labeled 1024x1024, while hardware and runtime details depend on the cited underlying studies.",
+      "geography": "The calculator includes location and climate modifiers, but its base task values combine studies with different or unspecified geographies.",
+      "derivation": "The source is recorded as explicit lineage and comparison evidence. It prompted replacement of the image coefficient, but the adopted 1.7 Wh value is attributed to the underlying IEA report. Its 7 mL/Wh water synthesis is documented but not adopted.",
+      "limitations": [
+        "The selected 2 Wh image figure and 7 mL/Wh water coefficient are synthesis choices, not directly reported measurements.",
+        "Several rationales rely on secondary summaries or shared AI transcripts.",
+        "The water derivation states 13 mL/Wh from Mistral, but the displayed 0.3 gCO2/Wh factor yields 11.84 mL/Wh."
+      ]
+    },
+    {
+      "sourceId": "iea-energy-and-ai",
+      "citation": {
+        "title": "Energy and AI",
+        "authors": ["Laura Cozzi", "Thomas Spencer", "Siddharth Singh"],
+        "organization": "International Energy Agency",
+        "publishedDate": "2025-04-10",
+        "url": "https://www.iea.org/reports/energy-and-ai"
+      },
+      "evidenceType": "direct-measurement",
+      "reviewStatus": "reviewed-with-limitations",
+      "preciseLocators": [
+        {
+          "locator": "Figure 1.16 note, report page 45; accompanying text, report page 46",
+          "relevance": "Identifies SD-XL 1.0-base on H100 GPUs, states that only GPU electricity is shown, and reports approximately 1.7 Wh per image-generation task."
+        }
+      ],
+      "measurementBoundary": "Controlled experimental GPU electricity only. Host systems, idle capacity, batching effects outside the test, data-center overhead, networks, storage, and end-user devices are excluded.",
+      "workloadAndHardware": "One image-generation task using SD-XL 1.0-base on H100 GPUs. The report does not state image dimensions in the Figure 1.16 note.",
+      "geography": "Controlled experimental benchmark with no production-serving geography or grid assignment.",
+      "derivation": "The v0.2.0 image row adopts the report's 1.7 Wh result directly for both energy columns, then applies the project's retained 1:6 water bridge.",
+      "limitations": [
+        "The result is GPU-only and should not be described as full production-serving or total-system energy.",
+        "Image dimensions, batch size, and all runtime settings are not stated in the figure note.",
+        "Real-world implementations can differ materially by model, steps, hardware, batching, and facility overhead."
+      ]
+    },
+    {
+      "sourceId": "ml-energy-leaderboard",
+      "citation": {
+        "title": "The ML.ENERGY Leaderboard v3.0",
+        "authors": ["Jae-Won Chung", "Mosharaf Chowdhury"],
+        "organization": "ML.ENERGY",
+        "publishedDate": "2026-05-06",
+        "url": "https://ml.energy/leaderboard/"
+      },
+      "evidenceType": "direct-measurement",
+      "reviewStatus": "reviewed-with-limitations",
+      "preciseLocators": [
+        {
+          "locator": "Leaderboard v3.0, text-to-image task; Data and Toolkit diffusion-run records",
+          "relevance": "Exposes per-generation energy with model, GPU, precision, batching, and runtime configuration and demonstrates large configuration sensitivity."
+        }
+      ],
+      "measurementBoundary": "Benchmark inference energy for disclosed model and GPU configurations; production fleet overhead and end-user systems are not represented unless a specific record says otherwise.",
+      "workloadAndHardware": "Version 3 includes diffusion runs on NVIDIA H100 and B200 GPUs. Each historical comparison must pin the exact model and configuration rather than cite the moving leaderboard generically.",
+      "geography": "Laboratory benchmark; not tied to a production data-center geography or grid.",
+      "derivation": "Used as comparison evidence in the image method. The historical 0.42 Wh figure remains attributed to Ippolito's 2025 summary until its exact historical leaderboard record is pinned.",
+      "limitations": [
+        "The live leaderboard changes over time, so an unversioned link is insufficient for reproducing an older coefficient.",
+        "Minimum-energy configurations do not represent all deployed services.",
+        "Model, resolution, denoising steps, hardware, precision, and batching materially change results."
+      ]
+    },
+    {
+      "sourceId": "odonnell-ai-energy-footprint",
+      "citation": {
+        "title": "We did the math on AI's energy footprint. Here's the story you haven't heard",
+        "authors": ["James O'Donnell", "Casey Crownhart"],
+        "organization": "MIT Technology Review",
+        "publishedDate": "2025-05-20",
+        "url": "https://www.technologyreview.com/2025/05/20/1116327/ai-energy-usage-climate-footprint-big-tech/"
+      },
+      "evidenceType": "expert-analysis",
+      "reviewStatus": "needs-primary-source",
+      "preciseLocators": [
+        {
+          "locator": "Image-generation energy comparison summarized in Ippolito's Measurements rationale",
+          "relevance": "Ippolito derives approximately 1.2 Wh from the article's 4,400 J Stable Diffusion 3 figure."
+        }
+      ],
+      "measurementBoundary": "Secondary technical analysis assembling model-level energy estimates; exact boundaries depend on the underlying benchmark cited for each task.",
+      "workloadAndHardware": "The Ippolito crosswalk describes Stable Diffusion 3 with 50 denoising steps; the exact primary run and hardware remain to be pinned in this repository.",
+      "geography": "Not location-specific for the image-generation comparison.",
+      "derivation": "4,400 J / 3,600 J per Wh = 1.22 Wh, rounded to 1.2 Wh. The value is retained as comparison evidence, not adopted.",
+      "limitations": [
+        "This repository has not pinned the primary benchmark record behind the 4,400 J figure.",
+        "Technical journalism is useful synthesis but is not a substitute for the underlying measurement.",
+        "The workload is not boundary-matched to the adopted IEA SD-XL benchmark."
+      ]
+    },
+    {
+      "sourceId": "mistral-environmental-standard",
+      "citation": {
+        "title": "Our contribution to a global environmental standard for AI",
+        "authors": ["Mistral AI"],
+        "organization": "Mistral AI",
+        "publishedDate": "2025-07-22",
+        "url": "https://mistral.ai/news/our-contribution-to-a-global-environmental-standard-for-ai"
+      },
+      "evidenceType": "mixed-method",
+      "reviewStatus": "reviewed-with-limitations",
+      "preciseLocators": [
+        {
+          "locator": "Marginal inference impacts for a 400-token Le Chat response",
+          "relevance": "Reports 1.14 gCO2e, 45 mL water, and 0.16 mg Sb equivalent per response."
+        }
+      ],
+      "measurementBoundary": "Provider life-cycle assessment of one 400-token Le Chat response. The public summary reports water and carbon per response but not response electricity in Wh.",
+      "workloadAndHardware": "A 400-token response from Mistral's Le Chat; model-serving hardware and facility allocation are summarized through the provider's assessment rather than exposed as a per-run benchmark.",
+      "geography": "Provider assessment; the public summary does not identify the exact facility serving an individual response.",
+      "derivation": "Used only to bound the water-method discussion. Combining 45 mL, 1.14 gCO2e, and an external 0.3 gCO2/Wh assumption gives 11.84 mL/Wh, but that cross-metric conversion is not a direct Mistral measurement and is not adopted.",
+      "limitations": [
+        "This is a first-party provider assessment rather than an independent audit.",
+        "The water figure cannot be converted to mL/Wh without importing a carbon-intensity assumption from another source.",
+        "The boundary is a 400-token Mistral response and should not be generalized to unrelated activities."
       ]
     }
   ]

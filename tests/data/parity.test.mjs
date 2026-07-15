@@ -25,7 +25,7 @@ test("frozen baseline fixture is independent and checksum-locked", () => {
   assert.equal(sha256(fixture), manifest.baseline.fixtureSha256);
 });
 
-test("canonical records equal the fixture after three checksum-locked publication allowances", () => {
+test("v0.2.0 preserves the frozen fixture while declaring a reviewed scientific revision", () => {
   assert.equal(manifest.baseline.allowedMetadataDeltas.length, 3);
   assert.deepEqual(
     manifest.baseline.allowedMetadataDeltas.map(({ collection, recordId, field }) => ({
@@ -47,11 +47,26 @@ test("canonical records equal the fixture after three checksum-locked publicatio
     manifest.baseline.allowedMetadataDeltas[2].baselineSha256,
     "28caf0fcd0320fbb9c39b2a7871913722cc7efe8b72dbba04cf9e163f623ae0b"
   );
-  assert.deepEqual(canonical, expectedCanonical);
+  assert.notDeepEqual(canonical, expectedCanonical);
   assert.notDeepEqual(canonical, baseline);
+  const image = canonical.activities.find(({ id }) => id === "image-generation");
+  assert.deepEqual(
+    {
+      serverWhPerUnit: image.serverWhPerUnit,
+      totalWhPerUnit: image.totalWhPerUnit,
+      directWaterMlPerUnit: image.directWaterMlPerUnit,
+      totalWaterMlPerUnit: image.totalWaterMlPerUnit
+    },
+    {
+      serverWhPerUnit: 1.7,
+      totalWhPerUnit: 1.7,
+      directWaterMlPerUnit: 1.7,
+      totalWaterMlPerUnit: 10.2
+    }
+  );
 });
 
-test("record counts and UI order are frozen", () => {
+test("record counts and UI order match the current manifest", () => {
   assert.deepEqual(
     {
       sources: canonical.sourceCatalog.length,
@@ -92,8 +107,8 @@ test("all preset totals match the production contract", () => {
   const expected = {
     clear: [0, 0, 0, 0],
     "gen-z-no-ai": [131.5, 244.75, 131.5, 789],
-    "gen-z-moderate-ai": [133.94, 252.94, 132.94, 791.14],
-    "gen-z-vibe-coder": [699.235, 797.61, 698.635, 4187.91],
+    "gen-z-moderate-ai": [137.6, 256.6, 136.6, 813.1],
+    "gen-z-vibe-coder": [701.675, 800.05, 701.075, 4202.55],
     "worker-zoom-host": [223, 490, 223, 1338]
   };
 

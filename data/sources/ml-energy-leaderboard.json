@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "Jae-Won Chung",
+    "Mosharaf Chowdhury"
+  ],
+  "id": "ml-energy-leaderboard",
+  "notes": "Academic benchmark used as comparative evidence for how model, steps, hardware, batching, and resolution change image-generation energy. Current leaderboard results must not be substituted silently for historical configurations cited by other calculators.",
+  "order": 15,
+  "organization": "ML.ENERGY",
+  "publishedDate": "2026-05-06",
+  "sourceTier": "Tier 1",
+  "sourceType": "Academic benchmark and dataset",
+  "tags": [
+    "image-generation",
+    "measurement"
+  ],
+  "title": "The ML.ENERGY Leaderboard v3.0",
+  "url": "https://ml.energy/leaderboard/",
+  "usedFor": [
+    "comparative image-generation evidence and configuration sensitivity"
+  ]
+}

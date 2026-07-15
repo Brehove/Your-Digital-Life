@@ -3,7 +3,14 @@ import fs from "node:fs";
 import path from "node:path";
 import test from "node:test";
 import { execFileSync } from "node:child_process";
-import { COLLECTIONS, DATA_DIR, ROOT, sha256 } from "../../scripts/lib/data.mjs";
+import { COLLECTIONS, DATA_DIR, ROOT, readManifest, sha256 } from "../../scripts/lib/data.mjs";
+
+const manifest = readManifest();
+const currentVersion = manifest.datasetVersion;
+const publishedArchiveChecksums = {
+  "your-digital-life-data-v0.1.0.zip": "7c8a1b55683681b91e86b47156d865adc380dd09cf1f177f22305ce84a1f5689",
+  "your-digital-life-data-v0.2.0.zip": "4fa0360701d9349a045db03c1708473a7faca43f3fc72dc31e805c131b95b79d"
+};
 
 function filesUnder(directory) {
   const files = [];
@@ -18,9 +25,9 @@ function filesUnder(directory) {
   return files.sort();
 }
 
-test("latest and immutable v0.1.0 exports are byte-identical", () => {
+test("latest and current immutable exports are byte-identical", () => {
   const latest = path.join(DATA_DIR, "exports/latest");
-  const versioned = path.join(DATA_DIR, "exports/v0.1.0");
+  const versioned = path.join(DATA_DIR, `exports/v${currentVersion}`);
   assert.deepEqual(filesUnder(latest), filesUnder(versioned));
   for (const name of filesUnder(latest)) {
     assert.deepEqual(fs.readFileSync(path.join(latest, name)), fs.readFileSync(path.join(versioned, name)), name);
@@ -53,19 +60,62 @@ test("committed generated files are current and deterministic", () => {
   execFileSync(process.execPath, ["scripts/export-data.mjs", "--check"], { stdio: "pipe" });
 });
 
-test("release checksums and archive are valid", () => {
-  const releaseDir = path.join(DATA_DIR, "exports/v0.1.0");
-  const lines = fs.readFileSync(path.join(releaseDir, "SHA256SUMS"), "utf8").trim().split("\n");
-  for (const line of lines) {
-    const match = line.match(/^([a-f0-9]{64})  (.+)$/);
-    assert.ok(match, line);
-    assert.equal(sha256(fs.readFileSync(path.join(releaseDir, match[2]))), match[1], match[2]);
+test("all versioned release checksums and archives are valid", () => {
+  const exportsDirectory = path.join(DATA_DIR, "exports");
+  const versionDirectories = fs
+    .readdirSync(exportsDirectory, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory() && /^v\d+\.\d+\.\d+$/.test(entry.name))
+    .map((entry) => entry.name)
+    .sort();
+  assert.ok(versionDirectories.includes("v0.1.0"));
+  assert.ok(versionDirectories.includes(`v${currentVersion}`));
+
+  for (const versionDirectory of versionDirectories) {
+    const releaseDir = path.join(exportsDirectory, versionDirectory);
+    const lines = fs.readFileSync(path.join(releaseDir, "SHA256SUMS"), "utf8").trim().split("\n");
+    for (const line of lines) {
+      const match = line.match(/^([a-f0-9]{64})  (.+)$/);
+      assert.ok(match, line);
+      assert.equal(sha256(fs.readFileSync(path.join(releaseDir, match[2]))), match[1], match[2]);
+    }
+
+    const archive = path.join(
+      exportsDirectory,
+      `your-digital-life-data-${versionDirectory}.zip`
+    );
+    execFileSync("unzip", ["-t", archive], { stdio: "pipe" });
+    const archiveRoot = `your-digital-life-data-${versionDirectory}/`;
+    const archivedFiles = execFileSync("unzip", ["-Z1", archive], { encoding: "utf8" })
+      .trim()
+      .split("\n")
+      .filter((name) => name.startsWith(archiveRoot) && !name.endsWith("/"))
+      .map((name) => name.slice(archiveRoot.length))
+      .sort();
+    assert.deepEqual(archivedFiles, filesUnder(releaseDir), `${versionDirectory} archive file list`);
+    for (const name of archivedFiles) {
+      assert.deepEqual(
+        execFileSync("unzip", ["-p", archive, `${archiveRoot}${name}`]),
+        fs.readFileSync(path.join(releaseDir, name)),
+        `${versionDirectory}/${name}`
+      );
+    }
   }
 
-  const archive = path.join(DATA_DIR, "exports/your-digital-life-data-v0.1.0.zip");
-  execFileSync("unzip", ["-t", archive], { stdio: "pipe" });
-  const topChecksum = fs.readFileSync(path.join(DATA_DIR, "exports/SHA256SUMS"), "utf8").trim();
-  assert.equal(topChecksum, `${sha256(fs.readFileSync(archive))}  ${path.basename(archive)}`);
+  const topChecksums = fs.readFileSync(path.join(exportsDirectory, "SHA256SUMS"), "utf8").trim().split("\n");
+  assert.equal(topChecksums.length, versionDirectories.length);
+  for (const line of topChecksums) {
+    const match = line.match(/^([a-f0-9]{64})  (your-digital-life-data-v\d+\.\d+\.\d+\.zip)$/);
+    assert.ok(match, line);
+    assert.equal(sha256(fs.readFileSync(path.join(exportsDirectory, match[2]))), match[1]);
+  }
+
+  assert.deepEqual(
+    JSON.parse(fs.readFileSync(path.join(DATA_DIR, "releases/published-archive-sha256.json"), "utf8")),
+    publishedArchiveChecksums
+  );
+  for (const [name, expectedHash] of Object.entries(publishedArchiveChecksums)) {
+    assert.equal(sha256(fs.readFileSync(path.join(exportsDirectory, name))), expectedHash, name);
+  }
 });
 
 test("activity CSV has one header and twelve stable-ID rows", () => {
@@ -80,7 +130,7 @@ test("activity CSV has one header and twelve stable-ID rows", () => {
 });
 
 test("portable package excludes private research notes and Git history dependencies", () => {
-  const releaseDir = path.join(DATA_DIR, "exports/v0.1.0");
+  const releaseDir = path.join(DATA_DIR, `exports/v${currentVersion}`);
   const descriptor = JSON.parse(fs.readFileSync(path.join(releaseDir, "datapackage.json"), "utf8"));
   const serialized = JSON.stringify(descriptor);
   assert.equal(serialized.includes("github.com/"), false);

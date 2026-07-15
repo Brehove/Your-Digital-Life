@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "Jon Ippolito"
+  ],
+  "id": "ippolito-what-uses-more",
+  "notes": "External comparison and provenance source. Ippolito's spreadsheet prompted the image and water review, but underlying studies remain the evidentiary authority for adopted values.",
+  "order": 13,
+  "organization": "Learn with AI",
+  "publishedDate": "2025-06-25",
+  "sourceTier": "Tier 3",
+  "sourceType": "Secondary calculator synthesis",
+  "tags": [
+    "comparators",
+    "prompting",
+    "water"
+  ],
+  "title": "What Uses More? AI Impact Calculator: sources",
+  "url": "https://docs.google.com/spreadsheets/d/1xgvGhd6rmnBAEk9t2lesKlJeUy4TRQHrW6uWDSEVDFY/edit?gid=0#gid=0",
+  "usedFor": [
+    "provenance for the image-generation evidence review",
+    "external comparison for the generic water-conversion method"
+  ]
+}

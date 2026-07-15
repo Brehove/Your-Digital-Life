@@ -4,7 +4,7 @@ This document records representations that remain separate after the calculator 
 
 ## Calculator source catalog and site source registry
 
-All 12 calculator sources also have a file under `site/src/content/sources/`.
+All 17 calculator sources also have a file under `site/src/content/sources/`.
 They match exactly on the shared fields: title, organization, authors, URL,
 publication date, source tier, source type, notes, and tags. The canonical
 calculator source additionally carries its stable ID, collection order, and
@@ -23,7 +23,11 @@ Chart metadata, numeric arrays, and some derived copy are currently split among:
 - `site/src/data/charts/*.json`
 - `site/src/lib/chart-data.ts`
 
-This canonical calculator slice does not move or reconcile them.
+Version 0.2.0 deliberately synchronizes the image-generation value and its
+prompt-comparison copy across these three retained representations. The files
+remain separate, so future changes to a chart-backed calculator value must
+update and test all three until a later normalization slice removes the
+duplication.
 
 ## Claims and source citations
 

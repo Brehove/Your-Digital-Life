@@ -63,7 +63,7 @@ export function resolveChartData(slug: string): ResolvedChart {
         scaleNote: "Log scale used so low-cost prompts and high-cost coding-agent sessions remain visible on the same chart.",
         takeaway: "The phrase 'prompt cost' hides orders-of-magnitude differences. A basic text prompt, a reasoning query, and an hour of coding-agent use are not remotely the same event.",
         insights: [
-          { label: "Image vs. text", value: `${(0.477 / promptBaseline).toFixed(1)}x` },
+          { label: "Image vs. text", value: `${(1.7 / promptBaseline).toFixed(1)}x` },
           { label: "High reasoning vs. text", value: `${(33.8 / promptBaseline).toFixed(0)}x` },
           { label: "Coding hour vs. text", value: `${(325 / promptBaseline).toFixed(0)}x` }
         ],
@@ -80,7 +80,7 @@ export function resolveChartData(slug: string): ResolvedChart {
       };
     case "scenario-comparison":
       return {
-        metricLabel: "Server + network energy",
+        metricLabel: "Cloud/source-side energy estimate",
         scale: "linear",
         takeaway: "In the current model, heavy-use AI and hosted Zoom are the big outliers. Moderate AI use stays below the non-AI media day.",
         insights: [

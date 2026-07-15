@@ -1,0 +1,25 @@
+{
+  "authors": [
+    "Laura Cozzi",
+    "Thomas Spencer",
+    "Siddharth Singh"
+  ],
+  "id": "iea-energy-and-ai",
+  "notes": "Primary institutional source for the adopted 1.7 Wh image-generation benchmark; the reported boundary is controlled H100 testing and GPU electricity only. Also used for global electricity-demand context.",
+  "order": 14,
+  "organization": "International Energy Agency",
+  "publishedDate": "2025-04-10",
+  "sourceTier": "Tier 1",
+  "sourceType": "International agency report",
+  "tags": [
+    "data-centers",
+    "image-generation",
+    "prompting"
+  ],
+  "title": "Energy and AI",
+  "url": "https://www.iea.org/reports/energy-and-ai",
+  "usedFor": [
+    "global electricity-demand and infrastructure context",
+    "1.7 Wh per image benchmark for SD-XL 1.0-base under controlled H100 test conditions"
+  ]
+}

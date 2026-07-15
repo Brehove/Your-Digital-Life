@@ -14,6 +14,7 @@ import {
 import {
   buildDataReviewGuide,
   loadActivityEvidence,
+  loadExternalComparisons,
   loadSourceEvidence
 } from "./lib/review-guide.mjs";
 
@@ -22,6 +23,7 @@ const canonical = loadCanonicalData();
 const calculator = buildLegacyCalculator(canonical);
 const sourceEvidence = loadSourceEvidence();
 const activityEvidence = loadActivityEvidence();
+const externalComparisons = loadExternalComparisons();
 
 const generated = new Map([
   ["calculator.json", canonicalJson(calculator)],
@@ -108,6 +110,20 @@ const dataPackage = {
       format: "json",
       mediatype: "application/json",
       custom: { jsonSchema: "schemas/method.schema.json" }
+    },
+    {
+      name: "release-decision",
+      path: "exports/latest/release.json",
+      format: "json",
+      mediatype: "application/json",
+      custom: { jsonSchema: "schemas/release.schema.json" }
+    },
+    {
+      name: "external-comparisons",
+      path: "exports/latest/external-comparisons.json",
+      format: "json",
+      mediatype: "application/json",
+      custom: { jsonSchema: "schemas/external-comparisons.schema.json" }
     }
   ],
   custom: {
@@ -133,7 +149,7 @@ syncGeneratedFile(path.join(DATA_DIR, "datapackage.json"), canonicalJson(dataPac
 syncGeneratedFile(SITE_CALCULATOR_PATH, canonicalJson(calculator), { check });
 syncGeneratedFile(
   path.join(ROOT, "DATA-REVIEW-GUIDE.md"),
-  buildDataReviewGuide(canonical, sourceEvidence, activityEvidence),
+  buildDataReviewGuide(canonical, sourceEvidence, activityEvidence, externalComparisons),
   { check }
 );
 

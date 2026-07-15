@@ -7,9 +7,8 @@
   "xField": "label",
   "yField": "wh",
   "unit": "Wh",
-  "sourceIds": ["iea-energy-and-ai", "ifri-ai-dc-energy", "jegham-how-hungry-is-ai", "simon-couch-coding-agent"],
+  "sourceIds": ["iea-energy-and-ai", "jegham-how-hungry-is-ai", "simon-couch-coding-agent"],
   "note": "Keep this visually simple and pair it with a scope note under the chart.",
-  "lastReviewed": "2026-03-07",
+  "lastReviewed": "2026-07-14",
   "tags": ["what-a-prompt-costs"]
 }
-

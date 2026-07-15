@@ -2,6 +2,7 @@
 
 import fs from "node:fs";
 import path from "node:path";
+import { execFileSync } from "node:child_process";
 import {
   COLLECTIONS,
   DATA_DIR,
@@ -19,6 +20,11 @@ const check = process.argv.includes("--check");
 const canonical = loadCanonicalData();
 const version = canonical.manifest.datasetVersion;
 const releaseName = `your-digital-life-data-v${version}`;
+const releaseDecision = readJson(path.join(DATA_DIR, "releases", `v${version}.json`));
+const externalComparisons = readJson(path.join(DATA_DIR, "review", "external-comparisons.json"));
+const publishedArchiveChecksums = readJson(
+  path.join(DATA_DIR, "releases", "published-archive-sha256.json")
+);
 
 function records(key) {
   return canonical[key].map(({ record }) => record);
@@ -66,22 +72,28 @@ const releaseManifest = {
   schemaVersion: canonical.manifest.schemaVersion,
   status: canonical.manifest.status,
   migrationMode: canonical.manifest.migrationMode,
-  generatedFrom: {
+  baselineProvenance: {
     commit: canonical.manifest.baseline.commit,
     fixtureRepositoryPath: canonical.manifest.baseline.fixture,
     fixtureSha256: canonical.manifest.baseline.fixtureSha256,
     productionUrl: canonical.manifest.baseline.productionUrl
   },
+  releaseProvenance: {
+    datasetVersion: version,
+    decisionFile: "release.json",
+    generatedFromCanonicalRootRecords: true
+  },
   lastReviewed: canonical.manifest.calculator.lastReviewed,
   counts: canonical.manifest.counts,
   order: canonical.manifest.order,
-  collectionsIncluded: ["activities", "deviceProfiles", "presets", "methodSections", "sources"],
+  collectionsIncluded: ["activities", "deviceProfiles", "presets", "methodSections", "sources", "externalComparisons"],
   collectionsDeferred: canonical.manifest.deferredCollections,
   notes: [
-    "This is the first canonical public calculator-data release.",
+    releaseDecision.summary,
+    releaseDecision.scientificImpact,
     "The website reads a generated snapshot produced from the same root records.",
-    "The scenario-methods URL is the sole source-record correction from the frozen deployed baseline; public provenance and maintenance metadata were also migrated, while numeric and behavioral fields are unchanged.",
-    "Scenarios, claims, and charts remain deferred to the later normalization gates."
+    `Behavior changes in this release: ${releaseDecision.behaviorChanges ? "yes" : "no"}.`,
+    "Historical version directories and archives remain immutable and are carried forward unchanged."
   ]
 };
 
@@ -93,11 +105,13 @@ const releaseFiles = new Map([
   ["device-profiles.json", canonicalJson(records("deviceProfiles"))],
   ["presets.json", canonicalJson(records("presets"))],
   ["methods.json", canonicalJson(records("methodSections"))],
+  ["release.json", canonicalJson(releaseDecision)],
+  ["external-comparisons.json", canonicalJson(externalComparisons)],
   ["manifest.json", canonicalJson(releaseManifest)],
   ["datapackage.json", canonicalJson(releasePackageDescriptor)],
   [
     "README.md",
-    `# Your Digital Life data v${version}\n\nThis is the first canonical public calculator-data release. The website consumes a generated snapshot from these root records, and \`latest/\` is byte-identical to this versioned package. The frozen object captured from Git commit \`${canonical.manifest.baseline.commit}\` remains provenance metadata and a repository-only regression fixture; it is not an update authority.\n\nThe only source-record correction from that fixture is the \`scenario-methods\` URL, which now points to the public Sources & Method page. Publication metadata also replaces removed private-file pointers and stale maintenance instructions with public, canonical equivalents. Numeric values, record order, presets, methods, device behavior, and source relationships remain unchanged.\n\nProject-created structured data and schemas are offered under CC0-1.0. Original project prose fields are offered under CC BY 4.0. Third-party titles and bibliographic metadata are not relicensed. Quote-heavy research notes and presentation artifacts are intentionally excluded.\n`
+    `# Your Digital Life data v${version}\n\n${releaseDecision.summary}\n\n${releaseDecision.scientificImpact}\n\nThe website consumes a generated snapshot from these root records, and \`latest/\` is byte-identical to this versioned package. Historical release directories and archives remain immutable. The frozen object captured from Git commit \`${canonical.manifest.baseline.commit}\` remains provenance metadata and a repository-only regression fixture; it is not an update authority.\n\n## Changes\n\n${releaseDecision.changes.map((change) => `- ${change}`).join("\n")}\n\nProject-created structured data and schemas are offered under CC0-1.0. Original project prose fields are offered under CC BY 4.0. Third-party titles and bibliographic metadata are not relicensed. Quote-heavy research notes and presentation artifacts are intentionally excluded.\n`
   ]
 ]);
 
@@ -108,6 +122,14 @@ for (const config of Object.values(COLLECTIONS)) {
 releaseFiles.set(
   "schemas/activities-table.schema.json",
   fs.readFileSync(path.join(DATA_DIR, "schemas/activities-table.schema.json"))
+);
+releaseFiles.set(
+  "schemas/release.schema.json",
+  fs.readFileSync(path.join(DATA_DIR, "schemas/release.schema.json"))
+);
+releaseFiles.set(
+  "schemas/external-comparisons.schema.json",
+  fs.readFileSync(path.join(DATA_DIR, "schemas/external-comparisons.schema.json"))
 );
 
 const internalChecksums = [...releaseFiles.entries()]
@@ -128,13 +150,92 @@ const archiveEntries = new Map(
 const archiveName = `${releaseName}.zip`;
 const archive = deterministicZip(archiveEntries);
 outputFiles.set(archiveName, archive);
-outputFiles.set("SHA256SUMS", `${sha256(archive)}  ${archiveName}\n`);
+
+function filesUnder(directory, prefix = "") {
+  if (!fs.existsSync(directory)) return [];
+  const results = [];
+  for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+    const relative = path.join(prefix, entry.name);
+    if (entry.isDirectory()) results.push(...filesUnder(path.join(directory, entry.name), relative));
+    else results.push(relative);
+  }
+  return results;
+}
+
+function verifyVersionDirectoryAgainstArchive(versionNumber, directory, archivePath) {
+  const archiveRoot = `your-digital-life-data-v${versionNumber}/`;
+  const archivedFiles = execFileSync("unzip", ["-Z1", archivePath], { encoding: "utf8" })
+    .trim()
+    .split("\n")
+    .filter((name) => name.startsWith(archiveRoot) && !name.endsWith("/"))
+    .map((name) => name.slice(archiveRoot.length))
+    .sort();
+  const directoryFiles = filesUnder(directory).map((name) => name.split(path.sep).join("/")).sort();
+  if (JSON.stringify(archivedFiles) !== JSON.stringify(directoryFiles)) {
+    throw new Error(`Historical v${versionNumber} directory does not match its archive file list.`);
+  }
+  for (const name of directoryFiles) {
+    const archived = execFileSync("unzip", ["-p", archivePath, `${archiveRoot}${name}`]);
+    const stored = fs.readFileSync(path.join(directory, name));
+    if (!archived.equals(stored)) {
+      throw new Error(`Historical v${versionNumber}/${name} differs from its published archive.`);
+    }
+  }
+}
+
+const existingExportDirectory = path.join(DATA_DIR, "exports");
+for (const [publishedName, expectedHash] of Object.entries(publishedArchiveChecksums)) {
+  if (publishedName === archiveName) continue;
+  const archivePath = path.join(existingExportDirectory, publishedName);
+  const versionMatch = publishedName.match(/-v(\d+\.\d+\.\d+)\.zip$/);
+  if (!fs.existsSync(archivePath) || !versionMatch) {
+    throw new Error(`Missing pinned historical archive ${publishedName}.`);
+  }
+  const actualHash = sha256(fs.readFileSync(archivePath));
+  if (actualHash !== expectedHash) {
+    throw new Error(`Pinned archive ${publishedName} has SHA-256 ${actualHash}; expected ${expectedHash}.`);
+  }
+  verifyVersionDirectoryAgainstArchive(
+    versionMatch[1],
+    path.join(existingExportDirectory, `v${versionMatch[1]}`),
+    archivePath
+  );
+}
+for (const name of filesUnder(existingExportDirectory)) {
+  const isHistoricalVersion = /^v\d+\.\d+\.\d+\//.test(name) && !name.startsWith(`v${version}/`);
+  const isHistoricalArchive = /^your-digital-life-data-v\d+\.\d+\.\d+\.zip$/.test(name) && name !== archiveName;
+  if (isHistoricalVersion || isHistoricalArchive) {
+    outputFiles.set(name, fs.readFileSync(path.join(existingExportDirectory, name)));
+  }
+}
+
+const archiveChecksums = [...outputFiles.entries()]
+  .filter(([name]) => /^your-digital-life-data-v\d+\.\d+\.\d+\.zip$/.test(name))
+  .sort(([left], [right]) => left.localeCompare(right, "en"))
+  .map(([name, content]) => `${sha256(content)}  ${name}`);
+outputFiles.set("SHA256SUMS", `${archiveChecksums.join("\n")}\n`);
+
+const currentPinnedHash = publishedArchiveChecksums[archiveName];
+const currentArchiveHash = sha256(archive);
+if (!currentPinnedHash || currentPinnedHash !== currentArchiveHash) {
+  throw new Error(
+    `Current archive ${archiveName} has SHA-256 ${currentArchiveHash}; update data/releases/published-archive-sha256.json intentionally before publication.`
+  );
+}
 
 const stableSchemaFiles = new Map(
   Object.values(COLLECTIONS).map((config) => [
     config.schema,
     fs.readFileSync(path.join(DATA_DIR, "schemas", config.schema))
   ])
+);
+stableSchemaFiles.set(
+  "release.schema.json",
+  fs.readFileSync(path.join(DATA_DIR, "schemas/release.schema.json"))
+);
+stableSchemaFiles.set(
+  "external-comparisons.schema.json",
+  fs.readFileSync(path.join(DATA_DIR, "schemas/external-comparisons.schema.json"))
 );
 
 syncGeneratedTree(path.join(DATA_DIR, "exports"), outputFiles, { check });
