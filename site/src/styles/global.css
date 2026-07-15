@@ -213,6 +213,38 @@ code {
   gap: 0.6rem;
 }
 
+.hero-callout {
+  max-width: 68ch;
+  margin-top: 0.35rem;
+  padding: 1rem 1.1rem;
+  background: rgba(255, 252, 246, 0.76);
+  border: 1px solid rgba(43, 112, 135, 0.2);
+  border-left: 4px solid var(--sea);
+  border-radius: var(--radius-sm);
+}
+
+.page-header .hero-callout p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.page-header .hero-callout__title {
+  margin-bottom: 0.35rem;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+
+.hero-callout__link {
+  display: inline-flex;
+  gap: 0.25rem;
+  margin-top: 0.65rem;
+  color: var(--sea);
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-underline-offset: 0.2em;
+}
+
 .key-takeaways,
 .compact-list {
   margin: 0;
