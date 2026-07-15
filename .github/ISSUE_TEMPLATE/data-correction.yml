@@ -15,7 +15,7 @@ body:
     attributes:
       label: Stable record ID
       description: The exact ID used in the dataset or calculator.
-      placeholder: activity.example-id
+      placeholder: image-generation
     validations:
       required: true
   - type: textarea
@@ -39,6 +39,31 @@ body:
       placeholder: https://doi.org/...
     validations:
       required: true
+  - type: input
+    id: comparator
+    attributes:
+      label: External comparator or reviewer
+      description: Optional. Name and link another calculator, dataset, reviewer, or conversation that prompted this proposal.
+      placeholder: What Uses More? by Jon Ippolito — https://what-uses-more.com/
+  - type: dropdown
+    id: disposition
+    attributes:
+      label: Relationship to the external claim
+      description: Optional when no external comparator is involved.
+      options:
+        - Not applicable
+        - Adopt
+        - Adapt
+        - Retain current value
+        - Reject
+        - Keep open
+        - Not comparable
+  - type: textarea
+    id: comparator_claim
+    attributes:
+      label: External comparator claim
+      description: Optional. State the comparator's value, unit, boundary, derivation, exact URL or sheet locator, and access date. Keep it distinct from this project's current and proposed values.
+      placeholder: 2 Wh per 1024x1024 image; Measurements sheet, Image generation row; accessed YYYY-MM-DD; rounded synthesis from listed benchmarks.
   - type: input
     id: locator
     attributes:

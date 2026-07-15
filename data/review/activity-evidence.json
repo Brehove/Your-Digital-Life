@@ -1,6 +1,6 @@
 {
-  "overlayVersion": "0.1.0",
-  "datasetVersion": "0.1.0",
+  "overlayVersion": "0.2.0",
+  "datasetVersion": "0.2.0",
   "reviewedOn": "2026-07-14",
   "status": "review-overlay",
   "compatibility": {
@@ -36,11 +36,16 @@
     {
       "activityId": "image-generation",
       "formulaStatus": "partial-derivation",
-      "provenanceSummary": "The included Ifri report states a rounded 0.5 Wh per generated image and points to a secondary figure. The frozen calculator stores 0.48 Wh, but the included source chain does not identify the model, hardware, image settings, or exact derivation of 0.48. Direct water is then set equal to energy through the internal 1 mL/Wh heuristic, and broader water is 0.48 x 6 = 2.88 mL.",
-      "additionalSourceIds": [],
+      "provenanceSummary": "Jon Ippolito's What Uses More? source sheet prompted review of the unreconstructable 0.48 Wh coefficient. Version 0.2.0 adopts the underlying IEA report's 1.7 Wh benchmark for SD-XL 1.0-base under controlled H100 testing, GPU electricity only. Direct water is then set to 1.7 mL through the internal 1 mL/Wh heuristic, and broader water is 1.7 x 6 = 10.2 mL.",
+      "additionalSourceIds": [
+        "ml-energy-leaderboard",
+        "odonnell-ai-energy-footprint",
+        "ifri-ai-dc-energy"
+      ],
       "reviewFindings": [
-        "The phrase 'open-model image-generation average' in the frozen activity note is not established by the included Ifri source.",
-        "A pinned primary benchmark or dataset is needed before the exact 0.48 Wh coefficient is reproducible.",
+        "The adopted 1.7 Wh energy value is directly traceable to IEA Figure 1.16 and accompanying text, but its GPU-only experimental boundary must remain visible.",
+        "Ippolito's 2 Wh figure is recorded as the secondary synthesis that led to the review, not as the primary authority for the adopted value.",
+        "The IEA figure note identifies SD-XL 1.0-base and H100 GPUs but does not state image dimensions.",
         "The water values are internal conversions, not image-generation measurements."
       ]
     },

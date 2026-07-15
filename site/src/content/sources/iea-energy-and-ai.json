@@ -1,12 +1,11 @@
 {
   "title": "Energy and AI",
   "organization": "International Energy Agency",
-  "authors": [],
-  "url": "https://iea.blob.core.windows.net/assets/dd7c2387-2f60-4b60-8c5f-6563b6aa1e4c/EnergyandAI.pdf",
-  "publishedDate": "2026-01-01",
+  "authors": ["Laura Cozzi", "Thomas Spencer", "Siddharth Singh"],
+  "url": "https://www.iea.org/reports/energy-and-ai",
+  "publishedDate": "2025-04-10",
   "sourceTier": "Tier 1",
-  "sourceType": "Institutional report",
-  "notes": "Anchor source for global demand, AI share, and infrastructure framing.",
-  "tags": ["data-centers", "prompting"]
+  "sourceType": "International agency report",
+  "notes": "Primary institutional source for the adopted 1.7 Wh image-generation benchmark; the reported boundary is controlled H100 testing and GPU electricity only. Also used for global electricity-demand context.",
+  "tags": ["data-centers", "image-generation", "prompting"]
 }
-

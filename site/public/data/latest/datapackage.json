@@ -18,7 +18,7 @@
       "fixtureSha256": "5aff3d655a2b3b5aa1199f5d86477e75876bc97500552e5a84428609d3b4a5d1",
       "productionUrl": "https://your-digital-life.org"
     },
-    "schemaVersion": "0.1.0",
+    "schemaVersion": "0.2.0",
     "siteConsumer": "generated-snapshot"
   },
   "description": "The canonical, machine-readable records behind the Your Digital Life calculator, with deterministic public exports and a generated website snapshot.",
@@ -89,6 +89,24 @@
       "mediatype": "application/json",
       "name": "methods",
       "path": "methods.json"
+    },
+    {
+      "custom": {
+        "jsonSchema": "schemas/release.schema.json"
+      },
+      "format": "json",
+      "mediatype": "application/json",
+      "name": "release-decision",
+      "path": "release.json"
+    },
+    {
+      "custom": {
+        "jsonSchema": "schemas/external-comparisons.schema.json"
+      },
+      "format": "json",
+      "mediatype": "application/json",
+      "name": "external-comparisons",
+      "path": "external-comparisons.json"
     }
   ],
   "sources": [
@@ -102,5 +120,5 @@
     }
   ],
   "title": "Your Digital Life calculator data",
-  "version": "0.1.0"
+  "version": "0.2.0"
 }

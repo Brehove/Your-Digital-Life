@@ -1,7 +1,7 @@
 {
   "name": "your-digital-life-calculator-data",
-  "datasetVersion": "0.1.0",
-  "schemaVersion": "0.1.0",
+  "datasetVersion": "0.2.0",
+  "schemaVersion": "0.2.0",
   "status": "canonical",
   "migrationMode": "canonical",
   "siteConsumer": "generated-snapshot",
@@ -70,14 +70,14 @@
     "title": "Digital Inventory Calculator Source of Truth",
     "calculatorId": "digital-inventory",
     "description": "Canonical activity rows, presets, source records, and method tables for the public digital inventory calculator.",
-    "lastReviewed": "2026-03-09",
+    "lastReviewed": "2026-07-14",
     "sourceFiles": [
       {
         "title": "Your Digital Life open calculator data",
         "path": "https://your-digital-life.org/data/",
         "sections": ["Versioned data exports", "JSON Schemas and checksums"],
         "notes": [
-          "Public download index for the canonical calculator records and portable v0.1.0 release.",
+          "Public download index for the canonical calculator records and immutable versioned releases.",
           "The root data directory in the GitHub repository is the update authority."
         ]
       },
@@ -95,15 +95,16 @@
       "Update data/sources before changing any row that depends on a new or revised study.",
       "Preserve stable IDs, explicit system boundaries, source relationships, and collection order.",
       "When total-system energy changes, update device fields and affected preset device selections together.",
+      "Record external comparisons and dispositions in data/review/external-comparisons.json so later feedback can be reconciled without losing prior reasoning.",
       "Run npm run data:build, npm run data:export, and npm run data:verify before the Astro checks and build."
     ]
   },
   "counts": {
-    "sources": 12,
+    "sources": 17,
     "deviceProfiles": 5,
     "activities": 12,
     "presets": 5,
-    "methodSections": 6
+    "methodSections": 7
   },
   "order": {
     "sources": [
@@ -118,7 +119,12 @@
       "mytton-zoom",
       "verdecchia-video-call-energy",
       "schneider-google-scale",
-      "lbnl-data-center-report"
+      "lbnl-data-center-report",
+      "ippolito-what-uses-more",
+      "iea-energy-and-ai",
+      "ml-energy-leaderboard",
+      "odonnell-ai-energy-footprint",
+      "mistral-environmental-standard"
     ],
     "deviceProfiles": ["phone", "laptop", "desktop", "tv", "meeting-bundle"],
     "activities": [
@@ -148,7 +154,8 @@
       "water-method",
       "zoom-host-method",
       "preset-notes",
-      "maintenance-notes"
+      "maintenance-notes",
+      "image-generation-method"
     ]
   },
   "metricBoundaries": {
@@ -167,8 +174,8 @@
     "calculator": "generated/calculator.json",
     "calculatorPayload": "generated/calculator-payload.json",
     "latestExports": "exports/latest",
-    "versionedExports": "exports/v0.1.0",
-    "archive": "exports/your-digital-life-data-v0.1.0.zip",
+    "versionedExports": "exports/v0.2.0",
+    "archive": "exports/your-digital-life-data-v0.2.0.zip",
     "siteCalculator": "../site/src/content/calculators/digital-inventory.json",
     "publicDownloads": "../site/public/data",
     "publicSchemas": "../site/public/schemas"

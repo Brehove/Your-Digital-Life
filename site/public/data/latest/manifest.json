@@ -1,4 +1,10 @@
 {
+  "baselineProvenance": {
+    "commit": "063322e93e27704b447a495a838e552067928127",
+    "fixtureRepositoryPath": "tests/fixtures/deployed-calculator-063322e.json",
+    "fixtureSha256": "5aff3d655a2b3b5aa1199f5d86477e75876bc97500552e5a84428609d3b4a5d1",
+    "productionUrl": "https://your-digital-life.org"
+  },
   "collectionsDeferred": [
     "scenarios",
     "claims",
@@ -10,30 +16,26 @@
     "deviceProfiles",
     "presets",
     "methodSections",
-    "sources"
+    "sources",
+    "externalComparisons"
   ],
   "counts": {
     "activities": 12,
     "deviceProfiles": 5,
-    "methodSections": 6,
+    "methodSections": 7,
     "presets": 5,
-    "sources": 12
+    "sources": 17
   },
-  "datasetVersion": "0.1.0",
-  "generatedFrom": {
-    "commit": "063322e93e27704b447a495a838e552067928127",
-    "fixtureRepositoryPath": "tests/fixtures/deployed-calculator-063322e.json",
-    "fixtureSha256": "5aff3d655a2b3b5aa1199f5d86477e75876bc97500552e5a84428609d3b4a5d1",
-    "productionUrl": "https://your-digital-life.org"
-  },
-  "lastReviewed": "2026-03-09",
+  "datasetVersion": "0.2.0",
+  "lastReviewed": "2026-07-14",
   "migrationMode": "canonical",
   "name": "your-digital-life-calculator-data",
   "notes": [
-    "This is the first canonical public calculator-data release.",
+    "Adds a repeatable external-evidence comparison workflow and revises the image-generation row using a pinned IEA benchmark surfaced through comparison with Jon Ippolito's What Uses More? calculator.",
+    "The image-generation coefficient changes from an unreconstructable 0.48 Wh to 1.7 Wh for SD-XL 1.0-base under controlled H100 GPU-only test conditions. The generic water coefficients remain unchanged, but their evidence and the Ippolito comparison are now explicit.",
     "The website reads a generated snapshot produced from the same root records.",
-    "The scenario-methods URL is the sole source-record correction from the frozen deployed baseline; public provenance and maintenance metadata were also migrated, while numeric and behavioral fields are unchanged.",
-    "Scenarios, claims, and charts remain deferred to the later normalization gates."
+    "Behavior changes in this release: yes.",
+    "Historical version directories and archives remain immutable and are carried forward unchanged."
   ],
   "order": {
     "activities": [
@@ -63,7 +65,8 @@
       "water-method",
       "zoom-host-method",
       "preset-notes",
-      "maintenance-notes"
+      "maintenance-notes",
+      "image-generation-method"
     ],
     "presets": [
       "clear",
@@ -84,9 +87,19 @@
       "mytton-zoom",
       "verdecchia-video-call-energy",
       "schneider-google-scale",
-      "lbnl-data-center-report"
+      "lbnl-data-center-report",
+      "ippolito-what-uses-more",
+      "iea-energy-and-ai",
+      "ml-energy-leaderboard",
+      "odonnell-ai-energy-footprint",
+      "mistral-environmental-standard"
     ]
   },
-  "schemaVersion": "0.1.0",
+  "releaseProvenance": {
+    "datasetVersion": "0.2.0",
+    "decisionFile": "release.json",
+    "generatedFromCanonicalRootRecords": true
+  },
+  "schemaVersion": "0.2.0",
   "status": "canonical"
 }

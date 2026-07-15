@@ -1,0 +1,60 @@
+{
+  "version": "0.2.0",
+  "previousVersion": "0.1.0",
+  "schemaVersion": "0.2.0",
+  "previousSchemaVersion": "0.1.0",
+  "releasedOn": "2026-07-14",
+  "summary": "Adds a repeatable external-evidence comparison workflow and revises the image-generation row using a pinned IEA benchmark surfaced through comparison with Jon Ippolito's What Uses More? calculator.",
+  "scientificImpact": "The image-generation coefficient changes from an unreconstructable 0.48 Wh to 1.7 Wh for SD-XL 1.0-base under controlled H100 GPU-only test conditions. The generic water coefficients remain unchanged, but their evidence and the Ippolito comparison are now explicit.",
+  "behaviorChanges": true,
+  "collectionChanges": {
+    "activities": {
+      "added": [],
+      "modified": ["image-generation"],
+      "removed": []
+    },
+    "sources": {
+      "added": [
+        "ippolito-what-uses-more",
+        "iea-energy-and-ai",
+        "ml-energy-leaderboard",
+        "odonnell-ai-energy-footprint",
+        "mistral-environmental-standard"
+      ],
+      "modified": ["ifri-ai-dc-energy"],
+      "removed": []
+    },
+    "deviceProfiles": {
+      "added": [],
+      "modified": [],
+      "removed": []
+    },
+    "presets": {
+      "added": [],
+      "modified": [],
+      "removed": []
+    },
+    "methodSections": {
+      "added": ["image-generation-method"],
+      "modified": ["boundary-rules", "water-method"],
+      "removed": []
+    },
+    "externalComparisons": {
+      "added": [
+        "ippolito-image-generation-2026-07",
+        "ippolito-water-conversion-2026-07"
+      ],
+      "modified": [],
+      "removed": []
+    }
+  },
+  "changes": [
+    "Changed image-generation energy from 0.48 Wh to 1.7 Wh and recalculated its direct and broader water values to 1.7 mL and 10.2 mL under the retained water rule.",
+    "Labeled the 1.7 Wh result as GPU-only and carried it through both energy totals only as a conservative floor, not as measured server-plus-network or total-system energy.",
+    "Advanced the backward-compatible activity schema to v0.2.0 with optional per-row energy-boundary fields.",
+    "Added Jon Ippolito's source sheet as explicit secondary provenance while attributing the adopted coefficient to the underlying IEA report.",
+    "Added an external-comparison overlay with adopt, adapt, retain, reject, open, and not-comparable dispositions for future feedback cycles.",
+    "Expanded the water method with Google, Mistral, LBNL, and Ippolito evidence, including the corrected 11.84 mL/Wh cross-metric arithmetic.",
+    "Preserved the 1 mL/Wh direct and 6 mL/Wh broader generic water rules pending boundary-matched evidence."
+  ]
+}

@@ -16,6 +16,9 @@ export function getSourceLabel(source: SourceLike) {
 
   if (source.authors.length > 0) {
     const leadAuthor = source.authors[0];
+    if (source.authors.length === 1 && leadAuthor.trim() === source.organization.trim()) {
+      return `${source.organization} (${year})`;
+    }
     const lastName = leadAuthor.trim().split(/\s+/).at(-1) ?? leadAuthor;
     return source.authors.length > 1 ? `${lastName} et al. (${year})` : `${lastName} (${year})`;
   }

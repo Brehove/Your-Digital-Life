@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://your-digital-life.org/schemas/external-comparisons.schema.json",
+  "title": "Your Digital Life external evidence comparison overlay",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "overlayVersion",
+    "datasetVersion",
+    "reviewedOn",
+    "status",
+    "compatibility",
+    "comparators",
+    "records"
+  ],
+  "properties": {
+    "overlayVersion": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "datasetVersion": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "reviewedOn": { "type": "string", "format": "date" },
+    "status": { "const": "review-overlay" },
+    "compatibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["calculatorInput", "websiteInput", "releaseArtifact"],
+      "properties": {
+        "calculatorInput": { "const": false },
+        "websiteInput": { "const": false },
+        "releaseArtifact": { "const": true }
+      }
+    },
+    "comparators": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "author", "calculatorUrl", "evidenceUrl", "sourceId"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+          "name": { "type": "string", "minLength": 1 },
+          "author": { "type": "string", "minLength": 1 },
+          "calculatorUrl": { "type": "string", "format": "uri" },
+          "evidenceUrl": { "type": "string", "format": "uri" },
+          "sourceId": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" }
+        }
+      }
+    },
+    "records": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "comparatorId",
+          "topic",
+          "targetType",
+          "targetId",
+          "disposition",
+          "comparatorClaim",
+          "projectClaimBefore",
+          "projectClaimAfter",
+          "evidenceSourceIds",
+          "evidenceUrl",
+          "evidenceLocator",
+          "accessedOn",
+          "decisionSummary",
+          "rationale",
+          "unresolvedQuestions",
+          "lastReviewed"
+        ],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+          "comparatorId": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+          "topic": { "type": "string", "minLength": 1 },
+          "targetType": { "enum": ["activity", "method"] },
+          "targetId": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+          "targetField": {
+            "enum": [
+              "serverWhPerUnit",
+              "totalWhPerUnit",
+              "directWaterMlPerUnit",
+              "totalWaterMlPerUnit"
+            ]
+          },
+          "disposition": { "enum": ["adopt", "adapt", "retain", "reject", "open", "not-comparable"] },
+          "comparatorClaim": { "$ref": "#/$defs/claim" },
+          "projectClaimBefore": { "$ref": "#/$defs/claim" },
+          "projectClaimAfter": { "$ref": "#/$defs/claim" },
+          "evidenceSourceIds": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" }
+          },
+          "evidenceUrl": { "type": "string", "format": "uri" },
+          "evidenceLocator": { "type": "string", "minLength": 1 },
+          "accessedOn": { "type": "string", "format": "date" },
+          "decisionSummary": { "type": "string", "minLength": 1 },
+          "rationale": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+          "unresolvedQuestions": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+          "lastReviewed": { "type": "string", "format": "date" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "claim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["displayValue", "unit", "boundary", "derivation"],
+      "properties": {
+        "displayValue": { "type": "string", "minLength": 1 },
+        "unit": { "type": "string", "minLength": 1 },
+        "boundary": { "type": "string", "minLength": 1 },
+        "derivation": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

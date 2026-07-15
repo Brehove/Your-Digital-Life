@@ -1,0 +1,33 @@
+---
+import { getCollection } from "astro:content";
+import UpdateCard from "../components/UpdateCard.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const updates = [...(await getCollection("updates"))].sort((left, right) =>
+  right.data.date.localeCompare(left.data.date)
+);
+---
+
+<BaseLayout
+  title="Update History | Digital Life Calculator"
+  description="Public release and evidence-decision history for the Digital Life Calculator."
+>
+  <div class="page-stack">
+    <section class="hero">
+      <div class="page-header">
+        <p class="section-label">Project updates</p>
+        <h1>Update history</h1>
+        <p>
+          Each entry records what changed, why it changed, and what the public calculator or
+          documentation now shows.
+        </p>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <div class="card-grid">
+        {updates.map((update) => <UpdateCard update={update} />)}
+      </div>
+    </section>
+  </div>
+</BaseLayout>

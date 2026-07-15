@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "James O'Donnell",
+    "Casey Crownhart"
+  ],
+  "id": "odonnell-ai-energy-footprint",
+  "notes": "Secondary technical analysis used as a comparison point, including an image-generation estimate derived from measured joules. It does not replace a pinned primary benchmark.",
+  "order": 16,
+  "organization": "MIT Technology Review",
+  "publishedDate": "2025-05-20",
+  "sourceTier": "Tier 2",
+  "sourceType": "Technical journalism and analysis",
+  "tags": [
+    "image-generation",
+    "prompting"
+  ],
+  "title": "We did the math on AI's energy footprint. Here's the story you haven't heard",
+  "url": "https://www.technologyreview.com/2025/05/20/1116327/ai-energy-usage-climate-footprint-big-tech/",
+  "usedFor": [
+    "comparative image-generation estimate in the Ippolito crosswalk"
+  ]
+}

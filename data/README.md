@@ -9,16 +9,18 @@ Git commit `063322e93e27704b447a495a838e552067928127` and the checksum-locked fi
 under `tests/fixtures/` record the deployed pre-migration baseline. They are
 regression provenance, not current update authorities.
 
-## Included in v0.1.0
+## Current release: v0.2.0
 
 - 12 calculator activities
-- 12 calculator source records
+- 17 calculator source records
 - 5 device profiles
 - 5 presets, including Clear
-- 6 method sections
+- 7 method sections
 - JSON Schemas for every included record type
 - deterministic JSON and CSV exports
-- matching `latest` and immutable `v0.1.0` export trees
+- matching `latest` and immutable `v0.2.0` export trees
+- preserved immutable `v0.1.0` export tree and archive
+- a release decision and portable external-comparison history
 - deterministic ZIP archive and SHA-256 checksums
 - a generated Astro calculator entry and public download tree
 - a checksum-locked deployed-baseline fixture for parity tests (repository only,
@@ -29,30 +31,31 @@ Scenarios, claims/facts, charts, and the broader site source registry are intent
 ## Reviewer evidence overlay
 
 `review/source-evidence.json` is a validated, one-to-one review overlay for the
-12 calculator source IDs. It adds corrected citations, precise locators,
+17 calculator source IDs. It adds corrected citations, precise locators,
 evidence type, review status, measurement boundary, workload and hardware
 scope, geography, derivation, and limitations. `review/activity-evidence.json`
 adds row-level provenance summaries, formula-traceability status, additional
 review-only source relationships, and unresolved findings for all 12
 activities. Each overlay has a matching schema in `review/`.
 
-The overlay is intentionally **not** a calculator input, website input, or
-v0.1.0 release artifact. Keeping it separate allows reviewers to inspect
-bibliographic corrections and evidence limitations without rewriting the
-immutable release or changing the deployed site. A future dataset version may
-merge reviewed fields only through the normal release and compatibility
-process.
+`review/external-comparisons.json` records outside claims, project values before
+and after review, evidence relationships, dispositions, and unresolved
+questions. It is the reusable intake surface for recurring feedback from
+reviewers and other calculators. See `../docs/evidence-update-workflow.md`.
+
+The overlays are intentionally **not** calculator or website inputs. Beginning
+with v0.2.0, `external-comparisons.json` and its schema are copied into each
+portable release so the evidence-decision history is preserved. The broader
+activity and source review overlays remain repository-only working records.
 
 The root `DATA-REVIEW-GUIDE.md` is generated from the canonical calculator
 records plus these overlays. It is the recommended human-readable starting
 point.
 
-While v0.1.0 remains frozen, use these update rules:
+Use these update rules:
 
 - correct citations, locators, evidence classifications, or review findings in
   `review/`, then run `npm run data:build`;
-- do not edit `sources/` merely to make frozen bibliographic metadata match the
-  overlay; and
 - change `sources/`, activities, methods, or calculator values only through a
   new versioned data release with the required parity and downstream review.
 
@@ -109,14 +112,10 @@ npm run data:export
 npm run data:verify
 ```
 
-`data:parity` reads the checksum-locked fixture at
-`tests/fixtures/deployed-calculator-063322e.json`, applies three precisely
-declared publication allowances, and then deep-compares the complete object.
-Those allowances cover the `scenario-methods` public URL, replacement of dead
-private research-file pointers, and canonical maintenance instructions. Every
-numeric value, ID, order, preset, device setting, source relationship,
-substantive method note, and method table remains strict. Normal tests do not
-need the historical Git object to exist.
+For v0.1.0, `data:parity` reconstructs and deep-compares the checksum-locked
+baseline fixture. For later versions, it compares current canonical collections
+with the prior immutable release and permits only stable IDs declared in
+`releases/vX.Y.Z.json`. Undeclared numeric, source, or method drift fails.
 
 While the original commit remains available, maintainers can optionally verify the fixture against it:
 
@@ -134,6 +133,7 @@ root descriptor and immutable release with the official CLI:
 ```bash
 uvx --from frictionless frictionless validate data/datapackage.json
 uvx --from frictionless frictionless validate data/exports/v0.1.0/datapackage.json
+uvx --from frictionless frictionless validate data/exports/v0.2.0/datapackage.json
 ```
 
 The CSV uses a Frictionless Table Schema. JSON resources retain their full JSON
@@ -142,7 +142,8 @@ JSON Schema as a table schema.
 
 ## Metrics and system boundaries
 
-No numerical value or calculator behavior changed during canonicalization. The public CSV uses the deployed calculator's existing fields:
+Version 0.2.0 intentionally changes the image row and documents its GPU-only
+boundary. The public CSV retains the established compatibility fields:
 
 - `server_network_energy_wh`
 - `total_system_energy_wh`
@@ -153,7 +154,12 @@ The exact row-level scope remains in the preserved `note`, source relationships,
 
 ## Versioning
 
-The first canonical public release is `0.1.0`.
+The current release is `0.2.0`; `0.1.0` remains the immutable first release.
+
+Each later release has a machine-readable decision under `releases/`. The
+release-diff verifier compares it with the prior immutable export and rejects
+undeclared record changes. Older release directories and archives are preserved
+when `latest/` advances.
 
 - MAJOR: breaking schema, unit, stable-ID, or system-boundary change
 - MINOR: backward-compatible activity, field, or source addition

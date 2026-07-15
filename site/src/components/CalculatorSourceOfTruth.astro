@@ -13,7 +13,12 @@ interface Props {
 
 const { calculator } = Astro.props as Props;
 const sourceMap = createCalculatorSourceMap(calculator);
-const publicMethodSectionIds = new Set(["boundary-rules", "water-method", "zoom-host-method"]);
+const publicMethodSectionIds = new Set([
+  "boundary-rules",
+  "water-method",
+  "zoom-host-method",
+  "image-generation-method"
+]);
 const publicMethodSections = calculator.data.methodSections.filter((section) =>
   publicMethodSectionIds.has(section.id)
 );
@@ -36,8 +41,8 @@ function getSources(sourceIds: string[], context: string) {
             <th>Activity</th>
             <th>Unit</th>
             <th>Status</th>
-            <th>Server + network</th>
-            <th>Total-system</th>
+            <th>Cloud/source-side estimate</th>
+            <th>Broader-system estimate</th>
             <th>Direct water</th>
             <th>Total water</th>
             <th>Sources</th>
@@ -65,8 +70,14 @@ function getSources(sourceIds: string[], context: string) {
                 <td>
                   <StatusBadge status={activity.status} />
                 </td>
-                <td>{activity.serverWhPerUnit} Wh</td>
-                <td>{activity.totalWhPerUnit} Wh</td>
+                <td>
+                  {activity.serverWhPerUnit} Wh
+                  {activity.serverEnergyBoundary && <div class="note">{activity.serverEnergyBoundary}</div>}
+                </td>
+                <td>
+                  {activity.totalWhPerUnit} Wh
+                  {activity.totalEnergyBoundary && <div class="note">{activity.totalEnergyBoundary}</div>}
+                </td>
                 <td>{activity.directWaterMlPerUnit} mL</td>
                 <td>{activity.totalWaterMlPerUnit} mL</td>
                 <td>

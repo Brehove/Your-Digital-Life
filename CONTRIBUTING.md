@@ -59,9 +59,14 @@ expression.
 1. Create or link the issue/Discussion that defines the change.
 2. Branch from the current protected default branch.
 3. Change the appropriate authority, not only a generated file. For
-   reviewer-only citation, provenance, or evidence-status corrections to the
-   frozen v0.1.0 dataset, edit `data/review/`. Changes to canonical calculator
+   reviewer-only citation, provenance, or evidence-status corrections, edit
+   `data/review/`. Changes to canonical calculator
    records under `data/` require the normal versioned release process.
+   When feedback comes from another calculator, reviewer, or recurring
+   conversation, also update the structured crosswalk in
+   `data/review/external-comparisons.json`; that history is copied into each
+   portable release from v0.2.0 onward. See
+   `docs/evidence-update-workflow.md`.
 4. Regenerate derived files with the repository script.
 5. Run the relevant validations and inspect the diff for unrelated output.
 6. Submit one logically reversible change per pull request.
@@ -106,3 +111,7 @@ Material methodology changes require public rationale in the issue, Discussion,
 pull request, changelog, or Architecture Decision Record. Stable IDs are not
 silently reused for a different concept. Breaking data changes require a major
 data-version increment and migration notes.
+
+Every version after v0.1.0 also requires a release decision under
+`data/releases/`. Its declared collection changes are checked against the prior
+immutable export, so an unrelated value or source cannot drift into the release.

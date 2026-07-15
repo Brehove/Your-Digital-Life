@@ -4,7 +4,7 @@ Your Digital Life separates editable evidence, generated products, website
 presentation, and hosting so each layer has one clear responsibility.
 
 ```text
-data/ canonical records and schemas
+data/ canonical records, schemas, release decisions, and review crosswalks
   -> scripts validate, assemble, and export
   -> data/exports versioned JSON, CSV, schemas, checksums, and ZIP
   -> site generated calculator snapshot and public data downloads
@@ -18,6 +18,8 @@ data/ canonical records and schemas
 | --- | --- | --- |
 | `data/activities`, `sources`, `device-profiles`, `presets`, `methods` | Canonical calculator records | Yes |
 | `data/schemas` and `data/manifest.json` | Validation and dataset contract | Yes, with compatibility review |
+| `data/releases` | Version-to-version scientific and collection change declarations | Yes, once per release |
+| `data/review/external-comparisons.json` | Repeatable outside-claim crosswalk and disposition history; copied into portable releases | Yes |
 | `data/generated` and `data/exports` | Reproducible generated products | No |
 | `tests/fixtures` | Frozen deployed-baseline contract | No, except an explicit baseline migration |
 | `site/src/content` | Public prose and non-calculator content collections | Yes |
@@ -34,6 +36,11 @@ scenario-methods URL, public provenance links, and canonical maintenance
 instructions. The tests continue to work even if the private predecessor commit
 is absent. Preset totals and device-specific streaming behavior are frozen as
 explicit tests.
+
+Later releases compare current canonical collections with the prior immutable
+export. Added, modified, and removed stable IDs must match the current release
+decision exactly. Historical version directories and archives remain
+byte-identical while `latest/` advances.
 
 ## Public contribution flow
 

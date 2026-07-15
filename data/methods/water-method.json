@@ -3,7 +3,9 @@
   "notes": [
     "The current model rounds direct cooling water to roughly 1 mL per Wh of server energy and total water to roughly 6 mL per Wh once indirect electricity water is added back.",
     "Text prompts keep their own prompt-specific direct and total water values instead of using the generic 1-to-6 rule.",
-    "Reasoning prompts, image generation, social video, streaming, browsing, and Zoom rows currently follow the broader proportional water rule unless a stronger prompt-specific figure exists."
+    "Reasoning prompts, image generation, social video, streaming, browsing, and Zoom rows currently follow the broader proportional water rule unless a stronger prompt-specific figure exists.",
+    "Jon Ippolito's What Uses More? spreadsheet prompted a review of the generic coefficient. Its 7 mL/Wh selection is retained here as comparative synthesis, not adopted as a measured value.",
+    "Using the spreadsheet's stated 0.3 gCO2/Wh factor, Mistral's 45 mL and 1.14 gCO2e figures imply 11.84 mL/Wh, not 13 mL/Wh. The current 6 mL/Wh broader-water rule therefore remains unchanged pending a boundary-matched source."
   ],
   "order": 3,
   "sourceIds": [
@@ -12,10 +14,53 @@
     "epoch-chatgpt-energy",
     "jegham-how-hungry-is-ai",
     "ifri-ai-dc-energy",
-    "scenario-methods"
+    "scenario-methods",
+    "ippolito-what-uses-more",
+    "mistral-environmental-standard"
   ],
   "summary": "The calculator keeps prompt-specific direct and total water figures where they exist, then uses a broader electricity-to-water bridge for most of the remaining rows.",
   "tables": [
+    {
+      "columns": [
+        "Evidence or method",
+        "Water relationship",
+        "Boundary",
+        "Current decision"
+      ],
+      "rows": [
+        [
+          "Google production Gemini prompt",
+          "0.26 mL / 0.24 Wh = 1.08 mL/Wh",
+          "Direct data-center cooling water for Google's production serving boundary",
+          "Supports the rounded 1 mL/Wh direct-water bridge"
+        ],
+        [
+          "Mistral 400-token Le Chat response",
+          "45 mL water and 1.14 gCO2e; not reported per Wh",
+          "Provider life-cycle assessment for one response",
+          "Upper-bound context only; do not treat as a direct mL/Wh measurement"
+        ],
+        [
+          "Ippolito What Uses More? synthesis",
+          "7 mL/Wh, selected as a midpoint between about 1 and 13",
+          "Universal calculator conversion",
+          "Recorded as external comparison; not adopted"
+        ],
+        [
+          "Recalculation of Ippolito's Mistral bridge",
+          "45 / 1.14 x 0.3 = 11.84 mL/Wh",
+          "Cross-metric conversion through a carbon-intensity assumption",
+          "Documents the arithmetic correction; still not boundary-matched evidence"
+        ],
+        [
+          "Your Digital Life generic bridge",
+          "1 mL/Wh direct; 6 mL/Wh broader",
+          "Applied to the calculator's row-specific cloud-side energy field",
+          "Retained for v0.2.0 pending stronger activity-specific evidence"
+        ]
+      ],
+      "title": "Evidence considered in the 2026 water-method review"
+    },
     {
       "columns": [
         "Row family",
@@ -41,10 +86,10 @@
         ],
         [
           "Image generation",
-          "0.48 mL per image",
-          "2.88 mL per image",
-          "0.48 Wh image benchmark with a 1:6 water bridge",
-          "0.48 x 6 = 2.88"
+          "1.7 mL per image",
+          "10.2 mL per image",
+          "1.7 Wh IEA image benchmark with a 1:6 water bridge",
+          "1.7 x 6 = 10.2"
         ],
         [
           "Social media / streaming / browsing rows",

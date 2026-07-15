@@ -34,6 +34,8 @@
     "step": { "type": "number", "exclusiveMinimum": 0 },
     "serverWhPerUnit": { "type": "number", "minimum": 0 },
     "totalWhPerUnit": { "type": "number", "minimum": 0 },
+    "serverEnergyBoundary": { "type": "string", "minLength": 1 },
+    "totalEnergyBoundary": { "type": "string", "minLength": 1 },
     "directWaterMlPerUnit": { "type": "number", "minimum": 0 },
     "totalWaterMlPerUnit": { "type": "number", "minimum": 0 },
     "status": { "enum": ["verified", "inferred", "estimated", "contested"] },

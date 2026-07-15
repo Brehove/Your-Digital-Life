@@ -6,13 +6,20 @@ import { ROOT, loadCanonicalData } from "../../scripts/lib/data.mjs";
 import {
   buildDataReviewGuide,
   loadActivityEvidence,
+  loadExternalComparisons,
   loadSourceEvidence
 } from "../../scripts/lib/review-guide.mjs";
 
 const canonical = loadCanonicalData();
 const review = loadSourceEvidence();
 const activityReview = loadActivityEvidence();
-const generatedGuide = buildDataReviewGuide(canonical, review, activityReview);
+const externalComparisons = loadExternalComparisons();
+const generatedGuide = buildDataReviewGuide(
+  canonical,
+  review,
+  activityReview,
+  externalComparisons
+);
 
 test("review overlay is complete, ordered, and isolated from runtime consumers", () => {
   assert.equal(review.datasetVersion, canonical.manifest.datasetVersion);
@@ -40,6 +47,17 @@ test("activity review overlay covers every frozen row without becoming a runtime
   });
 });
 
+test("external comparison overlay is isolated, linked, and reusable", () => {
+  assert.equal(externalComparisons.datasetVersion, canonical.manifest.datasetVersion);
+  assert.deepEqual(externalComparisons.compatibility, {
+    calculatorInput: false,
+    websiteInput: false,
+    releaseArtifact: true
+  });
+  assert.ok(externalComparisons.records.some(({ disposition }) => disposition === "adapt"));
+  assert.ok(externalComparisons.records.some(({ disposition }) => disposition === "retain"));
+});
+
 test("checked-in review guide is the exact deterministic build product", () => {
   const checkedIn = fs.readFileSync(path.join(ROOT, "DATA-REVIEW-GUIDE.md"), "utf8");
   assert.equal(checkedIn, generatedGuide);
@@ -54,9 +72,10 @@ test("review guide exposes every activity and source through stable anchors", ()
   }
 });
 
-test("review guide uses general contribution channels, not a person-specific review path", () => {
+test("review guide keeps general contribution channels while exposing specific evidence lineage", () => {
   assert.ok(generatedGuide.includes("template=data-correction.yml"));
   assert.ok(generatedGuide.includes("template=new-data-or-source.yml"));
-  assert.equal(generatedGuide.includes("Ippolito"), false);
-  assert.equal(generatedGuide.includes("What Uses More"), false);
+  assert.ok(generatedGuide.includes("Ippolito"));
+  assert.ok(generatedGuide.includes("What Uses More"));
+  assert.ok(generatedGuide.includes("External comparison decisions"));
 });

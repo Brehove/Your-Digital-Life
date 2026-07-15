@@ -18,9 +18,11 @@ records](data/methods/). To contribute without editing code, open a
 [data correction](https://github.com/Brehove/Your-Digital-Life/issues/new?template=data-correction.yml)
 or propose a [new activity or source](https://github.com/Brehove/Your-Digital-Life/issues/new?template=new-data-or-source.yml).
 
-This reviewer layer is separate from the live calculator and immutable v0.1.0
-release. It does not change calculator values, formulas, website behavior, or
-deployment settings.
+Review metadata is separate from the calculator runtime. Beginning with v0.2.0,
+the external-comparison history is included in portable releases so evidence
+decisions remain reproducible without becoming calculator or website inputs.
+Version 0.2.0 intentionally changes the image-generation coefficient; every
+such change must be declared in a release decision and verified downstream.
 
 The project has two connected products:
 
@@ -53,7 +55,7 @@ and must never be merged into this repository. See
 | --- | --- |
 | `DATA-REVIEW-GUIDE.md` | Generated, human-readable index of every calculator row and source evidence review |
 | `data/` | Canonical calculator data, schemas, generated releases, and documentation |
-| `data/review/` | Validated reviewer metadata; not a calculator, website, or release input |
+| `data/review/` | Validated reviewer metadata; not a calculator or website input. The external-comparison history is copied into releases from v0.2.0 onward. |
 | `docs/` | Current architecture documentation and clearly marked historical project plans |
 | `site/` | Astro website and the current production-facing content records |
 | `site/src/content/` | Facts, sources, scenarios, calculator records, pages, and updates consumed by the site |
@@ -126,7 +128,8 @@ and excluded legacy assets are in `RIGHTS_AND_ATTRIBUTIONS.md`.
 
 ## Citation
 
-GitHub can read `CITATION.cff`. The first versioned dataset release is v0.1.0.
+GitHub can read `CITATION.cff`. The current dataset release is v0.2.0; v0.1.0
+remains the immutable first-release baseline.
 No DOI has been assigned.
 
 ## Governance and support

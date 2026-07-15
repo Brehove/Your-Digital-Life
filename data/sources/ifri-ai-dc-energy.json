@@ -4,7 +4,7 @@
     "Adrien Buffard"
   ],
   "id": "ifri-ai-dc-energy",
-  "notes": "Useful for prompt comparison tables and the Jevons framing, but should be paired with Tier 1 sources where possible.",
+  "notes": "Historical comparator for the pre-v0.2 image coefficient and useful for broader Jevons framing; it is not the source of the current image value and should be paired with Tier 1 sources.",
   "order": 4,
   "organization": "IFRI",
   "publishedDate": "2025-02-01",
@@ -17,7 +17,7 @@
   "title": "AI, Data Centers and Energy Demand: Reassessing and Exploring the Trends",
   "url": "https://www.ifri.org/sites/default/files/2025-02/ifri_buffard-rochegonde_ai_data_centers_energy_2025_2.pdf",
   "usedFor": [
-    "image-generation benchmark row",
+    "historical comparison for the pre-v0.2 image-generation row",
     "comparison logic in the cloud-side versus total-system bridge"
   ]
 }
