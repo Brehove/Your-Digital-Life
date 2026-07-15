@@ -1,6 +1,6 @@
 {
-  "overlayVersion": "0.2.0",
-  "datasetVersion": "0.2.0",
+  "overlayVersion": "0.3.0",
+  "datasetVersion": "0.3.0",
   "reviewedOn": "2026-07-14",
   "status": "review-overlay",
   "compatibility": {
@@ -437,8 +437,12 @@
       "reviewStatus": "reviewed-with-limitations",
       "preciseLocators": [
         {
+          "locator": "Chapter 4, Figure 4.5 and discussion on PDF pages 46-47",
+          "relevance": "Models 2023 aggregate PUE and site WUE by data-center space type; the gaming central scenario uses 1.22 PUE and 0.32 L/kWh IT for the hyperscale category."
+        },
+        {
           "locator": "Chapter 5, Water Use, Figure 5.10 and accompanying text on PDF page 57",
-          "relevance": "Reports an estimated 4.52 liters of indirect water consumption per kWh of U.S. data-center electricity in 2023 and emphasizes regional variability."
+          "relevance": "Reports 4.52 L/kWh of indirect water consumption for electricity at U.S. data-center locations and 4.35 L/kWh for U.S. electricity overall, with strong regional variability."
         },
         {
           "locator": "Executive Summary and methodology chapters",
@@ -448,11 +452,12 @@
       "measurementBoundary": "National bottom-up analysis of U.S. data-center energy and water. The 4.52 L/kWh figure is indirect water consumption associated with electricity generation, separate from facility cooling water.",
       "workloadAndHardware": "Aggregated U.S. data-center stock and equipment categories rather than a specific application, model, server, or request.",
       "geography": "United States national estimate for 2023 with substantial regional variation in grid water intensity and facility cooling practices.",
-      "derivation": "The report supports the order of magnitude and the need to distinguish electricity-side indirect water from direct cooling water. The calculator's rounded 1 mL/Wh direct and 6 mL/Wh total bridge is an internal synthesis and is not a coefficient directly reported by LBNL.",
+      "derivation": "Most calculator rows use the project's generic water bridge, not an LBNL coefficient. The gaming row instead uses an explicit U.S.-average scenario: 1 Wh modeled server IT x 1.22 PUE, 0.32 L/kWh IT direct site WUE, 4.52 L/kWh for data-center electricity, and 4.35 L/kWh for other U.S. electricity.",
       "limitations": [
         "A U.S. national average should not be assigned to a specific request without location and time information.",
         "Indirect electricity water and direct facility water must not be added without consistent consumptive-versus-withdrawal boundaries.",
         "The report is macro-scale evidence, not a per-activity benchmark.",
+        "No public evidence establishes that Call of Duty runs in the LBNL hyperscale category or on the assumed U.S. grid mix.",
         "The legacy source record has no authors; this overlay supplies the report's full credited author list without altering v0.1.0."
       ]
     },
@@ -593,6 +598,219 @@
         "This is a first-party provider assessment rather than an independent audit.",
         "The water figure cannot be converted to mL/Wh without importing a carbon-intensity assumption from another source.",
         "The boundary is a 400-token Mistral response and should not be generalized to unrelated activities."
+      ]
+    },
+    {
+      "sourceId": "xbox-lab-platform-baselines",
+      "citation": {
+        "title": "Xbox Sustainability platform baselines",
+        "authors": ["Microsoft Xbox"],
+        "organization": "Microsoft Xbox",
+        "publishedDate": "2026-03-04",
+        "url": "https://learn.microsoft.com/en-us/xbox/sustainability/lab-platform-baselines"
+      },
+      "evidenceType": "direct-measurement",
+      "reviewStatus": "reviewed-with-limitations",
+      "preciseLocators": [
+        {
+          "locator": "Introduction and How do we test?",
+          "relevance": "States that approximate wattage is measured at the wall socket and that more than 200 titles were tested from October 2022 through March 2023."
+        },
+        {
+          "locator": "Average by in-game areas, Multiplayer active gameplay",
+          "relevance": "Reports 150 W for Xbox Series X and 72 W for Xbox Series S during multiplayer-active gameplay."
+        }
+      ],
+      "measurementBoundary": "Console AC-wall electricity during Microsoft certification-lab testing. The display, home gateway, access/core network, game server, manufacturing, and standby outside the sampled area are excluded.",
+      "workloadAndHardware": "More than 200 Xbox titles tested on Xbox Series X and Series S across multiple in-game areas. The published average is platform-wide rather than Call of Duty-specific.",
+      "geography": "Controlled Microsoft lab testing; no production grid or player geography is assigned.",
+      "derivation": "The gaming method uses 150 W as the high Series X console scenario because it directly matches multiplayer-active gameplay. The central calculator row uses the global shooter average instead.",
+      "limitations": [
+        "The title mix and title weighting are not disclosed.",
+        "The result is not Call of Duty-specific.",
+        "Console wall power does not include the television or external network equipment."
+      ]
+    },
+    {
+      "sourceId": "xbox-global-platform-baselines",
+      "citation": {
+        "title": "Introduction to global platform baselines",
+        "authors": ["Microsoft Xbox"],
+        "organization": "Microsoft Xbox",
+        "publishedDate": "2026-03-04",
+        "url": "https://learn.microsoft.com/en-us/xbox/sustainability/global-platform-baselines"
+      },
+      "evidenceType": "mixed-method",
+      "reviewStatus": "reviewed-with-limitations",
+      "preciseLocators": [
+        {
+          "locator": "What does global platform telemetry show us?",
+          "relevance": "Describes enhanced consoles with power-supply monitoring and modeled AC-wall electricity that includes storage, USB devices, networking, and power-regulation losses."
+        },
+        {
+          "locator": "Averages by genre, Shooter",
+          "relevance": "Reports 127 W for Xbox Series X and 64 W for Xbox Series S shooter titles."
+        }
+      ],
+      "measurementBoundary": "Modeled console AC-wall electricity from anonymized enhanced-console telemetry. It includes internal storage, attached USB devices, console networking, and regulation losses but excludes the display and external networking.",
+      "workloadAndHardware": "Shooter-genre averages for Xbox Series X and Series S from a limited run of instrumented consoles and Microsoft power models.",
+      "geography": "Described as global telemetry, but sample size, geographic weighting, title weighting, and measurement window are not disclosed.",
+      "derivation": "The fixed gaming row uses 127 Wh for one hour as its central Series X console coefficient. It is selected for real-world shooter relevance, while the 150 W lab multiplayer average defines the high scenario.",
+      "limitations": [
+        "The telemetry sample size and weighting are not published.",
+        "A shooter-genre average is not a Call of Duty-specific multiplayer measurement.",
+        "The television and home network remain outside this source boundary."
+      ]
+    },
+    {
+      "sourceId": "activision-call-of-duty-matchmaking-ping",
+      "citation": {
+        "title": "Call of Duty Matchmaking Series: Ping",
+        "authors": ["Activision Publishing"],
+        "organization": "Activision Publishing",
+        "publishedDate": "2024-04-04",
+        "url": "https://research.activision.com/content/dam/atvi/activision/atvi-touchui/research/publications/docs/Call-of-Duty-Matchmaking-Series-PING.pdf"
+      },
+      "evidenceType": "mixed-method",
+      "reviewStatus": "reviewed-with-limitations",
+      "preciseLocators": [
+        {
+          "locator": "PDF pages 2-4, Terminology and Matchmaking Ping",
+          "relevance": "Defines dedicated servers, describes the client-server model, and defines Core Multiplayer as 10 to 12 players with an average match size of 12 in the worked example."
+        },
+        {
+          "locator": "PDF page 13, server-capacity discussion",
+          "relevance": "Describes idle servers and a separate system that manages available server capacity by data center."
+        }
+      ],
+      "measurementBoundary": "First-party description of matchmaking and dedicated-server architecture. It does not report host electricity, player-hour energy, network traffic, PUE, WUE, or provider shares.",
+      "workloadAndHardware": "Call of Duty Core Multiplayer and its dedicated-server system. Physical server models, utilization, and matches per host are not disclosed.",
+      "geography": "Approximately 40 data centers are used in the paper's illustrative global matchmaking discussion; specific hosting providers and facilities are not identified.",
+      "derivation": "The source establishes the 10 to 12-player locally rendered shooter functional unit and confirms that game simulation runs on a dedicated server. It does not supply the calculator's 1 Wh server-IT assumption.",
+      "limitations": [
+        "No electricity or water measurement is reported.",
+        "No host density, utilization, idle-capacity allocation, PUE, WUE, or provider split is reported.",
+        "The calculator's server coefficient remains low-confidence project synthesis."
+      ]
+    },
+    {
+      "sourceId": "mytton-network-power-model",
+      "citation": {
+        "title": "Network energy use not directly proportional to data volume",
+        "authors": ["David Mytton", "Dag Lundén", "Jens Malmodin"],
+        "organization": "Journal of Industrial Ecology",
+        "publishedDate": "2024-06-21",
+        "doi": "10.1111/jiec.13512",
+        "venue": "Journal of Industrial Ecology",
+        "url": "https://doi.org/10.1111/jiec.13512"
+      },
+      "evidenceType": "modeled-estimate",
+      "reviewStatus": "reviewed-with-limitations",
+      "preciseLocators": [
+        {
+          "locator": "Sections 5.1-5.5, paper pages 8-10",
+          "relevance": "Defines the fixed-core 1.5 W + 0.03 W/Mbps model, fixed-access 5 W central allocation, and CPE 11.5 W idle + 0.02 W per used percentage of capacity."
+        },
+        {
+          "locator": "Section 5.5 and Table 3, paper pages 9-10",
+          "relevance": "Separates the mostly fixed attributional network allocation from the much smaller usage-sensitive term."
+        }
+      ],
+      "measurementBoundary": "Generic fixed-broadband power model covering home CPE, access network, and core transmission. Data centers and user devices are outside the paper's network model.",
+      "workloadAndHardware": "Generic network equipment and a worked fixed-broadband service example; no Call of Duty route or ISP is measured.",
+      "geography": "Generic model informed by multiple network studies, with explicit geographic and equipment variability.",
+      "derivation": "At 0.20 Mbps on a 100 Mbps connection and two allocated household users, the gaming central case uses 5.754 Wh CPE, 5 Wh access, and 1.506 Wh core. The 12.260 Wh result is attributional allocation, not marginal electricity caused by the player's packets.",
+      "limitations": [
+        "Fiber, cable, Wi-Fi conditions, ISP equipment, and route length are not resolved.",
+        "The household-user allocation is a project scenario assumption.",
+        "The model should not be described as short-run causal electricity from one session."
+      ]
+    },
+    {
+      "sourceId": "energy-star-certified-televisions",
+      "citation": {
+        "title": "ENERGY STAR Certified Televisions",
+        "authors": ["U.S. Environmental Protection Agency"],
+        "organization": "U.S. Environmental Protection Agency",
+        "publishedDate": "2024-04-18",
+        "url": "https://catalog.data.gov/dataset/energy-star-certified-televisions"
+      },
+      "evidenceType": "direct-measurement",
+      "reviewStatus": "reviewed-with-limitations",
+      "preciseLocators": [
+        {
+          "locator": "Dataset record pd_id 3555272, Sansui LE-55TA1",
+          "relevance": "Reports a 54.7-inch display and 79.5 W average on-mode power consumption for certification, with 79.50 W under the federal test procedure."
+        }
+      ],
+      "measurementBoundary": "Television on-mode certification power. The console, network, servers, standby outside the session, and manufacturing are excluded.",
+      "workloadAndHardware": "Sansui LE-55TA1, model-specific 54.7-inch television certification record.",
+      "geography": "U.S. ENERGY STAR certification dataset; actual household electricity and picture settings vary.",
+      "derivation": "The fixed gaming reference row uses 79.5 Wh for one hour. The exact central system sum is 219.98 Wh and is rounded to 220 Wh in the calculator.",
+      "limitations": [
+        "One efficient certified television is not a sales-weighted or installed-stock average.",
+        "HDR, brightness, picture mode, panel technology, and screen size materially affect actual power.",
+        "The row must identify this as a reference television rather than a universal TV coefficient."
+      ]
+    },
+    {
+      "sourceId": "lyu-cloud-gaming-network-anatomy",
+      "citation": {
+        "title": "Network Anatomy and Real-Time Measurement of Nvidia GeForce NOW Cloud Gaming",
+        "authors": ["Minzhao Lyu", "Sharat Chandra Madanapalli", "Arun Vishwanath", "Vijay Sivaraman"],
+        "organization": "Passive and Active Measurement Conference",
+        "publishedDate": "2024-03-20",
+        "doi": "10.1007/978-3-031-56249-5_3",
+        "venue": "PAM 2024",
+        "url": "https://doi.org/10.1007/978-3-031-56249-5_3"
+      },
+      "evidenceType": "mixed-method",
+      "reviewStatus": "reviewed-with-limitations",
+      "preciseLocators": [
+        {
+          "locator": "Abstract, console-game comparison",
+          "relevance": "States that a typical locally rendered console game requires approximately 100 to 200 kbps, compared with 10 to 20 Mbps for cloud gaming."
+        }
+      ],
+      "measurementBoundary": "The paper measures GeForce NOW cloud gaming; the console-game bitrate is contextual comparison rather than a measured Call of Duty trace.",
+      "workloadAndHardware": "Primarily Nvidia GeForce NOW cloud gaming, with a contextual statement about typical console-game traffic.",
+      "geography": "Not used as a geography-specific coefficient.",
+      "derivation": "The gaming central scenario uses the upper end of the contextual console range, 0.20 Mbps or 90 decimal MB per hour, before applying the Mytton power model.",
+      "limitations": [
+        "This is not a Call of Duty console packet capture.",
+        "Voice, authentication, telemetry, anti-cheat, and optional texture streaming can change traffic.",
+        "Traffic uncertainty has little effect on the power model because fixed infrastructure terms dominate."
+      ]
+    },
+    {
+      "sourceId": "playfab-multiplayer-servers",
+      "citation": {
+        "title": "PlayFab Multiplayer Server terms",
+        "authors": ["Microsoft PlayFab"],
+        "organization": "Microsoft PlayFab",
+        "publishedDate": "2026-03-10",
+        "url": "https://learn.microsoft.com/en-us/gaming/playfab/multiplayer/servers/server-terms"
+      },
+      "evidenceType": "mixed-method",
+      "reviewStatus": "illustrative-only",
+      "preciseLocators": [
+        {
+          "locator": "Terminology, PlayFab Multiplayer Servers",
+          "relevance": "Explains that one VM can run multiple game-server containers and that the platform adds agents and telemetry around the game-server executable."
+        },
+        {
+          "locator": "Related Scaling Standby documentation",
+          "relevance": "Documents standby servers that are allocated but have no active connected players."
+        }
+      ],
+      "measurementBoundary": "Generic Azure/PlayFab multiplayer-server architecture and scaling documentation. It contains no per-player electricity measurement.",
+      "workloadAndHardware": "Configurable generic multiplayer-server VMs and containers; no Call of Duty configuration is identified.",
+      "geography": "Azure regions selected by PlayFab customers; not mapped to Call of Duty traffic or facilities.",
+      "derivation": "Used only to show that multiple game processes can share a VM and that idle capacity exists. The calculator's 1 Wh server-IT central allowance remains project synthesis rather than a PlayFab or Activision result.",
+      "limitations": [
+        "There is no evidence that Call of Duty uses PlayFab.",
+        "No host power, utilization, server density, or per-player energy is reported.",
+        "This source cannot independently validate the 1 Wh server-IT coefficient."
       ]
     }
   ]

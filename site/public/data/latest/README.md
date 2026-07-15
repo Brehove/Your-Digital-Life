@@ -1,19 +1,18 @@
-# Your Digital Life data v0.2.0
+# Your Digital Life data v0.3.0
 
-Adds a repeatable external-evidence comparison workflow and revises the image-generation row using a pinned IEA benchmark surfaced through comparison with Jon Ippolito's What Uses More? calculator.
+Adds a fixed Xbox Series X plus television online-multiplayer reference row with explicit operational boundaries, reproducible component calculations, and uncertainty documentation.
 
-The image-generation coefficient changes from an unreconstructable 0.48 Wh to 1.7 Wh for SD-XL 1.0-base under controlled H100 GPU-only test conditions. The generic water coefficients remain unchanged, but their evidence and the Ippolito comparison are now explicit.
+The release introduces the first gaming player-hour as an explicitly estimated end-to-end operational scenario. Microsoft directly supports the console-power range, while the television is one named certification record, the network is an attributional power model, and the game-server coefficient remains low-confidence synthesis because Activision publishes no player-hour electricity measurement.
 
 The website consumes a generated snapshot from these root records, and `latest/` is byte-identical to this versioned package. Historical release directories and archives remain immutable. The frozen object captured from Git commit `063322e93e27704b447a495a838e552067928127` remains provenance metadata and a repository-only regression fixture; it is not an update authority.
 
 ## Changes
 
-- Changed image-generation energy from 0.48 Wh to 1.7 Wh and recalculated its direct and broader water values to 1.7 mL and 10.2 mL under the retained water rule.
-- Labeled the 1.7 Wh result as GPU-only and carried it through both energy totals only as a conservative floor, not as measured server-plus-network or total-system energy.
-- Advanced the backward-compatible activity schema to v0.2.0 with optional per-row energy-boundary fields.
-- Added Jon Ippolito's source sheet as explicit secondary provenance while attributing the adopted coefficient to the underlying IEA report.
-- Added an external-comparison overlay with adopt, adapt, retain, reject, open, and not-comparable dispositions for future feedback cycles.
-- Expanded the water method with Google, Mistral, LBNL, and Ippolito evidence, including the corrected 11.84 mL/Wh cross-metric arithmetic.
-- Preserved the 1 mL/Wh direct and 6 mL/Wh broader generic water rules pending boundary-matched evidence.
+- Added a fixed Gaming Console (Xbox Series X + TV) activity for one active player-hour of locally rendered online multiplayer over fixed broadband.
+- Set the central calculator values to 7.7 Wh off-prem infrastructure, 220 Wh broader-system electricity, 0.32 mL direct game-server data-center water, and 960 mL U.S.-average broader operational water.
+- Added explicit direct-water and broader-water boundary fields and a new operational-player-hour boundary marker without changing existing activity values.
+- Added a Gaming category and fixed Xbox Series X plus reference 54.7-inch television device profile; Series S and alternate displays remain intentionally unmodeled.
+- Published the exact component arithmetic, low/central/high sensitivity bundles, evidence limitations, and source locators in the gaming method and review overlays.
+- Preserved every v0.1.0 and v0.2.0 versioned export and archive unchanged.
 
 Project-created structured data and schemas are offered under CC0-1.0. Original project prose fields are offered under CC BY 4.0. Third-party titles and bibliographic metadata are not relicensed. Quote-heavy research notes and presentation artifacts are intentionally excluded.

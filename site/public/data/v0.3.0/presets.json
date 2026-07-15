@@ -1,0 +1,101 @@
+[
+  {
+    "description": "Reset every input to zero.",
+    "deviceSelections": {},
+    "id": "clear",
+    "label": "Clear",
+    "order": 1,
+    "values": {}
+  },
+  {
+    "description": "Section 3 scenario with heavy social media, evening streaming, one Zoom class, and no AI.",
+    "deviceSelections": {
+      "instagram": "phone",
+      "netflix": "laptop",
+      "snapchat": "phone",
+      "tiktok": "phone",
+      "youtube": "phone",
+      "zoom-participant": "laptop"
+    },
+    "id": "gen-z-no-ai",
+    "label": "Gen Z (no AI use)",
+    "order": 2,
+    "values": {
+      "instagram": 0.75,
+      "netflix": 1.5,
+      "snapchat": 0.5,
+      "tiktok": 1.5,
+      "youtube": 1.25,
+      "zoom-participant": 1
+    }
+  },
+  {
+    "description": "Section 3 scenario with 25 text prompts, 3 images, lighter scrolling, and one Zoom class.",
+    "deviceSelections": {
+      "cloud-docs-browsing": "laptop",
+      "instagram": "phone",
+      "netflix": "laptop",
+      "snapchat": "phone",
+      "tiktok": "phone",
+      "youtube": "phone",
+      "zoom-participant": "laptop"
+    },
+    "id": "gen-z-moderate-ai",
+    "label": "Gen Z (moderate AI use)",
+    "order": 3,
+    "values": {
+      "cloud-docs-browsing": 1,
+      "image-generation": 3,
+      "instagram": 0.5,
+      "netflix": 1.5,
+      "snapchat": 0.5,
+      "text-prompts": 25,
+      "tiktok": 1,
+      "youtube": 1,
+      "zoom-participant": 1
+    }
+  },
+  {
+    "description": "Section 3 scenario with one hour of coding-agent use, reasoning queries, and reduced media time.",
+    "deviceSelections": {
+      "cloud-docs-browsing": "laptop",
+      "netflix": "laptop",
+      "tiktok": "phone",
+      "vibe-coding": "laptop",
+      "youtube": "phone",
+      "zoom-participant": "laptop"
+    },
+    "id": "gen-z-vibe-coder",
+    "label": "Gen Z (vibe coder)",
+    "order": 4,
+    "values": {
+      "cloud-docs-browsing": 1,
+      "image-generation": 2,
+      "netflix": 0.75,
+      "reasoning-prompts": 8,
+      "text-prompts": 15,
+      "tiktok": 0.25,
+      "vibe-coding": 1,
+      "youtube": 1,
+      "zoom-participant": 1
+    }
+  },
+  {
+    "description": "Section 3 scenario with one hosted Zoom meeting, routine browsing, Instagram, and Netflix.",
+    "deviceSelections": {
+      "cloud-docs-browsing": "laptop",
+      "instagram": "phone",
+      "netflix": "tv",
+      "zoom-host": "meeting-bundle"
+    },
+    "id": "worker-zoom-host",
+    "label": "Worker (hosts Zoom meetings)",
+    "order": 5,
+    "values": {
+      "cloud-docs-browsing": 1,
+      "instagram": 1,
+      "netflix": 1,
+      "zoom-host": 1
+    }
+  }
+]

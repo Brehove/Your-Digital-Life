@@ -133,6 +133,43 @@ test("streaming device controls affect total energy only", () => {
   }
 });
 
+test("fixed Xbox Series X gaming reference includes the named television and explicit boundaries", () => {
+  const activity = canonical.activities.find(({ id }) => id === "gaming-console-xbox-series-x");
+  assert.ok(activity);
+  assert.deepEqual(
+    {
+      label: activity.label,
+      unitLabel: activity.unitLabel,
+      deviceMode: activity.deviceMode,
+      defaultDeviceId: activity.defaultDeviceId,
+      selectableIds: activity.deviceSelectableIds,
+      deviceOverride: activity.deviceTotalWhOverrides["xbox-series-x-reference"],
+      serverWhPerUnit: activity.serverWhPerUnit,
+      totalWhPerUnit: activity.totalWhPerUnit,
+      directWaterMlPerUnit: activity.directWaterMlPerUnit,
+      totalWaterMlPerUnit: activity.totalWaterMlPerUnit
+    },
+    {
+      label: "Gaming Console (Xbox Series X + TV)",
+      unitLabel: "hours",
+      deviceMode: "fixed",
+      defaultDeviceId: "xbox-series-x-reference",
+      selectableIds: ["xbox-series-x-reference"],
+      deviceOverride: 220,
+      serverWhPerUnit: 7.7,
+      totalWhPerUnit: 220,
+      directWaterMlPerUnit: 0.32,
+      totalWaterMlPerUnit: 960
+    }
+  );
+  assert.match(activity.deviceNote, /54\.7-inch ENERGY STAR-certified television/);
+  assert.match(activity.note, /Locally rendered online multiplayer, not cloud gaming/);
+  assert.match(activity.totalEnergyBoundary, /reference TV/);
+  assert.match(activity.directWaterBoundary, /game-server data center only/);
+  assert.match(activity.totalWaterBoundary, /U\.S\.-average operational water consumption/);
+  assert.equal(canonical.presets.every(({ values }) => values[activity.id] === undefined), true);
+});
+
 test("every activity and method source relationship resolves", () => {
   const sourceIds = new Set(canonical.sourceCatalog.map(({ id }) => id));
   for (const activity of canonical.activities) {

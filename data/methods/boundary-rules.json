@@ -11,6 +11,8 @@
     "epoch-chatgpt-energy",
     "jegham-how-hungry-is-ai",
     "iea-energy-and-ai",
+    "xbox-global-platform-baselines",
+    "mytton-network-power-model",
     "ippolito-what-uses-more",
     "ifri-ai-dc-energy",
     "kamiya-streaming-video",
@@ -100,6 +102,13 @@
           "Adds all participant devices",
           "192/358 Wh per meeting",
           "One 50-minute hosted session with 10 people"
+        ],
+        [
+          "Gaming Console (Xbox Series X + TV)",
+          "7.7 Wh off-prem fixed access, core transport, and modeled game-server facility electricity",
+          "Adds the Series X, reference 54.7-inch TV, and allocated home gateway",
+          "7.7/220 Wh per player-hour",
+          "Locally rendered multiplayer, not cloud gaming; infrastructure is attributional and the server term is low-confidence"
         ]
       ],
       "title": "Current bridge rules used in the calculator"

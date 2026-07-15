@@ -1,0 +1,25 @@
+{
+  "authors": [
+    "Minzhao Lyu",
+    "Sharat Chandra Madanapalli",
+    "Arun Vishwanath",
+    "Vijay Sivaraman"
+  ],
+  "id": "lyu-cloud-gaming-network-anatomy",
+  "notes": "Peer-reviewed cloud-gaming study used only for its contextual statement that a typical locally rendered console game requires roughly 100 to 200 kbps. It is not a Call of Duty packet trace.",
+  "order": 23,
+  "organization": "Passive and Active Measurement Conference",
+  "publishedDate": "2024-03-20",
+  "sourceTier": "Tier 1",
+  "sourceType": "Peer-reviewed conference paper",
+  "tags": [
+    "gaming",
+    "networks"
+  ],
+  "title": "Network Anatomy and Real-Time Measurement of Nvidia GeForce NOW Cloud Gaming",
+  "url": "https://doi.org/10.1007/978-3-031-56249-5_3",
+  "usedFor": [
+    "central 0.20 Mbps gaming-traffic assumption",
+    "gaming-console method"
+  ]
+}

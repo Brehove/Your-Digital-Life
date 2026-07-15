@@ -248,7 +248,7 @@
   {
     "authors": [],
     "id": "lbnl-data-center-report",
-    "notes": "Primary U.S. demand and water-intensity context for the macro-risk pages.",
+    "notes": "Primary U.S. demand, PUE/WUE, and electricity-related water-intensity context. Gaming uses its U.S. hyperscale and grid-water values only as a modeled scenario, not as provider-specific evidence.",
     "order": 12,
     "organization": "Lawrence Berkeley National Laboratory",
     "publishedDate": "2024-12-01",
@@ -261,7 +261,8 @@
     "title": "2024 United States Data Center Energy Usage Report",
     "url": "https://eta.lbl.gov/publications/2024-lbnl-data-center-energy-usage-report",
     "usedFor": [
-      "water methodology context on electricity-side water intensity"
+      "water methodology context on electricity-side water intensity",
+      "gaming-console PUE, WUE, and operational-water scenario"
     ]
   },
   {
@@ -375,6 +376,165 @@
     "url": "https://mistral.ai/news/our-contribution-to-a-global-environmental-standard-for-ai",
     "usedFor": [
       "upper-bound context in the generic water-conversion review"
+    ]
+  },
+  {
+    "authors": [
+      "Microsoft Xbox"
+    ],
+    "id": "xbox-lab-platform-baselines",
+    "notes": "First-party laboratory platform baseline measured at the wall socket. The 150 W Series X multiplayer-active figure is used as the high console-power scenario, not as a Call of Duty-specific measurement.",
+    "order": 18,
+    "organization": "Microsoft Xbox",
+    "publishedDate": "2026-03-04",
+    "sourceTier": "Tier 1",
+    "sourceType": "First-party laboratory measurement",
+    "tags": [
+      "gaming",
+      "devices"
+    ],
+    "title": "Xbox Sustainability platform baselines",
+    "url": "https://learn.microsoft.com/en-us/xbox/sustainability/lab-platform-baselines",
+    "usedFor": [
+      "Xbox Series X multiplayer-active high scenario",
+      "gaming-console method"
+    ]
+  },
+  {
+    "authors": [
+      "Microsoft Xbox"
+    ],
+    "id": "xbox-global-platform-baselines",
+    "notes": "First-party AC-wall telemetry model. The 127 W Series X shooter-genre average is the central console coefficient for the fixed gaming reference row.",
+    "order": 19,
+    "organization": "Microsoft Xbox",
+    "publishedDate": "2026-03-04",
+    "sourceTier": "Tier 1",
+    "sourceType": "First-party global telemetry model",
+    "tags": [
+      "gaming",
+      "devices"
+    ],
+    "title": "Introduction to global platform baselines",
+    "url": "https://learn.microsoft.com/en-us/xbox/sustainability/global-platform-baselines",
+    "usedFor": [
+      "Xbox Series X central console coefficient",
+      "gaming-console method"
+    ]
+  },
+  {
+    "authors": [
+      "Activision Publishing"
+    ],
+    "id": "activision-call-of-duty-matchmaking-ping",
+    "notes": "First-party architectural evidence for dedicated servers, 10 to 12-player Core Multiplayer, distributed data centers, and reserved idle capacity. It reports no server electricity coefficient.",
+    "order": 20,
+    "organization": "Activision Publishing",
+    "publishedDate": "2024-04-04",
+    "sourceTier": "Tier 1",
+    "sourceType": "First-party technical white paper",
+    "tags": [
+      "gaming",
+      "data-centers"
+    ],
+    "title": "Call of Duty Matchmaking Series: Ping",
+    "url": "https://research.activision.com/content/dam/atvi/activision/atvi-touchui/research/publications/docs/Call-of-Duty-Matchmaking-Series-PING.pdf",
+    "usedFor": [
+      "gaming functional unit and server architecture",
+      "gaming-console method"
+    ]
+  },
+  {
+    "authors": [
+      "David Mytton",
+      "Dag Lundén",
+      "Jens Malmodin"
+    ],
+    "id": "mytton-network-power-model",
+    "notes": "Peer-reviewed power model used to separate fixed access, core-network, and home CPE allocations from the much smaller usage-sensitive term.",
+    "order": 21,
+    "organization": "Journal of Industrial Ecology",
+    "publishedDate": "2024-06-21",
+    "sourceTier": "Tier 1",
+    "sourceType": "Peer-reviewed paper",
+    "tags": [
+      "gaming",
+      "networks"
+    ],
+    "title": "Network energy use not directly proportional to data volume",
+    "url": "https://doi.org/10.1111/jiec.13512",
+    "usedFor": [
+      "fixed-broadband network component model",
+      "gaming-console method"
+    ]
+  },
+  {
+    "authors": [
+      "U.S. Environmental Protection Agency"
+    ],
+    "id": "energy-star-certified-televisions",
+    "notes": "Official certification dataset. The fixed reference uses the Sansui LE-55TA1 record: 54.7-inch screen and 79.5 W average on-mode power for certification.",
+    "order": 22,
+    "organization": "U.S. Environmental Protection Agency",
+    "publishedDate": "2024-04-18",
+    "sourceTier": "Tier 1",
+    "sourceType": "Government certification dataset",
+    "tags": [
+      "gaming",
+      "devices"
+    ],
+    "title": "ENERGY STAR Certified Televisions",
+    "url": "https://catalog.data.gov/dataset/energy-star-certified-televisions",
+    "usedFor": [
+      "79.5 W reference television coefficient",
+      "gaming-console method"
+    ]
+  },
+  {
+    "authors": [
+      "Minzhao Lyu",
+      "Sharat Chandra Madanapalli",
+      "Arun Vishwanath",
+      "Vijay Sivaraman"
+    ],
+    "id": "lyu-cloud-gaming-network-anatomy",
+    "notes": "Peer-reviewed cloud-gaming study used only for its contextual statement that a typical locally rendered console game requires roughly 100 to 200 kbps. It is not a Call of Duty packet trace.",
+    "order": 23,
+    "organization": "Passive and Active Measurement Conference",
+    "publishedDate": "2024-03-20",
+    "sourceTier": "Tier 1",
+    "sourceType": "Peer-reviewed conference paper",
+    "tags": [
+      "gaming",
+      "networks"
+    ],
+    "title": "Network Anatomy and Real-Time Measurement of Nvidia GeForce NOW Cloud Gaming",
+    "url": "https://doi.org/10.1007/978-3-031-56249-5_3",
+    "usedFor": [
+      "central 0.20 Mbps gaming-traffic assumption",
+      "gaming-console method"
+    ]
+  },
+  {
+    "authors": [
+      "Microsoft PlayFab"
+    ],
+    "id": "playfab-multiplayer-servers",
+    "notes": "Generic game-server architecture showing multiple containers per VM and standby capacity. It is analogy evidence only; no public evidence establishes that Call of Duty uses PlayFab or these configurations.",
+    "order": 24,
+    "organization": "Microsoft PlayFab",
+    "publishedDate": "2026-03-10",
+    "sourceTier": "Tier 2",
+    "sourceType": "First-party platform documentation",
+    "tags": [
+      "gaming",
+      "data-centers"
+    ],
+    "title": "PlayFab Multiplayer Server terms",
+    "url": "https://learn.microsoft.com/en-us/gaming/playfab/multiplayer/servers/server-terms",
+    "usedFor": [
+      "generic multiplayer-server architecture analogy",
+      "gaming-console method"
     ]
   }
 ]

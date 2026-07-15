@@ -14,7 +14,7 @@
     "releaseArtifact": true,
     "websiteInput": false
   },
-  "datasetVersion": "0.2.0",
+  "datasetVersion": "0.3.0",
   "overlayVersion": "0.1.0",
   "records": [
     {

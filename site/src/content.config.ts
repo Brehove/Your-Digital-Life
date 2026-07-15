@@ -91,7 +91,7 @@ const calculators = defineCollection({
       z.object({
         id: z.string(),
         label: z.string(),
-        category: z.enum(["AI tasks", "Media and search", "Meetings"]),
+        category: z.enum(["AI tasks", "Media and search", "Gaming", "Meetings"]),
         unitLabel: z.string(),
         unitHint: z.string(),
         step: z.number(),
@@ -101,6 +101,8 @@ const calculators = defineCollection({
         totalEnergyBoundary: z.string().optional(),
         directWaterMlPerUnit: z.number(),
         totalWaterMlPerUnit: z.number(),
+        directWaterBoundary: z.string().optional(),
+        totalWaterBoundary: z.string().optional(),
         status: statusSchema,
         note: z.string(),
         deviceMode: calculatorDeviceModeSchema.default("not-modeled"),
@@ -109,7 +111,8 @@ const calculators = defineCollection({
         deviceTotalWhOverrides: z.record(z.string(), z.number()).default({}),
         deviceSelectionAffects: z.array(z.string()).default([]),
         deviceNote: z.string().optional(),
-        sourceIds: z.array(z.string()).default([])
+        sourceIds: z.array(z.string()).default([]),
+        systemBoundary: z.enum(["legacy-row-specific", "operational-player-hour"]).optional()
       })
     ),
     presets: z

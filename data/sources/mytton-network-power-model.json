@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "David Mytton",
+    "Dag Lundén",
+    "Jens Malmodin"
+  ],
+  "id": "mytton-network-power-model",
+  "notes": "Peer-reviewed power model used to separate fixed access, core-network, and home CPE allocations from the much smaller usage-sensitive term.",
+  "order": 21,
+  "organization": "Journal of Industrial Ecology",
+  "publishedDate": "2024-06-21",
+  "sourceTier": "Tier 1",
+  "sourceType": "Peer-reviewed paper",
+  "tags": [
+    "gaming",
+    "networks"
+  ],
+  "title": "Network energy use not directly proportional to data volume",
+  "url": "https://doi.org/10.1111/jiec.13512",
+  "usedFor": [
+    "fixed-broadband network component model",
+    "gaming-console method"
+  ]
+}

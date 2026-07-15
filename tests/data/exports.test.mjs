@@ -9,7 +9,8 @@ const manifest = readManifest();
 const currentVersion = manifest.datasetVersion;
 const publishedArchiveChecksums = {
   "your-digital-life-data-v0.1.0.zip": "7c8a1b55683681b91e86b47156d865adc380dd09cf1f177f22305ce84a1f5689",
-  "your-digital-life-data-v0.2.0.zip": "4fa0360701d9349a045db03c1708473a7faca43f3fc72dc31e805c131b95b79d"
+  "your-digital-life-data-v0.2.0.zip": "4fa0360701d9349a045db03c1708473a7faca43f3fc72dc31e805c131b95b79d",
+  "your-digital-life-data-v0.3.0.zip": "7f40c677395feeb81d7d2e2583fec2c0a150ae584ae770f0e3d383798e787d76"
 };
 
 function filesUnder(directory) {
@@ -118,15 +119,16 @@ test("all versioned release checksums and archives are valid", () => {
   }
 });
 
-test("activity CSV has one header and twelve stable-ID rows", () => {
+test("activity CSV has one header and thirteen stable-ID rows", () => {
   const csv = fs.readFileSync(path.join(DATA_DIR, "exports/latest/activities.csv"), "utf8").trim().split("\n");
-  assert.equal(csv.length, 13);
+  assert.equal(csv.length, 14);
   assert.equal(
     csv[0],
     "id,activity,unit,server_network_energy_wh,total_system_energy_wh,direct_water_ml,total_water_ml,status,system_boundary,source_ids,last_reviewed"
   );
   assert.ok(csv[1].startsWith("text-prompts,"));
   assert.ok(csv[12].startsWith("zoom-host,"));
+  assert.ok(csv[13].startsWith("gaming-console-xbox-series-x,"));
 });
 
 test("portable package excludes private research notes and Git history dependencies", () => {

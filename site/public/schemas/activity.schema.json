@@ -28,7 +28,7 @@
     "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
     "order": { "type": "integer", "minimum": 1 },
     "label": { "type": "string", "minLength": 1 },
-    "category": { "enum": ["AI tasks", "Media and search", "Meetings"] },
+    "category": { "enum": ["AI tasks", "Media and search", "Gaming", "Meetings"] },
     "unitLabel": { "enum": ["prompts", "images", "hours", "daily blocks", "meetings"] },
     "unitHint": { "type": "string", "minLength": 1 },
     "step": { "type": "number", "exclusiveMinimum": 0 },
@@ -38,6 +38,8 @@
     "totalEnergyBoundary": { "type": "string", "minLength": 1 },
     "directWaterMlPerUnit": { "type": "number", "minimum": 0 },
     "totalWaterMlPerUnit": { "type": "number", "minimum": 0 },
+    "directWaterBoundary": { "type": "string", "minLength": 1 },
+    "totalWaterBoundary": { "type": "string", "minLength": 1 },
     "status": { "enum": ["verified", "inferred", "estimated", "contested"] },
     "note": { "type": "string", "minLength": 1 },
     "deviceMode": { "enum": ["not-modeled", "fixed", "selectable"] },
@@ -62,7 +64,7 @@
       "items": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
       "uniqueItems": true
     },
-    "systemBoundary": { "const": "legacy-row-specific" },
+    "systemBoundary": { "enum": ["legacy-row-specific", "operational-player-hour"] },
     "lastReviewed": { "type": "string", "format": "date" }
   }
 }

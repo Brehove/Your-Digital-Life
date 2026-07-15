@@ -11,3 +11,4 @@ netflix,Netflix streaming,hours,22,37,22,132,inferred,legacy-row-specific,kamiya
 cloud-docs-browsing,"Email, cloud docs, and browsing",daily blocks,4,30,4,24,estimated,legacy-row-specific,scenario-methods,2026-03-09
 zoom-participant,Zoom as participant,hours,54,74,54,324,estimated,legacy-row-specific,mytton-zoom|verdecchia-video-call-energy|scenario-methods,2026-03-09
 zoom-host,Zoom as host,meetings,192,358,192,1152,estimated,legacy-row-specific,mytton-zoom|verdecchia-video-call-energy|scenario-methods,2026-03-09
+gaming-console-xbox-series-x,Gaming Console (Xbox Series X + TV),hours,7.7,220,0.32,960,estimated,operational-player-hour,xbox-global-platform-baselines|xbox-lab-platform-baselines|activision-call-of-duty-matchmaking-ping|mytton-network-power-model|energy-star-certified-televisions|lyu-cloud-gaming-network-anatomy|playfab-multiplayer-servers|lbnl-data-center-report|scenario-methods,2026-07-14

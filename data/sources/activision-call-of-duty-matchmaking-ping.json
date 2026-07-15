@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "Activision Publishing"
+  ],
+  "id": "activision-call-of-duty-matchmaking-ping",
+  "notes": "First-party architectural evidence for dedicated servers, 10 to 12-player Core Multiplayer, distributed data centers, and reserved idle capacity. It reports no server electricity coefficient.",
+  "order": 20,
+  "organization": "Activision Publishing",
+  "publishedDate": "2024-04-04",
+  "sourceTier": "Tier 1",
+  "sourceType": "First-party technical white paper",
+  "tags": [
+    "gaming",
+    "data-centers"
+  ],
+  "title": "Call of Duty Matchmaking Series: Ping",
+  "url": "https://research.activision.com/content/dam/atvi/activision/atvi-touchui/research/publications/docs/Call-of-Duty-Matchmaking-Series-PING.pdf",
+  "usedFor": [
+    "gaming functional unit and server architecture",
+    "gaming-console method"
+  ]
+}

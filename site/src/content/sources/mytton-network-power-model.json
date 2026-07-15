@@ -1,0 +1,11 @@
+{
+  "title": "Network energy use not directly proportional to data volume",
+  "organization": "Journal of Industrial Ecology",
+  "authors": ["David Mytton", "Dag Lundén", "Jens Malmodin"],
+  "url": "https://doi.org/10.1111/jiec.13512",
+  "publishedDate": "2024-06-21",
+  "sourceTier": "Tier 1",
+  "sourceType": "Peer-reviewed paper",
+  "notes": "Peer-reviewed power model used to separate fixed access, core-network, and home CPE allocations from the much smaller usage-sensitive term.",
+  "tags": ["gaming", "networks"]
+}

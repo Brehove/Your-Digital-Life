@@ -1,0 +1,58 @@
+{
+  "behaviorChanges": true,
+  "changes": [
+    "Added a fixed Gaming Console (Xbox Series X + TV) activity for one active player-hour of locally rendered online multiplayer over fixed broadband.",
+    "Set the central calculator values to 7.7 Wh off-prem infrastructure, 220 Wh broader-system electricity, 0.32 mL direct game-server data-center water, and 960 mL U.S.-average broader operational water.",
+    "Added explicit direct-water and broader-water boundary fields and a new operational-player-hour boundary marker without changing existing activity values.",
+    "Added a Gaming category and fixed Xbox Series X plus reference 54.7-inch television device profile; Series S and alternate displays remain intentionally unmodeled.",
+    "Published the exact component arithmetic, low/central/high sensitivity bundles, evidence limitations, and source locators in the gaming method and review overlays.",
+    "Preserved every v0.1.0 and v0.2.0 versioned export and archive unchanged."
+  ],
+  "collectionChanges": {
+    "activities": {
+      "added": ["gaming-console-xbox-series-x"],
+      "modified": [],
+      "removed": []
+    },
+    "sources": {
+      "added": [
+        "xbox-lab-platform-baselines",
+        "xbox-global-platform-baselines",
+        "activision-call-of-duty-matchmaking-ping",
+        "mytton-network-power-model",
+        "energy-star-certified-televisions",
+        "lyu-cloud-gaming-network-anatomy",
+        "playfab-multiplayer-servers"
+      ],
+      "modified": ["lbnl-data-center-report"],
+      "removed": []
+    },
+    "deviceProfiles": {
+      "added": ["xbox-series-x-reference"],
+      "modified": [],
+      "removed": []
+    },
+    "presets": {
+      "added": [],
+      "modified": [],
+      "removed": []
+    },
+    "methodSections": {
+      "added": ["gaming-console-method"],
+      "modified": ["boundary-rules", "device-control-plan", "water-method"],
+      "removed": []
+    },
+    "externalComparisons": {
+      "added": [],
+      "modified": [],
+      "removed": []
+    }
+  },
+  "previousSchemaVersion": "0.2.0",
+  "previousVersion": "0.2.0",
+  "releasedOn": "2026-07-14",
+  "schemaVersion": "0.3.0",
+  "scientificImpact": "The release introduces the first gaming player-hour as an explicitly estimated end-to-end operational scenario. Microsoft directly supports the console-power range, while the television is one named certification record, the network is an attributional power model, and the game-server coefficient remains low-confidence synthesis because Activision publishes no player-hour electricity measurement.",
+  "summary": "Adds a fixed Xbox Series X plus television online-multiplayer reference row with explicit operational boundaries, reproducible component calculations, and uncertainty documentation.",
+  "version": "0.3.0"
+}

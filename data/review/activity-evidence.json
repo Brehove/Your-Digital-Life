@@ -1,6 +1,6 @@
 {
-  "overlayVersion": "0.2.0",
-  "datasetVersion": "0.2.0",
+  "overlayVersion": "0.3.0",
+  "datasetVersion": "0.3.0",
   "reviewedOn": "2026-07-14",
   "status": "review-overlay",
   "compatibility": {
@@ -146,6 +146,20 @@
         "The final additions are reproducible, but the three component coefficients are not.",
         "The network component inherits an allocation method that the source now warns should not be used for current marginal estimates or projections.",
         "The empirical device paper does not measure a ten-person laptop bundle."
+      ]
+    },
+    {
+      "activityId": "gaming-console-xbox-series-x",
+      "formulaStatus": "partial-derivation",
+      "provenanceSummary": "The fixed central row combines 127 Wh of Series X shooter-genre AC-wall electricity, 79.5 Wh for one named ENERGY STAR-certified 54.7-inch television, 5.754 Wh of allocated home CPE, 5 Wh of fixed access, 1.506 Wh of core transport, 1 Wh of modeled game-server and support-service IT, and 0.22 Wh of PUE overhead. The exact total is 219.98 Wh and the calculator stores 220 Wh. Off-prem access, core, and server-facility electricity totals 7.726 Wh and is stored as 7.7 Wh. Broader operational water is 957.44 mL under the stated U.S.-average scenario and is stored as 960 mL.",
+      "additionalSourceIds": [],
+      "reviewFindings": [
+        "Microsoft directly supports the console-power range, but neither Microsoft nor Activision publishes Call of Duty-specific Series X wall power.",
+        "The 79.5 W television is a reproducible reference model, not a market-average 55-inch display.",
+        "The network figure is an attributional allocation of mostly fixed infrastructure and must not be described as marginal electricity caused by the session.",
+        "The 1 Wh server-IT allowance is the weakest coefficient and is not measured by Activision, Xbox, or PlayFab.",
+        "The 960 mL value is a U.S.-average operational-water scenario that includes electricity-generation water; it is not direct data-center cooling water and is not globally representative.",
+        "Manufacturing, downloads, patches, standby outside the hour, cloud rendering, and optional high-quality texture streaming are excluded."
       ]
     }
   ]
