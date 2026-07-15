@@ -12,6 +12,12 @@ import {
   readJson,
   sha256
 } from "./lib/data.mjs";
+import {
+  ACTIVITY_REVIEW_SCHEMA_PATH,
+  REVIEW_SCHEMA_PATH,
+  loadActivityEvidence,
+  loadSourceEvidence
+} from "./lib/review-guide.mjs";
 
 const canonical = loadCanonicalData();
 const errors = [];
@@ -64,6 +70,70 @@ if (!fs.existsSync(fixturePath)) {
 const sourceIds = new Set(canonical.sources.map(({ record }) => record.id));
 const deviceIds = new Set(canonical.deviceProfiles.map(({ record }) => record.id));
 const activityMap = new Map(canonical.activities.map(({ record }) => [record.id, record]));
+
+const sourceEvidence = loadSourceEvidence();
+const validateSourceEvidence = ajv.compile(readJson(REVIEW_SCHEMA_PATH));
+if (!validateSourceEvidence(sourceEvidence)) {
+  const details = ajv.errorsText(validateSourceEvidence.errors, { separator: "; " });
+  fail(`review/source-evidence.json failed source-evidence.schema.json: ${details}`);
+}
+if (sourceEvidence.datasetVersion !== canonical.manifest.datasetVersion) {
+  fail(
+    `review overlay datasetVersion ${sourceEvidence.datasetVersion} differs from manifest ${canonical.manifest.datasetVersion}`
+  );
+}
+const reviewedSourceOrder = sourceEvidence.records.map(({ sourceId }) => sourceId);
+if (JSON.stringify(reviewedSourceOrder) !== JSON.stringify(canonical.manifest.order.sources)) {
+  fail(`review overlay source order or coverage differs from manifest: ${JSON.stringify(reviewedSourceOrder)}`);
+}
+const reviewedSourceIds = new Set();
+for (const reviewRecord of sourceEvidence.records) {
+  if (reviewedSourceIds.has(reviewRecord.sourceId)) {
+    fail(`Duplicate review overlay source ID: ${reviewRecord.sourceId}`);
+  }
+  reviewedSourceIds.add(reviewRecord.sourceId);
+  if (!sourceIds.has(reviewRecord.sourceId)) {
+    fail(`Review overlay references unknown source ${reviewRecord.sourceId}`);
+  }
+}
+
+const activityEvidence = loadActivityEvidence();
+const validateActivityEvidence = ajv.compile(readJson(ACTIVITY_REVIEW_SCHEMA_PATH));
+if (!validateActivityEvidence(activityEvidence)) {
+  const details = ajv.errorsText(validateActivityEvidence.errors, { separator: "; " });
+  fail(`review/activity-evidence.json failed activity-evidence.schema.json: ${details}`);
+}
+if (activityEvidence.datasetVersion !== canonical.manifest.datasetVersion) {
+  fail(
+    `activity review overlay datasetVersion ${activityEvidence.datasetVersion} differs from manifest ${canonical.manifest.datasetVersion}`
+  );
+}
+if (activityEvidence.reviewedOn !== sourceEvidence.reviewedOn) {
+  fail(
+    `activity review date ${activityEvidence.reviewedOn} differs from source review date ${sourceEvidence.reviewedOn}`
+  );
+}
+const reviewedActivityOrder = activityEvidence.records.map(({ activityId }) => activityId);
+if (JSON.stringify(reviewedActivityOrder) !== JSON.stringify(canonical.manifest.order.activities)) {
+  fail(
+    `activity review overlay order or coverage differs from manifest: ${JSON.stringify(reviewedActivityOrder)}`
+  );
+}
+const reviewedActivityIds = new Set();
+for (const reviewRecord of activityEvidence.records) {
+  if (reviewedActivityIds.has(reviewRecord.activityId)) {
+    fail(`Duplicate activity review overlay ID: ${reviewRecord.activityId}`);
+  }
+  reviewedActivityIds.add(reviewRecord.activityId);
+  if (!activityMap.has(reviewRecord.activityId)) {
+    fail(`Activity review overlay references unknown activity ${reviewRecord.activityId}`);
+  }
+  for (const sourceId of reviewRecord.additionalSourceIds) {
+    if (!sourceIds.has(sourceId)) {
+      fail(`Activity review ${reviewRecord.activityId} references unknown additional source ${sourceId}`);
+    }
+  }
+}
 
 const sourceFingerprints = new Map();
 for (const { record } of canonical.sources) {
@@ -217,6 +287,6 @@ if (errors.length) {
   process.exitCode = 1;
 } else {
   console.log(
-    `Data validation passed: ${canonical.activities.length} activities, ${canonical.sources.length} sources, ${canonical.deviceProfiles.length} devices, ${canonical.presets.length} presets, ${canonical.methodSections.length} methods; all references resolve.`
+    `Data validation passed: ${canonical.activities.length} activities, ${activityEvidence.records.length} activity evidence reviews, ${canonical.sources.length} sources, ${sourceEvidence.records.length} source evidence reviews, ${canonical.deviceProfiles.length} devices, ${canonical.presets.length} presets, ${canonical.methodSections.length} methods; all references resolve.`
   );
 }

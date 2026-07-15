@@ -4,6 +4,24 @@ Your Digital Life is an evidence-traceable dataset and website for comparing
 the energy and water implications of common digital activities. The public
 website is [your-digital-life.org](https://your-digital-life.org/).
 
+## Review the data
+
+Start with the generated [data review guide](DATA-REVIEW-GUIDE.md). It puts all
+12 calculator rows beside their values and source relationships, then gives
+each source a corrected citation, precise locators, measurement boundary,
+workload and hardware scope, geography, derivation, and limitations.
+
+For direct inspection, use the [activity CSV](data/exports/latest/activities.csv),
+[activity evidence review](data/review/activity-evidence.json),
+[source evidence review](data/review/source-evidence.json), and [method
+records](data/methods/). To contribute without editing code, open a
+[data correction](https://github.com/Brehove/Your-Digital-Life/issues/new?template=data-correction.yml)
+or propose a [new activity or source](https://github.com/Brehove/Your-Digital-Life/issues/new?template=new-data-or-source.yml).
+
+This reviewer layer is separate from the live calculator and immutable v0.1.0
+release. It does not change calculator values, formulas, website behavior, or
+deployment settings.
+
 The project has two connected products:
 
 1. a portable, reviewable dataset with stable records, source metadata, and
@@ -33,7 +51,9 @@ and must never be merged into this repository. See
 
 | Path | Purpose |
 | --- | --- |
+| `DATA-REVIEW-GUIDE.md` | Generated, human-readable index of every calculator row and source evidence review |
 | `data/` | Canonical calculator data, schemas, generated releases, and documentation |
+| `data/review/` | Validated reviewer metadata; not a calculator, website, or release input |
 | `docs/` | Current architecture documentation and clearly marked historical project plans |
 | `site/` | Astro website and the current production-facing content records |
 | `site/src/content/` | Facts, sources, scenarios, calculator records, pages, and updates consumed by the site |
@@ -83,8 +103,8 @@ A pull request must not change that contract unintentionally.
 
 Use the matching GitHub channel:
 
-- questionable value: open a **Data correction** issue;
-- missing activity or source: open a **New data or source** issue;
+- questionable value: open a [Data correction](https://github.com/Brehove/Your-Digital-Life/issues/new?template=data-correction.yml) issue;
+- missing activity or source: open a [New data or source](https://github.com/Brehove/Your-Digital-Life/issues/new?template=new-data-or-source.yml) issue;
 - methodological question: start a **Methodology** Discussion;
 - concrete change: open an issue first, then submit a pull request.
 

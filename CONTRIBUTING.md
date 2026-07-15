@@ -58,7 +58,10 @@ expression.
 
 1. Create or link the issue/Discussion that defines the change.
 2. Branch from the current protected default branch.
-3. Change the canonical source, not only a generated file.
+3. Change the appropriate authority, not only a generated file. For
+   reviewer-only citation, provenance, or evidence-status corrections to the
+   frozen v0.1.0 dataset, edit `data/review/`. Changes to canonical calculator
+   records under `data/` require the normal versioned release process.
 4. Regenerate derived files with the repository script.
 5. Run the relevant validations and inspect the diff for unrelated output.
 6. Submit one logically reversible change per pull request.

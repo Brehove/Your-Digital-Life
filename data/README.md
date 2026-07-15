@@ -26,6 +26,36 @@ regression provenance, not current update authorities.
 
 Scenarios, claims/facts, charts, and the broader site source registry are intentionally deferred to later normalization gates. Their current representations are not modified here.
 
+## Reviewer evidence overlay
+
+`review/source-evidence.json` is a validated, one-to-one review overlay for the
+12 calculator source IDs. It adds corrected citations, precise locators,
+evidence type, review status, measurement boundary, workload and hardware
+scope, geography, derivation, and limitations. `review/activity-evidence.json`
+adds row-level provenance summaries, formula-traceability status, additional
+review-only source relationships, and unresolved findings for all 12
+activities. Each overlay has a matching schema in `review/`.
+
+The overlay is intentionally **not** a calculator input, website input, or
+v0.1.0 release artifact. Keeping it separate allows reviewers to inspect
+bibliographic corrections and evidence limitations without rewriting the
+immutable release or changing the deployed site. A future dataset version may
+merge reviewed fields only through the normal release and compatibility
+process.
+
+The root `DATA-REVIEW-GUIDE.md` is generated from the canonical calculator
+records plus these overlays. It is the recommended human-readable starting
+point.
+
+While v0.1.0 remains frozen, use these update rules:
+
+- correct citations, locators, evidence classifications, or review findings in
+  `review/`, then run `npm run data:build`;
+- do not edit `sources/` merely to make frozen bibliographic metadata match the
+  overlay; and
+- change `sources/`, activities, methods, or calculator values only through a
+  new versioned data release with the required parity and downstream review.
+
 ## Canonical versus generated files
 
 Authoritative records live in:
@@ -38,12 +68,14 @@ Authoritative records live in:
 - `manifest.json`
 - `VERSION`
 - `schemas/`
+- `review/`
 
 The following are generated and must never be hand-edited:
 
 - `datapackage.json`
 - `generated/`
 - `exports/`
+- `../DATA-REVIEW-GUIDE.md`
 - `site/src/content/calculators/digital-inventory.json`
 - `site/public/data/`
 - `site/public/schemas/`

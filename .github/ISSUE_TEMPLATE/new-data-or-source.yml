@@ -27,8 +27,8 @@ body:
     id: proposed_id
     attributes:
       label: Proposed stable ID
-      description: Use a short, durable, lowercase identifier; maintainers may revise it.
-      placeholder: activity.example-id
+      description: Use a short, durable, lowercase identifier with hyphens only; maintainers may revise it.
+      placeholder: activity-example-id
     validations:
       required: true
   - type: textarea
