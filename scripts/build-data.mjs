@@ -3,6 +3,7 @@
 import path from "node:path";
 import {
   DATA_DIR,
+  ROOT,
   SITE_CALCULATOR_PATH,
   buildLegacyCalculator,
   canonicalJson,
@@ -10,10 +11,17 @@ import {
   syncGeneratedFile,
   syncGeneratedTree
 } from "./lib/data.mjs";
+import {
+  buildDataReviewGuide,
+  loadActivityEvidence,
+  loadSourceEvidence
+} from "./lib/review-guide.mjs";
 
 const check = process.argv.includes("--check");
 const canonical = loadCanonicalData();
 const calculator = buildLegacyCalculator(canonical);
+const sourceEvidence = loadSourceEvidence();
+const activityEvidence = loadActivityEvidence();
 
 const generated = new Map([
   ["calculator.json", canonicalJson(calculator)],
@@ -123,6 +131,11 @@ const dataPackage = {
 syncGeneratedTree(path.join(DATA_DIR, "generated"), generated, { check });
 syncGeneratedFile(path.join(DATA_DIR, "datapackage.json"), canonicalJson(dataPackage), { check });
 syncGeneratedFile(SITE_CALCULATOR_PATH, canonicalJson(calculator), { check });
+syncGeneratedFile(
+  path.join(ROOT, "DATA-REVIEW-GUIDE.md"),
+  buildDataReviewGuide(canonical, sourceEvidence, activityEvidence),
+  { check }
+);
 
 console.log(
   `${check ? "Verified" : "Generated"} canonical calculator artifacts: ${calculator.activities.length} activities, ${calculator.presets.length} presets, ${calculator.sourceCatalog.length} sources.`

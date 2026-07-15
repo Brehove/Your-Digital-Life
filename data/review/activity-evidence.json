@@ -1,0 +1,147 @@
+{
+  "overlayVersion": "0.1.0",
+  "datasetVersion": "0.1.0",
+  "reviewedOn": "2026-07-14",
+  "status": "review-overlay",
+  "compatibility": {
+    "calculatorInput": false,
+    "websiteInput": false,
+    "releaseArtifact": false
+  },
+  "records": [
+    {
+      "activityId": "text-prompts",
+      "formulaStatus": "partial-derivation",
+      "provenanceSummary": "The 0.3 Wh energy value comes from Epoch's modeled GPT-4o-style query. The 0.26 mL direct-water value instead matches Google's measured-energy-plus-fleet-WUE result for a median Gemini Apps text prompt. The stored 1.3 mL broader-water value appears to combine Google's 0.26 mL direct value with LBNL's U.S. indirect-water factor: 0.26 + (0.24 Wh x 4.52 mL/Wh) = 1.3448 mL, rounded to 1.3 mL.",
+      "additionalSourceIds": [
+        "schneider-google-scale",
+        "lbnl-data-center-report"
+      ],
+      "reviewFindings": [
+        "This row mixes ChatGPT energy, Gemini direct water, and a U.S.-average electricity-water coefficient; it is not one provider-specific end-to-end measurement.",
+        "The two water sources are method-level context and are not listed in the frozen activity sourceIds.",
+        "The 1.3 mL reconstruction is strongly suggested by the stored numbers but is not explicitly documented as an equation in the frozen method record."
+      ]
+    },
+    {
+      "activityId": "reasoning-prompts",
+      "formulaStatus": "partial-derivation",
+      "provenanceSummary": "Jegham et al. v6 reports 33.8 Wh for GPT-5 on a long, high-reasoning workload. The calculator carries that selected energy value into both energy columns, sets direct water to 33.8 mL with the internal 1 mL/Wh heuristic, and calculates broader water as 33.8 x 6 = 202.8 mL.",
+      "additionalSourceIds": [],
+      "reviewFindings": [
+        "The source value belongs to a specific model and long, high-reasoning workload, not a typical reasoning prompt.",
+        "The energy coefficient is source-traceable, but both water coefficients are internal teaching heuristics rather than values reported for that GPT-5 workload."
+      ]
+    },
+    {
+      "activityId": "image-generation",
+      "formulaStatus": "partial-derivation",
+      "provenanceSummary": "The included Ifri report states a rounded 0.5 Wh per generated image and points to a secondary figure. The frozen calculator stores 0.48 Wh, but the included source chain does not identify the model, hardware, image settings, or exact derivation of 0.48. Direct water is then set equal to energy through the internal 1 mL/Wh heuristic, and broader water is 0.48 x 6 = 2.88 mL.",
+      "additionalSourceIds": [],
+      "reviewFindings": [
+        "The phrase 'open-model image-generation average' in the frozen activity note is not established by the included Ifri source.",
+        "A pinned primary benchmark or dataset is needed before the exact 0.48 Wh coefficient is reproducible.",
+        "The water values are internal conversions, not image-generation measurements."
+      ]
+    },
+    {
+      "activityId": "vibe-coding",
+      "formulaStatus": "partial-derivation",
+      "provenanceSummary": "Couch reports roughly 41 Wh for his median Claude Code session and roughly 1,300 Wh for a typical coding day. The calculator's 325 Wh per hour equals 1,300 divided by four, but a four-active-hour divisor is not documented in the source or frozen method records. The total-system value adds a separate internal 30 Wh laptop allowance: 325 + 30 = 355 Wh.",
+      "additionalSourceIds": [],
+      "reviewFindings": [
+        "The source does not report a 325 Wh one-hour benchmark; this is an internally normalized coefficient.",
+        "The assumed four active coding-agent hours and the 30 Wh device allowance need explicit provenance.",
+        "The source is personal token-log napkin math, not provider measurement."
+      ]
+    },
+    {
+      "activityId": "tiktok",
+      "formulaStatus": "partial-derivation",
+      "provenanceSummary": "Holter's unsupported 0.6 Wh-per-minute statement converts directly to the stored 36 Wh hourly total: 0.6 x 60 = 36. Greenspector supplies older smartphone-side directional measurements, and the IEA supplies a streaming-system analogy. The separate 7.5 Wh cloud-side coefficient is not reconstructable from the included records. Water uses the internal 1-to-6 bridge from 7.5 Wh.",
+      "additionalSourceIds": [],
+      "reviewFindings": [
+        "The exact total-system anchor comes from an opinion post without a primary source chain.",
+        "The cloud-side coefficient combines analogy and internal synthesis rather than a TikTok infrastructure disclosure.",
+        "The smartphone evidence is from one 2021 Android device and needs updating."
+      ]
+    },
+    {
+      "activityId": "instagram",
+      "formulaStatus": "undocumented-internal-coefficient",
+      "provenanceSummary": "The 5 Wh cloud-side and 25 Wh total-system hourly coefficients are analogy-based internal estimates informed by older smartphone-side social-media testing and the IEA's Netflix-weighted streaming model. No included source reports these Instagram coefficients. Water is generated by the internal 1 mL/Wh direct and 6 mL/Wh broader heuristics applied to the 5 Wh cloud-side value.",
+      "additionalSourceIds": [],
+      "reviewFindings": [
+        "The exact energy coefficients cannot be independently reproduced from the included sources.",
+        "The row mixes image and short-video feed behavior, so its workload is not stable across users or time.",
+        "Platform-specific and current device/network evidence is needed."
+      ]
+    },
+    {
+      "activityId": "snapchat",
+      "formulaStatus": "undocumented-internal-coefficient",
+      "provenanceSummary": "The 4 Wh cloud-side and 20 Wh total-system hourly coefficients are internal estimates informed by older smartphone-side social-media testing. No included source reports these Snapchat coefficients. Water is generated by the internal 1 mL/Wh direct and 6 mL/Wh broader heuristics applied to the 4 Wh cloud-side value.",
+      "additionalSourceIds": [],
+      "reviewFindings": [
+        "The exact energy coefficients cannot be independently reproduced from the included sources.",
+        "The workload combines messaging and video behavior without a fixed content mix.",
+        "This is the lowest-confidence social-media row in the frozen method notes."
+      ]
+    },
+    {
+      "activityId": "youtube",
+      "formulaStatus": "partial-derivation",
+      "provenanceSummary": "The 22 Wh infrastructure value is reconstructed from the IEA's 77 Wh 2019 typical Netflix weighted mix and its 28% data-center-plus-network share: 77 x 0.28 = 21.56 Wh, rounded to 22. The 26, 37, and 77 Wh phone, laptop, and TV totals are stored project mappings; the IEA source does not publish those three values as device-specific YouTube cases. Water applies the internal 1-to-6 bridge to 22 Wh.",
+      "additionalSourceIds": [],
+      "reviewFindings": [
+        "The infrastructure derivation is visible, but transferring a Netflix-weighted model to YouTube is an analogy.",
+        "The device-specific total mappings need their own documented derivations.",
+        "The evidence represents 2019 streaming conditions."
+      ]
+    },
+    {
+      "activityId": "netflix",
+      "formulaStatus": "partial-derivation",
+      "provenanceSummary": "The 22 Wh infrastructure value is reconstructed from the IEA's 77 Wh 2019 typical Netflix weighted mix and its 28% data-center-plus-network share: 77 x 0.28 = 21.56 Wh, rounded to 22. The 26, 37, and 77 Wh phone, laptop, and TV totals are stored project mappings; 77 Wh is the source's weighted typical mix, not a documented TV-only case. Water applies the internal 1-to-6 bridge to 22 Wh.",
+      "additionalSourceIds": [],
+      "reviewFindings": [
+        "The infrastructure derivation is visible, but the device-specific total mappings need their own documented derivations.",
+        "Resolution, bitrate, codec, network, device power, and device mix materially change the result.",
+        "The evidence represents 2019 streaming conditions."
+      ]
+    },
+    {
+      "activityId": "cloud-docs-browsing",
+      "formulaStatus": "undocumented-internal-coefficient",
+      "provenanceSummary": "The 4 Wh cloud-side and 30 Wh total-system values define an internal teaching bundle for an unspecified block of email, cloud documents, and browsing. No external source or component formula is attached. Water applies the internal 1-to-6 bridge to the 4 Wh cloud-side value.",
+      "additionalSourceIds": [],
+      "reviewFindings": [
+        "The functional unit is a teaching bundle rather than a measured duration, page load, data volume, or application workload.",
+        "Neither the 4 Wh infrastructure coefficient nor the 26 Wh implied device add-on is independently reproducible.",
+        "The row should eventually be split into narrower activities before stronger external comparisons are claimed."
+      ]
+    },
+    {
+      "activityId": "zoom-participant",
+      "formulaStatus": "undocumented-internal-coefficient",
+      "provenanceSummary": "The calculator stores 54 Wh cloud-side and 74 Wh total-system for one participant-hour, implying a 20 Wh device add-on. Mytton supplies an older traffic-allocation framework and Wattenbach et al. supplies Pixel 3 Android-side empirical estimates, but the included records do not show equations that produce 54 Wh, 20 Wh, or 74 Wh for a laptop participant. Water applies the internal 1-to-6 bridge to 54 Wh.",
+      "additionalSourceIds": [],
+      "reviewFindings": [
+        "The exact participant coefficients are not reproducible from the included method records.",
+        "The network source now warns against using kWh/GB allocation for present marginal estimates or future projections.",
+        "The device study measures an older Android phone, not the laptop assumed by this row."
+      ]
+    },
+    {
+      "activityId": "zoom-host",
+      "formulaStatus": "partial-derivation",
+      "provenanceSummary": "The method record exposes a component breakdown for one 50-minute, 10-person meeting: 7 Wh server routing + 185 Wh network = 192 Wh cloud-side; adding 166 Wh participant devices yields 358 Wh total-system. The component totals are arithmetically consistent, but the included records do not document the traffic, routing, power, or per-device equations that generate 7, 185, and 166 Wh. Water applies the internal 1-to-6 bridge to 192 Wh.",
+      "additionalSourceIds": [],
+      "reviewFindings": [
+        "The final additions are reproducible, but the three component coefficients are not.",
+        "The network component inherits an allocation method that the source now warns should not be used for current marginal estimates or projections.",
+        "The empirical device paper does not measure a ten-person laptop bundle."
+      ]
+    }
+  ]
+}

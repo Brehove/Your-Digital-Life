@@ -1,0 +1,460 @@
+{
+  "overlayVersion": "0.1.0",
+  "datasetVersion": "0.1.0",
+  "reviewedOn": "2026-07-14",
+  "status": "review-overlay",
+  "compatibility": {
+    "calculatorInput": false,
+    "websiteInput": false,
+    "releaseArtifact": false
+  },
+  "records": [
+    {
+      "sourceId": "epoch-chatgpt-energy",
+      "citation": {
+        "title": "How much energy does ChatGPT use?",
+        "authors": [
+          "Josh You"
+        ],
+        "organization": "Epoch AI",
+        "publishedDate": "2025-02-07",
+        "url": "https://epoch.ai/gradient-updates/how-much-energy-does-chatgpt-use"
+      },
+      "evidenceType": "modeled-estimate",
+      "reviewStatus": "reviewed-with-limitations",
+      "preciseLocators": [
+        {
+          "locator": "Opening summary and Estimating the energy cost of a query",
+          "relevance": "Reports the roughly 0.3 Wh estimate for a typical GPT-4o text query and states the assumed 500-token output."
+        },
+        {
+          "locator": "Appendix, Energy cost of a typical query",
+          "relevance": "Shows the model-size, H100, utilization, batching, and power assumptions behind the estimate."
+        }
+      ],
+      "measurementBoundary": "Modeled inference electricity for one GPT-4o query, including estimated server and data-center overhead per GPU; it does not add end-user device energy or directly measure OpenAI production infrastructure.",
+      "workloadAndHardware": "Reference workload is a typical text query with about 500 output tokens. Hardware is modeled as NVIDIA H100 infrastructure with assumed active parameters, throughput, utilization, batching, and power draw.",
+      "geography": "Not location-specific; the energy estimate is not tied to a disclosed production data center or grid region.",
+      "derivation": "The calculator carries the source's approximately 0.3 Wh typical-query estimate directly into the AI text-prompt energy row. The row's water values are not established by this source.",
+      "limitations": [
+        "This is transparent expert modeling, not a direct provider measurement.",
+        "The result is sensitive to undisclosed model size, token count, batching, utilization, and hardware assumptions.",
+        "The workload represents an early-2025 GPT-4o-style query and should not be generalized to reasoning, agentic, image, voice, or long-context workloads."
+      ]
+    },
+    {
+      "sourceId": "jegham-how-hungry-is-ai",
+      "citation": {
+        "title": "How Hungry is AI? Benchmarking Energy, Water, and Carbon Footprint of LLM Inference",
+        "authors": [
+          "Nidhal Jegham",
+          "Marwan Abdelatti",
+          "Chan Young Koh",
+          "Lassad Elmoubarki",
+          "Abdeltawab Hendawi"
+        ],
+        "organization": "arXiv",
+        "publishedDate": "2025-05-14",
+        "lastUpdatedDate": "2025-11-24",
+        "url": "https://arxiv.org/abs/2505.09598v6"
+      },
+      "evidenceType": "mixed-method",
+      "reviewStatus": "reviewed-with-limitations",
+      "preciseLocators": [
+        {
+          "locator": "Abstract and methodology overview",
+          "relevance": "Defines the infrastructure-aware framework as a combination of public API performance, company environmental multipliers, and statistically inferred hardware."
+        },
+        {
+          "locator": "Version 6, Section 7, Figure 6, PDF page 11",
+          "relevance": "Reports 33.8 Wh for the GPT-5 long, high-reasoning workload used to contextualize the calculator's reasoning row."
+        }
+      ],
+      "measurementBoundary": "Model-level inference estimates combine observed API behavior with inferred hardware and provider-level energy, water, and carbon multipliers. The results are not direct full-stack measurements from every model provider.",
+      "workloadAndHardware": "Thirty commercial models are evaluated across short and long prompt classes. Hardware configurations are statistically inferred where providers do not disclose them.",
+      "geography": "Provider and company environmental multipliers are used, but the estimate for an individual request is not tied to the exact facility and time serving that request.",
+      "derivation": "Version 6 reports 33.8 Wh for GPT-5 on its long, high-reasoning workload. The calculator preserves that selected benchmark as an intentional upper-end teaching row, not a universal reasoning-prompt average, and then applies its own water bridge to the energy value.",
+      "limitations": [
+        "The paper combines empirical API observations with inferred infrastructure rather than measuring all provider hardware directly.",
+        "Results vary sharply by model, prompt length, output length, and reasoning workload.",
+        "The 33.8 Wh result was added in a later revision and does not appear in the original version submitted on 2025-05-14; reproducibility requires the pinned v6 citation.",
+        "The calculator's 33.8 Wh selection and water conversion are project synthesis choices that must be reviewed separately from the paper's benchmark tables.",
+        "The legacy source record omits Chan Young Koh and misspells Marwan Abdelatti; this overlay supplies the corrected current citation without changing the immutable v0.1.0 release."
+      ]
+    },
+    {
+      "sourceId": "scenario-methods",
+      "citation": {
+        "title": "Digital inventory calculator and scenario method",
+        "authors": [
+          "Joel Gladd"
+        ],
+        "organization": "Your Digital Life",
+        "publishedDate": "2026-03-07",
+        "url": "https://your-digital-life.org/sources-and-method/"
+      },
+      "evidenceType": "internal-method",
+      "reviewStatus": "internal-method",
+      "preciseLocators": [
+        {
+          "locator": "data/methods/boundary-rules.json",
+          "relevance": "Defines the calculator's cloud-side versus total-system bridge."
+        },
+        {
+          "locator": "data/methods/water-method.json",
+          "relevance": "Defines prompt-specific exceptions and the internal rounded water conversion."
+        },
+        {
+          "locator": "data/methods/zoom-host-method.json",
+          "relevance": "Shows the component breakdown and final additions for the hosted Zoom row; it does not document the underlying formulas for each component coefficient."
+        }
+      ],
+      "measurementBoundary": "Project-created synthesis connecting heterogeneous published estimates to the calculator's legacy row-specific cloud/server, network, device, direct-water, and total-water fields.",
+      "workloadAndHardware": "Workloads and device assumptions differ by calculator row and are recorded in each activity, device profile, and method record.",
+      "geography": "No single geography; the method combines global, U.S., provider-specific, and non-location-specific evidence and must preserve those differences visibly.",
+      "derivation": "This is the direct source for internal bridge calculations, device add-ons, scenario bundles, the 1 mL/Wh direct-water heuristic, and the 6 mL/Wh broader-water heuristic. It is a method record, not independent evidence for the underlying empirical coefficients.",
+      "limitations": [
+        "Internal synthesis cannot substitute for primary measurement.",
+        "Several rows combine evidence with different system boundaries, dates, workloads, hardware, and geographies.",
+        "The 1-to-6 water bridge is a rounded teaching heuristic rather than a location-specific facility calculation."
+      ]
+    },
+    {
+      "sourceId": "ifri-ai-dc-energy",
+      "citation": {
+        "title": "AI, Data Centers and Energy Demand: Reassessing and Exploring the Trends",
+        "authors": [
+          "Laure de Roucy-Rochegonde",
+          "Adrien Buffard"
+        ],
+        "organization": "French Institute of International Relations (Ifri)",
+        "publishedDate": "2025-02",
+        "venue": "Ifri Papers",
+        "url": "https://www.ifri.org/sites/default/files/2025-02/ifri_buffard-rochegonde_ai_data_centers_energy_2025_2.pdf"
+      },
+      "evidenceType": "secondary-synthesis",
+      "reviewStatus": "needs-primary-source",
+      "preciseLocators": [
+        {
+          "locator": "Figure 6 and accompanying text, PDF pages 21-22",
+          "relevance": "States 0.5 Wh for image generation and attributes the figure to Sasha Luccioni et al. (2024)."
+        },
+        {
+          "locator": "Footnotes 17-20 surrounding Figure 6",
+          "relevance": "Provides the report's wider energy-demand context but not a reproducible derivation of the calculator's exact 0.48 Wh value."
+        }
+      ],
+      "measurementBoundary": "Policy-report synthesis of AI task-level and data-center energy estimates; the image figure is a secondary citation rather than a measurement conducted by Ifri.",
+      "workloadAndHardware": "The figure labels an image-generation task but does not, in the cited passage, specify the model, image dimensions, number of inference steps, hardware, utilization, or data-center overhead needed to reproduce it.",
+      "geography": "The task-level image estimate is not tied to a specific facility or grid region; the report's broader scope is international.",
+      "derivation": "The report supports only the rough magnitude of the calculator's 0.48 Wh image row by stating 0.5 Wh per generated image. It does not document the exact 0.48 Wh coefficient or the calculator's water conversion.",
+      "limitations": [
+        "A primary benchmark should replace this secondary report as the exact source for the image row.",
+        "The report's nearby 0.0005 Wh ChatGPT text-demand statement is inconsistent with stronger contemporary prompt estimates and should not be imported into the calculator.",
+        "The workload and hardware boundary for the image figure is underspecified."
+      ]
+    },
+    {
+      "sourceId": "simon-couch-coding-agent",
+      "citation": {
+        "title": "Electricity use of AI coding agents",
+        "authors": [
+          "Simon P. Couch"
+        ],
+        "organization": "Simon P. Couch",
+        "publishedDate": "2026-01-20",
+        "url": "https://www.simonpcouch.com/blog/2026-01-20-cc-impact/"
+      },
+      "evidenceType": "modeled-estimate",
+      "reviewStatus": "illustrative-only",
+      "preciseLocators": [
+        {
+          "locator": "Estimating electricity per token",
+          "relevance": "Scales Epoch AI estimates using Anthropic token pricing ratios and explicit per-token assumptions."
+        },
+        {
+          "locator": "In context",
+          "relevance": "Reports roughly 41 Wh for the author's median Claude Code session and roughly 1,300 Wh for a typical coding day."
+        }
+      ],
+      "measurementBoundary": "Personal napkin-math estimate of model-serving electricity derived from token logs, an external GPT-4o energy model, and pricing-based ratios; it is not a direct Anthropic infrastructure measurement.",
+      "workloadAndHardware": "The workload is one author's Claude Code usage with large contexts, tool calls, cache reads and writes, and Opus/Sonnet-era token patterns. Provider hardware is not observed.",
+      "geography": "No serving location or grid region is identified.",
+      "derivation": "The source reports approximately 41 Wh per median session and 1,300 Wh per typical coding day. The calculator's 325 Wh per hour equals 1,300 divided by four, but neither the source nor the frozen method records document a four-active-hour assumption. The calculator then adds a separate internal 30 Wh device allowance.",
+      "limitations": [
+        "The author explicitly describes the calculation as napkin math.",
+        "Pricing ratios are used as proxies for energy ratios without provider validation.",
+        "One person's coding-agent logs are not representative of all agents, models, repositories, or users.",
+        "The calculator's hourly coefficient needs a reproducible bridge or a stronger primary measurement before it should be treated as more than illustrative."
+      ]
+    },
+    {
+      "sourceId": "greenspector-social-media-2021",
+      "citation": {
+        "title": "What is the environmental footprint for social media applications? 2021 Edition",
+        "authors": [
+          "Kimberley Derudder"
+        ],
+        "organization": "Greenspector",
+        "publishedDate": "2021-10-26",
+        "url": "https://greenspector.com/en/social-media-2021/"
+      },
+      "evidenceType": "direct-measurement",
+      "reviewStatus": "needs-update",
+      "preciseLocators": [
+        {
+          "locator": "Study protocol immediately above the application results",
+          "relevance": "Describes one-minute news-feed scrolling tests on a Samsung Galaxy S7 running Android 8 over Wi-Fi, with each measurement averaged over three runs."
+        },
+        {
+          "locator": "Energy Consumption application comparison",
+          "relevance": "Reports device-battery consumption in mAh per minute for TikTok, Instagram, Snapchat, YouTube, and other applications."
+        }
+      ],
+      "measurementBoundary": "Observed smartphone-side application and data-transfer behavior during scripted feed scrolling; it is not a direct measurement of each platform's data centers or the entire end-to-end system.",
+      "workloadAndHardware": "One-minute feed-scrolling scenarios on a Samsung Galaxy S7, Android 8, Wi-Fi, with three runs per application. The tested app versions and content feeds reflect 2021 conditions.",
+      "geography": "The test location and electricity mix are not material to the reported battery mAh values; broader carbon estimates on the page use additional assumptions.",
+      "derivation": "The calculator uses the study as directional device-side evidence for TikTok, Instagram, and Snapchat. The study does not directly supply the calculator's cloud-side values or fully reconstruct its 36, 25, and 20 Wh hourly total-system coefficients.",
+      "limitations": [
+        "The study is stale for rapidly changing applications, codecs, feeds, devices, and networks, and the page points to a 2023 update.",
+        "Battery consumption in mAh requires a defensible voltage and duration conversion before comparison with Wh-based rows.",
+        "Three repetitions on one older Android phone provide limited generalizability.",
+        "The legacy source record has no author; this overlay supplies the page's attributed author without changing the immutable v0.1.0 release."
+      ]
+    },
+    {
+      "sourceId": "adam-holter-tiktok",
+      "citation": {
+        "title": "Why Your ChatGPT Prompt Uses Half the Energy of a TikTok Video",
+        "authors": [
+          "Adam Holter"
+        ],
+        "organization": "Adam Holter",
+        "publishedDate": "2025-05-27",
+        "url": "https://adam.holter.com/why-your-chatgpt-prompt-uses-half-the-energy-of-a-tiktok-video/"
+      },
+      "evidenceType": "expert-analysis",
+      "reviewStatus": "illustrative-only",
+      "preciseLocators": [
+        {
+          "locator": "The Actual Numbers",
+          "relevance": "States approximately 0.6 Wh for one minute of TikTok, equivalent to 36 Wh per hour."
+        },
+        {
+          "locator": "Links section",
+          "relevance": "Does not provide a traceable primary source for the TikTok coefficient."
+        }
+      ],
+      "measurementBoundary": "Unspecified total energy comparison presented in an opinion blog post; the page does not define which device, network, server, resolution, feed, or geography is included.",
+      "workloadAndHardware": "Described only as one minute of TikTok; hardware and workload conditions are not supplied.",
+      "geography": "Not specified.",
+      "derivation": "Multiplying the article's 0.6 Wh per minute by 60 yields the calculator's 36 Wh per hour TikTok total-system coefficient. The article does not support the calculator's separate 7.5 Wh cloud-side coefficient.",
+      "limitations": [
+        "The TikTok value has no adequate source chain or reproducible method on the page.",
+        "The post contains an internally inconsistent 0.14 kWh statement for a 100-word ChatGPT response, which materially weakens its reliability.",
+        "Use this only as an illustration or cross-check; a primary platform, network, or reproducible end-to-end study should replace it."
+      ]
+    },
+    {
+      "sourceId": "kamiya-streaming-video",
+      "citation": {
+        "title": "The carbon footprint of streaming video: fact-checking the headlines",
+        "authors": [
+          "George Kamiya"
+        ],
+        "organization": "International Energy Agency",
+        "publishedDate": "2020-12-10",
+        "url": "https://www.iea.org/commentaries/the-carbon-footprint-of-streaming-video-fact-checking-the-headlines"
+      },
+      "evidenceType": "mixed-method",
+      "reviewStatus": "reviewed-with-limitations",
+      "preciseLocators": [
+        {
+          "locator": "Share of streaming energy use from devices, data transmission and data centres",
+          "relevance": "Attributes 72% of typical streaming electricity to viewing devices, 23% to transmission, and 5% to data centers."
+        },
+        {
+          "locator": "Methodology and sources",
+          "relevance": "Documents the bitrate, data-center, network, device, device-mix, and carbon-intensity assumptions used for 2019 streaming."
+        }
+      ],
+      "measurementBoundary": "Modeled operational electricity for one hour of streaming, including viewing devices, data transmission, and data centers. It does not include the embodied lifecycle of equipment in the calculator's adopted coefficient.",
+      "workloadAndHardware": "A 2019 global-average Netflix viewing mix weighted heavily toward televisions, with additional laptop, tablet, and smartphone assumptions and a weighted bitrate.",
+      "geography": "Global viewing and electricity assumptions; carbon results depend on grid mix, while the calculator uses the energy split rather than the carbon estimate.",
+      "derivation": "The calculator preserves the source's 77 Wh 2019 typical Netflix weighted-mix anchor and derives approximately 22 Wh for data center plus network by applying the source's 28% infrastructure share: 77 x 0.28 = 21.56 Wh, rounded to 22 Wh. The stored 26, 37, and 77 Wh phone, laptop, and TV mappings are project choices; the source does not publish those three numbers as device-specific cases.",
+      "limitations": [
+        "The estimate describes a 2019 Netflix-weighted average, not every YouTube or Netflix stream in 2026.",
+        "Resolution, bitrate, device power, network type, codec, geography, and viewing-device mix materially change the result.",
+        "The 77 Wh weighted typical mix should not be relabeled as a TV-only measurement.",
+        "Applying a Netflix-derived infrastructure split to YouTube and social-video rows is an analogy, not a platform measurement."
+      ]
+    },
+    {
+      "sourceId": "mytton-zoom",
+      "citation": {
+        "title": "Zoom, video conferencing, energy, and emissions",
+        "authors": [
+          "David Mytton"
+        ],
+        "organization": "David Mytton",
+        "publishedDate": "2020-11-16",
+        "lastUpdatedDate": "2025-01-02",
+        "url": "https://davidmytton.blog/zoom-video-conferencing-energy-and-emissions/"
+      },
+      "evidenceType": "expert-analysis",
+      "reviewStatus": "needs-update",
+      "preciseLocators": [
+        {
+          "locator": "Calculating Zoom's emissions and the meeting-resolution table",
+          "relevance": "Shows the original fixed-network calculation based on data transferred and 0.015 kWh/GB."
+        },
+        {
+          "locator": "January 2023 update: Big assumption - are data transfer and network energy correlated?",
+          "relevance": "Explains why kWh/GB allocation can describe past aggregate reporting but should not be used for present marginal estimates or future projections."
+        }
+      ],
+      "measurementBoundary": "Original rough allocation of fixed-line network electricity from traffic volume; it excludes participant devices, local routers, Zoom servers, and embodied energy unless added separately.",
+      "workloadAndHardware": "Illustrative Zoom calls at different resolutions and participant counts using assumed data rates and a 2020 fixed-network intensity factor, not direct measurement of a current meeting stack.",
+      "geography": "The original network factor is a generalized fixed-line estimate; emissions examples apply regional grid factors separately.",
+      "derivation": "The calculator's internal hosted-meeting method assigns 185 Wh to the network for a 10-person, 50-minute meeting and combines it with 7 Wh server routing and 166 Wh of devices. Those exact 192 Wh cloud-side and 358 Wh total figures are project derivations, not values directly reported by Mytton.",
+      "limitations": [
+        "The author now warns that energy-intensity-per-GB estimates should not be used to describe current marginal consumption or make projections.",
+        "The original calculation omits important system components that the calculator adds through its own assumptions.",
+        "Current codecs, network equipment, meeting layouts, and platform infrastructure differ from the original 2020 assumptions.",
+        "The legacy record's 2023 publication date obscures the original 2020 publication and later updates; this overlay separates those dates."
+      ]
+    },
+    {
+      "sourceId": "verdecchia-video-call-energy",
+      "citation": {
+        "title": "Do You Have the Energy for This Meeting? An Empirical Study on the Energy Consumption of the Google Meet and Zoom Android apps",
+        "authors": [
+          "Leonhard Wattenbach",
+          "Basel Aslan",
+          "Matteo Maria Fiore",
+          "Henley Ding",
+          "Roberto Verdecchia",
+          "Ivano Malavolta"
+        ],
+        "organization": "Association for Computing Machinery",
+        "publishedDate": "2022-05-17",
+        "venue": "MOBILESoft 2022",
+        "doi": "10.1145/3524613.3527812",
+        "url": "https://robertoverdecchia.github.io/papers/MobileSoft_2022.pdf"
+      },
+      "evidenceType": "mixed-method",
+      "reviewStatus": "reviewed-with-limitations",
+      "preciseLocators": [
+        {
+          "locator": "Sections 4-5, Experiment Planning and Experiment Execution",
+          "relevance": "Defines the 2- and 5-participant conditions, camera, microphone, virtual-background treatments, Android apps, Pixel 3 device, and software-based Batterystats energy estimation."
+        },
+        {
+          "locator": "Section 6.1 and Tables 5-8",
+          "relevance": "Reports approximately 300-350 joules per minute and treatment effects for the measured Android device."
+        }
+      ],
+      "measurementBoundary": "Empirical Android device-side experiment using software-based Batterystats energy estimates for Google Meet and Zoom; the paper explicitly excludes servers, network infrastructure, and other participants' hardware.",
+      "workloadAndHardware": "Google Meet and Zoom Android apps on a Google Pixel 3 over controlled Wi-Fi, with scripted three-minute calls, 2 or 5 participants, and combinations of camera, microphone, and virtual background settings.",
+      "geography": "A controlled laboratory device test; no grid or production-service geography is part of the device-energy measurements.",
+      "derivation": "The calculator uses this study as directional support for video-call device add-ons and the importance of camera settings. It does not directly yield the calculator's 20 Wh laptop participant add-on or 166 Wh ten-person device bundle.",
+      "limitations": [
+        "The study measures one older Android device, not laptops or a representative contemporary device fleet.",
+        "Batterystats is software-based and less precise than a hardware power analyzer.",
+        "Server and network energy are explicitly outside the paper's boundary.",
+        "The legacy record uses a different title and an abbreviated author list; this overlay supplies the published citation without altering v0.1.0."
+      ]
+    },
+    {
+      "sourceId": "schneider-google-scale",
+      "citation": {
+        "title": "Measuring the environmental impact of delivering AI at Google Scale",
+        "authors": [
+          "Cooper Elsworth",
+          "Keguo Huang",
+          "David Patterson",
+          "Ian Schneider",
+          "Robert Sedivy",
+          "Savannah Goodman",
+          "Ben Townsend",
+          "Parthasarathy Ranganathan",
+          "Jeff Dean",
+          "Amin Vahdat",
+          "Ben Gomes",
+          "James Manyika"
+        ],
+        "organization": "Google",
+        "publishedDate": "2025-08-21",
+        "url": "https://arxiv.org/abs/2508.15734v1"
+      },
+      "evidenceType": "mixed-method",
+      "reviewStatus": "reviewed-with-limitations",
+      "preciseLocators": [
+        {
+          "locator": "Sections 3.2-3.3 and Table 2",
+          "relevance": "Defines full-stack production measurement and reports 0.24 Wh and 0.26 mL for the median Gemini Apps text prompt."
+        },
+        {
+          "locator": "Section 3.3, water usage effectiveness",
+          "relevance": "Uses Google's 1.15 L/kWh fleet WUE for direct consumptive cooling water and distinguishes that from broader water accounting."
+        }
+      ],
+      "measurementBoundary": "Google production full-stack operational energy for Gemini serving, including accelerators, host systems, idle capacity allocation, and data-center overhead; direct consumptive cooling water is calculated from measured energy with fleet WUE. The paper excludes external network energy, treats data-center network energy as negligible, and excludes end-user devices, training, and data storage.",
+      "workloadAndHardware": "The median Gemini Apps text prompt across Google's production serving fleet and model mix. The paper intentionally aggregates sensitive workload and hardware details.",
+      "geography": "Google fleet-level production scope rather than a disclosed facility-level geography; the reported water figure uses fleet-average WUE.",
+      "derivation": "The calculator's water method uses this source as primary context for direct cooling water and the scale of a 0.26 mL median text prompt. The current text-prompt activity does not list this source directly, so the exact source-to-row relationship should be made explicit in a future data release rather than silently changed in v0.1.0.",
+      "limitations": [
+        "The result is provider- and product-specific to Gemini and should not be treated as a universal AI-prompt coefficient.",
+        "This is a first-party Google arXiv preprint, not an independent audit of Google's production measurements.",
+        "A fleet median hides large variation by model, context length, output length, feature use, facility, and time.",
+        "The 0.26 mL figure is direct consumptive cooling water, not total watershed impact or full lifecycle water.",
+        "The legacy source record lists only Ian Schneider; this overlay supplies the full author list without altering the immutable release."
+      ]
+    },
+    {
+      "sourceId": "lbnl-data-center-report",
+      "citation": {
+        "title": "2024 United States Data Center Energy Usage Report",
+        "authors": [
+          "Arman Shehabi",
+          "Sarah Josephine Smith",
+          "Alex Hubbard",
+          "Alexander Newkirk",
+          "Nuoa Lei",
+          "Md AbuBakar Siddik",
+          "Billie Holecek",
+          "Jonathan G. Koomey",
+          "Eric R. Masanet",
+          "Dale A. Sartor"
+        ],
+        "organization": "Lawrence Berkeley National Laboratory",
+        "publishedDate": "2024-12-19",
+        "doi": "10.71468/P1WC7Q",
+        "reportNumber": "LBNL-2001637",
+        "url": "https://eta.lbl.gov/publications/2024-lbnl-data-center-energy-usage-report"
+      },
+      "evidenceType": "mixed-method",
+      "reviewStatus": "reviewed-with-limitations",
+      "preciseLocators": [
+        {
+          "locator": "Chapter 5, Water Use, Figure 5.10 and accompanying text on PDF page 57",
+          "relevance": "Reports an estimated 4.52 liters of indirect water consumption per kWh of U.S. data-center electricity in 2023 and emphasizes regional variability."
+        },
+        {
+          "locator": "Executive Summary and methodology chapters",
+          "relevance": "Defines the bottom-up national data-center energy model and scenario scope."
+        }
+      ],
+      "measurementBoundary": "National bottom-up analysis of U.S. data-center energy and water. The 4.52 L/kWh figure is indirect water consumption associated with electricity generation, separate from facility cooling water.",
+      "workloadAndHardware": "Aggregated U.S. data-center stock and equipment categories rather than a specific application, model, server, or request.",
+      "geography": "United States national estimate for 2023 with substantial regional variation in grid water intensity and facility cooling practices.",
+      "derivation": "The report supports the order of magnitude and the need to distinguish electricity-side indirect water from direct cooling water. The calculator's rounded 1 mL/Wh direct and 6 mL/Wh total bridge is an internal synthesis and is not a coefficient directly reported by LBNL.",
+      "limitations": [
+        "A U.S. national average should not be assigned to a specific request without location and time information.",
+        "Indirect electricity water and direct facility water must not be added without consistent consumptive-versus-withdrawal boundaries.",
+        "The report is macro-scale evidence, not a per-activity benchmark.",
+        "The legacy source record has no authors; this overlay supplies the report's full credited author list without altering v0.1.0."
+      ]
+    }
+  ]
+}
