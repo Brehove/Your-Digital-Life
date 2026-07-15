@@ -4,7 +4,7 @@ slug: about-this-site
 navLabel: About This Site
 description: Why this site focuses on digital habits, infrastructure, source-backed comparisons, and explicit credit.
 order: 5
-lastReviewed: "2026-03-09"
+lastReviewed: "2026-07-15"
 ---
 
 ## Created by Joel Gladd
@@ -15,7 +15,7 @@ The Sources & Method page gives more detail about the research and methodology b
 
 ## Credit and lineage
 
-I owe an explicit debt to Jon Ippolito's [What Uses More?](https://what-uses-more.com/). His site was an early blueprint for the comparison frame used here: put AI tasks beside streaming, meetings, search, and other familiar digital activity so the comparison stays grounded. This site keeps its own calculator, source registry, and method notes, but the family resemblance is intentional.
+I owe an explicit debt to Jon Ippolito’s [*What Uses More?*](https://what-uses-more.com/), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). His site was an early blueprint for the comparison frame used here. *Your Digital Life* uses a separate codebase, independently maintained data, and its own methodology, although Jon’s work has also served as a valuable secondary comparator during source review.
 
 Jon's public note on reuse is a good model. He marks his app as shareable and adaptable, gives a preferred citation, and points readers back to the underlying source sheet. I'm trying to follow the same basic posture here. The calculator is for orientation. When a claim matters, the better move is to trace it back to the linked studies and source pages.
 
