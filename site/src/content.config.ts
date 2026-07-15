@@ -34,6 +34,14 @@ const pages = defineCollection({
     lastReviewed: z.string(),
     heroTitle: z.string().optional(),
     heroSummary: z.string().optional(),
+    heroCallout: z
+      .object({
+        title: z.string(),
+        description: z.string(),
+        linkLabel: z.string(),
+        href: z.string()
+      })
+      .optional(),
     keyTakeaways: z.array(z.string()).default([]),
     toolIntroTitle: z.string().optional(),
     toolIntroBody: z.array(z.string()).default([]),
