@@ -16,7 +16,8 @@
     "ifri-ai-dc-energy",
     "scenario-methods",
     "ippolito-what-uses-more",
-    "mistral-environmental-standard"
+    "mistral-environmental-standard",
+    "xbox-global-platform-baselines"
   ],
   "summary": "The calculator keeps prompt-specific direct and total water figures where they exist, then uses a broader electricity-to-water bridge for most of the remaining rows.",
   "tables": [
@@ -111,6 +112,13 @@
           "1,950 mL per hour",
           "1:6 water bridge",
           "325 x 6 = 1,950"
+        ],
+        [
+          "Gaming Console (Xbox Series X + TV)",
+          "0.32 mL per player-hour",
+          "960 mL per player-hour",
+          "Activity-specific LBNL U.S.-average operational-water scenario, not the generic 1:6 bridge",
+          "Includes electricity-generation water for console, TV, home gateway, access/core network, and server facility; direct telecom water remains unquantified"
         ]
       ],
       "title": "Water conversion rules used by the live calculator"

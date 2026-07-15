@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://your-digital-life.org/schemas/source.schema.json",
+  "title": "Your Digital Life calculator source",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "order",
+    "title",
+    "organization",
+    "authors",
+    "url",
+    "publishedDate",
+    "sourceTier",
+    "sourceType",
+    "notes",
+    "usedFor",
+    "tags"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "order": { "type": "integer", "minimum": 1 },
+    "title": { "type": "string", "minLength": 1 },
+    "organization": { "type": "string", "minLength": 1 },
+    "authors": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "url": { "type": "string", "format": "uri" },
+    "publishedDate": { "type": "string", "format": "date" },
+    "sourceTier": { "enum": ["Tier 1", "Tier 2", "Tier 3", "Tier 4"] },
+    "sourceType": { "type": "string", "minLength": 1 },
+    "notes": { "type": "string", "minLength": 1 },
+    "usedFor": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
+    "tags": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true }
+  }
+}

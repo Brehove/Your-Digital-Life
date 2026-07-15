@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "U.S. Environmental Protection Agency"
+  ],
+  "id": "energy-star-certified-televisions",
+  "notes": "Official certification dataset. The fixed reference uses the Sansui LE-55TA1 record: 54.7-inch screen and 79.5 W average on-mode power for certification.",
+  "order": 22,
+  "organization": "U.S. Environmental Protection Agency",
+  "publishedDate": "2024-04-18",
+  "sourceTier": "Tier 1",
+  "sourceType": "Government certification dataset",
+  "tags": [
+    "gaming",
+    "devices"
+  ],
+  "title": "ENERGY STAR Certified Televisions",
+  "url": "https://catalog.data.gov/dataset/energy-star-certified-televisions",
+  "usedFor": [
+    "79.5 W reference television coefficient",
+    "gaming-console method"
+  ]
+}

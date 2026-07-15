@@ -1,0 +1,44 @@
+{
+  "category": "Gaming",
+  "defaultDeviceId": "xbox-series-x-reference",
+  "deviceMode": "fixed",
+  "deviceNote": "Fixed to an Xbox Series X plus one reference 54.7-inch ENERGY STAR-certified television. Series S and alternate display choices are not yet modeled.",
+  "deviceSelectableIds": [
+    "xbox-series-x-reference"
+  ],
+  "deviceSelectionAffects": [
+    "totalWhPerUnit"
+  ],
+  "deviceTotalWhOverrides": {
+    "xbox-series-x-reference": 220
+  },
+  "directWaterBoundary": "Modeled direct cooling and humidification water for the game-server data center only; telecom-facility water is unquantified.",
+  "directWaterMlPerUnit": 0.32,
+  "id": "gaming-console-xbox-series-x",
+  "label": "Gaming Console (Xbox Series X + TV)",
+  "lastReviewed": "2026-07-14",
+  "note": "Locally rendered online multiplayer, not cloud gaming. The central estimate includes the console, reference TV, allocated home networking, fixed access and core transport, modeled game-server IT, and data-center overhead. Downloads, patches, manufacturing, standby, and optional texture streaming are excluded.",
+  "order": 13,
+  "serverEnergyBoundary": "Off-prem fixed access and core transport plus modeled game-server facility electricity; excludes the allocated home gateway.",
+  "serverWhPerUnit": 7.7,
+  "sourceIds": [
+    "xbox-global-platform-baselines",
+    "xbox-lab-platform-baselines",
+    "activision-call-of-duty-matchmaking-ping",
+    "mytton-network-power-model",
+    "energy-star-certified-televisions",
+    "lyu-cloud-gaming-network-anatomy",
+    "playfab-multiplayer-servers",
+    "lbnl-data-center-report",
+    "scenario-methods"
+  ],
+  "status": "estimated",
+  "step": 0.25,
+  "systemBoundary": "operational-player-hour",
+  "totalEnergyBoundary": "Console, reference TV, allocated home gateway, fixed access and core transport, modeled game-server IT, and PUE overhead for one player-hour.",
+  "totalWaterBoundary": "U.S.-average operational water consumption: electricity-generation water for quantified components plus modeled direct game-server data-center water.",
+  "totalWaterMlPerUnit": 960,
+  "totalWhPerUnit": 220,
+  "unitHint": "One active player-hour; local rendering over fixed broadband",
+  "unitLabel": "hours"
+}

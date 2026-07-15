@@ -17,7 +17,8 @@ const publicMethodSectionIds = new Set([
   "boundary-rules",
   "water-method",
   "zoom-host-method",
-  "image-generation-method"
+  "image-generation-method",
+  "gaming-console-method"
 ]);
 const publicMethodSections = calculator.data.methodSections.filter((section) =>
   publicMethodSectionIds.has(section.id)
@@ -78,8 +79,14 @@ function getSources(sourceIds: string[], context: string) {
                   {activity.totalWhPerUnit} Wh
                   {activity.totalEnergyBoundary && <div class="note">{activity.totalEnergyBoundary}</div>}
                 </td>
-                <td>{activity.directWaterMlPerUnit} mL</td>
-                <td>{activity.totalWaterMlPerUnit} mL</td>
+                <td>
+                  {activity.directWaterMlPerUnit} mL
+                  {activity.directWaterBoundary && <div class="note">{activity.directWaterBoundary}</div>}
+                </td>
+                <td>
+                  {activity.totalWaterMlPerUnit} mL
+                  {activity.totalWaterBoundary && <div class="note">{activity.totalWaterBoundary}</div>}
+                </td>
                 <td>
                   {activitySources.length > 0 && (
                     <div class="inventory-citations">

@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "Microsoft Xbox"
+  ],
+  "id": "xbox-lab-platform-baselines",
+  "notes": "First-party laboratory platform baseline measured at the wall socket. The 150 W Series X multiplayer-active figure is used as the high console-power scenario, not as a Call of Duty-specific measurement.",
+  "order": 18,
+  "organization": "Microsoft Xbox",
+  "publishedDate": "2026-03-04",
+  "sourceTier": "Tier 1",
+  "sourceType": "First-party laboratory measurement",
+  "tags": [
+    "gaming",
+    "devices"
+  ],
+  "title": "Xbox Sustainability platform baselines",
+  "url": "https://learn.microsoft.com/en-us/xbox/sustainability/lab-platform-baselines",
+  "usedFor": [
+    "Xbox Series X multiplayer-active high scenario",
+    "gaming-console method"
+  ]
+}

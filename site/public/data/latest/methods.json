@@ -12,6 +12,8 @@
       "epoch-chatgpt-energy",
       "jegham-how-hungry-is-ai",
       "iea-energy-and-ai",
+      "xbox-global-platform-baselines",
+      "mytton-network-power-model",
       "ippolito-what-uses-more",
       "ifri-ai-dc-energy",
       "kamiya-streaming-video",
@@ -101,6 +103,13 @@
             "Adds all participant devices",
             "192/358 Wh per meeting",
             "One 50-minute hosted session with 10 people"
+          ],
+          [
+            "Gaming Console (Xbox Series X + TV)",
+            "7.7 Wh off-prem fixed access, core transport, and modeled game-server facility electricity",
+            "Adds the Series X, reference 54.7-inch TV, and allocated home gateway",
+            "7.7/220 Wh per player-hour",
+            "Locally rendered multiplayer, not cloud gaming; infrastructure is attributional and the server term is low-confidence"
           ]
         ],
         "title": "Current bridge rules used in the calculator"
@@ -120,6 +129,8 @@
       "scenario-methods",
       "greenspector-social-media-2021",
       "kamiya-streaming-video",
+      "xbox-global-platform-baselines",
+      "energy-star-certified-televisions",
       "verdecchia-video-call-energy"
     ],
     "summary": "Device metadata now lives in this record and now powers the first device-aware controls in the live calculator for the rows where the effect is largest.",
@@ -188,6 +199,13 @@
             "Keep fixed",
             "Meeting bundle only",
             "This row counts all participant devices, not just the host"
+          ],
+          [
+            "Gaming Console (Xbox Series X + TV)",
+            "Xbox Series X plus reference 54.7-inch TV",
+            "Keep fixed in the first release",
+            "220 Wh total-system reference bundle",
+            "Do not add Series S or alternate TV selectors until energy and water can vary together"
           ]
         ],
         "title": "Device metadata plan now stored in the calculator record"
@@ -213,7 +231,8 @@
       "ifri-ai-dc-energy",
       "scenario-methods",
       "ippolito-what-uses-more",
-      "mistral-environmental-standard"
+      "mistral-environmental-standard",
+      "xbox-global-platform-baselines"
     ],
     "summary": "The calculator keeps prompt-specific direct and total water figures where they exist, then uses a broader electricity-to-water bridge for most of the remaining rows.",
     "tables": [
@@ -308,6 +327,13 @@
             "1,950 mL per hour",
             "1:6 water bridge",
             "325 x 6 = 1,950"
+          ],
+          [
+            "Gaming Console (Xbox Series X + TV)",
+            "0.32 mL per player-hour",
+            "960 mL per player-hour",
+            "Activity-specific LBNL U.S.-average operational-water scenario, not the generic 1:6 bridge",
+            "Includes electricity-generation water for console, TV, home gateway, access/core network, and server facility; direct telecom water remains unquantified"
           ]
         ],
         "title": "Water conversion rules used by the live calculator"
@@ -505,5 +531,161 @@
       }
     ],
     "title": "Image-generation evidence and Ippolito crosswalk"
+  },
+  {
+    "id": "gaming-console-method",
+    "notes": [
+      "This is locally rendered online console play, not Xbox Cloud Gaming. Multiplayer traffic carries game state, voice, authentication, matchmaking, anti-cheat, and telemetry; the console renders the game.",
+      "The central calculator values are rounded because the infrastructure terms are modeled. Exact component arithmetic is retained below for reproducibility.",
+      "The low, central, and high cases are scenario bundles, not statistical confidence intervals.",
+      "The game-server IT coefficient is the weakest component. Activision publishes architectural details but no per-player electricity, host power, utilization, provider share, PUE, or WUE."
+    ],
+    "order": 8,
+    "sourceIds": [
+      "xbox-global-platform-baselines",
+      "xbox-lab-platform-baselines",
+      "activision-call-of-duty-matchmaking-ping",
+      "mytton-network-power-model",
+      "energy-star-certified-televisions",
+      "lyu-cloud-gaming-network-anatomy",
+      "playfab-multiplayer-servers",
+      "lbnl-data-center-report",
+      "scenario-methods"
+    ],
+    "summary": "The fixed gaming row estimates one active player-hour of a locally rendered 10 to 12-player shooter on Xbox Series X with a reference 54.7-inch television and fixed broadband. It includes an attributional allocation of shared network infrastructure and a low-confidence modeled game-server term.",
+    "tables": [
+      {
+        "columns": [
+          "Component",
+          "Central energy",
+          "Boundary and evidence",
+          "Confidence"
+        ],
+        "rows": [
+          [
+            "Xbox Series X console",
+            "127 Wh",
+            "Microsoft global shooter-genre AC-wall average",
+            "High for platform measurement; moderate for this workload"
+          ],
+          [
+            "Reference television",
+            "79.5 Wh",
+            "EPA ENERGY STAR Sansui LE-55TA1, 54.7-inch average on-mode certification power; illustrative model, not a market average",
+            "High for the model; low for representativeness"
+          ],
+          [
+            "Allocated home gateway / Wi-Fi",
+            "5.754 Wh",
+            "Mytton power model with 11.5 W idle allocated across two household users plus the 0.20% line-use term",
+            "Moderate-low"
+          ],
+          [
+            "Fixed access network",
+            "5 Wh",
+            "Mytton central fixed-access allocation per subscriber",
+            "Moderate-low"
+          ],
+          [
+            "Core / transit network",
+            "1.506 Wh",
+            "1.5 W baseline + 0.03 W per Mbps at the 0.20 Mbps central traffic assumption",
+            "Moderate-low"
+          ],
+          [
+            "Game-server and support-service IT",
+            "1 Wh",
+            "Project synthesis allowance informed by dedicated-server architecture and generic containerized server hosting; not a Call of Duty measurement",
+            "Low"
+          ],
+          [
+            "Data-center overhead",
+            "0.22 Wh",
+            "1 Wh server IT x (1.22 PUE - 1), using the LBNL hyperscale central scenario",
+            "Low"
+          ],
+          [
+            "Exact quantified total",
+            "219.98 Wh",
+            "127 + 79.5 + 5.754 + 5 + 1.506 + 1 + 0.22; calculator rounds to 220 Wh",
+            "Moderate overall"
+          ]
+        ],
+        "title": "Central Xbox Series X plus TV component calculation"
+      },
+      {
+        "columns": [
+          "Scenario",
+          "Console / display",
+          "Home + off-prem infrastructure",
+          "Total-system energy",
+          "Direct server-DC water",
+          "Broader operational water"
+        ],
+        "rows": [
+          [
+            "Low",
+            "122 Wh / 23.65 Wh",
+            "6.497 Wh",
+            "152.147 Wh",
+            "0.010 mL",
+            "661.869 mL"
+          ],
+          [
+            "Central",
+            "127 Wh / 79.5 Wh",
+            "13.480 Wh",
+            "219.980 Wh; rounded to 220",
+            "0.320 mL",
+            "957.440 mL; rounded to 960"
+          ],
+          [
+            "High",
+            "150 Wh / 148.56 Wh",
+            "31.425 Wh",
+            "329.985 Wh",
+            "3.350 mL",
+            "1,440.213 mL"
+          ]
+        ],
+        "title": "Sensitivity scenarios for one active player-hour"
+      },
+      {
+        "columns": [
+          "Published field",
+          "Calculation",
+          "Published value",
+          "Boundary"
+        ],
+        "rows": [
+          [
+            "Cloud/source-side energy",
+            "5 access + 1.506 core + 1.22 server facility = 7.726 Wh",
+            "7.7 Wh",
+            "Off-prem access, core, and game-server facility; home gateway excluded"
+          ],
+          [
+            "Broader-system energy",
+            "127 console + 79.5 TV + 5.754 home gateway + 7.726 off-prem = 219.98 Wh",
+            "220 Wh",
+            "Operational player-hour; manufacturing, downloads, patches, standby, and cloud rendering excluded"
+          ],
+          [
+            "Direct water",
+            "1 Wh server IT x 0.32 L/kWh IT = 0.32 mL",
+            "0.32 mL",
+            "Modeled game-server data-center cooling and humidification only"
+          ],
+          [
+            "Broader operational water",
+            "218.76 non-DC Wh x 4.35 mL/Wh + 1.22 DC Wh x 4.52 mL/Wh + 0.32 mL direct = 957.44 mL",
+            "960 mL",
+            "U.S.-average electricity-generation water consumption plus modeled direct game-server DC water"
+          ]
+        ],
+        "title": "Published calculator fields and rounding"
+      }
+    ],
+    "title": "Gaming Console (Xbox Series X + TV) method"
   }
 ]

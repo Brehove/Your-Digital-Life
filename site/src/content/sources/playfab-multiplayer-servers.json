@@ -1,0 +1,11 @@
+{
+  "title": "PlayFab Multiplayer Server terms",
+  "organization": "Microsoft PlayFab",
+  "authors": ["Microsoft PlayFab"],
+  "url": "https://learn.microsoft.com/en-us/gaming/playfab/multiplayer/servers/server-terms",
+  "publishedDate": "2026-03-10",
+  "sourceTier": "Tier 2",
+  "sourceType": "First-party platform documentation",
+  "notes": "Generic game-server architecture showing multiple containers per VM and standby capacity. It is analogy evidence only; no public evidence establishes that Call of Duty uses PlayFab or these configurations.",
+  "tags": ["gaming", "data-centers"]
+}

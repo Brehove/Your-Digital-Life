@@ -6,7 +6,6 @@
   "publishedDate": "2024-12-01",
   "sourceTier": "Tier 1",
   "sourceType": "National laboratory report",
-  "notes": "Primary U.S. demand and water-intensity context for the macro-risk pages.",
+  "notes": "Primary U.S. demand, PUE/WUE, and electricity-related water-intensity context. Gaming uses its U.S. hyperscale and grid-water values only as a modeled scenario, not as provider-specific evidence.",
   "tags": ["data-centers", "debates"]
 }
-

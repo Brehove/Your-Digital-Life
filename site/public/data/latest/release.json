@@ -1,41 +1,40 @@
 {
   "behaviorChanges": true,
   "changes": [
-    "Changed image-generation energy from 0.48 Wh to 1.7 Wh and recalculated its direct and broader water values to 1.7 mL and 10.2 mL under the retained water rule.",
-    "Labeled the 1.7 Wh result as GPU-only and carried it through both energy totals only as a conservative floor, not as measured server-plus-network or total-system energy.",
-    "Advanced the backward-compatible activity schema to v0.2.0 with optional per-row energy-boundary fields.",
-    "Added Jon Ippolito's source sheet as explicit secondary provenance while attributing the adopted coefficient to the underlying IEA report.",
-    "Added an external-comparison overlay with adopt, adapt, retain, reject, open, and not-comparable dispositions for future feedback cycles.",
-    "Expanded the water method with Google, Mistral, LBNL, and Ippolito evidence, including the corrected 11.84 mL/Wh cross-metric arithmetic.",
-    "Preserved the 1 mL/Wh direct and 6 mL/Wh broader generic water rules pending boundary-matched evidence."
+    "Added a fixed Gaming Console (Xbox Series X + TV) activity for one active player-hour of locally rendered online multiplayer over fixed broadband.",
+    "Set the central calculator values to 7.7 Wh off-prem infrastructure, 220 Wh broader-system electricity, 0.32 mL direct game-server data-center water, and 960 mL U.S.-average broader operational water.",
+    "Added explicit direct-water and broader-water boundary fields and a new operational-player-hour boundary marker without changing existing activity values.",
+    "Added a Gaming category and fixed Xbox Series X plus reference 54.7-inch television device profile; Series S and alternate displays remain intentionally unmodeled.",
+    "Published the exact component arithmetic, low/central/high sensitivity bundles, evidence limitations, and source locators in the gaming method and review overlays.",
+    "Preserved every v0.1.0 and v0.2.0 versioned export and archive unchanged."
   ],
   "collectionChanges": {
     "activities": {
-      "added": [],
-      "modified": [
-        "image-generation"
+      "added": [
+        "gaming-console-xbox-series-x"
       ],
+      "modified": [],
       "removed": []
     },
     "deviceProfiles": {
-      "added": [],
+      "added": [
+        "xbox-series-x-reference"
+      ],
       "modified": [],
       "removed": []
     },
     "externalComparisons": {
-      "added": [
-        "ippolito-image-generation-2026-07",
-        "ippolito-water-conversion-2026-07"
-      ],
+      "added": [],
       "modified": [],
       "removed": []
     },
     "methodSections": {
       "added": [
-        "image-generation-method"
+        "gaming-console-method"
       ],
       "modified": [
         "boundary-rules",
+        "device-control-plan",
         "water-method"
       ],
       "removed": []
@@ -47,23 +46,25 @@
     },
     "sources": {
       "added": [
-        "ippolito-what-uses-more",
-        "iea-energy-and-ai",
-        "ml-energy-leaderboard",
-        "odonnell-ai-energy-footprint",
-        "mistral-environmental-standard"
+        "xbox-lab-platform-baselines",
+        "xbox-global-platform-baselines",
+        "activision-call-of-duty-matchmaking-ping",
+        "mytton-network-power-model",
+        "energy-star-certified-televisions",
+        "lyu-cloud-gaming-network-anatomy",
+        "playfab-multiplayer-servers"
       ],
       "modified": [
-        "ifri-ai-dc-energy"
+        "lbnl-data-center-report"
       ],
       "removed": []
     }
   },
-  "previousSchemaVersion": "0.1.0",
-  "previousVersion": "0.1.0",
+  "previousSchemaVersion": "0.2.0",
+  "previousVersion": "0.2.0",
   "releasedOn": "2026-07-14",
-  "schemaVersion": "0.2.0",
-  "scientificImpact": "The image-generation coefficient changes from an unreconstructable 0.48 Wh to 1.7 Wh for SD-XL 1.0-base under controlled H100 GPU-only test conditions. The generic water coefficients remain unchanged, but their evidence and the Ippolito comparison are now explicit.",
-  "summary": "Adds a repeatable external-evidence comparison workflow and revises the image-generation row using a pinned IEA benchmark surfaced through comparison with Jon Ippolito's What Uses More? calculator.",
-  "version": "0.2.0"
+  "schemaVersion": "0.3.0",
+  "scientificImpact": "The release introduces the first gaming player-hour as an explicitly estimated end-to-end operational scenario. Microsoft directly supports the console-power range, while the television is one named certification record, the network is an attributional power model, and the game-server coefficient remains low-confidence synthesis because Activision publishes no player-hour electricity measurement.",
+  "summary": "Adds a fixed Xbox Series X plus television online-multiplayer reference row with explicit operational boundaries, reproducible component calculations, and uncertainty documentation.",
+  "version": "0.3.0"
 }

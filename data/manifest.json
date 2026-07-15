@@ -1,7 +1,7 @@
 {
   "name": "your-digital-life-calculator-data",
-  "datasetVersion": "0.2.0",
-  "schemaVersion": "0.2.0",
+  "datasetVersion": "0.3.0",
+  "schemaVersion": "0.3.0",
   "status": "canonical",
   "migrationMode": "canonical",
   "siteConsumer": "generated-snapshot",
@@ -100,11 +100,11 @@
     ]
   },
   "counts": {
-    "sources": 17,
-    "deviceProfiles": 5,
-    "activities": 12,
+    "sources": 24,
+    "deviceProfiles": 6,
+    "activities": 13,
     "presets": 5,
-    "methodSections": 7
+    "methodSections": 8
   },
   "order": {
     "sources": [
@@ -124,9 +124,16 @@
       "iea-energy-and-ai",
       "ml-energy-leaderboard",
       "odonnell-ai-energy-footprint",
-      "mistral-environmental-standard"
+      "mistral-environmental-standard",
+      "xbox-lab-platform-baselines",
+      "xbox-global-platform-baselines",
+      "activision-call-of-duty-matchmaking-ping",
+      "mytton-network-power-model",
+      "energy-star-certified-televisions",
+      "lyu-cloud-gaming-network-anatomy",
+      "playfab-multiplayer-servers"
     ],
-    "deviceProfiles": ["phone", "laptop", "desktop", "tv", "meeting-bundle"],
+    "deviceProfiles": ["phone", "laptop", "desktop", "tv", "meeting-bundle", "xbox-series-x-reference"],
     "activities": [
       "text-prompts",
       "reasoning-prompts",
@@ -139,7 +146,8 @@
       "netflix",
       "cloud-docs-browsing",
       "zoom-participant",
-      "zoom-host"
+      "zoom-host",
+      "gaming-console-xbox-series-x"
     ],
     "presets": [
       "clear",
@@ -155,14 +163,15 @@
       "zoom-host-method",
       "preset-notes",
       "maintenance-notes",
-      "image-generation-method"
+      "image-generation-method",
+      "gaming-console-method"
     ]
   },
   "metricBoundaries": {
     "serverWhPerUnit": "The deployed calculator's row-specific cloud/server or server-plus-network boundary; exact scope remains in each legacy note and method record.",
     "totalWhPerUnit": "The deployed calculator's row-specific total-system boundary, including configured device overrides where modeled.",
-    "directWaterMlPerUnit": "The deployed calculator's direct-water metric for the row.",
-    "totalWaterMlPerUnit": "The deployed calculator's broader total-water metric for the row."
+    "directWaterMlPerUnit": "The deployed calculator's direct-water metric for the row; activity-specific boundary text is included where available.",
+    "totalWaterMlPerUnit": "The deployed calculator's broader total-water metric for the row; activity-specific boundary text is included where available."
   },
   "knownDuplicateRepresentations": {
     "calculatorSourceCatalog": "Twelve calculator source records also have site/src/content/sources representations. All twelve match on shared fields; root records additionally carry stable IDs, order, and calculator-specific usedFor relationships. The root data record is canonical for calculator generation.",
@@ -174,8 +183,8 @@
     "calculator": "generated/calculator.json",
     "calculatorPayload": "generated/calculator-payload.json",
     "latestExports": "exports/latest",
-    "versionedExports": "exports/v0.2.0",
-    "archive": "exports/your-digital-life-data-v0.2.0.zip",
+    "versionedExports": "exports/v0.3.0",
+    "archive": "exports/your-digital-life-data-v0.3.0.zip",
     "siteCalculator": "../site/src/content/calculators/digital-inventory.json",
     "publicDownloads": "../site/public/data",
     "publicSchemas": "../site/public/schemas"

@@ -10,6 +10,8 @@
     "scenario-methods",
     "greenspector-social-media-2021",
     "kamiya-streaming-video",
+    "xbox-global-platform-baselines",
+    "energy-star-certified-televisions",
     "verdecchia-video-call-energy"
   ],
   "summary": "Device metadata now lives in this record and now powers the first device-aware controls in the live calculator for the rows where the effect is largest.",
@@ -78,6 +80,13 @@
           "Keep fixed",
           "Meeting bundle only",
           "This row counts all participant devices, not just the host"
+        ],
+        [
+          "Gaming Console (Xbox Series X + TV)",
+          "Xbox Series X plus reference 54.7-inch TV",
+          "Keep fixed in the first release",
+          "220 Wh total-system reference bundle",
+          "Do not add Series S or alternate TV selectors until energy and water can vary together"
         ]
       ],
       "title": "Device metadata plan now stored in the calculator record"

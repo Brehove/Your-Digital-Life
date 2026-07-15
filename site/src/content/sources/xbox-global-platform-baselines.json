@@ -1,0 +1,11 @@
+{
+  "title": "Introduction to global platform baselines",
+  "organization": "Microsoft Xbox",
+  "authors": ["Microsoft Xbox"],
+  "url": "https://learn.microsoft.com/en-us/xbox/sustainability/global-platform-baselines",
+  "publishedDate": "2026-03-04",
+  "sourceTier": "Tier 1",
+  "sourceType": "First-party global telemetry model",
+  "notes": "First-party AC-wall telemetry model. The 127 W Series X shooter-genre average is the central console coefficient for the fixed gaming reference row.",
+  "tags": ["gaming", "devices"]
+}

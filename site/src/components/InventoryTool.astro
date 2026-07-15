@@ -35,7 +35,12 @@ function getActivitySources(activity: CalculatorActivity) {
 
 const activities: CalculatorActivity[] = calculatorEntry.data.activities;
 const presets: CalculatorPreset[] = calculatorEntry.data.presets;
-const groupOrder: CalculatorActivity["category"][] = ["AI tasks", "Media and search", "Meetings"];
+const groupOrder: CalculatorActivity["category"][] = [
+  "AI tasks",
+  "Media and search",
+  "Gaming",
+  "Meetings"
+];
 
 const groupedActivities = groupOrder.map((category) => ({
   category,
@@ -343,8 +348,14 @@ const inventoryPayload = JSON.stringify({ activities, presets, deviceProfiles })
               <span data-cell="total-energy">0 Wh</span>
               {activity.totalEnergyBoundary && <div class="note">{activity.totalEnergyBoundary}</div>}
             </td>
-            <td data-cell="direct-water">0 mL</td>
-            <td data-cell="total-water">0 mL</td>
+            <td>
+              <span data-cell="direct-water">0 mL</span>
+              {activity.directWaterBoundary && <div class="note">{activity.directWaterBoundary}</div>}
+            </td>
+            <td>
+              <span data-cell="total-water">0 mL</span>
+              {activity.totalWaterBoundary && <div class="note">{activity.totalWaterBoundary}</div>}
+            </td>
           </tr>
         ))}
       </tbody>
