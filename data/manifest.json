@@ -1,6 +1,6 @@
 {
   "name": "your-digital-life-calculator-data",
-  "datasetVersion": "0.3.0",
+  "datasetVersion": "0.4.0",
   "schemaVersion": "0.3.0",
   "status": "canonical",
   "migrationMode": "canonical",
@@ -70,7 +70,7 @@
     "title": "Digital Inventory Calculator Source of Truth",
     "calculatorId": "digital-inventory",
     "description": "Canonical activity rows, presets, source records, and method tables for the public digital inventory calculator.",
-    "lastReviewed": "2026-07-14",
+    "lastReviewed": "2026-07-23",
     "sourceFiles": [
       {
         "title": "Your Digital Life open calculator data",
@@ -183,8 +183,8 @@
     "calculator": "generated/calculator.json",
     "calculatorPayload": "generated/calculator-payload.json",
     "latestExports": "exports/latest",
-    "versionedExports": "exports/v0.3.0",
-    "archive": "exports/your-digital-life-data-v0.3.0.zip",
+    "versionedExports": "exports/v0.4.0",
+    "archive": "exports/your-digital-life-data-v0.4.0.zip",
     "siteCalculator": "../site/src/content/calculators/digital-inventory.json",
     "publicDownloads": "../site/public/data",
     "publicSchemas": "../site/public/schemas"

@@ -106,7 +106,7 @@ test("generated payload and Astro snapshot are exact canonical products", () => 
 test("all preset totals match the production contract", () => {
   const expected = {
     clear: [0, 0, 0, 0],
-    "gen-z-no-ai": [131.5, 244.75, 131.5, 789],
+    "gen-z-no-ai": [139.2, 464.75, 131.82, 1749],
     "gen-z-moderate-ai": [137.6, 256.6, 136.6, 813.1],
     "gen-z-vibe-coder": [701.675, 800.05, 701.075, 4202.55],
     "worker-zoom-host": [223, 490, 223, 1338]
@@ -167,7 +167,15 @@ test("fixed Xbox Series X gaming reference includes the named television and exp
   assert.match(activity.totalEnergyBoundary, /reference TV/);
   assert.match(activity.directWaterBoundary, /game-server data center only/);
   assert.match(activity.totalWaterBoundary, /U\.S\.-average operational water consumption/);
-  assert.equal(canonical.presets.every(({ values }) => values[activity.id] === undefined), true);
+  const noAiPreset = canonical.presets.find(({ id }) => id === "gen-z-no-ai");
+  assert.equal(noAiPreset.values[activity.id], 1);
+  assert.equal(noAiPreset.deviceSelections[activity.id], "xbox-series-x-reference");
+  assert.equal(
+    canonical.presets
+      .filter(({ id }) => id !== "gen-z-no-ai")
+      .every(({ values }) => values[activity.id] === undefined),
+    true
+  );
 });
 
 test("every activity and method source relationship resolves", () => {

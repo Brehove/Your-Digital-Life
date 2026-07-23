@@ -8,8 +8,9 @@
     "values": {}
   },
   {
-    "description": "Section 3 scenario with heavy social media, evening streaming, one Zoom class, and no AI.",
+    "description": "Non-AI student starter with social media, evening streaming, one Zoom class, and one hour of fixed-reference Xbox Series X gaming.",
     "deviceSelections": {
+      "gaming-console-xbox-series-x": "xbox-series-x-reference",
       "instagram": "phone",
       "netflix": "laptop",
       "snapchat": "phone",
@@ -21,6 +22,7 @@
     "label": "Gen Z (no AI use)",
     "order": 2,
     "values": {
+      "gaming-console-xbox-series-x": 1,
       "instagram": 0.75,
       "netflix": 1.5,
       "snapchat": 0.5,

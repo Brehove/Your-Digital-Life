@@ -1,0 +1,540 @@
+[
+  {
+    "authors": [],
+    "id": "epoch-chatgpt-energy",
+    "notes": "Used for the 0.3 Wh everyday text-prompt estimate and related prompt-volume framing.",
+    "order": 1,
+    "organization": "Epoch AI",
+    "publishedDate": "2025-02-01",
+    "sourceTier": "Tier 3",
+    "sourceType": "Expert analysis",
+    "tags": [
+      "prompting"
+    ],
+    "title": "How Much Energy Does ChatGPT Use?",
+    "url": "https://epoch.ai/gradient-updates/how-much-energy-does-chatgpt-use",
+    "usedFor": [
+      "0.3 Wh AI text-prompt row",
+      "prompt-specific comparison language in the boundary and water method sections"
+    ]
+  },
+  {
+    "authors": [
+      "Nidhal Jegham",
+      "Marwen Abdelatti",
+      "Lassad Elmoubarki",
+      "Abdeltawab Hendawi"
+    ],
+    "id": "jegham-how-hungry-is-ai",
+    "notes": "Primary inference benchmark for reasoning-heavy prompt classes and environmental multipliers.",
+    "order": 2,
+    "organization": "arXiv / ACM FAccT context",
+    "publishedDate": "2025-05-01",
+    "sourceTier": "Tier 1",
+    "sourceType": "Peer-reviewed or preprint benchmark",
+    "tags": [
+      "prompting"
+    ],
+    "title": "How Hungry is AI? Benchmarking Energy, Water, and Carbon Footprint of LLM Inference",
+    "url": "https://arxiv.org/pdf/2505.09598",
+    "usedFor": [
+      "33.8 Wh high-reasoning prompt row",
+      "direct and total water framing for prompt-heavy rows",
+      "maintenance note preserving the long high-reasoning benchmark"
+    ]
+  },
+  {
+    "authors": [
+      "Joel Gladd"
+    ],
+    "id": "scenario-methods",
+    "notes": "Site-built method model that combines prompt benchmarks, streaming comparisons, meeting estimates, and water-conversion rules into the live calculator.",
+    "order": 3,
+    "organization": "Digital Habits site method model",
+    "publishedDate": "2026-03-07",
+    "sourceTier": "Tier 3",
+    "sourceType": "Internal synthesis",
+    "tags": [
+      "scenarios",
+      "calculator"
+    ],
+    "title": "Digital inventory calculator and scenario method",
+    "url": "https://your-digital-life.org/sources-and-method/",
+    "usedFor": [
+      "scenario-style 1 mL direct to 6 mL total water bridge",
+      "browsing bundle row",
+      "preset mix logic",
+      "total-system add-ons for non-AI rows"
+    ]
+  },
+  {
+    "authors": [
+      "Laure De Roucy-Rochegonde",
+      "Adrien Buffard"
+    ],
+    "id": "ifri-ai-dc-energy",
+    "notes": "Historical comparator for the pre-v0.2 image coefficient and useful for broader Jevons framing; it is not the source of the current image value and should be paired with Tier 1 sources.",
+    "order": 4,
+    "organization": "IFRI",
+    "publishedDate": "2025-02-01",
+    "sourceTier": "Tier 2",
+    "sourceType": "Policy report",
+    "tags": [
+      "prompting",
+      "debates"
+    ],
+    "title": "AI, Data Centers and Energy Demand: Reassessing and Exploring the Trends",
+    "url": "https://www.ifri.org/sites/default/files/2025-02/ifri_buffard-rochegonde_ai_data_centers_energy_2025_2.pdf",
+    "usedFor": [
+      "historical comparison for the pre-v0.2 image-generation row",
+      "comparison logic in the cloud-side versus total-system bridge"
+    ]
+  },
+  {
+    "authors": [
+      "Simon P. Couch"
+    ],
+    "id": "simon-couch-coding-agent",
+    "notes": "Useful for the vibe-coding scenario but should remain marked as estimated and napkin-math-derived.",
+    "order": 5,
+    "organization": "Simon P. Couch",
+    "publishedDate": "2026-01-20",
+    "sourceTier": "Tier 3",
+    "sourceType": "Expert analysis",
+    "tags": [
+      "scenarios",
+      "prompting"
+    ],
+    "title": "Electricity use of AI coding agents",
+    "url": "https://www.simonpcouch.com/blog/2026-01-20-cc-impact/",
+    "usedFor": [
+      "coding-agent use row",
+      "Gen Z vibe-coder preset",
+      "cloud-side versus total-system bridge for high-intensity AI use"
+    ]
+  },
+  {
+    "authors": [],
+    "id": "greenspector-social-media-2021",
+    "notes": "Used for device-side social-media energy measurements, especially TikTok.",
+    "order": 6,
+    "organization": "Greenspector",
+    "publishedDate": "2021-10-01",
+    "sourceTier": "Tier 2",
+    "sourceType": "Industry measurement",
+    "tags": [
+      "scenarios",
+      "prompting"
+    ],
+    "title": "What is the environmental footprint for social media applications? 2021 Edition",
+    "url": "https://greenspector.com/en/social-media-2021/",
+    "usedFor": [
+      "TikTok, Instagram, and Snapchat directional rows",
+      "cloud-side versus total-system bridge for social-video estimates",
+      "maintenance note on low-confidence social rows"
+    ]
+  },
+  {
+    "authors": [
+      "Adam Holter"
+    ],
+    "id": "adam-holter-tiktok",
+    "notes": "Directional comparison used only as a low-confidence reference for TikTok total-system estimates.",
+    "order": 7,
+    "organization": "Adam Holter",
+    "publishedDate": "2025-05-01",
+    "sourceTier": "Tier 4",
+    "sourceType": "Opinion or blog analysis",
+    "tags": [
+      "scenarios",
+      "prompting"
+    ],
+    "title": "Why Your ChatGPT Prompt Uses Half the Energy of a TikTok Video",
+    "url": "https://adam.holter.com/why-your-chatgpt-prompt-uses-half-the-energy-of-a-tiktok-video/",
+    "usedFor": [
+      "TikTok total-system estimate cross-check"
+    ]
+  },
+  {
+    "authors": [
+      "George Kamiya"
+    ],
+    "id": "kamiya-streaming-video",
+    "notes": "Used for the 77 Wh total streaming baseline and the ~22 Wh server-plus-network split adopted for Netflix and YouTube comparisons.",
+    "order": 8,
+    "organization": "International Energy Agency",
+    "publishedDate": "2020-12-01",
+    "sourceTier": "Tier 1",
+    "sourceType": "Institutional commentary",
+    "tags": [
+      "prompting",
+      "scenarios"
+    ],
+    "title": "The carbon footprint of streaming video: fact-checking the headlines",
+    "url": "https://www.iea.org/commentaries/the-carbon-footprint-of-streaming-video-fact-checking-the-headlines",
+    "usedFor": [
+      "Netflix row",
+      "YouTube row",
+      "streaming-side values used to anchor TikTok and Instagram estimates"
+    ]
+  },
+  {
+    "authors": [
+      "David Mytton"
+    ],
+    "id": "mytton-zoom",
+    "notes": "Used for Zoom scenario modeling; should stay labeled as an estimate rather than a direct measurement of every meeting type.",
+    "order": 9,
+    "organization": "David Mytton",
+    "publishedDate": "2023-01-01",
+    "sourceTier": "Tier 3",
+    "sourceType": "Expert analysis",
+    "tags": [
+      "scenarios"
+    ],
+    "title": "Zoom, video conferencing, energy, and emissions",
+    "url": "https://davidmytton.blog/zoom-video-conferencing-energy-and-emissions/",
+    "usedFor": [
+      "Zoom participant row",
+      "Zoom host row",
+      "hosted Zoom derivation table",
+      "worker-hosted-Zoom preset"
+    ]
+  },
+  {
+    "authors": [
+      "Roberto Verdecchia",
+      "et al."
+    ],
+    "id": "verdecchia-video-call-energy",
+    "notes": "Used for device-side video-call energy and camera-on versus camera-off impacts in the Zoom estimates.",
+    "order": 10,
+    "organization": "ACM MobileSoft",
+    "publishedDate": "2022-05-01",
+    "sourceTier": "Tier 1",
+    "sourceType": "Peer-reviewed paper",
+    "tags": [
+      "scenarios",
+      "prompting"
+    ],
+    "title": "Video Calls in Mobile Applications: Energy Consumption and Performance Analysis",
+    "url": "https://robertoverdecchia.github.io/papers/MobileSoft_2022.pdf",
+    "usedFor": [
+      "participant device add-on for Zoom",
+      "total-system device add-on in the hosted Zoom derivation"
+    ]
+  },
+  {
+    "authors": [
+      "Ian Schneider"
+    ],
+    "id": "schneider-google-scale",
+    "notes": "Primary source for WUE framing, cooling tradeoffs, and provider-scoped production prompt metrics.",
+    "order": 11,
+    "organization": "arXiv / Google Research",
+    "publishedDate": "2025-08-01",
+    "sourceTier": "Tier 1",
+    "sourceType": "Research paper",
+    "tags": [
+      "data-centers",
+      "prompting"
+    ],
+    "title": "Measuring the environmental impact of delivering AI at Google Scale",
+    "url": "https://arxiv.org/html/2508.15734v1",
+    "usedFor": [
+      "water methodology context on direct cooling versus broader electricity water"
+    ]
+  },
+  {
+    "authors": [],
+    "id": "lbnl-data-center-report",
+    "notes": "Primary U.S. demand, PUE/WUE, and electricity-related water-intensity context. Gaming uses its U.S. hyperscale and grid-water values only as a modeled scenario, not as provider-specific evidence.",
+    "order": 12,
+    "organization": "Lawrence Berkeley National Laboratory",
+    "publishedDate": "2024-12-01",
+    "sourceTier": "Tier 1",
+    "sourceType": "National laboratory report",
+    "tags": [
+      "data-centers",
+      "debates"
+    ],
+    "title": "2024 United States Data Center Energy Usage Report",
+    "url": "https://eta.lbl.gov/publications/2024-lbnl-data-center-energy-usage-report",
+    "usedFor": [
+      "water methodology context on electricity-side water intensity",
+      "gaming-console PUE, WUE, and operational-water scenario"
+    ]
+  },
+  {
+    "authors": [
+      "Jon Ippolito"
+    ],
+    "id": "ippolito-what-uses-more",
+    "notes": "External comparison and provenance source. Ippolito's spreadsheet prompted the image and water review, but underlying studies remain the evidentiary authority for adopted values.",
+    "order": 13,
+    "organization": "Learn with AI",
+    "publishedDate": "2025-06-25",
+    "sourceTier": "Tier 3",
+    "sourceType": "Secondary calculator synthesis",
+    "tags": [
+      "comparators",
+      "prompting",
+      "water"
+    ],
+    "title": "What Uses More? AI Impact Calculator: sources",
+    "url": "https://docs.google.com/spreadsheets/d/1xgvGhd6rmnBAEk9t2lesKlJeUy4TRQHrW6uWDSEVDFY/edit?gid=0#gid=0",
+    "usedFor": [
+      "provenance for the image-generation evidence review",
+      "external comparison for the generic water-conversion method"
+    ]
+  },
+  {
+    "authors": [
+      "Laura Cozzi",
+      "Thomas Spencer",
+      "Siddharth Singh"
+    ],
+    "id": "iea-energy-and-ai",
+    "notes": "Primary institutional source for the adopted 1.7 Wh image-generation benchmark; the reported boundary is controlled H100 testing and GPU electricity only. Also used for global electricity-demand context.",
+    "order": 14,
+    "organization": "International Energy Agency",
+    "publishedDate": "2025-04-10",
+    "sourceTier": "Tier 1",
+    "sourceType": "International agency report",
+    "tags": [
+      "data-centers",
+      "image-generation",
+      "prompting"
+    ],
+    "title": "Energy and AI",
+    "url": "https://www.iea.org/reports/energy-and-ai",
+    "usedFor": [
+      "global electricity-demand and infrastructure context",
+      "1.7 Wh per image benchmark for SD-XL 1.0-base under controlled H100 test conditions"
+    ]
+  },
+  {
+    "authors": [
+      "Jae-Won Chung",
+      "Mosharaf Chowdhury"
+    ],
+    "id": "ml-energy-leaderboard",
+    "notes": "Academic benchmark used as comparative evidence for how model, steps, hardware, batching, and resolution change image-generation energy. Current leaderboard results must not be substituted silently for historical configurations cited by other calculators.",
+    "order": 15,
+    "organization": "ML.ENERGY",
+    "publishedDate": "2026-05-06",
+    "sourceTier": "Tier 1",
+    "sourceType": "Academic benchmark and dataset",
+    "tags": [
+      "image-generation",
+      "measurement"
+    ],
+    "title": "The ML.ENERGY Leaderboard v3.0",
+    "url": "https://ml.energy/leaderboard/",
+    "usedFor": [
+      "comparative image-generation evidence and configuration sensitivity"
+    ]
+  },
+  {
+    "authors": [
+      "James O'Donnell",
+      "Casey Crownhart"
+    ],
+    "id": "odonnell-ai-energy-footprint",
+    "notes": "Secondary technical analysis used as a comparison point, including an image-generation estimate derived from measured joules. It does not replace a pinned primary benchmark.",
+    "order": 16,
+    "organization": "MIT Technology Review",
+    "publishedDate": "2025-05-20",
+    "sourceTier": "Tier 2",
+    "sourceType": "Technical journalism and analysis",
+    "tags": [
+      "image-generation",
+      "prompting"
+    ],
+    "title": "We did the math on AI's energy footprint. Here's the story you haven't heard",
+    "url": "https://www.technologyreview.com/2025/05/20/1116327/ai-energy-usage-climate-footprint-big-tech/",
+    "usedFor": [
+      "comparative image-generation estimate in the Ippolito crosswalk"
+    ]
+  },
+  {
+    "authors": [
+      "Mistral AI"
+    ],
+    "id": "mistral-environmental-standard",
+    "notes": "Provider environmental assessment reporting 45 mL water and 1.14 gCO2e for a 400-token Le Chat response. It is useful for bounding water estimates but does not directly report mL per Wh.",
+    "order": 17,
+    "organization": "Mistral AI",
+    "publishedDate": "2025-07-22",
+    "sourceTier": "Tier 2",
+    "sourceType": "Industry environmental assessment",
+    "tags": [
+      "prompting",
+      "water"
+    ],
+    "title": "Our contribution to a global environmental standard for AI",
+    "url": "https://mistral.ai/news/our-contribution-to-a-global-environmental-standard-for-ai",
+    "usedFor": [
+      "upper-bound context in the generic water-conversion review"
+    ]
+  },
+  {
+    "authors": [
+      "Microsoft Xbox"
+    ],
+    "id": "xbox-lab-platform-baselines",
+    "notes": "First-party laboratory platform baseline measured at the wall socket. The 150 W Series X multiplayer-active figure is used as the high console-power scenario, not as a Call of Duty-specific measurement.",
+    "order": 18,
+    "organization": "Microsoft Xbox",
+    "publishedDate": "2026-03-04",
+    "sourceTier": "Tier 1",
+    "sourceType": "First-party laboratory measurement",
+    "tags": [
+      "gaming",
+      "devices"
+    ],
+    "title": "Xbox Sustainability platform baselines",
+    "url": "https://learn.microsoft.com/en-us/xbox/sustainability/lab-platform-baselines",
+    "usedFor": [
+      "Xbox Series X multiplayer-active high scenario",
+      "gaming-console method"
+    ]
+  },
+  {
+    "authors": [
+      "Microsoft Xbox"
+    ],
+    "id": "xbox-global-platform-baselines",
+    "notes": "First-party AC-wall telemetry model. The 127 W Series X shooter-genre average is the central console coefficient for the fixed gaming reference row.",
+    "order": 19,
+    "organization": "Microsoft Xbox",
+    "publishedDate": "2026-03-04",
+    "sourceTier": "Tier 1",
+    "sourceType": "First-party global telemetry model",
+    "tags": [
+      "gaming",
+      "devices"
+    ],
+    "title": "Introduction to global platform baselines",
+    "url": "https://learn.microsoft.com/en-us/xbox/sustainability/global-platform-baselines",
+    "usedFor": [
+      "Xbox Series X central console coefficient",
+      "gaming-console method"
+    ]
+  },
+  {
+    "authors": [
+      "Activision Publishing"
+    ],
+    "id": "activision-call-of-duty-matchmaking-ping",
+    "notes": "First-party architectural evidence for dedicated servers, 10 to 12-player Core Multiplayer, distributed data centers, and reserved idle capacity. It reports no server electricity coefficient.",
+    "order": 20,
+    "organization": "Activision Publishing",
+    "publishedDate": "2024-04-04",
+    "sourceTier": "Tier 1",
+    "sourceType": "First-party technical white paper",
+    "tags": [
+      "gaming",
+      "data-centers"
+    ],
+    "title": "Call of Duty Matchmaking Series: Ping",
+    "url": "https://research.activision.com/content/dam/atvi/activision/atvi-touchui/research/publications/docs/Call-of-Duty-Matchmaking-Series-PING.pdf",
+    "usedFor": [
+      "gaming functional unit and server architecture",
+      "gaming-console method"
+    ]
+  },
+  {
+    "authors": [
+      "David Mytton",
+      "Dag Lundén",
+      "Jens Malmodin"
+    ],
+    "id": "mytton-network-power-model",
+    "notes": "Peer-reviewed power model used to separate fixed access, core-network, and home CPE allocations from the much smaller usage-sensitive term.",
+    "order": 21,
+    "organization": "Journal of Industrial Ecology",
+    "publishedDate": "2024-06-21",
+    "sourceTier": "Tier 1",
+    "sourceType": "Peer-reviewed paper",
+    "tags": [
+      "gaming",
+      "networks"
+    ],
+    "title": "Network energy use not directly proportional to data volume",
+    "url": "https://doi.org/10.1111/jiec.13512",
+    "usedFor": [
+      "fixed-broadband network component model",
+      "gaming-console method"
+    ]
+  },
+  {
+    "authors": [
+      "U.S. Environmental Protection Agency"
+    ],
+    "id": "energy-star-certified-televisions",
+    "notes": "Official certification dataset. The fixed reference uses the Sansui LE-55TA1 record: 54.7-inch screen and 79.5 W average on-mode power for certification.",
+    "order": 22,
+    "organization": "U.S. Environmental Protection Agency",
+    "publishedDate": "2024-04-18",
+    "sourceTier": "Tier 1",
+    "sourceType": "Government certification dataset",
+    "tags": [
+      "gaming",
+      "devices"
+    ],
+    "title": "ENERGY STAR Certified Televisions",
+    "url": "https://catalog.data.gov/dataset/energy-star-certified-televisions",
+    "usedFor": [
+      "79.5 W reference television coefficient",
+      "gaming-console method"
+    ]
+  },
+  {
+    "authors": [
+      "Minzhao Lyu",
+      "Sharat Chandra Madanapalli",
+      "Arun Vishwanath",
+      "Vijay Sivaraman"
+    ],
+    "id": "lyu-cloud-gaming-network-anatomy",
+    "notes": "Peer-reviewed cloud-gaming study used only for its contextual statement that a typical locally rendered console game requires roughly 100 to 200 kbps. It is not a Call of Duty packet trace.",
+    "order": 23,
+    "organization": "Passive and Active Measurement Conference",
+    "publishedDate": "2024-03-20",
+    "sourceTier": "Tier 1",
+    "sourceType": "Peer-reviewed conference paper",
+    "tags": [
+      "gaming",
+      "networks"
+    ],
+    "title": "Network Anatomy and Real-Time Measurement of Nvidia GeForce NOW Cloud Gaming",
+    "url": "https://doi.org/10.1007/978-3-031-56249-5_3",
+    "usedFor": [
+      "central 0.20 Mbps gaming-traffic assumption",
+      "gaming-console method"
+    ]
+  },
+  {
+    "authors": [
+      "Microsoft PlayFab"
+    ],
+    "id": "playfab-multiplayer-servers",
+    "notes": "Generic game-server architecture showing multiple containers per VM and standby capacity. It is analogy evidence only; no public evidence establishes that Call of Duty uses PlayFab or these configurations.",
+    "order": 24,
+    "organization": "Microsoft PlayFab",
+    "publishedDate": "2026-03-10",
+    "sourceTier": "Tier 2",
+    "sourceType": "First-party platform documentation",
+    "tags": [
+      "gaming",
+      "data-centers"
+    ],
+    "title": "PlayFab Multiplayer Server terms",
+    "url": "https://learn.microsoft.com/en-us/gaming/playfab/multiplayer/servers/server-terms",
+    "usedFor": [
+      "generic multiplayer-server architecture analogy",
+      "gaming-console method"
+    ]
+  }
+]
