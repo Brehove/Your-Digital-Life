@@ -4,33 +4,30 @@ slug: data
 navLabel: Data
 description: Download the versioned calculator data, schemas, checksums, and portable release archive.
 order: 6
-lastReviewed: "2026-07-14"
+lastReviewed: "2026-07-23"
 heroSummary: The calculator is driven by public, versioned records that can be inspected, reused, and checked independently.
 keyTakeaways:
   - "Root data records are the calculator's update authority."
-  - "The latest downloads are byte-identical to the current v0.2.0 release; v0.1.0 remains available as the immutable baseline."
+  - "The latest downloads are byte-identical to the current v0.4.0 release; v0.1.0 through v0.3.0 remain available as immutable historical releases."
   - "Checksums and schemas are included so consumers can verify what they received."
 ---
 
-## Current release: version 0.2.0
+## Current release: version 0.4.0
 
-Version 0.2.0 revises the image-generation row to the IEA's 1.7 Wh controlled GPU-only benchmark, records Jon Ippolito's role in prompting the comparison, preserves the generic water rule pending stronger boundary-matched evidence, and adds a portable external-comparison history. The website calculator reads a generated snapshot from these same root records.
+Version 0.4.0 adds one hour of the existing fixed Xbox Series X plus reference television activity to the Gen Z (no AI use) starter mix. It does not change any calculator coefficient, formula, source relationship, or activity boundary. The website calculator reads a generated snapshot from these same root records.
 
-- [Complete v0.2.0 ZIP archive](/data/your-digital-life-data-v0.2.0.zip)
-- [Release decision](/data/v0.2.0/release.json)
-- [Release manifest](/data/v0.2.0/manifest.json)
-- [Data Package descriptor](/data/v0.2.0/datapackage.json)
-- [Checksums for every v0.2.0 release file](/data/v0.2.0/SHA256SUMS)
-- [External comparison history](/data/v0.2.0/external-comparisons.json)
+- [Complete v0.4.0 ZIP archive](/data/your-digital-life-data-v0.4.0.zip)
+- [Release decision](/data/v0.4.0/release.json)
+- [Release manifest](/data/v0.4.0/manifest.json)
+- [Data Package descriptor](/data/v0.4.0/datapackage.json)
+- [Checksums for every v0.4.0 release file](/data/v0.4.0/SHA256SUMS)
+- [External comparison history](/data/v0.4.0/external-comparisons.json)
 
-## Historical release: version 0.1.0
+## Historical releases
 
-Version 0.1.0 is the first canonical public release and the preserved pre-review baseline. It remains available for reproducibility; `latest` no longer points to it.
-
-- [Complete v0.1.0 ZIP archive](/data/your-digital-life-data-v0.1.0.zip)
-- [Release manifest](/data/v0.1.0/manifest.json)
-- [Data Package descriptor](/data/v0.1.0/datapackage.json)
-- [Checksums for every release file](/data/v0.1.0/SHA256SUMS)
+- [Version 0.3.0](/data/v0.3.0/manifest.json) added the fixed Xbox Series X plus reference television activity and its evidence record. [Download archive.](/data/your-digital-life-data-v0.3.0.zip)
+- [Version 0.2.0](/data/v0.2.0/manifest.json) revised the image-generation row and added the external-evidence comparison workflow. [Download archive.](/data/your-digital-life-data-v0.2.0.zip)
+- [Version 0.1.0](/data/v0.1.0/manifest.json) is the first canonical public release and preserved pre-review baseline. [Download archive.](/data/your-digital-life-data-v0.1.0.zip)
 
 [Archive checksums for every published version](/data/SHA256SUMS)
 

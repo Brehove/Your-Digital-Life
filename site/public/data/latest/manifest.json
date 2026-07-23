@@ -26,13 +26,13 @@
     "presets": 5,
     "sources": 24
   },
-  "datasetVersion": "0.3.0",
-  "lastReviewed": "2026-07-14",
+  "datasetVersion": "0.4.0",
+  "lastReviewed": "2026-07-23",
   "migrationMode": "canonical",
   "name": "your-digital-life-calculator-data",
   "notes": [
-    "Adds a fixed Xbox Series X plus television online-multiplayer reference row with explicit operational boundaries, reproducible component calculations, and uncertainty documentation.",
-    "The release introduces the first gaming player-hour as an explicitly estimated end-to-end operational scenario. Microsoft directly supports the console-power range, while the television is one named certification record, the network is an attributional power model, and the game-server coefficient remains low-confidence synthesis because Activision publishes no player-hour electricity measurement.",
+    "Adds one hour of the existing fixed Xbox Series X plus television gaming reference to the Gen Z (no AI use) starter mix.",
+    "No calculator coefficients or formulas change. The release changes only one teaching starter mix by combining its existing non-AI student activity pattern with the separately documented fixed one-hour Xbox Series X plus television reference.",
     "The website reads a generated snapshot produced from the same root records.",
     "Behavior changes in this release: yes.",
     "Historical version directories and archives remain immutable and are carried forward unchanged."
@@ -106,7 +106,7 @@
     ]
   },
   "releaseProvenance": {
-    "datasetVersion": "0.3.0",
+    "datasetVersion": "0.4.0",
     "decisionFile": "release.json",
     "generatedFromCanonicalRootRecords": true
   },

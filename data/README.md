@@ -9,16 +9,16 @@ Git commit `063322e93e27704b447a495a838e552067928127` and the checksum-locked fi
 under `tests/fixtures/` record the deployed pre-migration baseline. They are
 regression provenance, not current update authorities.
 
-## Current release: v0.2.0
+## Current release: v0.4.0
 
-- 12 calculator activities
-- 17 calculator source records
-- 5 device profiles
+- 13 calculator activities
+- 24 calculator source records
+- 6 device profiles
 - 5 presets, including Clear
-- 7 method sections
+- 8 method sections
 - JSON Schemas for every included record type
 - deterministic JSON and CSV exports
-- matching `latest` and immutable `v0.2.0` export trees
+- matching `latest` and immutable `v0.4.0` export trees
 - preserved immutable `v0.1.0` export tree and archive
 - a release decision and portable external-comparison history
 - deterministic ZIP archive and SHA-256 checksums
@@ -31,11 +31,11 @@ Scenarios, claims/facts, charts, and the broader site source registry are intent
 ## Reviewer evidence overlay
 
 `review/source-evidence.json` is a validated, one-to-one review overlay for the
-17 calculator source IDs. It adds corrected citations, precise locators,
+24 calculator source IDs. It adds corrected citations, precise locators,
 evidence type, review status, measurement boundary, workload and hardware
 scope, geography, derivation, and limitations. `review/activity-evidence.json`
 adds row-level provenance summaries, formula-traceability status, additional
-review-only source relationships, and unresolved findings for all 12
+review-only source relationships, and unresolved findings for all 13
 activities. Each overlay has a matching schema in `review/`.
 
 `review/external-comparisons.json` records outside claims, project values before
@@ -154,7 +154,7 @@ The exact row-level scope remains in the preserved `note`, source relationships,
 
 ## Versioning
 
-The current release is `0.2.0`; `0.1.0` remains the immutable first release.
+The current release is `0.4.0`; releases `0.1.0` through `0.3.0` remain immutable.
 
 Each later release has a machine-readable decision under `releases/`. The
 release-diff verifier compares it with the prior immutable export and rejects
