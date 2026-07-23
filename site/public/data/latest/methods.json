@@ -397,7 +397,7 @@
   {
     "id": "preset-notes",
     "notes": [
-      "Gen Z (no AI use) uses the non-AI student scenario as its base, stores the phone-versus-laptop split used in Section 3, and adds one hour of the fixed Xbox Series X plus television gaming reference.",
+      "Gen Z (Gamer) uses the non-AI student scenario as its base, stores the phone-versus-laptop split used in Section 3, and adds one hour of the fixed Xbox Series X plus television gaming reference.",
       "Gen Z (moderate AI use) uses the scenario's prompt, image, media, and Zoom quantities, then stores a laptop browsing bundle because the calculator still treats homework and browsing as one row.",
       "Gen Z (vibe coder) uses the scenario's actual quantities, including 8 high-reasoning prompts, and stores the scenario's phone, laptop, and coding-agent device context for future UI use.",
       "Worker (hosts Zoom meetings) stores TV Netflix, phone Instagram, laptop browsing, and the hosted-meeting device bundle even though the live row remains fixed."
@@ -420,7 +420,7 @@
         ],
         "rows": [
           [
-            "Gen Z (no AI use)",
+            "Gen Z (Gamer)",
             "Scenario 1 in Section 3",
             "1.5 TikTok, 1.25 YouTube, 0.75 Instagram, 0.5 Snapchat, 1.5 Netflix, 1 Zoom participant, 1 hour Xbox Series X plus TV gaming",
             "Phone social media, phone YouTube, laptop Netflix, laptop Zoom, fixed Xbox Series X plus reference TV",

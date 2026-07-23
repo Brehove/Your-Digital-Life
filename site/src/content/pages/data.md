@@ -8,23 +8,24 @@ lastReviewed: "2026-07-23"
 heroSummary: The calculator is driven by public, versioned records that can be inspected, reused, and checked independently.
 keyTakeaways:
   - "Root data records are the calculator's update authority."
-  - "The latest downloads are byte-identical to the current v0.4.0 release; v0.1.0 through v0.3.0 remain available as immutable historical releases."
+  - "The latest downloads are byte-identical to the current v0.4.1 release; v0.1.0 through v0.4.0 remain available as immutable historical releases."
   - "Checksums and schemas are included so consumers can verify what they received."
 ---
 
-## Current release: version 0.4.0
+## Current release: version 0.4.1
 
-Version 0.4.0 adds one hour of the existing fixed Xbox Series X plus reference television activity to the Gen Z (no AI use) starter mix. It does not change any calculator coefficient, formula, source relationship, or activity boundary. The website calculator reads a generated snapshot from these same root records.
+Version 0.4.1 renames the existing Gen Z (no AI use) starter mix to Gen Z (Gamer). Its activities, device selections, quantities, and resulting totals are unchanged. The website calculator reads a generated snapshot from these same root records.
 
-- [Complete v0.4.0 ZIP archive](/data/your-digital-life-data-v0.4.0.zip)
-- [Release decision](/data/v0.4.0/release.json)
-- [Release manifest](/data/v0.4.0/manifest.json)
-- [Data Package descriptor](/data/v0.4.0/datapackage.json)
-- [Checksums for every v0.4.0 release file](/data/v0.4.0/SHA256SUMS)
-- [External comparison history](/data/v0.4.0/external-comparisons.json)
+- [Complete v0.4.1 ZIP archive](/data/your-digital-life-data-v0.4.1.zip)
+- [Release decision](/data/v0.4.1/release.json)
+- [Release manifest](/data/v0.4.1/manifest.json)
+- [Data Package descriptor](/data/v0.4.1/datapackage.json)
+- [Checksums for every v0.4.1 release file](/data/v0.4.1/SHA256SUMS)
+- [External comparison history](/data/v0.4.1/external-comparisons.json)
 
 ## Historical releases
 
+- [Version 0.4.0](/data/v0.4.0/manifest.json) added one hour of the fixed Xbox Series X plus reference television activity to the original no-AI starter. [Download archive.](/data/your-digital-life-data-v0.4.0.zip)
 - [Version 0.3.0](/data/v0.3.0/manifest.json) added the fixed Xbox Series X plus reference television activity and its evidence record. [Download archive.](/data/your-digital-life-data-v0.3.0.zip)
 - [Version 0.2.0](/data/v0.2.0/manifest.json) revised the image-generation row and added the external-evidence comparison workflow. [Download archive.](/data/your-digital-life-data-v0.2.0.zip)
 - [Version 0.1.0](/data/v0.1.0/manifest.json) is the first canonical public release and preserved pre-review baseline. [Download archive.](/data/your-digital-life-data-v0.1.0.zip)

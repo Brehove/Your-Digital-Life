@@ -1,0 +1,38 @@
+[
+  {
+    "id": "phone",
+    "label": "Phone",
+    "note": "Personal mobile device use on a small screen.",
+    "order": 1
+  },
+  {
+    "id": "laptop",
+    "label": "Laptop",
+    "note": "Laptop or Chromebook use for individual work.",
+    "order": 2
+  },
+  {
+    "id": "desktop",
+    "label": "Desktop",
+    "note": "Desktop or workstation use for browser-based work.",
+    "order": 3
+  },
+  {
+    "id": "tv",
+    "label": "TV",
+    "note": "Television or streaming-box viewing context.",
+    "order": 4
+  },
+  {
+    "id": "meeting-bundle",
+    "label": "Meeting bundle",
+    "note": "Shared meeting row that includes the participant-device bundle, not just one person's device.",
+    "order": 5
+  },
+  {
+    "id": "xbox-series-x-reference",
+    "label": "Xbox Series X + reference 55-inch TV",
+    "note": "Fixed reference bundle using the Series X global shooter average and one ENERGY STAR-certified 54.7-inch television; this is not a selectable or market-average device profile.",
+    "order": 6
+  }
+]

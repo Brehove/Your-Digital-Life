@@ -9,7 +9,7 @@ Git commit `063322e93e27704b447a495a838e552067928127` and the checksum-locked fi
 under `tests/fixtures/` record the deployed pre-migration baseline. They are
 regression provenance, not current update authorities.
 
-## Current release: v0.4.0
+## Current release: v0.4.1
 
 - 13 calculator activities
 - 24 calculator source records
@@ -18,8 +18,8 @@ regression provenance, not current update authorities.
 - 8 method sections
 - JSON Schemas for every included record type
 - deterministic JSON and CSV exports
-- matching `latest` and immutable `v0.4.0` export trees
-- preserved immutable `v0.1.0` export tree and archive
+- matching `latest` and immutable `v0.4.1` export trees
+- preserved immutable `v0.1.0` through `v0.4.0` export trees and archives
 - a release decision and portable external-comparison history
 - deterministic ZIP archive and SHA-256 checksums
 - a generated Astro calculator entry and public download tree
@@ -154,7 +154,7 @@ The exact row-level scope remains in the preserved `note`, source relationships,
 
 ## Versioning
 
-The current release is `0.4.0`; releases `0.1.0` through `0.3.0` remain immutable.
+The current release is `0.4.1`; releases `0.1.0` through `0.4.0` remain immutable.
 
 Each later release has a machine-readable decision under `releases/`. The
 release-diff verifier compares it with the prior immutable export and rejects

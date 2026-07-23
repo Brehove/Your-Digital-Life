@@ -1,0 +1,52 @@
+{
+  "behaviorChanges": false,
+  "changes": [
+    "Renamed the gen-z-no-ai starter mix from Gen Z (no AI use) to Gen Z (Gamer).",
+    "Preserved the starter mix ID, activities, device selections, quantities, and calculated totals.",
+    "Updated the preset-method wording so the public label and provenance table remain aligned.",
+    "Preserved every calculator coefficient, formula, source relationship, activity boundary, and historical v0.1.0 through v0.4.0 export."
+  ],
+  "collectionChanges": {
+    "activities": {
+      "added": [],
+      "modified": [],
+      "removed": []
+    },
+    "sources": {
+      "added": [],
+      "modified": [],
+      "removed": []
+    },
+    "deviceProfiles": {
+      "added": [],
+      "modified": [],
+      "removed": []
+    },
+    "presets": {
+      "added": [],
+      "modified": [
+        "gen-z-no-ai"
+      ],
+      "removed": []
+    },
+    "methodSections": {
+      "added": [],
+      "modified": [
+        "preset-notes"
+      ],
+      "removed": []
+    },
+    "externalComparisons": {
+      "added": [],
+      "modified": [],
+      "removed": []
+    }
+  },
+  "previousSchemaVersion": "0.3.0",
+  "previousVersion": "0.4.0",
+  "releasedOn": "2026-07-23",
+  "schemaVersion": "0.3.0",
+  "scientificImpact": "No calculator coefficient, formula, quantity, device selection, source relationship, or activity boundary changes. This release changes only the public label of one existing starter mix.",
+  "summary": "Renames the existing Gen Z no-AI starter mix to Gen Z (Gamer) without changing its calculation.",
+  "version": "0.4.1"
+}

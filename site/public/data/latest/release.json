@@ -1,10 +1,10 @@
 {
-  "behaviorChanges": true,
+  "behaviorChanges": false,
   "changes": [
-    "Added one hour of the fixed Gaming Console (Xbox Series X + TV) activity to the Gen Z (no AI use) starter mix.",
-    "Stored the existing fixed Xbox Series X plus reference television device context in that preset.",
-    "Updated starter-mix provenance to distinguish the maintained gaming addition from the preset's underlying non-AI student scenario.",
-    "Preserved every calculator coefficient, formula, source relationship, activity boundary, and historical v0.1.0 through v0.3.0 export."
+    "Renamed the gen-z-no-ai starter mix from Gen Z (no AI use) to Gen Z (Gamer).",
+    "Preserved the starter mix ID, activities, device selections, quantities, and calculated totals.",
+    "Updated the preset-method wording so the public label and provenance table remain aligned.",
+    "Preserved every calculator coefficient, formula, source relationship, activity boundary, and historical v0.1.0 through v0.4.0 export."
   ],
   "collectionChanges": {
     "activities": {
@@ -43,10 +43,10 @@
     }
   },
   "previousSchemaVersion": "0.3.0",
-  "previousVersion": "0.3.0",
+  "previousVersion": "0.4.0",
   "releasedOn": "2026-07-23",
   "schemaVersion": "0.3.0",
-  "scientificImpact": "No calculator coefficients or formulas change. The release changes only one teaching starter mix by combining its existing non-AI student activity pattern with the separately documented fixed one-hour Xbox Series X plus television reference.",
-  "summary": "Adds one hour of the existing fixed Xbox Series X plus television gaming reference to the Gen Z (no AI use) starter mix.",
-  "version": "0.4.0"
+  "scientificImpact": "No calculator coefficient, formula, quantity, device selection, source relationship, or activity boundary changes. This release changes only the public label of one existing starter mix.",
+  "summary": "Renames the existing Gen Z no-AI starter mix to Gen Z (Gamer) without changing its calculation.",
+  "version": "0.4.1"
 }

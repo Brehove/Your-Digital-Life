@@ -1,6 +1,6 @@
 {
   "name": "your-digital-life-calculator-data",
-  "datasetVersion": "0.4.0",
+  "datasetVersion": "0.4.1",
   "schemaVersion": "0.3.0",
   "status": "canonical",
   "migrationMode": "canonical",
@@ -183,8 +183,8 @@
     "calculator": "generated/calculator.json",
     "calculatorPayload": "generated/calculator-payload.json",
     "latestExports": "exports/latest",
-    "versionedExports": "exports/v0.4.0",
-    "archive": "exports/your-digital-life-data-v0.4.0.zip",
+    "versionedExports": "exports/v0.4.1",
+    "archive": "exports/your-digital-life-data-v0.4.1.zip",
     "siteCalculator": "../site/src/content/calculators/digital-inventory.json",
     "publicDownloads": "../site/public/data",
     "publicSchemas": "../site/public/schemas"
