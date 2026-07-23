@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://your-digital-life.org/schemas/method.schema.json",
+  "title": "Your Digital Life calculator method section",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "order", "title", "notes", "sourceIds"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "order": { "type": "integer", "minimum": 1 },
+    "title": { "type": "string", "minLength": 1 },
+    "summary": { "type": "string", "minLength": 1 },
+    "notes": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "sourceIds": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+      "uniqueItems": true
+    },
+    "tables": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["title", "columns", "rows"],
+        "properties": {
+          "title": { "type": "string", "minLength": 1 },
+          "columns": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+          "rows": {
+            "type": "array",
+            "items": { "type": "array", "items": { "type": "string" } }
+          }
+        }
+      }
+    }
+  }
+}

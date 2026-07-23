@@ -26,15 +26,15 @@
     "presets": 5,
     "sources": 24
   },
-  "datasetVersion": "0.4.0",
+  "datasetVersion": "0.4.1",
   "lastReviewed": "2026-07-23",
   "migrationMode": "canonical",
   "name": "your-digital-life-calculator-data",
   "notes": [
-    "Adds one hour of the existing fixed Xbox Series X plus television gaming reference to the Gen Z (no AI use) starter mix.",
-    "No calculator coefficients or formulas change. The release changes only one teaching starter mix by combining its existing non-AI student activity pattern with the separately documented fixed one-hour Xbox Series X plus television reference.",
+    "Renames the existing Gen Z no-AI starter mix to Gen Z (Gamer) without changing its calculation.",
+    "No calculator coefficient, formula, quantity, device selection, source relationship, or activity boundary changes. This release changes only the public label of one existing starter mix.",
     "The website reads a generated snapshot produced from the same root records.",
-    "Behavior changes in this release: yes.",
+    "Behavior changes in this release: no.",
     "Historical version directories and archives remain immutable and are carried forward unchanged."
   ],
   "order": {
@@ -106,7 +106,7 @@
     ]
   },
   "releaseProvenance": {
-    "datasetVersion": "0.4.0",
+    "datasetVersion": "0.4.1",
     "decisionFile": "release.json",
     "generatedFromCanonicalRootRecords": true
   },

@@ -168,6 +168,7 @@ test("fixed Xbox Series X gaming reference includes the named television and exp
   assert.match(activity.directWaterBoundary, /game-server data center only/);
   assert.match(activity.totalWaterBoundary, /U\.S\.-average operational water consumption/);
   const noAiPreset = canonical.presets.find(({ id }) => id === "gen-z-no-ai");
+  assert.equal(noAiPreset.label, "Gen Z (Gamer)");
   assert.equal(noAiPreset.values[activity.id], 1);
   assert.equal(noAiPreset.deviceSelections[activity.id], "xbox-series-x-reference");
   assert.equal(
