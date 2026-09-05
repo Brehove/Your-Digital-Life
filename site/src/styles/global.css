@@ -2374,6 +2374,469 @@ th {
 }
 .landing-footer a { color: #155a74; text-underline-offset: 0.15em; }
 
+/* Shared document-page theme */
+.body--document {
+  --font-display: "Syne", Arial, sans-serif;
+  --font-body: "Manrope", Arial, sans-serif;
+  overflow-x: hidden;
+  background: #f7f4ee;
+  color: #111;
+  font-family: var(--font-body);
+  font-size: 16px;
+}
+
+.body--document .site-shell { background: #f7f4ee; }
+
+.site-masthead {
+  width: min(1296px, 100%);
+  background: #f7f4ee;
+}
+
+.site-masthead .ydl-pill.is-current {
+  background: #111;
+  color: #fff;
+}
+
+.body--document .page-frame,
+.body--document .site-footer {
+  width: min(1120px, calc(100% - 3rem));
+}
+
+.body--document .page-frame {
+  padding: 2rem 0 3.5rem;
+}
+
+.body--document .page-stack { gap: 1.5rem; }
+
+.body--document .ydl-calculator { padding-inline: 0; }
+
+.body--document .ydl-activity-groups {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.body--document .hero {
+  padding: 1.25rem 0 0.35rem;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.body--document .hero h1,
+.body--document .page-header h1 {
+  color: #111;
+  font: 800 clamp(2rem, 3vw, 2.7rem)/1.02 var(--font-display);
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
+}
+
+.body--document .hero p,
+.body--document .page-header p {
+  color: #454540;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.body--document .section-label,
+.body--document .eyebrow {
+  color: #9d3d21;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+}
+
+.body--document .key-takeaways {
+  color: #292925;
+  font-size: 0.96rem;
+  line-height: 1.65;
+}
+
+.body--document .hero-callout {
+  background: #f3efe6;
+  border-color: #bbb3a4;
+  border-left-color: #c64b27;
+  border-radius: 10px;
+}
+
+.body--document .hero-callout__link,
+.body--document .page-copy a,
+.body--document .card a,
+.body--document .site-footer a {
+  color: #155a74;
+  text-underline-offset: 0.16em;
+}
+
+.body--document .page-copy {
+  max-width: 78ch;
+  margin-inline: auto;
+  padding: clamp(1.35rem, 3vw, 2.1rem);
+  border: 1px solid #c9c4b9;
+  border-radius: 14px;
+  background: #fff;
+  color: #292925;
+  font-size: 1rem;
+  line-height: 1.72;
+}
+
+.body--document .page-copy:empty { display: none; }
+
+.body--document .page-copy > :first-child { margin-top: 0; }
+.body--document .page-copy > :last-child { margin-bottom: 0; }
+
+.body--document .page-copy h2,
+.body--document .page-copy h3,
+.body--document .card h2,
+.body--document .card h3,
+.body--document .activity-intro h2,
+.body--document .activity-intro h3 {
+  color: #111;
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+.body--document .page-copy h2 {
+  margin: 1.75rem 0 0.65rem;
+  font-size: 1.5rem;
+  line-height: 1.12;
+}
+
+.body--document .page-copy h3 {
+  margin: 1.4rem 0 0.55rem;
+  font-size: 1.14rem;
+  line-height: 1.2;
+}
+
+.body--document .page-copy p,
+.body--document .page-copy li {
+  font-size: 1rem;
+}
+
+.body--document .card {
+  border: 1px solid #c9c4b9;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: none;
+}
+
+.body--document .card-grid { gap: 0.85rem; }
+
+.body--document .card p,
+.body--document .card li,
+.body--document .section-block {
+  font-family: var(--font-body);
+}
+
+.body--document .status-badge,
+.body--document .featured-pill,
+.body--document .chart-pill,
+.body--document .confidence-pill,
+.body--document .update-date {
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+
+.body--document .table-wrap {
+  max-width: 100%;
+  overflow-x: auto;
+  border-color: #bdb7ac;
+  border-radius: 10px;
+  background: #fff;
+  -webkit-overflow-scrolling: touch;
+}
+
+.body--document .table-wrap table {
+  min-width: 720px;
+  background: #fff;
+  color: #292925;
+  font-family: var(--font-body);
+}
+
+.body--document th {
+  background: #f3efe6;
+  color: #111;
+  font-family: var(--font-display);
+  font-size: 0.76rem;
+}
+
+.body--document td {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  vertical-align: top;
+}
+
+.body--document .calculator-method-card { gap: 0.85rem; }
+
+.body--document .site-footer {
+  padding: 1.3rem 0 2rem;
+  border-top: 1.5px solid #111;
+  color: #454540;
+  font-size: 0.84rem;
+}
+
+.body--document .site-footer__title {
+  color: #111;
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.body--document .site-footer__links a {
+  color: #155a74;
+  font-weight: 600;
+}
+
+@media (min-width: 1200px) {
+  .body--document .site-masthead { padding: 1rem 2.7rem; }
+}
+
+@media (max-width: 640px) {
+  .body--document .page-frame,
+  .body--document .site-footer {
+    width: min(100% - 2rem, 1120px);
+  }
+
+  .body--document .page-frame { padding: 1rem 0 2.5rem; }
+  .body--document .page-stack { gap: 1rem; }
+  .body--document .hero { padding: 0.75rem 0 0.25rem; }
+  .body--document .hero h1,
+  .body--document .page-header h1 {
+    font-size: clamp(1.4rem, 6vw, 2rem);
+    overflow-wrap: normal;
+    text-wrap: wrap;
+    word-break: normal;
+  }
+  .body--document .page-copy { padding: 1.15rem; }
+  .body--document .page-copy h2 { font-size: 1.35rem; }
+  .body--document .site-footer { gap: 0.8rem; }
+}
+
+@media (min-width: 1200px) {
+  .body--landing {
+  .landing-masthead,
+  .landing-main,
+  .landing-footer {
+    width: min(1296px, 100%);
+  }
+
+  .landing-masthead { padding: 1rem 2.7rem; }
+  .landing-wordmark { font-size: 0.95rem; }
+  .landing-masthead nav { gap: 0.58rem; }
+  .landing-masthead .ydl-pill {
+    min-height: 36px;
+    padding: 0.42rem 0.9rem;
+    font-size: 0.72rem;
+  }
+
+  .landing-intro { padding: 2.2rem 2.7rem 1rem; }
+  .landing-intro h1 { font-size: clamp(1.9rem, 3vw, 2.7rem); }
+  .landing-intro p { font-size: 0.8rem; }
+  .landing-intro .landing-lead {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+  }
+
+  .ydl-calculator { padding: 0 2.7rem 2.05rem; }
+  .ydl-presets {
+    gap: 0.5rem;
+    margin-bottom: 0.9rem;
+  }
+  .ydl-presets > span:first-child {
+    margin-right: 0.3rem;
+    font-size: 0.62rem;
+  }
+  .ydl-presets .ydl-pill {
+    min-height: 36px;
+    padding: 0.42rem 0.9rem;
+    font-size: 0.71rem;
+  }
+  .ydl-custom { font-size: 0.68rem; }
+  .ydl-base-help {
+    margin-bottom: 1rem;
+    font-size: 0.72rem;
+  }
+
+  .ydl-calculator-grid {
+    grid-template-columns: minmax(0, 1fr) 450px;
+    gap: 1.55rem;
+  }
+  .ydl-activity-groups { gap: 0.75rem; }
+  .ydl-group { border-radius: 14px; }
+  .ydl-group summary {
+    grid-template-columns: 22px minmax(0, 1fr) auto 18px;
+    gap: 0.58rem;
+    padding: 0.68rem 0.9rem;
+  }
+  .ydl-group summary h2 { font-size: 0.82rem; }
+  .ydl-group-count { font-size: 0.68rem; }
+  .ydl-group summary .ydl-icon { width: 22px; height: 22px; }
+  .ydl-group summary .ydl-caret { width: 18px; height: 18px; }
+  .ydl-card-grid {
+    gap: 0.67rem;
+    padding: 0.67rem;
+  }
+
+  .ydl-activity {
+    gap: 0.67rem;
+    padding: 0.76rem;
+    border-radius: 11px;
+  }
+  .ydl-activity-title { gap: 0.58rem; }
+  .ydl-activity-title .ydl-icon { width: 22px; height: 22px; }
+  .ydl-activity-title h3 { font-size: 0.83rem; }
+  .ydl-activity-title p {
+    margin-top: 0.2rem;
+    font-size: 0.68rem;
+  }
+  .ydl-base {
+    gap: 0.45rem;
+    padding: 0.43rem 0.54rem;
+    font-size: 0.68rem;
+  }
+  .ydl-base b { font-size: 0.56rem; }
+  .ydl-controls { gap: 0.45rem; }
+  .ydl-stepper { height: 40px; border-radius: 9px; }
+  .ydl-stepper button {
+    min-width: 32px;
+    font-size: 1.08rem;
+  }
+  .ydl-stepper input { font-size: 0.82rem; }
+  .ydl-stepper > span {
+    padding: 0 0.45rem;
+    font-size: 0.65rem;
+  }
+  .ydl-controls select {
+    min-height: 40px;
+    padding: 0 0.5rem;
+    border-radius: 9px;
+    font-size: 0.71rem;
+  }
+  .ydl-minutes {
+    margin-top: -0.27rem;
+    font-size: 0.62rem;
+  }
+  .ydl-card-footer { gap: 0.45rem; }
+  .ydl-badge {
+    min-height: 29px;
+    padding: 0.27rem 0.45rem;
+    font-size: 0.6rem;
+  }
+
+  .ydl-results {
+    top: 0.9rem;
+    padding: 1.35rem;
+    border-radius: 16px;
+  }
+  .ydl-metrics { gap: 1rem; }
+  .ydl-metrics section + section { padding-left: 1rem; }
+  .ydl-metrics h2 {
+    gap: 0.45rem;
+    font-size: 0.66rem;
+  }
+  .ydl-metrics h2 .ydl-icon { width: 16px; height: 16px; }
+  .ydl-measure { margin-top: 0.76rem; }
+  .ydl-measure > span { font-size: 0.68rem; }
+  .ydl-measure strong { font-size: 1.53rem; }
+  .ydl-measure small { font-size: 0.82rem; }
+  .ydl-anchor {
+    margin-top: 0.76rem;
+    font-size: 0.7rem;
+  }
+  .ydl-drivers {
+    margin-top: 1rem;
+    padding-top: 1rem;
+  }
+  .ydl-drivers h2 { font-size: 1.08rem; }
+  .ydl-toggle { margin-top: 0.76rem; }
+  .ydl-toggle button {
+    min-height: 38px;
+    padding: 0.45rem 1rem;
+    font-size: 0.7rem;
+  }
+  .ydl-chart-note {
+    margin: 0.63rem 0 0.9rem;
+    font-size: 0.68rem;
+  }
+  .ydl-chart { gap: 0.52rem; }
+  .ydl-chart li {
+    grid-template-columns: 20px 100px minmax(0, 1fr) 68px;
+    gap: 0.45rem;
+    min-height: 22px;
+    font-size: 0.68rem;
+  }
+  .ydl-chart .ydl-icon { width: 19px; height: 19px; }
+  .ydl-track,
+  .ydl-track > span { height: 13px; }
+  .ydl-chart strong { font-size: 0.68rem; }
+  .ydl-axis {
+    margin: 0.5rem 4.65rem 0 8.4rem;
+    padding-top: 0.27rem;
+    font-size: 0.59rem;
+  }
+  .ydl-legend {
+    gap: 0.72rem;
+    margin-top: 0.9rem;
+    font-size: 0.68rem;
+  }
+  .ydl-legend i { width: 9px; height: 9px; }
+  .ydl-chart-total {
+    margin-top: 1.08rem;
+    padding-top: 1rem;
+  }
+  .ydl-chart-total > span {
+    max-width: 144px;
+    font-size: 0.6rem;
+  }
+  .ydl-chart-total > strong { font-size: 1.8rem; }
+  .ydl-chart-total small { font-size: 0.9rem; }
+  .ydl-method-link {
+    margin-top: 0.9rem;
+    font-size: 0.68rem;
+  }
+  .ydl-bottom-actions {
+    margin-top: 1rem;
+    font-size: 0.68rem;
+  }
+  .landing-footer {
+    padding: 1.1rem 2.7rem 1.5rem;
+    font-size: 0.68rem;
+  }
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1280px) {
+  .body--landing .ydl-activity-groups {
+    grid-template-columns: 1fr;
+  }
+
+  .body--landing .ydl-group--ai,
+  .body--landing .ydl-group--media,
+  .body--landing .ydl-group--gaming,
+  .body--landing .ydl-group--work {
+    grid-column: 1 / -1;
+  }
+}
+
+.ydl-group--gaming > summary,
+.ydl-group--work > summary {
+  grid-template-columns: 24px minmax(0, 1fr) 20px;
+}
+
+.ydl-group--gaming > summary .ydl-group-count,
+.ydl-group--work > summary .ydl-group-count {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.ydl-group--gaming > summary .ydl-caret,
+.ydl-group--work > summary .ydl-caret {
+  grid-column: 3;
+  grid-row: 1;
+}
+
 @media (max-width: 1199px) {
   .landing-masthead, .landing-intro, .ydl-calculator, .landing-footer { padding-left: 1.75rem; padding-right: 1.75rem; }
   .ydl-calculator-grid { grid-template-columns: minmax(0,1fr) 420px; gap: 1.35rem; }

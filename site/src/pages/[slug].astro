@@ -47,12 +47,11 @@ const featuredResources = [...allResources].sort(
   description={page.data.description}
 >
   <div class="page-stack">
-    {slug !== "about-this-site" && (
-      <section class="hero">
-        <div class="page-header">
-          <p class="section-label">{page.data.navLabel ?? page.data.title}</p>
-          <h1>{page.data.heroTitle ?? page.data.title}</h1>
-          <p>{page.data.heroSummary ?? page.data.description}</p>
+    <section class="hero">
+      <div class="page-header">
+        <p class="section-label">{page.data.navLabel ?? page.data.title}</p>
+        <h1>{page.data.heroTitle ?? page.data.title}</h1>
+        <p>{page.data.heroSummary ?? page.data.description}</p>
           {page.data.heroCallout && (
             <aside class="hero-callout" aria-label={page.data.heroCallout.title}>
               <p class="hero-callout__title">{page.data.heroCallout.title}</p>
@@ -68,9 +67,8 @@ const featuredResources = [...allResources].sort(
               {page.data.keyTakeaways.map((takeaway) => <li>{takeaway}</li>)}
             </ul>
           )}
-        </div>
-      </section>
-    )}
+      </div>
+    </section>
 
     {slug === "inventory-your-day" ? (
       <>

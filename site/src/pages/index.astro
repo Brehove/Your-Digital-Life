@@ -1,5 +1,6 @@
 ---
 import InventoryTool from "../components/InventoryTool.astro";
+import SiteMasthead from "../components/SiteMasthead.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getPageById } from "../lib/content";
 
@@ -25,13 +26,7 @@ const heroAccent = heroParts?.[2] ?? heroTitle;
   hideHeader={true}
 >
   <div class="landing-shell">
-    <header class="landing-masthead">
-      <a class="landing-wordmark" href="/">Your Digital Life</a>
-      <nav aria-label="Main">
-        <a class="ydl-pill" href="/sources-and-method/">Sources & Method</a>
-        <a class="ydl-pill" href="/about-this-site/">About</a>
-      </nav>
-    </header>
+    <SiteMasthead />
 
     <div class="landing-main">
       <section class="landing-intro" aria-labelledby="landing-title">

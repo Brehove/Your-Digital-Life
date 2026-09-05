@@ -1,0 +1,32 @@
+---
+import { getNavPages, getPageSlug } from "../lib/content";
+
+interface Props {
+  showNav?: boolean;
+}
+
+const { showNav = true } = Astro.props as Props;
+const navPages = await getNavPages("header");
+const currentPath = Astro.url.pathname;
+---
+
+<header class="landing-masthead site-masthead">
+  <a class="landing-wordmark" href="/">Your Digital Life</a>
+  {showNav && (
+    <nav aria-label="Main">
+      {navPages.map((page) => {
+        const href = `/${getPageSlug(page)}/`;
+        const active = currentPath === href;
+        const label = getPageSlug(page) === "about-this-site"
+          ? "About"
+          : page.data.navLabel ?? page.data.title;
+
+        return (
+          <a class:list={["ydl-pill", { "is-current": active }]} href={href} aria-current={active ? "page" : undefined}>
+            {label}
+          </a>
+        );
+      })}
+    </nav>
+  )}
+</header>
