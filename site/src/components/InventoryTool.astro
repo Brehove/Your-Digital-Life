@@ -278,7 +278,7 @@ const payload = JSON.stringify({ activities, presets, devices }).replace(/</g, "
       const total = ranked.reduce((sum,row) => sum + row[driverMode], 0);
       const totalLabel = root.querySelector("[data-driver-total-label]"), totalValue = root.querySelector("[data-driver-total]");
       const note = root.querySelector("[data-driver-note]");
-      if (totalLabel) totalLabel.textContent = `Total ${label}`;
+      if (totalLabel) totalLabel.textContent = driverMode === "totalEnergy" ? "Total broader-system energy" : "Total water";
       if (totalValue) totalValue.innerHTML = metricHtml(total, unit);
       if (note) note.textContent = `Contributions for the amounts selected, ${label}.`;
     }
