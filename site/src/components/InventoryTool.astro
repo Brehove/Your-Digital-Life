@@ -1,745 +1,357 @@
 ---
-import {
-  createCalculatorSourceMap,
-  getCalculatorById,
-  resolveCalculatorSources,
-  type CalculatorActivity,
-  type CalculatorPreset
-} from "../lib/calculators";
-import { getSourceLabel, hasPublicUrl } from "../lib/source-utils";
-import StatusBadge from "./StatusBadge.astro";
+import { createCalculatorSourceMap, getCalculatorById, resolveCalculatorSources, type CalculatorActivity, type CalculatorPreset } from "../lib/calculators";
 
-interface Props {
-  calculatorId?: string;
-}
-
-const { calculatorId = "digital-inventory" } = Astro.props as Props;
+interface Props { calculatorId?: string; showEvidenceTable?: boolean; }
+const { calculatorId = "digital-inventory", showEvidenceTable = true } = Astro.props as Props;
 const calculator = await getCalculatorById(calculatorId);
+if (!calculator) throw new Error(`Missing calculator content entry: ${calculatorId}`);
 
-if (!calculator) {
-  throw new Error(`Missing calculator content entry: ${calculatorId}`);
+const sourceMap = createCalculatorSourceMap(calculator);
+const activities: CalculatorActivity[] = calculator.data.activities;
+const presets: CalculatorPreset[] = calculator.data.presets;
+const devices = calculator.data.deviceProfiles;
+const deviceMap = new Map(devices.map((device) => [device.id, device]));
+const initialPreset = presets.find((preset) => preset.id === "gen-z-vibe-coder") ?? presets[0];
+const groups = [
+  { id: "ai", label: "AI tasks", icon: "sparkle" },
+  { id: "media", label: "Media & entertainment", icon: "youtube" },
+  { id: "gaming", label: "Gaming", icon: "game-controller" },
+  { id: "work", label: "Work & communication", icon: "video-camera" }
+] as const;
+function displayGroup(activity: CalculatorActivity) {
+  if (activity.id === "cloud-docs-browsing" || activity.category === "Meetings") return "work";
+  if (activity.category === "Media and search") return "media";
+  if (activity.category === "Gaming") return "gaming";
+  return "ai";
 }
-
-const calculatorEntry = calculator;
-const sourceMap = createCalculatorSourceMap(calculatorEntry);
-const deviceProfiles = calculatorEntry.data.deviceProfiles;
-const deviceProfileMap = new Map(deviceProfiles.map((profile) => [profile.id, profile]));
-
-function getActivitySources(activity: CalculatorActivity) {
-  return resolveCalculatorSources(
-    activity.sourceIds,
-    sourceMap,
-    `calculator row "${activity.label}" in ${calculatorEntry.data.calculatorId}`
-  );
+const activityIcons: Record<string, string> = {
+  "text-prompts": "sparkle", "reasoning-prompts": "brain", "image-generation": "image",
+  "vibe-coding": "terminal", tiktok: "tiktok", instagram: "instagram", snapchat: "snapchat",
+  youtube: "youtube", netflix: "netflix", "cloud-docs-browsing": "globe",
+  "gaming-console-xbox-series-x": "xbox", "zoom-participant": "video-camera", "zoom-host": "video-camera"
+};
+function baseUnit(activity: CalculatorActivity) {
+  if (activity.unitLabel === "daily blocks") return "daily block";
+  if (activity.id === "gaming-console-xbox-series-x") return "player-hour";
+  if (activity.unitLabel === "hours") return "hour";
+  return activity.unitLabel.endsWith("s") ? activity.unitLabel.slice(0, -1) : activity.unitLabel;
 }
-
-const activities: CalculatorActivity[] = calculatorEntry.data.activities;
-const presets: CalculatorPreset[] = calculatorEntry.data.presets;
-const groupOrder: CalculatorActivity["category"][] = [
-  "AI tasks",
-  "Media and search",
-  "Gaming",
-  "Meetings"
-];
-
-const groupedActivities = groupOrder.map((category) => ({
-  category,
-  items: activities.filter((activity) => activity.category === category)
-}));
-
-const inventoryId = "inventory-tool";
-const inventoryPayload = JSON.stringify({ activities, presets, deviceProfiles }).replace(/</g, "\\u003c");
+function activitySources(activity: CalculatorActivity) {
+  return resolveCalculatorSources(activity.sourceIds, sourceMap, `calculator row "${activity.label}"`);
+}
+const payload = JSON.stringify({ activities, presets, devices }).replace(/</g, "\\u003c");
 ---
 
-<article class="card inventory-tool" id={inventoryId}>
-  <header class="inventory-tool__header">
-    <h2 class="inventory-tool__title">Calculate Your Digital Habits</h2>
-    <div class="inventory-presets">
-      <p>Start with a mix</p>
-      <div class="inventory-presets__controls" role="group" aria-label="Starter mixes">
-        {presets.map((preset, index) => (
-          <button
-            type="button"
-            class:list={["inventory-preset", { "is-active": index === 0 }]}
-            data-preset={preset.id}
-            aria-pressed={index === 0 ? "true" : "false"}
-            title={preset.description}
-          >
-            {preset.label}
-          </button>
-        ))}
-      </div>
-    </div>
-  </header>
+<article class="ydl-calculator" data-inventory-tool>
+  <a class="ydl-skip" href="#ydl-activity-groups">Skip to calculator inputs</a>
+  <div class="ydl-presets" role="group" aria-label="Starter mixes">
+    <span>Start from</span>
+    {presets.map((preset) => (
+      <button type="button" class:list={["ydl-pill", { "is-selected": preset.id === initialPreset?.id }]}
+        data-preset={preset.id} aria-pressed={preset.id === initialPreset?.id ? "true" : "false"}
+        title={preset.description.replace("Section 3 scenario with ", "Example with ")}>
+        {preset.label}
+      </button>
+    ))}
+    <span class="ydl-custom" data-custom-label hidden>Custom day</span>
+  </div>
 
-  <div class="inventory-layout">
-    <div class="inventory-inputs-panel">
-      <div class="inventory-group-grid">
-        {groupedActivities.map((group, groupIndex) => (
-          <details class="inventory-group" data-category={group.category} open>
-            <summary class="inventory-group__summary">
-              <span class="inventory-group__icon" aria-hidden="true">
-                {group.category === "AI tasks" ? (
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="7" y="7" width="10" height="10" rx="1.5" />
-                    <rect x="10" y="10" width="4" height="4" rx=".5" />
-                    <path d="M9 2.5v3M15 2.5v3M9 18.5v3M15 18.5v3M2.5 9h3M2.5 15h3M18.5 9h3M18.5 15h3" />
-                  </svg>
-                ) : group.category === "Media and search" ? (
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="9" />
-                    <path d="m10 8.7 5.2 3.3-5.2 3.3V8.7Z" />
-                  </svg>
-                ) : group.category === "Gaming" ? (
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M8.2 8h7.6c2.7 0 4.7 2.5 4 5.1l-1 3.7a2.4 2.4 0 0 1-4.1 1l-1.3-1.4h-2.8l-1.3 1.4a2.4 2.4 0 0 1-4.1-1l-1-3.7C3.5 10.5 5.5 8 8.2 8Z" />
-                    <path d="M8 11v4M6 13h4M15.5 12h.01M18 14h.01" />
-                  </svg>
-                ) : (
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="3.5" y="6.5" width="11.5" height="11" rx="2" />
-                    <path d="m15 10 5.5-3v10L15 14v-4Z" />
-                    <circle cx="9.25" cy="4" r="1.5" />
-                  </svg>
-                )}
-              </span>
-              <span class="inventory-group__number">{groupIndex + 1}</span>
-              <span class="inventory-group__title">{group.category}</span>
-              <span class="inventory-group__count" data-group-count={group.category}>0 active</span>
-              <span class="inventory-group__chevron" aria-hidden="true">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="m6 12 4-4 4 4" />
-                </svg>
-              </span>
+  <p class="ydl-base-help" id="ydl-base-help">
+    Base rates show <strong>broader-system energy per unit</strong>{" "}for the selected device.
+    The image-generation rate is a GPU-only floor.{" "}
+    <a href="/sources-and-method/">What these estimates include →</a>
+  </p>
+
+  <div class="ydl-calculator-grid">
+    <div class="ydl-activity-groups" id="ydl-activity-groups">
+      {groups.map((group) => {
+        const items = activities.filter((activity) => displayGroup(activity) === group.id);
+        return (
+          <details class={`ydl-group ydl-group--${group.id}`} data-group={group.id} open>
+            <summary>
+              <span class="ydl-icon" data-icon={group.icon} aria-hidden="true"></span>
+              <h2>{group.label}</h2>
+              <span class="ydl-group-count" data-group-count={group.id}>0 active of {items.length}</span>
+              <span class="ydl-icon ydl-caret" data-icon="caret-down" aria-hidden="true"></span>
             </summary>
-
-            <div class="inventory-input-list">
-              {group.items.map((activity) => {
-                const defaultDevice = activity.defaultDeviceId
-                  ? deviceProfileMap.get(activity.defaultDeviceId)
-                  : null;
-
+            <div class="ydl-card-grid">
+              {items.map((activity) => {
+                const defaultDevice = activity.defaultDeviceId ? deviceMap.get(activity.defaultDeviceId) : undefined;
+                const sources = activitySources(activity);
                 return (
-                  <div class="inventory-input" data-input-row={activity.id}>
-                    <label class="inventory-input__copy" for={`${inventoryId}-${activity.id}`}>
-                      <strong>{activity.label}</strong>
-                      <small>{activity.unitHint}</small>
-                    </label>
-                    <div class="inventory-input__controls">
-                      <div class="inventory-input__quantity">
-                        <input
-                          id={`${inventoryId}-${activity.id}`}
-                          type="number"
-                          min="0"
-                          step={activity.step}
-                          value="0"
-                          inputmode="decimal"
-                          aria-describedby={`${inventoryId}-${activity.id}-unit`}
-                          data-activity-input={activity.id}
-                        />
-                        <span id={`${inventoryId}-${activity.id}-unit`} data-unit-for={activity.id}>
-                          {activity.unitLabel}
-                        </span>
-                      </div>
-                      {activity.deviceMode === "selectable" && activity.deviceSelectableIds.length > 0 ? (
-                        <select
-                          id={`${inventoryId}-${activity.id}-device`}
-                          aria-label={`${activity.label} device`}
-                          data-device-select={activity.id}
-                        >
-                          {activity.deviceSelectableIds.map((deviceId) => {
-                            const profile = deviceProfileMap.get(deviceId);
-
-                            if (!profile) return null;
-
-                            return (
-                              <option
-                                value={deviceId}
-                                selected={deviceId === activity.defaultDeviceId}
-                              >
-                                {profile.label}
-                              </option>
-                            );
-                          })}
-                        </select>
-                      ) : activity.deviceMode === "fixed" &&
-                        defaultDevice &&
-                        activity.id !== "gaming-console-xbox-series-x" ? (
-                        <span class="inventory-input__fixed-device">{defaultDevice.label}</span>
-                      ) : null}
+                  <article class="ydl-activity" data-activity={activity.id} data-group-id={group.id}>
+                    <div class="ydl-activity-title">
+                      <span class="ydl-icon" data-icon={activityIcons[activity.id]} aria-hidden="true"></span>
+                      <div><h3>{activity.label}</h3><p>{activity.unitHint}</p></div>
                     </div>
-                  </div>
+                    <div class="ydl-base">
+                      <b>Base</b>
+                      <span>1 {baseUnit(activity)} · <strong data-base-rate={activity.id}>{activity.totalWhPerUnit} Wh</strong>{" "}
+                        per {baseUnit(activity)}{activity.id === "image-generation" ? " · GPU-only floor" : ""}</span>
+                    </div>
+                    <div class="ydl-controls">
+                      <div class="ydl-stepper">
+                        <button type="button" data-step-down={activity.id} aria-label={`Decrease ${activity.label}`}>−</button>
+                        <input id={`ydl-${activity.id}`} type="number" min="0" step={activity.step} value="0"
+                          inputmode="decimal" data-activity-input={activity.id} aria-label={activity.label}
+                          aria-describedby={`ydl-unit-${activity.id} ydl-base-help`} />
+                        <button type="button" data-step-up={activity.id} aria-label={`Increase ${activity.label}`}>+</button>
+                        <span id={`ydl-unit-${activity.id}`}>{activity.unitLabel}</span>
+                      </div>
+                      {activity.deviceMode === "selectable" && activity.deviceSelectableIds.length > 0 && (
+                        <select aria-label={`${activity.label} device`} data-device-select={activity.id}>
+                          {activity.deviceSelectableIds.map((id) => (
+                            <option value={id} selected={id === activity.defaultDeviceId}>{deviceMap.get(id)?.label ?? id}</option>
+                          ))}
+                        </select>
+                      )}
+                    </div>
+                    <p class="ydl-minutes" data-minutes={activity.id} hidden></p>
+                    <div class="ydl-card-footer">
+                      <span>{activity.deviceMode === "not-modeled" ? "End-user device not modeled"
+                        : activity.deviceMode === "selectable" ? "Phone, laptop, or TV"
+                        : `Device · ${defaultDevice?.label ?? "Fixed reference"} (fixed)`}</span>
+                      <button type="button" class:list={["ydl-badge", `is-${activity.status}`]}
+                        data-open-detail={activity.id}
+                        aria-label={`${activity.label}: ${activity.status}. View sources and assumptions`}>
+                        {activity.status}<span aria-hidden="true"> ↗</span>
+                      </button>
+                    </div>
+                    <dialog class="ydl-dialog" data-detail-dialog={activity.id} aria-labelledby={`ydl-detail-title-${activity.id}`}>
+                      <div class="ydl-dialog-head">
+                        <h2 id={`ydl-detail-title-${activity.id}`}>{activity.label}</h2>
+                        <button type="button" data-close-detail aria-label="Close sources and assumptions">Close ×</button>
+                      </div>
+                      <p class="ydl-detail-status">{activity.status} · Base unit: 1 {baseUnit(activity)}</p>
+                      <p>{activity.note}</p>
+                      <dl class="ydl-detail-values">
+                        <div><dt>Selected quantity</dt><dd data-detail-value="quantity">0 {activity.unitLabel}</dd></div>
+                        <div><dt>Cloud/source-side energy</dt><dd data-detail-value="serverEnergy">0 Wh</dd></div>
+                        <div><dt>Broader-system energy</dt><dd data-detail-value="totalEnergy">0 Wh</dd></div>
+                        <div><dt>Direct water</dt><dd data-detail-value="directWater">0 mL</dd></div>
+                        <div><dt>Total water</dt><dd data-detail-value="totalWater">0 mL</dd></div>
+                      </dl>
+                      {activity.deviceNote && <p class="ydl-boundary-note">{activity.deviceNote}</p>}
+                      {activity.serverEnergyBoundary && <p class="ydl-boundary-note">{activity.serverEnergyBoundary}</p>}
+                      {activity.totalEnergyBoundary && <p class="ydl-boundary-note">{activity.totalEnergyBoundary}</p>}
+                      {activity.directWaterBoundary && <p class="ydl-boundary-note">{activity.directWaterBoundary}</p>}
+                      {activity.totalWaterBoundary && <p class="ydl-boundary-note">{activity.totalWaterBoundary}</p>}
+                      <h3>Sources</h3>
+                      <ul class="ydl-source-links">{sources.map((source) => (
+                        <li><a href={source.url} target="_blank" rel="noreferrer">{source.title}</a></li>
+                      ))}</ul>
+                      <a href="/sources-and-method/">Full sources & method →</a>
+                    </dialog>
+                  </article>
                 );
               })}
             </div>
           </details>
-        ))}
-      </div>
+        );
+      })}
     </div>
 
-    <aside class="inventory-summary-panel">
-      <div class="inventory-overview" aria-label="Current calculator totals">
-        <section class="inventory-overview__section inventory-overview__section--energy">
-          <h3>
-            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="m13.5 2-7 11h5l-1 9 7-12h-5l1-8Z" />
-            </svg>
-            Energy
-          </h3>
-          <div class="inventory-overview__metrics">
-            <div>
-              <span>Cloud/source-side</span>
-              <strong data-summary="server-energy">0 Wh</strong>
-            </div>
-            <div>
-              <span>Broader-system</span>
-              <strong data-summary="total-energy">0 Wh</strong>
-            </div>
-          </div>
-          <div class="inventory-overview__rule" aria-hidden="true"></div>
-          <div class="inventory-equivalent">
-            <svg aria-hidden="true" viewBox="0 0 28 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="3" width="22" height="14" rx="2" />
-              <path d="M26 8v4M7 8.5h2M7 11.5h2M16 7l-2 3 2 3M19 7l2 3-2 3" />
-            </svg>
-            <span>≈ <strong data-summary="energy-laptop">0</strong> laptop batteries</span>
-          </div>
+    <aside class="ydl-results" aria-label="Current calculator totals">
+      <div class="ydl-metrics">
+        <section>
+          <h2><span class="ydl-icon" data-icon="lightning" aria-hidden="true"></span>Energy</h2>
+          <div class="ydl-measure"><span title="Server and network demand, with activity-specific boundaries">Cloud/source-side</span><strong data-summary="serverEnergy">0 <small>Wh</small></strong></div>
+          <div class="ydl-measure"><span title="Includes the additional modeled system components for each activity">Broader-system</span><strong data-summary="totalEnergy">0 <small>Wh</small></strong></div>
+          <p class="ydl-anchor">≈ <b data-summary="energyLaptop">0</b> laptop batteries<br /><span>(50 Wh each)</span></p>
         </section>
-
-        <section class="inventory-overview__section inventory-overview__section--water">
-          <h3>
-            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2.8c-3.5 4.5-6 8.1-6 11.3a6 6 0 0 0 12 0c0-3.2-2.5-6.8-6-11.3Z" />
-            </svg>
-            Water
-          </h3>
-          <div class="inventory-overview__metrics">
-            <div>
-              <span>Direct</span>
-              <strong data-summary="direct-water">0 mL</strong>
-            </div>
-            <div>
-              <span>Total</span>
-              <strong data-summary="total-water">0 mL</strong>
-            </div>
-          </div>
-          <div class="inventory-overview__rule" aria-hidden="true"></div>
-          <div class="inventory-equivalent">
-            <svg aria-hidden="true" viewBox="0 0 28 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M5 4h15l-1.6 16H7L5 4Z" />
-              <path d="M20 7h2.5a3 3 0 0 1 0 6H19M9 8h5M9.5 12h4M10 16h3" />
-            </svg>
-            <span>≈ <strong data-summary="water-cups">0 cups</strong></span>
-          </div>
+        <section>
+          <h2><span class="ydl-icon" data-icon="drop" aria-hidden="true"></span>Water</h2>
+          <div class="ydl-measure"><span>Direct</span><strong data-summary="directWater">0 <small>mL</small></strong></div>
+          <div class="ydl-measure"><span>Total</span><strong data-summary="totalWater">0 <small>mL</small></strong></div>
+          <p class="ydl-anchor">≈ <b data-summary="waterCups">0</b> cups<br /><span>(236.588 mL each)</span></p>
         </section>
       </div>
-
-      <section class="inventory-drivers">
-        <h3>What drives this estimate?</h3>
-        <div class="inventory-driver-tabs" role="group" aria-label="Contribution metric">
-          <button type="button" class="is-active" data-driver-mode="totalEnergy" aria-pressed="true">
-            Broader-system energy
-          </button>
-          <button type="button" data-driver-mode="totalWater" aria-pressed="false">
-            Total water
-          </button>
+      <section class="ydl-drivers">
+        <h2>What drives this day?</h2>
+        <div class="ydl-toggle" role="group" aria-label="Contribution metric">
+          <button type="button" class="is-active" data-driver-mode="totalEnergy" aria-pressed="true">Energy (Wh)</button>
+          <button type="button" data-driver-mode="totalWater" aria-pressed="false">Water (mL)</button>
         </div>
-        <p class="inventory-drivers__note">
-          Contributions use the same row estimates shown in the calculator.
-        </p>
-        <div class="inventory-driver-legend" aria-label="Activity categories">
-          {groupedActivities.map((group) => (
-            <span data-category={group.category}>
-              <i aria-hidden="true"></i>{group.category}
-            </span>
-          ))}
-        </div>
-        <div class="inventory-driver-list" data-driver-list></div>
-        <p class="inventory-driver-empty" data-driver-empty>Choose a starter mix or enter an activity to see its contribution.</p>
-        <div class="inventory-driver-total">
-          <span data-driver-total-label>Total (broader-system energy)</span>
-          <strong data-driver-total>0 Wh</strong>
-        </div>
+        <p class="ydl-chart-note" data-driver-note>Contributions for the amounts selected, broader-system energy.</p>
+        <ol class="ydl-chart" data-driver-list aria-label="Activities ranked by broader-system energy"></ol>
+        <p class="ydl-empty" data-driver-empty hidden>Choose a starter mix or enter an activity to see what drives your day.</p>
+        <div class="ydl-axis" data-driver-axis aria-hidden="true"></div>
+        <div class="ydl-legend">{groups.map((group) => (
+          <span data-group={group.id}><i></i>{group.label === "AI tasks" ? "AI" : group.label}</span>
+        ))}</div>
       </section>
-
-      <p class="sr-only" aria-live="polite" data-live-summary>
-        Current totals are 0 watt-hours broader-system energy and 0 milliliters total water.
-      </p>
+      <div class="ydl-chart-total">
+        <span data-driver-total-label>Total broader-system energy</span>
+        <strong data-driver-total>0 <small>Wh</small></strong>
+      </div>
+      <a class="ydl-method-link" href="/sources-and-method/">Understand the measures & sources →</a>
     </aside>
   </div>
-
-  <div class="inventory-table-heading">
-    <div>
-      <p class="section-label">Assumptions and sources</p>
-      <p class="note">
-        The lower table shows each activity's current row values, confidence label, and source links.
-      </p>
-    </div>
+  <div class="ydl-bottom-actions">
+    <button type="button" data-clear-all>Clear all</button>
+    <a href="/sources-and-method/">Sources & Method</a>
   </div>
-
-  <div class="table-wrap inventory-table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>Activity</th>
-          <th>Qty</th>
-          <th>Status</th>
-          <th>Cloud/source-side</th>
-          <th>Broader-system</th>
-          <th>Direct water</th>
-          <th>Total water</th>
-        </tr>
-      </thead>
-      <tbody>
-        {activities.map((activity) => (
-          <tr class="inventory-row is-inactive" data-activity-row={activity.id}>
-            <td>
-              <div class="inventory-row__label">
-                <strong>{activity.label}</strong>
-                <span class="note">{activity.note}</span>
-                {(() => {
-                  const activitySources = getActivitySources(activity);
-
-                  if (activitySources.length === 0) return null;
-
-                  return (
-                    <div class="inventory-citations">
-                      <span class="inventory-citations__label">Sources</span>
-                      {activitySources.map((source) =>
-                        hasPublicUrl(source) ? (
-                          <a
-                            class="inventory-citation"
-                            href={source.url}
-                            target="_blank"
-                            rel="noreferrer"
-                            title={source.title}
-                          >
-                            {getSourceLabel(source)}
-                          </a>
-                        ) : (
-                          <span class="inventory-citation" title={source.title}>
-                            {getSourceLabel(source)}
-                          </span>
-                        )
-                      )}
-                    </div>
-                  );
-                })()}
-              </div>
-            </td>
-            <td data-cell="quantity">0 {activity.unitLabel}</td>
-            <td>
-              <StatusBadge status={activity.status} />
-            </td>
-            <td>
-              <span data-cell="server-energy">0 Wh</span>
-              {activity.serverEnergyBoundary && <div class="note">{activity.serverEnergyBoundary}</div>}
-            </td>
-            <td>
-              <span data-cell="total-energy">0 Wh</span>
-              {activity.totalEnergyBoundary && <div class="note">{activity.totalEnergyBoundary}</div>}
-            </td>
-            <td>
-              <span data-cell="direct-water">0 mL</span>
-              {activity.directWaterBoundary && <div class="note">{activity.directWaterBoundary}</div>}
-            </td>
-            <td>
-              <span data-cell="total-water">0 mL</span>
-              {activity.totalWaterBoundary && <div class="note">{activity.totalWaterBoundary}</div>}
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-
-  <p class="muted">
-    Method note: The first energy column is a cloud-side view that usually combines server and
-    network demand, not a pure server-only accounting. The tool keeps direct-versus-total water
-    explicit, but many non-AI rows still use broader electricity-based water conversions because
-    most platforms do not disclose their own water use.
-  </p>
-
-  <script
-    is:inline
-    type="application/json"
-    data-inventory-data
-    set:html={inventoryPayload}
-  ></script>
+  <p class="sr-only" aria-live="polite" data-live-summary>Current totals are 0 watt-hours broader-system energy and 0 milliliters total water.</p>
+  {showEvidenceTable && (
+    <section class="ydl-evidence-link" aria-label="Calculator evidence">
+      <h2>Review the full calculator method</h2>
+      <p>Every activity’s source, boundary, status, and calculation is documented on the method page.</p>
+      <a href="/sources-and-method/">Open Sources & Method →</a>
+    </section>
+  )}
+  <script is:inline type="application/json" data-inventory-data set:html={payload}></script>
 </article>
 
 <script is:inline>
   (() => {
-    const script = document.currentScript;
-    const root = script?.previousElementSibling;
-
-    if (!(root instanceof HTMLElement)) return;
-
-    const dataNode = root.querySelector("[data-inventory-data]");
-    if (!(dataNode instanceof HTMLScriptElement)) return;
-
-    let payload;
-
-    try {
-      payload = JSON.parse(dataNode.textContent || "{}");
-    } catch (error) {
-      console.error("Inventory tool payload parse failed.", error);
-      return;
-    }
-
-    const activities = payload.activities || [];
-    const presets = payload.presets || [];
-    const deviceProfiles = payload.deviceProfiles || [];
-    const inputs = Array.from(root.querySelectorAll("[data-activity-input]"));
-    const deviceSelects = Array.from(root.querySelectorAll("[data-device-select]"));
-    const presetButtons = Array.from(root.querySelectorAll("[data-preset]"));
-    const driverButtons = Array.from(root.querySelectorAll("[data-driver-mode]"));
-    const driverList = root.querySelector("[data-driver-list]");
-    const driverEmpty = root.querySelector("[data-driver-empty]");
-    const driverTotalLabel = root.querySelector("[data-driver-total-label]");
-    const driverTotal = root.querySelector("[data-driver-total]");
-    const liveSummary = root.querySelector("[data-live-summary]");
+    const dataNode = document.currentScript?.previousElementSibling?.querySelector("[data-inventory-data]");
+    const root = dataNode?.closest("[data-inventory-tool]");
+    if (!(root instanceof HTMLElement) || !(dataNode instanceof HTMLScriptElement) || root.dataset.ready) return;
+    root.dataset.ready = "true";
+    let data;
+    try { data = JSON.parse(dataNode.textContent || "{}"); }
+    catch (error) { console.error("Inventory tool payload parse failed.", error); return; }
+    const activities = data.activities || [], presets = data.presets || [];
     const activityMap = new Map(activities.map((activity) => [activity.id, activity]));
-    const deviceProfileMap = new Map(deviceProfiles.map((profile) => [profile.id, profile]));
-    const summaryNodes = {
-      serverEnergy: root.querySelector("[data-summary='server-energy']"),
-      totalEnergy: root.querySelector("[data-summary='total-energy']"),
-      directWater: root.querySelector("[data-summary='direct-water']"),
-      totalWater: root.querySelector("[data-summary='total-water']"),
-      energyLaptop: root.querySelector("[data-summary='energy-laptop']"),
-      waterCups: root.querySelector("[data-summary='water-cups']")
+    const inputs = Array.from(root.querySelectorAll("[data-activity-input]"));
+    const selects = Array.from(root.querySelectorAll("[data-device-select]"));
+    const presetButtons = Array.from(root.querySelectorAll("[data-preset]"));
+    const formatter = new Intl.NumberFormat("en-US", { maximumFractionDigits: 2 });
+    const cupFormatter = new Intl.NumberFormat("en-US", { maximumFractionDigits: 1 });
+    const iconNames = {
+      "text-prompts":"sparkle","reasoning-prompts":"brain","image-generation":"image","vibe-coding":"terminal",
+      tiktok:"tiktok",instagram:"instagram",snapchat:"snapchat",youtube:"youtube",netflix:"netflix",
+      "cloud-docs-browsing":"globe","gaming-console-xbox-series-x":"xbox","zoom-participant":"video-camera","zoom-host":"video-camera"
     };
-
-    const inputRowMap = new Map(
-      Array.from(root.querySelectorAll("[data-input-row]")).map((row) => [row.getAttribute("data-input-row"), row])
-    );
-    const unitNodeMap = new Map(
-      Array.from(root.querySelectorAll("[data-unit-for]")).map((node) => [node.getAttribute("data-unit-for"), node])
-    );
-    const groupCountMap = new Map(
-      Array.from(root.querySelectorAll("[data-group-count]")).map((node) => [node.getAttribute("data-group-count"), node])
-    );
-    const rowMap = new Map(
-      Array.from(root.querySelectorAll("[data-activity-row]")).map((row) => [row.getAttribute("data-activity-row"), row])
-    );
-    const categoryClassMap = new Map([
-      ["AI tasks", "ai"],
-      ["Media and search", "media"],
-      ["Gaming", "gaming"],
-      ["Meetings", "meetings"]
-    ]);
-    let driverMode = "totalEnergy";
-    let lastComputed = [];
-
-    const formatter = new Intl.NumberFormat(undefined, {
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 2
-    });
-    const compactFormatter = new Intl.NumberFormat(undefined, {
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 1
-    });
-
-    function formatNumber(value) {
-      return formatter.format(value);
-    }
-
-    function formatAnchorNumber(value) {
-      const absolute = Math.abs(value);
-
-      if (absolute >= 100) {
-        return new Intl.NumberFormat(undefined, { maximumFractionDigits: 0 }).format(value);
-      }
-
-      if (absolute >= 10) {
-        return compactFormatter.format(value);
-      }
-
-      return formatter.format(value);
-    }
-
-    function formatMetric(value, unit) {
-      return `${formatNumber(value)} ${unit}`;
-    }
-
-    function formatAnchorLabel(value, singular, plural) {
-      const unit = Math.abs(value - 1) < 0.05 ? singular : plural;
-      return `${formatAnchorNumber(value)} ${unit}`;
-    }
-
-    function setPresetState(activeId) {
+    const shortLabels = {"text-prompts":"Text prompts","reasoning-prompts":"High-reasoning","image-generation":"Images",
+      "vibe-coding":"Coding agent","cloud-docs-browsing":"Browsing","gaming-console-xbox-series-x":"Gaming console",
+      "zoom-participant":"Zoom participant","zoom-host":"Zoom host",tiktok:"TikTok",instagram:"Instagram",
+      snapchat:"Snapchat",youtube:"YouTube",netflix:"Netflix"};
+    const groupFor = (activity) => activity.id === "cloud-docs-browsing" || activity.category === "Meetings" ? "work"
+      : activity.category === "Media and search" ? "media" : activity.category === "Gaming" ? "gaming" : "ai";
+    let driverMode = "totalEnergy", computed = [];
+    const format = (value) => formatter.format(value);
+    const metricHtml = (value, unit) => `${format(value)} <small>${unit}</small>`;
+    const selectedDevice = (activity) => root.querySelector(`[data-device-select="${activity.id}"]`)?.value
+      || activity.defaultDeviceId || activity.deviceSelectableIds?.[0] || null;
+    const totalRate = (activity) => {
+      const id = selectedDevice(activity);
+      return id && activity.deviceSelectionAffects?.includes("totalWhPerUnit")
+        ? activity.deviceTotalWhOverrides?.[id] ?? activity.totalWhPerUnit : activity.totalWhPerUnit;
+    };
+    function setPresetState(id) {
       presetButtons.forEach((button) => {
-        const isActive = button.getAttribute("data-preset") === activeId;
-        button.classList.toggle("is-active", isActive);
-        button.setAttribute("aria-pressed", isActive ? "true" : "false");
+        const active = button.dataset.preset === id;
+        button.classList.toggle("is-selected", active);
+        button.setAttribute("aria-pressed", active ? "true" : "false");
       });
+      const custom = root.querySelector("[data-custom-label]");
+      if (custom instanceof HTMLElement) custom.hidden = Boolean(id);
     }
-
-    function readQuantities() {
-      return Object.fromEntries(
-        inputs.map((input) => {
-          const id = input.getAttribute("data-activity-input");
-          const value = Number.parseFloat(input.value || "0");
-          return [id, Number.isFinite(value) && value > 0 ? value : 0];
-        })
-      );
-    }
-
-    function readDeviceSelections() {
-      return Object.fromEntries(
-        deviceSelects.map((select) => {
-          const id = select.getAttribute("data-device-select");
-          const activity = activityMap.get(id);
-          const fallback = activity?.defaultDeviceId || activity?.deviceSelectableIds?.[0] || "";
-          return [id, select.value || fallback];
-        })
-      );
-    }
-
-    function getSelectedDevice(activity, deviceSelections) {
-      if (activity.deviceMode === "not-modeled") {
-        return null;
-      }
-
-      const selectedId =
-        deviceSelections[activity.id] ||
-        activity.defaultDeviceId ||
-        activity.deviceSelectableIds?.[0] ||
-        null;
-
-      if (!selectedId) return null;
-
-      return {
-        id: selectedId,
-        label: deviceProfileMap.get(selectedId)?.label || selectedId
-      };
-    }
-
-    function singularize(unitLabel, quantity) {
-      if (Math.abs(quantity - 1) > 1e-9) return unitLabel;
-      if (unitLabel === "daily blocks") return "daily block";
-      if (unitLabel.endsWith("s")) return unitLabel.slice(0, -1);
-      return unitLabel;
-    }
-
-    function renderDrivers(computed) {
-      if (!(driverList instanceof HTMLElement)) return;
-
-      const isEnergy = driverMode === "totalEnergy";
-      const unit = isEnergy ? "Wh" : "mL";
-      const label = isEnergy ? "broader-system energy" : "total water";
-      const contributions = computed
-        .map((activity) => ({ ...activity, contribution: activity[driverMode] || 0 }))
-        .filter((activity) => activity.contribution > 0)
-        .sort((left, right) => right.contribution - left.contribution);
-      const maximum = contributions[0]?.contribution || 0;
-      const total = contributions.reduce((sum, activity) => sum + activity.contribution, 0);
-
-      driverList.replaceChildren();
-
-      contributions.forEach((activity) => {
-        const row = document.createElement("div");
-        row.className = "inventory-driver-row";
-        row.dataset.category = categoryClassMap.get(activity.category) || "";
-
-        const activityLabel = document.createElement("span");
-        activityLabel.className = "inventory-driver-label";
-        activityLabel.textContent = activity.label;
-
-        const track = document.createElement("span");
-        track.className = "inventory-driver-track";
-        track.setAttribute("aria-hidden", "true");
-
-        const fill = document.createElement("span");
-        fill.className = "inventory-driver-fill";
-        fill.style.setProperty("--driver-width", `${maximum > 0 ? (activity.contribution / maximum) * 100 : 0}%`);
-        track.append(fill);
-
-        const value = document.createElement("strong");
-        value.className = "inventory-driver-value";
-        value.textContent = formatMetric(activity.contribution, unit);
-
-        row.append(activityLabel, track, value);
-        driverList.append(row);
+    function renderDrivers() {
+      const list = root.querySelector("[data-driver-list]"), empty = root.querySelector("[data-driver-empty]");
+      const axis = root.querySelector("[data-driver-axis]");
+      if (!(list instanceof HTMLOListElement)) return;
+      const unit = driverMode === "totalEnergy" ? "Wh" : "mL";
+      const label = driverMode === "totalEnergy" ? "broader-system energy" : "total water";
+      const ranked = computed.filter((row) => row.quantity > 0).sort((a,b) => b[driverMode] - a[driverMode]);
+      const maximum = ranked.length ? Math.max(...ranked.map((row) => row[driverMode])) : 0;
+      const increment = maximum > 100 ? 100 : maximum > 10 ? 10 : 1;
+      const axisMax = maximum ? Math.ceil(maximum / increment) * increment : 100;
+      list.replaceChildren();
+      ranked.forEach((row) => {
+        const item = document.createElement("li"); item.dataset.group = groupFor(row);
+        const icon = document.createElement("span"); icon.className = "ydl-icon";
+        icon.dataset.icon = iconNames[row.id]; icon.setAttribute("aria-hidden","true");
+        const name = document.createElement("span"); name.textContent = shortLabels[row.id] || row.label;
+        const track = document.createElement("span"); track.className = "ydl-track";
+        const fill = document.createElement("span"); fill.style.width = `${100 * row[driverMode] / axisMax}%`; track.append(fill);
+        const value = document.createElement("strong"); value.textContent = `${format(row[driverMode])} ${unit}`;
+        item.append(icon,name,track,value); list.append(item);
       });
-
-      if (driverEmpty instanceof HTMLElement) {
-        driverEmpty.hidden = contributions.length > 0;
+      if (empty instanceof HTMLElement) empty.hidden = ranked.length > 0;
+      if (axis instanceof HTMLElement) {
+        axis.innerHTML = `<span>0</span><span>${format(axisMax/4)}</span><span>${format(axisMax/2)}</span><span>${format(axisMax*.75)}</span><span>${format(axisMax)}</span>`;
+        axis.hidden = ranked.length === 0;
       }
-      if (driverTotalLabel) {
-        driverTotalLabel.textContent = `Total (${label})`;
-      }
-      if (driverTotal) {
-        driverTotal.textContent = formatMetric(total, unit);
-      }
+      list.setAttribute("aria-label", `Activities ranked by ${label}`);
+      const total = ranked.reduce((sum,row) => sum + row[driverMode], 0);
+      const totalLabel = root.querySelector("[data-driver-total-label]"), totalValue = root.querySelector("[data-driver-total]");
+      const note = root.querySelector("[data-driver-note]");
+      if (totalLabel) totalLabel.textContent = `Total ${label}`;
+      if (totalValue) totalValue.innerHTML = metricHtml(total, unit);
+      if (note) note.textContent = `Contributions for the amounts selected, ${label}.`;
     }
-
-    function setDriverMode(mode) {
-      if (mode !== "totalEnergy" && mode !== "totalWater") return;
-      driverMode = mode;
-      driverButtons.forEach((button) => {
-        const isActive = button.getAttribute("data-driver-mode") === mode;
-        button.classList.toggle("is-active", isActive);
-        button.setAttribute("aria-pressed", isActive ? "true" : "false");
-      });
-      renderDrivers(lastComputed);
-    }
-
     function render() {
-      const quantities = readQuantities();
-      const deviceSelections = readDeviceSelections();
-
-      const computed = activities.map((activity) => {
-        const quantity = quantities[activity.id] || 0;
-        const selectedDevice = getSelectedDevice(activity, deviceSelections);
-        const totalWhPerUnit =
-          selectedDevice && activity.deviceSelectionAffects?.includes("totalWhPerUnit")
-            ? activity.deviceTotalWhOverrides?.[selectedDevice.id] ?? activity.totalWhPerUnit
-            : activity.totalWhPerUnit;
-
-        return {
-          ...activity,
-          quantity,
-          selectedDevice,
-          serverEnergy: quantity * activity.serverWhPerUnit,
-          totalEnergy: quantity * totalWhPerUnit,
-          directWater: quantity * activity.directWaterMlPerUnit,
-          totalWater: quantity * activity.totalWaterMlPerUnit
-        };
+      computed = activities.map((activity) => {
+        const input = root.querySelector(`[data-activity-input="${activity.id}"]`);
+        const parsed = Number.parseFloat(input?.value || "0");
+        const quantity = Number.isFinite(parsed) && parsed > 0 ? parsed : 0;
+        return {...activity, quantity, serverEnergy:quantity*activity.serverWhPerUnit,
+          totalEnergy:quantity*totalRate(activity), directWater:quantity*activity.directWaterMlPerUnit,
+          totalWater:quantity*activity.totalWaterMlPerUnit};
       });
-
-      const activeRows = computed.filter((activity) => activity.quantity > 0);
-      lastComputed = computed;
-      const totals = computed.reduce(
-        (acc, activity) => {
-          acc.serverEnergy += activity.serverEnergy;
-          acc.totalEnergy += activity.totalEnergy;
-          acc.directWater += activity.directWater;
-          acc.totalWater += activity.totalWater;
-          return acc;
-        },
-        { serverEnergy: 0, totalEnergy: 0, directWater: 0, totalWater: 0 }
-      );
-
-      if (summaryNodes.serverEnergy) summaryNodes.serverEnergy.textContent = formatMetric(totals.serverEnergy, "Wh");
-      if (summaryNodes.totalEnergy) summaryNodes.totalEnergy.textContent = formatMetric(totals.totalEnergy, "Wh");
-      if (summaryNodes.directWater) summaryNodes.directWater.textContent = formatMetric(totals.directWater, "mL");
-      if (summaryNodes.totalWater) summaryNodes.totalWater.textContent = formatMetric(totals.totalWater, "mL");
-
-      const laptopBatteries = totals.totalEnergy / 50;
-      const waterCups = totals.totalWater / 236.588;
-
-      if (summaryNodes.energyLaptop) {
-        summaryNodes.energyLaptop.textContent = formatAnchorNumber(laptopBatteries);
-      }
-
-      if (summaryNodes.waterCups) {
-        summaryNodes.waterCups.textContent = formatAnchorLabel(waterCups, "cup", "cups");
-      }
-
-      if (liveSummary) {
-        liveSummary.textContent =
-          `Current totals are ${formatNumber(totals.totalEnergy)} watt-hours broader-system energy ` +
-          `and ${formatNumber(totals.totalWater)} milliliters total water.`;
-      }
-
-      groupCountMap.forEach((node, category) => {
-        const count = activeRows.filter((activity) => activity.category === category).length;
-        node.textContent = `${count} active`;
+      const totals = computed.reduce((sum,row) => ({serverEnergy:sum.serverEnergy+row.serverEnergy,
+        totalEnergy:sum.totalEnergy+row.totalEnergy,directWater:sum.directWater+row.directWater,
+        totalWater:sum.totalWater+row.totalWater}), {serverEnergy:0,totalEnergy:0,directWater:0,totalWater:0});
+      Object.entries(totals).forEach(([key,value]) => {
+        const node = root.querySelector(`[data-summary="${key}"]`);
+        if (node) node.innerHTML = metricHtml(value, key.includes("Water") ? "mL" : "Wh");
       });
-
-      computed.forEach((activity) => {
-        const inputRow = inputRowMap.get(activity.id);
-        if (inputRow instanceof HTMLElement) {
-          inputRow.classList.toggle("is-active", activity.quantity > 0);
-        }
-
-        const unitNode = unitNodeMap.get(activity.id);
-        if (unitNode) {
-          unitNode.textContent = singularize(activity.unitLabel, activity.quantity);
-        }
-
-        const row = rowMap.get(activity.id);
-        if (!(row instanceof HTMLElement)) return;
-
-        row.classList.toggle("is-inactive", activity.quantity === 0);
-        row.classList.toggle("is-active", activity.quantity > 0);
-
-        const quantityCell = row.querySelector("[data-cell='quantity']");
-        const serverCell = row.querySelector("[data-cell='server-energy']");
-        const totalCell = row.querySelector("[data-cell='total-energy']");
-        const directWaterCell = row.querySelector("[data-cell='direct-water']");
-        const totalWaterCell = row.querySelector("[data-cell='total-water']");
-
-        if (quantityCell) {
-          const deviceSuffix =
-            activity.quantity > 0 && activity.selectedDevice
-              ? ` (${activity.selectedDevice.label})`
-              : "";
-          quantityCell.textContent = `${formatNumber(activity.quantity)} ${activity.unitLabel}${deviceSuffix}`;
-        }
-        if (serverCell) serverCell.textContent = formatMetric(activity.serverEnergy, "Wh");
-        if (totalCell) totalCell.textContent = formatMetric(activity.totalEnergy, "Wh");
-        if (directWaterCell) directWaterCell.textContent = formatMetric(activity.directWater, "mL");
-        if (totalWaterCell) totalWaterCell.textContent = formatMetric(activity.totalWater, "mL");
+      const battery=root.querySelector("[data-summary='energyLaptop']"), cups=root.querySelector("[data-summary='waterCups']");
+      if (battery) battery.textContent=format(totals.totalEnergy/50);
+      if (cups) cups.textContent=cupFormatter.format(totals.totalWater/236.588);
+      computed.forEach((row) => {
+        const card=root.querySelector(`[data-activity="${row.id}"]`); card?.classList.toggle("is-inactive",row.quantity===0);
+        const rate=root.querySelector(`[data-base-rate="${row.id}"]`); if(rate) rate.textContent=`${format(totalRate(row))} Wh`;
+        const down=root.querySelector(`[data-step-down="${row.id}"]`); if(down instanceof HTMLButtonElement) down.disabled=row.quantity<=0;
+        const minutes=root.querySelector(`[data-minutes="${row.id}"]`);
+        if(minutes instanceof HTMLElement){const show=row.unitLabel==="hours"&&row.quantity>0&&!Number.isInteger(row.quantity);
+          minutes.hidden=!show;minutes.textContent=show?`${format(row.quantity*60)} minutes selected`:"";}
+        const dialog=root.querySelector(`[data-detail-dialog="${row.id}"]`);
+        if(dialog){const values={quantity:`${format(row.quantity)} ${row.unitLabel}`,serverEnergy:`${format(row.serverEnergy)} Wh`,
+          totalEnergy:`${format(row.totalEnergy)} Wh`,directWater:`${format(row.directWater)} mL`,totalWater:`${format(row.totalWater)} mL`};
+          Object.entries(values).forEach(([key,value])=>{const node=dialog.querySelector(`[data-detail-value="${key}"]`);if(node)node.textContent=value;});}
       });
-
-      renderDrivers(computed);
+      root.querySelectorAll("[data-group-count]").forEach((node) => {
+        const id=node.getAttribute("data-group-count"), total=computed.filter((row)=>groupFor(row)===id).length;
+        const active=computed.filter((row)=>groupFor(row)===id&&row.quantity>0).length;node.textContent=`${active} active of ${total}`;
+      });
+      const live=root.querySelector("[data-live-summary]");
+      if(live)live.textContent=`Current totals are ${format(totals.totalEnergy)} watt-hours broader-system energy and ${format(totals.totalWater)} milliliters total water.`;
+      renderDrivers();
     }
-
-    function applyPreset(presetId) {
-      const preset = presets.find((item) => item.id === presetId);
-      if (!preset) return;
-
-      const values = preset.values || {};
-      const deviceSelections = preset.deviceSelections || {};
-
-      inputs.forEach((input) => {
-        const id = input.getAttribute("data-activity-input");
-        const value = values[id] ?? 0;
-        input.value = String(value);
-      });
-
-      deviceSelects.forEach((select) => {
-        const id = select.getAttribute("data-device-select");
-        const activity = activityMap.get(id);
-        const fallback = activity?.defaultDeviceId || activity?.deviceSelectableIds?.[0] || "";
-        select.value = deviceSelections[id] ?? fallback;
-      });
-
-      setPresetState(presetId);
-      render();
+    function applyPreset(id) {
+      const preset=presets.find((item)=>item.id===id);if(!preset)return;
+      inputs.forEach((input)=>{input.value=String(preset.values?.[input.dataset.activityInput]??0);});
+      selects.forEach((select)=>{const activity=activityMap.get(select.dataset.deviceSelect);
+        select.value=preset.deviceSelections?.[select.dataset.deviceSelect]??activity?.defaultDeviceId??activity?.deviceSelectableIds?.[0]??"";});
+      setPresetState(id);render();
     }
-
-    function handleInputChange() {
-      setPresetState("");
-      render();
-    }
-
-    inputs.forEach((input) => {
-      input.addEventListener("input", handleInputChange);
-      input.addEventListener("change", handleInputChange);
+    function markCustom(){setPresetState("");render();}
+    inputs.forEach((input)=>input.addEventListener("input",markCustom));
+    selects.forEach((select)=>select.addEventListener("change",markCustom));
+    presetButtons.forEach((button)=>button.addEventListener("click",()=>applyPreset(button.dataset.preset)));
+    root.querySelector("[data-clear-all]")?.addEventListener("click",()=>applyPreset("clear"));
+    root.querySelectorAll("[data-step-up], [data-step-down]").forEach((button)=>button.addEventListener("click",()=>{
+      const id=button.dataset.stepUp||button.dataset.stepDown,activity=activityMap.get(id);
+      const input=root.querySelector(`[data-activity-input="${id}"]`);if(!(input instanceof HTMLInputElement)||!activity)return;
+      const direction=button.hasAttribute("data-step-up")?1:-1;
+      input.value=String(Math.max(0,Math.round(((Number(input.value)||0)+direction*activity.step)*100)/100));markCustom();
+    }));
+    root.querySelectorAll("[data-driver-mode]").forEach((button)=>button.addEventListener("click",()=>{
+      driverMode=button.dataset.driverMode;root.querySelectorAll("[data-driver-mode]").forEach((candidate)=>{
+        const active=candidate.dataset.driverMode===driverMode;candidate.classList.toggle("is-active",active);
+        candidate.setAttribute("aria-pressed",active?"true":"false");});renderDrivers();
+    }));
+    root.querySelectorAll("[data-open-detail]").forEach((button)=>button.addEventListener("click",()=>{
+      const dialog=root.querySelector(`[data-detail-dialog="${button.dataset.openDetail}"]`);
+      if(dialog instanceof HTMLDialogElement)dialog.showModal();
+    }));
+    root.querySelectorAll("[data-detail-dialog]").forEach((dialog)=>{
+      dialog.querySelector("[data-close-detail]")?.addEventListener("click",()=>dialog.close());
+      dialog.addEventListener("click",(event)=>{if(event.target===dialog)dialog.close();});
     });
-
-    deviceSelects.forEach((select) => {
-      select.addEventListener("input", handleInputChange);
-      select.addEventListener("change", handleInputChange);
-    });
-
-    presetButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        const presetId = button.getAttribute("data-preset");
-        if (presetId) applyPreset(presetId);
-      });
-    });
-
-    driverButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        const mode = button.getAttribute("data-driver-mode");
-        if (mode) setDriverMode(mode);
-      });
-    });
-
-    applyPreset("clear");
+    applyPreset("gen-z-vibe-coder");
   })();
 </script>

@@ -13,6 +13,8 @@ citation documents evidence; it does not grant permission to copy the source.
 | Original project prose and methodology | Project-authored | CC BY 4.0 | Credit Your Digital Life and Joel Gladd, link to the source and license, and identify adaptations |
 | Source titles, author names, URLs, publication facts, and short attributed references | Third-party bibliographic metadata | Not relicensed | Use only as evidence metadata; do not imply endorsement |
 | Software dependencies and their notices | Respective dependency authors | Their upstream terms | The project licenses do not replace dependency licenses |
+| Interface icons in `site/public/icons/` | Phosphor Icons and Simple Icons | MIT and CC0 1.0 respectively | See `LICENSES/THIRD-PARTY-NOTICES.md`; product marks remain the property of their owners |
+| Syne and Manrope web fonts | Respective font authors | SIL Open Font License 1.1 | Loaded through Google Fonts; see `LICENSES/THIRD-PARTY-NOTICES.md` |
 | Product, company, and institutional names or marks | Respective owners | Not relicensed | Descriptive use only; no endorsement is implied |
 
 Some JSON and Markdown files mix structured values, original project prose,

@@ -1,10 +1,11 @@
 ---
-title: What Your Digital Life Uses
-description: A public-facing guide to how prompts, streaming, meetings, and everyday online activity connect to energy, water, and infrastructure.
+title: What your digital life uses.
+description: Estimate the energy and water behind a day of cloud-connected digital activity.
 order: 0
-lastReviewed: "2026-03-08"
-heroTitle: What Your Digital Life Uses
-heroSummary: How much energy and water does it take to scroll TikTok, watch YouTube, join a Zoom call, or prompt ChatGPT?
+lastReviewed: "2026-09-04"
+heroTitle: What your digital life uses.
+heroSummary: Estimate the energy and water behind a day of cloud-connected digital activity.
+heroSupportingText: Start with a mix, then adjust it to yours.
 keyTakeaways:
   - A basic text prompt is usually small, but not every AI task is small.
   - Social video, streaming, Zoom, reasoning models, and coding agents belong in the comparison set.
