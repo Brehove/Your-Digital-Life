@@ -9,17 +9,17 @@ Git commit `063322e93e27704b447a495a838e552067928127` and the checksum-locked fi
 under `tests/fixtures/` record the deployed pre-migration baseline. They are
 regression provenance, not current update authorities.
 
-## Current release: v0.4.1
+## Current release: v1.0.0
 
 - 13 calculator activities
-- 24 calculator source records
+- 25 calculator source records
 - 6 device profiles
 - 5 presets, including Clear
-- 8 method sections
+- 9 method sections
 - JSON Schemas for every included record type
 - deterministic JSON and CSV exports
-- matching `latest` and immutable `v0.4.1` export trees
-- preserved immutable `v0.1.0` through `v0.4.0` export trees and archives
+- matching `latest` and immutable `v1.0.0` export trees
+- preserved immutable `v0.1.0` through `v0.4.1` export trees and archives
 - a release decision and portable external-comparison history
 - deterministic ZIP archive and SHA-256 checksums
 - a generated Astro calculator entry and public download tree
@@ -31,7 +31,7 @@ Scenarios, claims/facts, charts, and the broader site source registry are intent
 ## Reviewer evidence overlay
 
 `review/source-evidence.json` is a validated, one-to-one review overlay for the
-24 calculator source IDs. It adds corrected citations, precise locators,
+25 calculator source IDs. It adds corrected citations, precise locators,
 evidence type, review status, measurement boundary, workload and hardware
 scope, geography, derivation, and limitations. `review/activity-evidence.json`
 adds row-level provenance summaries, formula-traceability status, additional
@@ -140,6 +140,19 @@ The CSV uses a Frictionless Table Schema. JSON resources retain their full JSON
 Schema references in `custom.jsonSchema`, so the package does not misrepresent a
 JSON Schema as a table schema.
 
+## Coding-agent request boundary
+
+Version 1.0.0 replaces the historical hourly coding row with the qualified
+`coding-agent-requests-intensive` activity. One unit is one human message;
+follow-ups count as separate requests, while automatic model and subagent calls
+represented in the source logs are included within each request. Its 150 Wh is
+a modeled intensive-use example. External tool execution, network, end-user
+device, training, and embodied energy are not separately quantified.
+
+The optional `displayQualifier` and `shortLabel` activity fields keep the
+qualification and compact label in canonical data. Portable CSV exports carry
+`displayQualifier` as `display_qualifier`.
+
 ## Metrics and system boundaries
 
 Version 0.2.0 intentionally changes the image row and documents its GPU-only
@@ -154,7 +167,7 @@ The exact row-level scope remains in the preserved `note`, source relationships,
 
 ## Versioning
 
-The current release is `0.4.1`; releases `0.1.0` through `0.4.0` remain immutable.
+The current release is `1.0.0`; releases `0.1.0` through `0.4.1` remain immutable.
 
 Each later release has a machine-readable decision under `releases/`. The
 release-diff verifier compares it with the prior immutable export and rejects

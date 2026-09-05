@@ -108,7 +108,7 @@ test("all preset totals match the production contract", () => {
     clear: [0, 0, 0, 0],
     "gen-z-no-ai": [139.2, 464.75, 131.82, 1749],
     "gen-z-moderate-ai": [137.6, 256.6, 136.6, 813.1],
-    "gen-z-vibe-coder": [701.675, 800.05, 701.075, 4202.55],
+    "gen-z-vibe-coder": [2626.675, 2695.05, 2626.075, 15752.55],
     "worker-zoom-host": [223, 490, 223, 1338]
   };
 

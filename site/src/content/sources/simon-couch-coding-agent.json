@@ -1,12 +1,17 @@
 {
   "title": "Electricity use of AI coding agents",
   "organization": "Simon P. Couch",
-  "authors": ["Simon P. Couch"],
+  "authors": [
+    "Simon P. Couch"
+  ],
   "url": "https://www.simonpcouch.com/blog/2026-01-20-cc-impact/",
   "publishedDate": "2026-01-20",
   "sourceTier": "Tier 3",
   "sourceType": "Expert analysis",
-  "notes": "Useful for the vibe-coding scenario but should remain marked as estimated and napkin-math-derived.",
-  "tags": ["scenarios", "prompting"]
+  "notes": "Historical provenance for the retired hourly coding-agent row. Couch's personal token-log analysis remains illustrative evidence, but it does not support the former undocumented four-hour normalization or the new request coefficient.",
+  "tags": [
+    "scenarios",
+    "prompting",
+    "historical provenance"
+  ]
 }
-

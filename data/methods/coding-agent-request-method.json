@@ -1,0 +1,26 @@
+{
+  "id": "coding-agent-request-method",
+  "notes": [
+    "Functional unit: one human message sent to a coding agent. Count initial instructions, follow-ups, corrections, and unsuccessful requests. Each human follow-up is a new request. Do not count automatic model or subagent calls separately because they are represented in the usage logs; external tool execution itself is not separately quantified.",
+    "Energy arithmetic: 170,000 Wh / 1,138 typed human prompts = 149.38 Wh per prompt, rounded to 150 Wh per request for the calculator. Repeated model-call usage records were deduplicated by API message ID; the human-prompt denominator is not described as deduplicated.",
+    "The source's roughly 60 to 290 Wh per-prompt sensitivity reflects alternative modeling and cache assumptions. It is not a confidence interval for users and is not used as a generic population range.",
+    "The source workload is one intensive user's Claude Code use. Exact model versions and mix are not fully disclosed, no duration is assigned to a request, and the row does not claim a completed task or comparable outcome.",
+    "Water arithmetic transfers the project's existing AI water scenario: 150 Wh x 1 mL/Wh = 150 mL direct water; 150 Wh x 6 mL/Wh = 900 mL broader water. Broader water includes direct water, so the two values are not added.",
+    "The water transfer assumes the project's average cooling and electricity-water intensities apply to this modeled coding electricity. It is inferred teaching arithmetic, not provider-specific measurement or a coefficient reported by Hausfather or Ippolito.",
+    "Both energy columns remain 150 Wh because no additional end-user device or network energy is quantified. Missing components are outside the boundary rather than zero."
+  ],
+  "order": 9,
+  "sourceIds": ["hausfather-agentic-ai", "ippolito-what-uses-more", "scenario-methods", "schneider-google-scale", "lbnl-data-center-report"],
+  "summary": "The intensive coding-agent row counts human requests and rounds a modeled 149.38 Wh-per-prompt result to 150 Wh, then applies the project's existing inferred direct and broader water conversions.",
+  "tables": [{
+    "columns": ["Quantity", "Calculation", "Published value", "Boundary"],
+    "rows": [
+      ["Cloud/source energy", "170,000 Wh / 1,138 human prompts = 149.38 Wh", "150 Wh per request", "Modeled data-center electricity represented in the author's deduplicated Claude Code logs"],
+      ["Quantified broader energy", "No additional device or network component modeled", "150 Wh per request", "Same quantified data-center electricity; omitted components are unquantified"],
+      ["Direct water", "150 Wh x 1 mL/Wh", "150 mL per request", "Transferred project direct-cooling scenario"],
+      ["Broader water", "150 Wh x 6 mL/Wh", "900 mL per request", "Transferred project broader-water scenario including direct water"]
+    ],
+    "title": "Intensive coding-agent request derivation"
+  }],
+  "title": "Coding-agent request method"
+}

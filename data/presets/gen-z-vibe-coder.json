@@ -1,10 +1,9 @@
 {
-  "description": "Section 3 scenario with one hour of coding-agent use, reasoning queries, and reduced media time.",
+  "description": "Section 3 scenario with 15 illustrative agentic tasks, counted as 15 human coding-agent requests, plus separate reasoning and text requests and reduced media time.",
   "deviceSelections": {
     "cloud-docs-browsing": "laptop",
     "netflix": "laptop",
     "tiktok": "phone",
-    "vibe-coding": "laptop",
     "youtube": "phone",
     "zoom-participant": "laptop"
   },
@@ -13,12 +12,12 @@
   "order": 4,
   "values": {
     "cloud-docs-browsing": 1,
+    "coding-agent-requests-intensive": 15,
     "image-generation": 2,
     "netflix": 0.75,
     "reasoning-prompts": 8,
     "text-prompts": 15,
     "tiktok": 0.25,
-    "vibe-coding": 1,
     "youtube": 1,
     "zoom-participant": 1
   }

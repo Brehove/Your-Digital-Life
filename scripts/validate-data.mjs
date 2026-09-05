@@ -273,6 +273,9 @@ for (const { record: preset } of canonical.presets) {
   for (const [activityId, quantity] of Object.entries(preset.values)) {
     if (!activityMap.has(activityId)) fail(`${preset.id} references unknown activity ${activityId}`);
     if (!Number.isFinite(quantity) || quantity < 0) fail(`${preset.id}.${activityId} has invalid quantity ${quantity}`);
+    if (activityMap.get(activityId)?.unitLabel === "requests" && !Number.isInteger(quantity)) {
+      fail(`${preset.id}.${activityId} requires a whole request count`);
+    }
   }
   for (const [activityId, deviceId] of Object.entries(preset.deviceSelections)) {
     const activity = activityMap.get(activityId);

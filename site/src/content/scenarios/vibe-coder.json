@@ -2,71 +2,24 @@
   "title": "Gen Z Heavy AI User (Vibe Coder)",
   "slug": "vibe-coder",
   "audienceLabel": "Student scenario",
-  "summary": "A high-intensity AI user with one hour of coding-agent use plus reasoning prompts and lighter media consumption.",
-  "serverEnergyWh": 402,
-  "totalEnergyWh": 508,
-  "directWaterMl": 402,
-  "totalWaterMl": 2412,
+  "summary": "A high-intensity AI user with 15 illustrative agentic tasks, counted as 15 human coding-agent requests, alongside reasoning prompts, everyday AI requests, media, browsing, and a Zoom meeting.",
+  "serverEnergyWh": 2626.675,
+  "totalEnergyWh": 2695.05,
+  "directWaterMl": 2626.075,
+  "totalWaterMl": 15752.55,
   "confidence": "estimated",
-  "lastReviewed": "2026-03-08",
-  "heroStat": "Vibe coding dominates the whole profile.",
-  "comparisonNote": "Without coding-agent use, this day falls much closer to the other student profiles.",
+  "lastReviewed": "2026-09-05",
+  "heroStat": "The 15 coding-agent requests dominate this starter's modeled energy and water totals.",
+  "comparisonNote": "The 15 illustrative agentic tasks are counted as 15 human coding-agent requests; they are not 15 verified completed tasks. The coding figure is an intensive-use example per request, not an average request or a timed session.",
   "activities": [
-    {
-      "label": "TikTok scrolling",
-      "durationOrVolume": "0.25 hours",
-      "serverEnergyWh": 2,
-      "totalEnergyWh": 9,
-      "directWaterMl": 2,
-      "totalWaterMl": 12,
-      "estimated": true,
-      "sourceIds": ["scenario-methods"]
-    },
-    {
-      "label": "YouTube watching",
-      "durationOrVolume": "0.5 hours",
-      "serverEnergyWh": 11,
-      "totalEnergyWh": 39,
-      "directWaterMl": 11,
-      "totalWaterMl": 66,
-      "sourceIds": ["iea-energy-and-ai"]
-    },
-    {
-      "label": "Netflix or evening streaming",
-      "durationOrVolume": "0.75 hours",
-      "serverEnergyWh": 17,
-      "totalEnergyWh": 58,
-      "directWaterMl": 17,
-      "totalWaterMl": 102,
-      "sourceIds": ["iea-energy-and-ai"]
-    },
-    {
-      "label": "Reasoning prompts",
-      "durationOrVolume": "8 prompts",
-      "serverEnergyWh": 41,
-      "totalEnergyWh": 41,
-      "directWaterMl": 41,
-      "totalWaterMl": 246,
-      "sourceIds": ["jegham-how-hungry-is-ai"]
-    },
-    {
-      "label": "Text prompts + image generation",
-      "durationOrVolume": "15 text prompts, 2 images",
-      "serverEnergyWh": 6,
-      "totalEnergyWh": 6,
-      "directWaterMl": 6,
-      "totalWaterMl": 36,
-      "sourceIds": ["iea-energy-and-ai", "ifri-ai-dc-energy"]
-    },
-    {
-      "label": "Vibe coding",
-      "durationOrVolume": "1 hour",
-      "serverEnergyWh": 325,
-      "totalEnergyWh": 355,
-      "directWaterMl": 325,
-      "totalWaterMl": 1950,
-      "estimated": true,
-      "sourceIds": ["simon-couch-coding-agent", "scenario-methods"]
-    }
+    {"label":"TikTok scrolling","durationOrVolume":"0.25 hours","serverEnergyWh":1.875,"totalEnergyWh":9,"directWaterMl":1.875,"totalWaterMl":11.25,"estimated":true,"sourceIds":["greenspector-social-media-2021","adam-holter-tiktok","kamiya-streaming-video","scenario-methods"]},
+    {"label":"YouTube watching","durationOrVolume":"1 hour","serverEnergyWh":22,"totalEnergyWh":26,"directWaterMl":22,"totalWaterMl":132,"sourceIds":["kamiya-streaming-video","scenario-methods"]},
+    {"label":"Netflix streaming","durationOrVolume":"0.75 hours","serverEnergyWh":16.5,"totalEnergyWh":27.75,"directWaterMl":16.5,"totalWaterMl":99,"sourceIds":["kamiya-streaming-video","scenario-methods"]},
+    {"label":"High-reasoning prompts","durationOrVolume":"8 prompts","serverEnergyWh":270.4,"totalEnergyWh":270.4,"directWaterMl":270.4,"totalWaterMl":1622.4,"sourceIds":["jegham-how-hungry-is-ai","scenario-methods"]},
+    {"label":"AI text prompts","durationOrVolume":"15 prompts","serverEnergyWh":4.5,"totalEnergyWh":4.5,"directWaterMl":3.9,"totalWaterMl":19.5,"estimated":true,"sourceIds":["epoch-chatgpt-energy","jegham-how-hungry-is-ai"]},
+    {"label":"AI image generation","durationOrVolume":"2 images","serverEnergyWh":3.4,"totalEnergyWh":3.4,"directWaterMl":3.4,"totalWaterMl":20.4,"sourceIds":["iea-energy-and-ai","ippolito-what-uses-more","scenario-methods"]},
+    {"label":"Email, cloud docs, and browsing","durationOrVolume":"1 daily block","serverEnergyWh":4,"totalEnergyWh":30,"directWaterMl":4,"totalWaterMl":24,"estimated":true,"sourceIds":["scenario-methods"]},
+    {"label":"Zoom as participant","durationOrVolume":"1 hour","serverEnergyWh":54,"totalEnergyWh":74,"directWaterMl":54,"totalWaterMl":324,"estimated":true,"sourceIds":["mytton-zoom","verdecchia-video-call-energy","scenario-methods"]},
+    {"label":"Coding-agent requests","durationOrVolume":"15 illustrative agentic tasks · 15 human requests · intensive-use example","serverEnergyWh":2250,"totalEnergyWh":2250,"directWaterMl":2250,"totalWaterMl":13500,"estimated":true,"note":"The illustrative tasks are counted as human requests, not verified completed tasks. Count each message sent by the person, including follow-ups and failed requests. Automatic agent steps and subagents do not add human requests. The energy estimate models logged model activity; external tool execution is not separately measured. No end-user-device energy is modeled.","sourceIds":["hausfather-agentic-ai","ippolito-what-uses-more","scenario-methods"]}
   ]
 }

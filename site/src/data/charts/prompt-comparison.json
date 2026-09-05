@@ -1,6 +1,6 @@
 [
-  { "label": "Text prompt", "wh": 0.3 },
-  { "label": "Image generation", "wh": 1.7 },
-  { "label": "High-reasoning prompt", "wh": 33.8 },
-  { "label": "Vibe coding hour", "wh": 325 }
+  { "label": "Text prompt", "wh": 0.3, "unit": "per prompt" },
+  { "label": "Image generation", "wh": 1.7, "unit": "per image" },
+  { "label": "High-reasoning prompt", "wh": 33.8, "unit": "per prompt" },
+  { "label": "Coding-agent request (intensive)", "wh": 150, "unit": "per human request" }
 ]

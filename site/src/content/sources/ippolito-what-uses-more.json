@@ -6,6 +6,6 @@
   "publishedDate": "2025-06-25",
   "sourceTier": "Tier 3",
   "sourceType": "Secondary calculator synthesis",
-  "notes": "External comparison and provenance source. Ippolito's spreadsheet prompted the image and water review, but underlying studies remain the evidentiary authority for adopted values.",
-  "tags": ["comparators", "prompting", "water"]
+  "notes": "External comparison and provenance source. Ippolito's spreadsheet prompted the image, water, and coding-agent review and supplies the action/depth comparison framework; underlying studies remain the evidentiary authority for adopted physical values. Its configured coding example and paragraph example are distinct and neither supplies the new 150 Wh request coefficient.",
+  "tags": ["comparators", "prompting", "water", "coding agents"]
 }

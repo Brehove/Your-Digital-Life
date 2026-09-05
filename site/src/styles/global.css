@@ -2067,7 +2067,7 @@ th {
 
 .ydl-activity-title h3 {
   margin: 0;
-  font: 700 0.91rem/1.2 "Syne", sans-serif;
+  font: 700 0.91rem/1.2 "Manrope", sans-serif;
 }
 
 .ydl-activity-title p {
@@ -2075,6 +2075,15 @@ th {
   color: #454540;
   font-size: 0.72rem;
   line-height: 1.45;
+}
+
+.ydl-activity-title .ydl-qualifier {
+  color: #111;
+  font-weight: 700;
+}
+
+.ydl-activity-title .ydl-helper {
+  max-width: 38ch;
 }
 
 .ydl-base {

@@ -100,6 +100,8 @@ const calculators = defineCollection({
       z.object({
         id: z.string(),
         label: z.string(),
+        displayQualifier: z.string().optional(),
+        shortLabel: z.string().optional(),
         category: z.enum(["AI tasks", "Media and search", "Gaming", "Meetings"]),
         unitLabel: z.string(),
         unitHint: z.string(),
@@ -121,7 +123,11 @@ const calculators = defineCollection({
         deviceSelectionAffects: z.array(z.string()).default([]),
         deviceNote: z.string().optional(),
         sourceIds: z.array(z.string()).default([]),
-        systemBoundary: z.enum(["legacy-row-specific", "operational-player-hour"]).optional()
+        systemBoundary: z.enum([
+          "legacy-row-specific",
+          "operational-player-hour",
+          "operational-coding-request"
+        ]).optional()
       })
     ),
     presets: z

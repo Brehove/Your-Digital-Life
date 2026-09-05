@@ -2,6 +2,7 @@
   "fields": [
     { "name": "id", "type": "string", "constraints": { "required": true, "unique": true } },
     { "name": "activity", "type": "string", "constraints": { "required": true } },
+    { "name": "display_qualifier", "type": "string" },
     { "name": "unit", "type": "string", "constraints": { "required": true } },
     { "name": "server_network_energy_wh", "type": "number", "constraints": { "required": true } },
     { "name": "total_system_energy_wh", "type": "number", "constraints": { "required": true } },

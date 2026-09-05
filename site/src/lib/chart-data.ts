@@ -56,26 +56,27 @@ export function resolveChartData(slug: string): ResolvedChart {
       };
     case "prompt-comparison":
       const promptBaseline = promptComparison.find((item) => item.label === "Text prompt")?.wh ?? 0.3;
+      const codingReference = promptComparison.find((item) => item.unit === "per human request");
 
       return {
         metricLabel: "Server-side energy",
         scale: "log",
-        scaleNote: "Log scale used so low-cost prompts and high-cost coding-agent sessions remain visible on the same chart.",
-        takeaway: "The phrase 'prompt cost' hides orders-of-magnitude differences. A basic text prompt, a reasoning query, and an hour of coding-agent use are not remotely the same event.",
+        scaleNote: "Log scale keeps the different reference activities visible. Each bar retains its own unit; these are not matched tasks.",
+        takeaway: "The intensive coding example counts one human request and the model calls it triggers. It is a modeled reference from one person's usage, not a typical request or a timed session.",
         insights: [
           { label: "Image vs. text", value: `${(1.7 / promptBaseline).toFixed(1)}x` },
           { label: "High reasoning vs. text", value: `${(33.8 / promptBaseline).toFixed(0)}x` },
-          { label: "Coding hour vs. text", value: `${(325 / promptBaseline).toFixed(0)}x` }
+          ...(codingReference ? [{ label: "Intensive request vs. text reference", value: `${(codingReference.wh / promptBaseline).toFixed(0)}x` }] : [])
         ],
         items: promptComparison.map((item) => ({
           label: item.label,
           value: item.wh,
-          displayValue: `${item.wh} Wh`,
+          displayValue: `${item.wh} Wh ${item.unit}`,
           detail:
             item.label === "Text prompt"
               ? "Baseline everyday query"
               : `${(item.wh / promptBaseline).toFixed(item.wh / promptBaseline < 10 ? 1 : 0)}x a basic text prompt`,
-          highlight: item.label === "Vibe coding hour"
+          highlight: item === codingReference
         }))
       };
     case "scenario-comparison":

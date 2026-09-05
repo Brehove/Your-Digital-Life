@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://your-digital-life.org/schemas/preset.schema.json",
+  "title": "Your Digital Life calculator preset",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "order", "label", "description", "values", "deviceSelections"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "order": { "type": "integer", "minimum": 1 },
+    "label": { "type": "string", "minLength": 1 },
+    "description": { "type": "string", "minLength": 1 },
+    "values": {
+      "type": "object",
+      "propertyNames": { "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+      "additionalProperties": { "type": "number", "minimum": 0 }
+    },
+    "deviceSelections": {
+      "type": "object",
+      "propertyNames": { "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+      "additionalProperties": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" }
+    }
+  }
+}

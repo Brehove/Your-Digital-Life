@@ -12,7 +12,7 @@ function jsonFiles(relativeDirectory) {
 }
 
 test("deferred site collection inventory remains explicit", () => {
-  assert.equal(jsonFiles("site/src/content/sources").length, 40);
+  assert.equal(jsonFiles("site/src/content/sources").length, 41);
   assert.equal(jsonFiles("site/src/content/facts").length, 50);
   assert.equal(jsonFiles("site/src/content/scenarios").length, 4);
   assert.equal(jsonFiles("site/src/content/charts").length, 4);
@@ -46,6 +46,6 @@ test("all duplicated calculator sources match on shared fields", () => {
     else divergent.push({ id: source.id, differingFields });
   }
 
-  assert.equal(matches, 24);
+  assert.equal(matches, 25);
   assert.deepEqual(divergent, []);
 });

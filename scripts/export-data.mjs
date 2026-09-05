@@ -35,6 +35,7 @@ const activityRows = [
   [
     "id",
     "activity",
+    "display_qualifier",
     "unit",
     "server_network_energy_wh",
     "total_system_energy_wh",
@@ -48,6 +49,7 @@ const activityRows = [
   ...activities.map((activity) => [
     activity.id,
     activity.label,
+    activity.displayQualifier ?? "",
     activity.unitLabel,
     activity.serverWhPerUnit,
     activity.totalWhPerUnit,

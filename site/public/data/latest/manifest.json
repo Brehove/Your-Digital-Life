@@ -22,19 +22,19 @@
   "counts": {
     "activities": 13,
     "deviceProfiles": 6,
-    "methodSections": 8,
+    "methodSections": 9,
     "presets": 5,
-    "sources": 24
+    "sources": 25
   },
-  "datasetVersion": "0.4.1",
-  "lastReviewed": "2026-07-23",
+  "datasetVersion": "1.0.0",
+  "lastReviewed": "2026-09-05",
   "migrationMode": "canonical",
   "name": "your-digital-life-calculator-data",
   "notes": [
-    "Renames the existing Gen Z no-AI starter mix to Gen Z (Gamer) without changing its calculation.",
-    "No calculator coefficient, formula, quantity, device selection, source relationship, or activity boundary changes. This release changes only the public label of one existing starter mix.",
+    "Replaces the hourly coding-agent row with a qualified intensive per-request example and updates its evidence, water scenario, and starter preset.",
+    "The live coding activity changes from an unsupported hourly normalization to an intensive per-human-request modeled example. Energy is 150 Wh per request; direct and broader water are inferred project scenarios of 150 mL and 900 mL. The reference is not a generic user average or direct provider measurement.",
     "The website reads a generated snapshot produced from the same root records.",
-    "Behavior changes in this release: no.",
+    "Behavior changes in this release: yes.",
     "Historical version directories and archives remain immutable and are carried forward unchanged."
   ],
   "order": {
@@ -42,7 +42,7 @@
       "text-prompts",
       "reasoning-prompts",
       "image-generation",
-      "vibe-coding",
+      "coding-agent-requests-intensive",
       "tiktok",
       "instagram",
       "snapchat",
@@ -69,7 +69,8 @@
       "preset-notes",
       "maintenance-notes",
       "image-generation-method",
-      "gaming-console-method"
+      "gaming-console-method",
+      "coding-agent-request-method"
     ],
     "presets": [
       "clear",
@@ -102,14 +103,15 @@
       "mytton-network-power-model",
       "energy-star-certified-televisions",
       "lyu-cloud-gaming-network-anatomy",
-      "playfab-multiplayer-servers"
+      "playfab-multiplayer-servers",
+      "hausfather-agentic-ai"
     ]
   },
   "releaseProvenance": {
-    "datasetVersion": "0.4.1",
+    "datasetVersion": "1.0.0",
     "decisionFile": "release.json",
     "generatedFromCanonicalRootRecords": true
   },
-  "schemaVersion": "0.3.0",
+  "schemaVersion": "1.0.0",
   "status": "canonical"
 }

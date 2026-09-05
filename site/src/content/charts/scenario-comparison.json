@@ -8,9 +8,8 @@
   "yField": "serverEnergyWh",
   "seriesField": "metric",
   "unit": "Wh / mL",
-  "sourceIds": ["scenario-methods"],
-  "note": "The public page should default to server energy and let visitors toggle to total energy or water.",
-  "lastReviewed": "2026-03-07",
+  "sourceIds": ["scenario-methods", "hausfather-agentic-ai"],
+  "note": "The public page should default to server energy and let visitors toggle to total energy or water. The vibe-coder profile includes 15 illustrative agentic tasks, counted as 15 human coding-agent requests totaling 2,250 Wh, plus eight high-reasoning prompts totaling 270.4 Wh.",
+  "lastReviewed": "2026-09-05",
   "tags": ["compare-daily-use"]
 }
-

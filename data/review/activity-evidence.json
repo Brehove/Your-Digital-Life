@@ -1,7 +1,7 @@
 {
-  "overlayVersion": "0.3.0",
-  "datasetVersion": "0.4.1",
-  "reviewedOn": "2026-07-14",
+  "overlayVersion": "1.0.0",
+  "datasetVersion": "1.0.0",
+  "reviewedOn": "2026-09-05",
   "status": "review-overlay",
   "compatibility": {
     "calculatorInput": false,
@@ -50,14 +50,16 @@
       ]
     },
     {
-      "activityId": "vibe-coding",
-      "formulaStatus": "partial-derivation",
-      "provenanceSummary": "Couch reports roughly 41 Wh for his median Claude Code session and roughly 1,300 Wh for a typical coding day. The calculator's 325 Wh per hour equals 1,300 divided by four, but a four-active-hour divisor is not documented in the source or frozen method records. The total-system value adds a separate internal 30 Wh laptop allowance: 325 + 30 = 355 Wh.",
-      "additionalSourceIds": [],
+      "activityId": "coding-agent-requests-intensive",
+      "formulaStatus": "documented-derivation",
+      "provenanceSummary": "Hausfather reports a modeled 170 kWh across 1,138 typed human Claude Code prompts during eight weeks of intensive use, after repeated model-call usage records were deduplicated by API message ID. The calculator divides 170,000 Wh by 1,138 to obtain 149.38 Wh and rounds to 150 Wh per request. It applies the project's inferred 1 mL/Wh direct and 6 mL/Wh broader water scenarios, producing 150 mL and 900 mL. No laptop increment is added.",
+      "additionalSourceIds": ["schneider-google-scale", "lbnl-data-center-report"],
       "reviewFindings": [
-        "The source does not report a 325 Wh one-hour benchmark; this is an internally normalized coefficient.",
-        "The assumed four active coding-agent hours and the 30 Wh device allowance need explicit provenance.",
-        "The source is personal token-log napkin math, not provider measurement."
+        "The energy arithmetic is reproducible, but conversion from logged tokens to electricity remains modeled and sensitive to cache and per-token assumptions.",
+        "The source represents one unusually intensive user and cannot establish a generic coding-agent request average.",
+        "The 60 to 290 Wh sensitivity is a modeling range for this workload, not a confidence interval for users.",
+        "Direct and broader water are transferred project scenarios, not values measured by Hausfather; broader water includes direct water.",
+        "Equal energy columns record an unmodeled end-user device rather than zero device energy."
       ]
     },
     {
