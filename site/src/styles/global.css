@@ -1932,15 +1932,6 @@ th {
   font-size: 0.75rem;
 }
 
-.ydl-base-help {
-  max-width: 960px;
-  margin: 0 0 1.15rem;
-  color: #4a4a46;
-  font-size: 0.79rem;
-  line-height: 1.6;
-}
-
-.ydl-base-help a,
 .ydl-method-link,
 .ydl-dialog a,
 .ydl-evidence-link a {
@@ -2663,11 +2654,6 @@ th {
     font-size: 0.71rem;
   }
   .ydl-custom { font-size: 0.68rem; }
-  .ydl-base-help {
-    margin-bottom: 1rem;
-    font-size: 0.72rem;
-  }
-
   .ydl-calculator-grid {
     grid-template-columns: minmax(0, 1fr) 450px;
     gap: 1.55rem;
@@ -2848,15 +2834,20 @@ th {
 
 @media (max-width: 1199px) {
   .landing-masthead, .landing-intro, .ydl-calculator, .landing-footer { padding-left: 1.75rem; padding-right: 1.75rem; }
-  .ydl-calculator-grid { grid-template-columns: minmax(0,1fr) 420px; gap: 1.35rem; }
+  .ydl-calculator-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(360px, 38%);
+    gap: 1rem;
+  }
   .ydl-activity-groups { display: flex; flex-direction: column; align-items: stretch; }
-  .ydl-card-grid { grid-template-columns: 1fr; }
+  .ydl-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ydl-group--gaming .ydl-card-grid,
+  .ydl-group--work .ydl-card-grid { grid-template-columns: 1fr; }
   .ydl-results { padding: 1.25rem; }
   .ydl-chart li { grid-template-columns: 20px 95px minmax(0,1fr) 70px; gap: 0.42rem; }
   .ydl-axis { margin-left: 8rem; margin-right: 4.8rem; }
 }
 
-@media (max-width: 850px) {
+@media (max-width: 1000px) {
   .ydl-calculator-grid { grid-template-columns: 1fr; }
   .ydl-results { position: static; grid-row: 1; }
   .ydl-activity-groups { grid-row: 2; }

@@ -63,12 +63,6 @@ const payload = JSON.stringify({ activities, presets, devices }).replace(/</g, "
     <span class="ydl-custom" data-custom-label hidden>Custom day</span>
   </div>
 
-  <p class="ydl-base-help" id="ydl-base-help">
-    Base rates show <strong>broader-system energy per unit</strong>{" "}for the selected device.
-    The image-generation rate is a GPU-only floor.{" "}
-    <a href="/sources-and-method/">What these estimates include →</a>
-  </p>
-
   <div class="ydl-calculator-grid">
     <div class="ydl-activity-groups" id="ydl-activity-groups">
       {groups.map((group) => {
@@ -107,7 +101,7 @@ const payload = JSON.stringify({ activities, presets, devices }).replace(/</g, "
                         <input id={`ydl-${activity.id}`} type="number" min="0" step={activity.step} value="0"
                           inputmode={activity.unitLabel === "requests" ? "numeric" : "decimal"} data-activity-input={activity.id}
                           aria-label={accessibleActivityLabel(activity)}
-                          aria-describedby={`ydl-unit-${activity.id} ydl-hint-${activity.id} ydl-base-help`} />
+                          aria-describedby={`ydl-unit-${activity.id} ydl-hint-${activity.id}`} />
                         <button type="button" data-step-up={activity.id} aria-label={`Increase ${activity.label}`}>+</button>
                         <span id={`ydl-unit-${activity.id}`} data-unit-label={activity.id}>{activity.unitLabel}</span>
                       </div>
