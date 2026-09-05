@@ -11,6 +11,7 @@ changedItems:
   - Updated the prompt comparison to show each activity's denominator and reconciled the coding-dominance language with the revised starter
   - Credited Jon Ippolito for the comparison framework and source trail while attributing the adopted energy reference to Zeke Hausfather
   - Adjusted calculator typography so letters with descenders remain fully visible
+  - Updated the Open Data page to identify version 1.0.0 as current and retain version 0.4.1 in the historical release list
 reason: The old hourly row depended on an unsupported four-hour normalization and hid the human interaction being counted. The request unit is traceable to 170 kWh modeled across 1,138 human requests in one intensive Claude Code workload.
 impactOnPublicCopy: The calculator and comparison pages now identify coding as an intensive-use example per human request, keep the water figures visibly inferred, and explain that the result is not a universal average or a completed-task estimate.
 ---
