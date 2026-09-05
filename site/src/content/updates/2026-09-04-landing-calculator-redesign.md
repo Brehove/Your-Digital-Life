@@ -6,6 +6,7 @@ changedItems:
   - Reorganized the landing calculator into AI, media and entertainment, gaming, and work and communication display groups
   - Added stepper controls, visible per-unit base rates, and activity icons
   - Moved each activity's confidence, source links, and boundary notes into an accessible details dialog
+  - Corrected the Water contribution footer label to read "Total water"
   - Kept all 13 activity IDs, estimates, units, presets, device controls, and calculation behavior unchanged
   - Added third-party icon notices for the Phosphor and Simple Icons assets used by the interface
 reason: The calculator needed a faster starter experience while keeping its evidence and system boundaries available at the point of use.
