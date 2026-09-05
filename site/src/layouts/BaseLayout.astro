@@ -1,5 +1,6 @@
 ---
 import { getNavPages, getPageSlug } from "../lib/content";
+import SiteMasthead from "../components/SiteMasthead.astro";
 import "../styles/global.css";
 
 interface Props {
@@ -23,9 +24,8 @@ const {
   hideNav = false,
   hideHeader = false
 } = Astro.props;
-const navPages = await getNavPages("header");
 const footerPages = await getNavPages("footer");
-const currentPath = Astro.url.pathname;
+const resolvedBodyClass = bodyClass ?? "body--document";
 ---
 
 <!doctype html>
@@ -36,34 +36,9 @@ const currentPath = Astro.url.pathname;
     <meta name="description" content={description ?? "Guide to digital habits, water, energy, and infrastructure"} />
     <title>{title}</title>
   </head>
-  <body class={bodyClass}>
+  <body class={resolvedBodyClass}>
     <div class:list={["site-shell", shellClass]}>
-      {!hideHeader && (
-        <header class="site-header">
-          <div class="site-header__inner">
-            <a class="site-brand" href="/">
-              <span class="site-brand__title">Digital Life Calculator</span>
-            </a>
-
-            {!hideNav && (
-              <nav class="site-nav" aria-label="Primary">
-                {
-                  navPages.map((page) => {
-                    const href = `/${getPageSlug(page)}/`;
-                    const active = currentPath === href;
-
-                    return (
-                      <a class:list={["site-nav__link", { "is-active": active }]} href={href}>
-                        {page.data.navLabel ?? page.data.title}
-                      </a>
-                    );
-                  })
-                }
-              </nav>
-            )}
-          </div>
-        </header>
-      )}
+      {!hideHeader && <SiteMasthead showNav={!hideNav} />}
 
       <main class:list={["page-frame", pageClass]}>
         <slot />
