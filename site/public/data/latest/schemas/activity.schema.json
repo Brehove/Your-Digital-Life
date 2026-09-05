@@ -28,8 +28,10 @@
     "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
     "order": { "type": "integer", "minimum": 1 },
     "label": { "type": "string", "minLength": 1 },
+    "shortLabel": { "type": "string", "minLength": 1 },
+    "displayQualifier": { "type": "string", "minLength": 1 },
     "category": { "enum": ["AI tasks", "Media and search", "Gaming", "Meetings"] },
-    "unitLabel": { "enum": ["prompts", "images", "hours", "daily blocks", "meetings"] },
+    "unitLabel": { "enum": ["prompts", "images", "requests", "hours", "daily blocks", "meetings"] },
     "unitHint": { "type": "string", "minLength": 1 },
     "step": { "type": "number", "exclusiveMinimum": 0 },
     "serverWhPerUnit": { "type": "number", "minimum": 0 },
@@ -64,7 +66,7 @@
       "items": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
       "uniqueItems": true
     },
-    "systemBoundary": { "enum": ["legacy-row-specific", "operational-player-hour"] },
+    "systemBoundary": { "enum": ["legacy-row-specific", "operational-coding-request", "operational-player-hour"] },
     "lastReviewed": { "type": "string", "format": "date" }
   }
 }

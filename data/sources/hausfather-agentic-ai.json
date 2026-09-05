@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "Zeke Hausfather"
+  ],
+  "id": "hausfather-agentic-ai",
+  "notes": "Primary modeled evidence for the intensive coding-agent request example. The article reports 170 kWh across 1,138 typed human prompts from eight weeks of the author's Claude Code logs, with more than 14,000 model calls and 3.2 billion tokens. Repeated usage records were deduplicated by API message ID. The central estimate depends on published energy methods and a 10% cache-read energy assumption; the 1% to 25% cache sensitivity yields about 60 to 290 Wh per prompt. Exact Claude model versions and mix are not fully reported, no request duration is assigned, and one intensive user's Claude Code workload is not a generic average.",
+  "order": 25,
+  "organization": "The Climate Brink",
+  "publishedDate": "2026-08-05",
+  "sourceTier": "Tier 2",
+  "sourceType": "Primary usage logs with modeled electricity",
+  "tags": [
+    "coding agents",
+    "modeled energy",
+    "prompting"
+  ],
+  "title": "The real energy use of agentic AI",
+  "url": "https://www.theclimatebrink.com/p/the-real-energy-use-of-agentic-ai",
+  "usedFor": [
+    "intensive coding-agent request energy reference",
+    "human-request counting rule and automatic-agent-work boundary"
+  ]
+}

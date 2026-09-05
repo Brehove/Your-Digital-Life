@@ -2,13 +2,13 @@
   "title": "Prompt and Task Comparison",
   "slug": "prompt-comparison",
   "chartType": "bar",
-  "summary": "Compare text prompting, image generation, reasoning prompts, and coding-agent sessions without pretending they belong in one average.",
+  "summary": "Compare text prompts, image generation, high-reasoning prompts, and an intensive coding-agent request without treating them as one average.",
   "dataFile": "src/data/charts/prompt-comparison.json",
   "xField": "label",
   "yField": "wh",
   "unit": "Wh",
-  "sourceIds": ["iea-energy-and-ai", "jegham-how-hungry-is-ai", "simon-couch-coding-agent"],
-  "note": "Keep this visually simple and pair it with a scope note under the chart.",
-  "lastReviewed": "2026-07-14",
+  "sourceIds": ["iea-energy-and-ai", "jegham-how-hungry-is-ai", "hausfather-agentic-ai", "ippolito-what-uses-more"],
+  "note": "Each bar keeps its own denominator. The 150 Wh coding value is a modeled intensive-use example per human request, with automatic agent steps included; it is not a universal request average.",
+  "lastReviewed": "2026-09-05",
   "tags": ["what-a-prompt-costs"]
 }

@@ -73,36 +73,33 @@
   },
   {
     "category": "AI tasks",
-    "defaultDeviceId": "laptop",
-    "deviceMode": "fixed",
-    "deviceNote": "Keep this fixed to a laptop-style coding session unless stronger desktop or thin-client evidence appears.",
-    "deviceSelectableIds": [
-      "laptop"
-    ],
-    "deviceSelectionAffects": [
-      "totalWhPerUnit"
-    ],
-    "deviceTotalWhOverrides": {
-      "laptop": 355
-    },
-    "directWaterMlPerUnit": 325,
-    "id": "vibe-coding",
-    "label": "Coding-agent use",
-    "lastReviewed": "2026-03-09",
-    "note": "Uses the current one-hour coding-agent benchmark and adds a 30 Wh device allowance in the total-system column.",
+    "deviceMode": "not-modeled",
+    "deviceNote": "No end-user device energy is added. Equal cloud/source and total-system values mean that the user's computer is outside the quantified boundary, not that it uses no electricity.",
+    "directWaterBoundary": "Project scenario applying 1 mL of direct cooling water per Wh of modeled coding-agent data-center electricity.",
+    "directWaterMlPerUnit": 150,
+    "displayQualifier": "Intensive-use example",
+    "id": "coding-agent-requests-intensive",
+    "label": "Coding-agent requests",
+    "lastReviewed": "2026-09-05",
+    "note": "Intensive-use example based on Hausfather's modeled 170 kWh across 1,138 human Claude Code prompts: 149.38 Wh per prompt, rounded to 150 Wh per request. Water applies the project's inferred 1 mL/Wh direct and 6 mL/Wh broader conversions. This is one heavy user's modeled workload, not a generic request average.",
     "order": 4,
-    "serverWhPerUnit": 325,
+    "serverEnergyBoundary": "Modeled data-center electricity for model calls triggered by one human coding-agent message, including automatic model and subagent calls represented in the usage logs. Separate human follow-ups count as new requests. External tool execution, network, and end-user device energy are not separately quantified.",
+    "serverWhPerUnit": 150,
+    "shortLabel": "Coding agent (intensive)",
     "sourceIds": [
-      "simon-couch-coding-agent",
+      "hausfather-agentic-ai",
+      "ippolito-what-uses-more",
       "scenario-methods"
     ],
-    "status": "estimated",
-    "step": 0.25,
-    "systemBoundary": "legacy-row-specific",
-    "totalWaterMlPerUnit": 1950,
-    "totalWhPerUnit": 355,
-    "unitHint": "Hours of sustained agent use, not prompts",
-    "unitLabel": "hours"
+    "status": "inferred",
+    "step": 1,
+    "systemBoundary": "operational-coding-request",
+    "totalEnergyBoundary": "Same quantified data-center electricity as the cloud/source field; end-user device, network, embodied, and training energy are unquantified rather than zero.",
+    "totalWaterBoundary": "Project scenario applying 6 mL of broader water per Wh of modeled coding-agent data-center electricity; this total includes the direct-water amount.",
+    "totalWaterMlPerUnit": 900,
+    "totalWhPerUnit": 150,
+    "unitHint": "Count messages you send, including follow-ups. Automatic agent steps are included.",
+    "unitLabel": "requests"
   },
   {
     "category": "Media and search",

@@ -1,7 +1,7 @@
 {
   "name": "your-digital-life-calculator-data",
-  "datasetVersion": "0.4.1",
-  "schemaVersion": "0.3.0",
+  "datasetVersion": "1.0.0",
+  "schemaVersion": "1.0.0",
   "status": "canonical",
   "migrationMode": "canonical",
   "siteConsumer": "generated-snapshot",
@@ -70,12 +70,15 @@
     "title": "Digital Inventory Calculator Source of Truth",
     "calculatorId": "digital-inventory",
     "description": "Canonical activity rows, presets, source records, and method tables for the public digital inventory calculator.",
-    "lastReviewed": "2026-07-23",
+    "lastReviewed": "2026-09-05",
     "sourceFiles": [
       {
         "title": "Your Digital Life open calculator data",
         "path": "https://your-digital-life.org/data/",
-        "sections": ["Versioned data exports", "JSON Schemas and checksums"],
+        "sections": [
+          "Versioned data exports",
+          "JSON Schemas and checksums"
+        ],
         "notes": [
           "Public download index for the canonical calculator records and immutable versioned releases.",
           "The root data directory in the GitHub repository is the update authority."
@@ -84,7 +87,11 @@
       {
         "title": "Your Digital Life sources and method",
         "path": "https://your-digital-life.org/sources-and-method/",
-        "sections": ["Calculator activity reference", "Calculator sources", "Calculator methods"],
+        "sections": [
+          "Calculator activity reference",
+          "Calculator sources",
+          "Calculator methods"
+        ],
         "notes": [
           "Public explanation of the source relationships, row boundaries, and calculator method."
         ]
@@ -100,11 +107,11 @@
     ]
   },
   "counts": {
-    "sources": 24,
+    "sources": 25,
     "deviceProfiles": 6,
     "activities": 13,
     "presets": 5,
-    "methodSections": 8
+    "methodSections": 9
   },
   "order": {
     "sources": [
@@ -131,14 +138,22 @@
       "mytton-network-power-model",
       "energy-star-certified-televisions",
       "lyu-cloud-gaming-network-anatomy",
-      "playfab-multiplayer-servers"
+      "playfab-multiplayer-servers",
+      "hausfather-agentic-ai"
     ],
-    "deviceProfiles": ["phone", "laptop", "desktop", "tv", "meeting-bundle", "xbox-series-x-reference"],
+    "deviceProfiles": [
+      "phone",
+      "laptop",
+      "desktop",
+      "tv",
+      "meeting-bundle",
+      "xbox-series-x-reference"
+    ],
     "activities": [
       "text-prompts",
       "reasoning-prompts",
       "image-generation",
-      "vibe-coding",
+      "coding-agent-requests-intensive",
       "tiktok",
       "instagram",
       "snapchat",
@@ -164,7 +179,8 @@
       "preset-notes",
       "maintenance-notes",
       "image-generation-method",
-      "gaming-console-method"
+      "gaming-console-method",
+      "coding-agent-request-method"
     ]
   },
   "metricBoundaries": {
@@ -174,17 +190,22 @@
     "totalWaterMlPerUnit": "The deployed calculator's broader total-water metric for the row; activity-specific boundary text is included where available."
   },
   "knownDuplicateRepresentations": {
-    "calculatorSourceCatalog": "Twelve calculator source records also have site/src/content/sources representations. All twelve match on shared fields; root records additionally carry stable IDs, order, and calculator-specific usedFor relationships. The root data record is canonical for calculator generation.",
+    "calculatorSourceCatalog": "Thirteen calculator source records also have site/src/content/sources representations. Shared fields must match; root records additionally carry stable IDs, order, and calculator-specific usedFor relationships. The root data record is canonical for calculator generation.",
     "siteScenarios": "Four site scenario records remain separate from calculator presets because their totals differ under the device-aware calculator.",
     "charts": "Chart metadata and numeric data remain split across site/src/content/charts, site/src/data/charts, and runtime code. Gate 12 will normalize them separately."
   },
-  "deferredCollections": ["scenarios", "claims", "charts", "general site sources"],
+  "deferredCollections": [
+    "scenarios",
+    "claims",
+    "charts",
+    "general site sources"
+  ],
   "generated": {
     "calculator": "generated/calculator.json",
     "calculatorPayload": "generated/calculator-payload.json",
     "latestExports": "exports/latest",
-    "versionedExports": "exports/v0.4.1",
-    "archive": "exports/your-digital-life-data-v0.4.1.zip",
+    "versionedExports": "exports/v1.0.0",
+    "archive": "exports/your-digital-life-data-v1.0.0.zip",
     "siteCalculator": "../site/src/content/calculators/digital-inventory.json",
     "publicDownloads": "../site/public/data",
     "publicSchemas": "../site/public/schemas"

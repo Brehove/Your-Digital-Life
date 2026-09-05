@@ -12,7 +12,8 @@ const publishedArchiveChecksums = {
   "your-digital-life-data-v0.2.0.zip": "4fa0360701d9349a045db03c1708473a7faca43f3fc72dc31e805c131b95b79d",
   "your-digital-life-data-v0.3.0.zip": "7f40c677395feeb81d7d2e2583fec2c0a150ae584ae770f0e3d383798e787d76",
   "your-digital-life-data-v0.4.0.zip": "cbbee0b83c7303372564d4e89fe308fc3ed4539ac2cb643f11c93b1c7b362d77",
-  "your-digital-life-data-v0.4.1.zip": "9b83eee88b330fa27d009567c1e160feb7b11edfa6ba46f9036309fd1774d5ae"
+  "your-digital-life-data-v0.4.1.zip": "9b83eee88b330fa27d009567c1e160feb7b11edfa6ba46f9036309fd1774d5ae",
+  "your-digital-life-data-v1.0.0.zip": "df4e8282c3a7c598460b06ae13b076c46a3c05c17161cc19dbdd3e221440d0d8"
 };
 
 function filesUnder(directory) {
@@ -126,11 +127,12 @@ test("activity CSV has one header and thirteen stable-ID rows", () => {
   assert.equal(csv.length, 14);
   assert.equal(
     csv[0],
-    "id,activity,unit,server_network_energy_wh,total_system_energy_wh,direct_water_ml,total_water_ml,status,system_boundary,source_ids,last_reviewed"
+    "id,activity,display_qualifier,unit,server_network_energy_wh,total_system_energy_wh,direct_water_ml,total_water_ml,status,system_boundary,source_ids,last_reviewed"
   );
   assert.ok(csv[1].startsWith("text-prompts,"));
   assert.ok(csv[12].startsWith("zoom-host,"));
   assert.ok(csv[13].startsWith("gaming-console-xbox-series-x,"));
+  assert.ok(csv.some((row) => row.startsWith("coding-agent-requests-intensive,Coding-agent requests,Intensive-use example,requests,150,150,150,900,")));
 });
 
 test("portable package excludes private research notes and Git history dependencies", () => {

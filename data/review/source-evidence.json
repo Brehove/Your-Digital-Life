@@ -1,7 +1,7 @@
 {
-  "overlayVersion": "0.3.0",
-  "datasetVersion": "0.4.1",
-  "reviewedOn": "2026-07-14",
+  "overlayVersion": "1.0.0",
+  "datasetVersion": "1.0.0",
+  "reviewedOn": "2026-09-05",
   "status": "review-overlay",
   "compatibility": {
     "calculatorInput": false,
@@ -170,22 +170,22 @@
       "preciseLocators": [
         {
           "locator": "Estimating electricity per token",
-          "relevance": "Scales Epoch AI estimates using Anthropic token pricing ratios and explicit per-token assumptions."
+          "relevance": "Scales external energy estimates using token and pricing assumptions."
         },
         {
           "locator": "In context",
           "relevance": "Reports roughly 41 Wh for the author's median Claude Code session and roughly 1,300 Wh for a typical coding day."
         }
       ],
-      "measurementBoundary": "Personal napkin-math estimate of model-serving electricity derived from token logs, an external GPT-4o energy model, and pricing-based ratios; it is not a direct Anthropic infrastructure measurement.",
-      "workloadAndHardware": "The workload is one author's Claude Code usage with large contexts, tool calls, cache reads and writes, and Opus/Sonnet-era token patterns. Provider hardware is not observed.",
+      "measurementBoundary": "Personal modeled estimate of model-serving electricity from token logs; not a direct Anthropic infrastructure measurement.",
+      "workloadAndHardware": "One author's Claude Code usage with large contexts, tool calls, cache activity, and mixed models; provider hardware is not observed.",
       "geography": "No serving location or grid region is identified.",
-      "derivation": "The source reports approximately 41 Wh per median session and 1,300 Wh per typical coding day. The calculator's 325 Wh per hour equals 1,300 divided by four, but neither the source nor the frozen method records document a four-active-hour assumption. The calculator then adds a separate internal 30 Wh device allowance.",
+      "derivation": "Historical provenance only. The retired 325 Wh-per-hour row divided Couch's approximate 1,300 Wh-per-day estimate by an unsupported assumption of four active coding hours, then added an internal 30 Wh laptop allowance. Neither step supports the new request coefficient.",
       "limitations": [
-        "The author explicitly describes the calculation as napkin math.",
-        "Pricing ratios are used as proxies for energy ratios without provider validation.",
-        "One person's coding-agent logs are not representative of all agents, models, repositories, or users.",
-        "The calculator's hourly coefficient needs a reproducible bridge or a stronger primary measurement before it should be treated as more than illustrative."
+        "The author describes the calculation as napkin math.",
+        "Pricing ratios proxy for energy ratios without provider validation.",
+        "The source does not justify the retired row's four-hour divisor or laptop allowance.",
+        "One person's logs are not representative of all coding-agent workloads."
       ]
     },
     {
@@ -465,7 +465,9 @@
       "sourceId": "ippolito-what-uses-more",
       "citation": {
         "title": "What Uses More? AI Impact Calculator: sources",
-        "authors": ["Jon Ippolito"],
+        "authors": [
+          "Jon Ippolito"
+        ],
         "organization": "Learn with AI",
         "publishedDate": "2025-06-25",
         "url": "https://docs.google.com/spreadsheets/d/1xgvGhd6rmnBAEk9t2lesKlJeUy4TRQHrW6uWDSEVDFY/edit?gid=0#gid=0"
@@ -480,23 +482,32 @@
         {
           "locator": "Conversions sheet, cubic centimeters per watt-hour row",
           "relevance": "Selects 7 mL/Wh and explains the Google, Mistral, LBNL, and older water evidence considered."
+        },
+        {
+          "locator": "Measurements sheet, configured code example and paragraph example",
+          "relevance": "Provides distinct action/depth comparisons that prompted the coding-agent review; neither supplies the adopted 150 Wh request coefficient."
         }
       ],
       "measurementBoundary": "A teaching calculator synthesis that applies selected task-energy coefficients and a universal water conversion. Boundaries vary across the underlying sources and are not standardized into one measured production system.",
       "workloadAndHardware": "Workloads are named in the Measurements sheet. The image row is labeled 1024x1024, while hardware and runtime details depend on the cited underlying studies.",
       "geography": "The calculator includes location and climate modifiers, but its base task values combine studies with different or unspecified geographies.",
-      "derivation": "The source is recorded as explicit lineage and comparison evidence. It prompted replacement of the image coefficient, but the adopted 1.7 Wh value is attributed to the underlying IEA report. Its 7 mL/Wh water synthesis is documented but not adopted.",
+      "derivation": "The source is recorded as explicit lineage and comparison evidence. It prompted the image, water, and coding-agent reviews and supplies an action/depth comparison framework. Adopted physical values are attributed to their underlying evidence: IEA for image generation and Hausfather for the intensive coding request. Its 7 mL/Wh water synthesis is documented but not adopted.",
       "limitations": [
         "The selected 2 Wh image figure and 7 mL/Wh water coefficient are synthesis choices, not directly reported measurements.",
         "Several rationales rely on secondary summaries or shared AI transcripts.",
-        "The water derivation states 13 mL/Wh from Mistral, but the displayed 0.3 gCO2/Wh factor yields 11.84 mL/Wh."
+        "The water derivation states 13 mL/Wh from Mistral, but the displayed 0.3 gCO2/Wh factor yields 11.84 mL/Wh.",
+        "Its configured code example and paragraph example are different comparisons and do not justify a universal per-request coding coefficient."
       ]
     },
     {
       "sourceId": "iea-energy-and-ai",
       "citation": {
         "title": "Energy and AI",
-        "authors": ["Laura Cozzi", "Thomas Spencer", "Siddharth Singh"],
+        "authors": [
+          "Laura Cozzi",
+          "Thomas Spencer",
+          "Siddharth Singh"
+        ],
         "organization": "International Energy Agency",
         "publishedDate": "2025-04-10",
         "url": "https://www.iea.org/reports/energy-and-ai"
@@ -523,7 +534,10 @@
       "sourceId": "ml-energy-leaderboard",
       "citation": {
         "title": "The ML.ENERGY Leaderboard v3.0",
-        "authors": ["Jae-Won Chung", "Mosharaf Chowdhury"],
+        "authors": [
+          "Jae-Won Chung",
+          "Mosharaf Chowdhury"
+        ],
         "organization": "ML.ENERGY",
         "publishedDate": "2026-05-06",
         "url": "https://ml.energy/leaderboard/"
@@ -550,7 +564,10 @@
       "sourceId": "odonnell-ai-energy-footprint",
       "citation": {
         "title": "We did the math on AI's energy footprint. Here's the story you haven't heard",
-        "authors": ["James O'Donnell", "Casey Crownhart"],
+        "authors": [
+          "James O'Donnell",
+          "Casey Crownhart"
+        ],
         "organization": "MIT Technology Review",
         "publishedDate": "2025-05-20",
         "url": "https://www.technologyreview.com/2025/05/20/1116327/ai-energy-usage-climate-footprint-big-tech/"
@@ -577,7 +594,9 @@
       "sourceId": "mistral-environmental-standard",
       "citation": {
         "title": "Our contribution to a global environmental standard for AI",
-        "authors": ["Mistral AI"],
+        "authors": [
+          "Mistral AI"
+        ],
         "organization": "Mistral AI",
         "publishedDate": "2025-07-22",
         "url": "https://mistral.ai/news/our-contribution-to-a-global-environmental-standard-for-ai"
@@ -604,7 +623,9 @@
       "sourceId": "xbox-lab-platform-baselines",
       "citation": {
         "title": "Xbox Sustainability platform baselines",
-        "authors": ["Microsoft Xbox"],
+        "authors": [
+          "Microsoft Xbox"
+        ],
         "organization": "Microsoft Xbox",
         "publishedDate": "2026-03-04",
         "url": "https://learn.microsoft.com/en-us/xbox/sustainability/lab-platform-baselines"
@@ -635,7 +656,9 @@
       "sourceId": "xbox-global-platform-baselines",
       "citation": {
         "title": "Introduction to global platform baselines",
-        "authors": ["Microsoft Xbox"],
+        "authors": [
+          "Microsoft Xbox"
+        ],
         "organization": "Microsoft Xbox",
         "publishedDate": "2026-03-04",
         "url": "https://learn.microsoft.com/en-us/xbox/sustainability/global-platform-baselines"
@@ -666,7 +689,9 @@
       "sourceId": "activision-call-of-duty-matchmaking-ping",
       "citation": {
         "title": "Call of Duty Matchmaking Series: Ping",
-        "authors": ["Activision Publishing"],
+        "authors": [
+          "Activision Publishing"
+        ],
         "organization": "Activision Publishing",
         "publishedDate": "2024-04-04",
         "url": "https://research.activision.com/content/dam/atvi/activision/atvi-touchui/research/publications/docs/Call-of-Duty-Matchmaking-Series-PING.pdf"
@@ -697,7 +722,11 @@
       "sourceId": "mytton-network-power-model",
       "citation": {
         "title": "Network energy use not directly proportional to data volume",
-        "authors": ["David Mytton", "Dag Lundén", "Jens Malmodin"],
+        "authors": [
+          "David Mytton",
+          "Dag Lund\u00e9n",
+          "Jens Malmodin"
+        ],
         "organization": "Journal of Industrial Ecology",
         "publishedDate": "2024-06-21",
         "doi": "10.1111/jiec.13512",
@@ -730,7 +759,9 @@
       "sourceId": "energy-star-certified-televisions",
       "citation": {
         "title": "ENERGY STAR Certified Televisions",
-        "authors": ["U.S. Environmental Protection Agency"],
+        "authors": [
+          "U.S. Environmental Protection Agency"
+        ],
         "organization": "U.S. Environmental Protection Agency",
         "publishedDate": "2024-04-18",
         "url": "https://catalog.data.gov/dataset/energy-star-certified-televisions"
@@ -757,7 +788,12 @@
       "sourceId": "lyu-cloud-gaming-network-anatomy",
       "citation": {
         "title": "Network Anatomy and Real-Time Measurement of Nvidia GeForce NOW Cloud Gaming",
-        "authors": ["Minzhao Lyu", "Sharat Chandra Madanapalli", "Arun Vishwanath", "Vijay Sivaraman"],
+        "authors": [
+          "Minzhao Lyu",
+          "Sharat Chandra Madanapalli",
+          "Arun Vishwanath",
+          "Vijay Sivaraman"
+        ],
         "organization": "Passive and Active Measurement Conference",
         "publishedDate": "2024-03-20",
         "doi": "10.1007/978-3-031-56249-5_3",
@@ -786,7 +822,9 @@
       "sourceId": "playfab-multiplayer-servers",
       "citation": {
         "title": "PlayFab Multiplayer Server terms",
-        "authors": ["Microsoft PlayFab"],
+        "authors": [
+          "Microsoft PlayFab"
+        ],
         "organization": "Microsoft PlayFab",
         "publishedDate": "2026-03-10",
         "url": "https://learn.microsoft.com/en-us/gaming/playfab/multiplayer/servers/server-terms"
@@ -811,6 +849,41 @@
         "There is no evidence that Call of Duty uses PlayFab.",
         "No host power, utilization, server density, or per-player energy is reported.",
         "This source cannot independently validate the 1 Wh server-IT coefficient."
+      ]
+    },
+    {
+      "sourceId": "hausfather-agentic-ai",
+      "citation": {
+        "title": "The real energy use of agentic AI",
+        "authors": [
+          "Zeke Hausfather"
+        ],
+        "organization": "The Climate Brink",
+        "publishedDate": "2026-08-05",
+        "url": "https://www.theclimatebrink.com/p/the-real-energy-use-of-agentic-ai"
+      },
+      "evidenceType": "modeled-estimate",
+      "reviewStatus": "reviewed-with-limitations",
+      "preciseLocators": [
+        {
+          "locator": "Opening summary and Measuring my own footprint",
+          "relevance": "Reports 1,138 typed human prompts, more than 14,000 model calls, 3.2 billion tokens, and a central modeled estimate of 170 kWh across eight weeks."
+        },
+        {
+          "locator": "Footnotes 1 and 2",
+          "relevance": "Documents deduplication by API message ID and the central 10% cache-read energy assumption with a 1% to 25% sensitivity band."
+        }
+      ],
+      "measurementBoundary": "Modeled data-center electricity associated with the author's Claude Code logs after repeated model-call usage records were deduplicated by API message ID. Automatic model and subagent calls are represented in the usage logs; external tool execution, laptop, network, training, and embodied energy are not separately quantified.",
+      "workloadAndHardware": "Eight weeks of one intensive user's Claude Code work produced 1,138 human prompts, more than 14,000 model calls, and 3.2 billion tokens. The analysis applies three published energy methodologies; exact Claude model versions, mix, and provider hardware are not fully disclosed.",
+      "geography": "Data-center locations and electricity supplies are undisclosed. The energy result is electricity only; the article applies a U.S.-average grid later for emissions context.",
+      "derivation": "The calculator computes 170,000 Wh / 1,138 human prompts = 149.38 Wh and rounds to 150 Wh per request. It does not turn the source's roughly 60 to 290 Wh sensitivity band into a user confidence interval.",
+      "limitations": [
+        "Only token counts are directly logged; electricity is modeled from published factors and assumptions rather than measured at Anthropic facilities.",
+        "Cache-read energy is uncertain; the central result uses 10% of fresh-input energy while the sensitivity tests 1% to 25%.",
+        "One intensive software engineer's usage is not representative of all users, agents, models, repositories, or tasks.",
+        "The source does not establish a duration or completed-task outcome for one human prompt.",
+        "Exact model versions and mix are not sufficiently reported for model-specific selectors."
       ]
     }
   ]

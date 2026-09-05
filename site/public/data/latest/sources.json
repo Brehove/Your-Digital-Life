@@ -95,7 +95,7 @@
       "Simon P. Couch"
     ],
     "id": "simon-couch-coding-agent",
-    "notes": "Useful for the vibe-coding scenario but should remain marked as estimated and napkin-math-derived.",
+    "notes": "Historical provenance for the retired hourly coding-agent row. Couch's personal token-log analysis remains illustrative evidence, but it does not support the former undocumented four-hour normalization or the new request coefficient.",
     "order": 5,
     "organization": "Simon P. Couch",
     "publishedDate": "2026-01-20",
@@ -103,14 +103,14 @@
     "sourceType": "Expert analysis",
     "tags": [
       "scenarios",
-      "prompting"
+      "prompting",
+      "historical provenance"
     ],
     "title": "Electricity use of AI coding agents",
     "url": "https://www.simonpcouch.com/blog/2026-01-20-cc-impact/",
     "usedFor": [
-      "coding-agent use row",
-      "Gen Z vibe-coder preset",
-      "cloud-side versus total-system bridge for high-intensity AI use"
+      "historical provenance for the retired coding-agent hour row",
+      "comparison context for variation in coding-agent workloads"
     ]
   },
   {
@@ -270,7 +270,7 @@
       "Jon Ippolito"
     ],
     "id": "ippolito-what-uses-more",
-    "notes": "External comparison and provenance source. Ippolito's spreadsheet prompted the image and water review, but underlying studies remain the evidentiary authority for adopted values.",
+    "notes": "External comparison and provenance source. Ippolito's spreadsheet prompted the image, water, and coding-agent review and supplies the action/depth comparison framework; underlying studies remain the evidentiary authority for adopted physical values. Its configured coding example and paragraph example are distinct and neither supplies the new 150 Wh request coefficient.",
     "order": 13,
     "organization": "Learn with AI",
     "publishedDate": "2025-06-25",
@@ -279,13 +279,15 @@
     "tags": [
       "comparators",
       "prompting",
-      "water"
+      "water",
+      "coding agents"
     ],
     "title": "What Uses More? AI Impact Calculator: sources",
     "url": "https://docs.google.com/spreadsheets/d/1xgvGhd6rmnBAEk9t2lesKlJeUy4TRQHrW6uWDSEVDFY/edit?gid=0#gid=0",
     "usedFor": [
       "provenance for the image-generation evidence review",
-      "external comparison for the generic water-conversion method"
+      "external comparison for the generic water-conversion method",
+      "discovery trail and action/depth framework for coding-agent comparisons"
     ]
   },
   {
@@ -535,6 +537,29 @@
     "usedFor": [
       "generic multiplayer-server architecture analogy",
       "gaming-console method"
+    ]
+  },
+  {
+    "authors": [
+      "Zeke Hausfather"
+    ],
+    "id": "hausfather-agentic-ai",
+    "notes": "Primary modeled evidence for the intensive coding-agent request example. The article reports 170 kWh across 1,138 typed human prompts from eight weeks of the author's Claude Code logs, with more than 14,000 model calls and 3.2 billion tokens. Repeated usage records were deduplicated by API message ID. The central estimate depends on published energy methods and a 10% cache-read energy assumption; the 1% to 25% cache sensitivity yields about 60 to 290 Wh per prompt. Exact Claude model versions and mix are not fully reported, no request duration is assigned, and one intensive user's Claude Code workload is not a generic average.",
+    "order": 25,
+    "organization": "The Climate Brink",
+    "publishedDate": "2026-08-05",
+    "sourceTier": "Tier 2",
+    "sourceType": "Primary usage logs with modeled electricity",
+    "tags": [
+      "coding agents",
+      "modeled energy",
+      "prompting"
+    ],
+    "title": "The real energy use of agentic AI",
+    "url": "https://www.theclimatebrink.com/p/the-real-energy-use-of-agentic-ai",
+    "usedFor": [
+      "intensive coding-agent request energy reference",
+      "human-request counting rule and automatic-agent-work boundary"
     ]
   }
 ]

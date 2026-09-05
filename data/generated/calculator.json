@@ -65,33 +65,30 @@
     },
     {
       "category": "AI tasks",
-      "defaultDeviceId": "laptop",
-      "deviceMode": "fixed",
-      "deviceNote": "Keep this fixed to a laptop-style coding session unless stronger desktop or thin-client evidence appears.",
-      "deviceSelectableIds": [
-        "laptop"
-      ],
-      "deviceSelectionAffects": [
-        "totalWhPerUnit"
-      ],
-      "deviceTotalWhOverrides": {
-        "laptop": 355
-      },
-      "directWaterMlPerUnit": 325,
-      "id": "vibe-coding",
-      "label": "Coding-agent use",
-      "note": "Uses the current one-hour coding-agent benchmark and adds a 30 Wh device allowance in the total-system column.",
-      "serverWhPerUnit": 325,
+      "deviceMode": "not-modeled",
+      "deviceNote": "No end-user device energy is added. Equal cloud/source and total-system values mean that the user's computer is outside the quantified boundary, not that it uses no electricity.",
+      "directWaterBoundary": "Project scenario applying 1 mL of direct cooling water per Wh of modeled coding-agent data-center electricity.",
+      "directWaterMlPerUnit": 150,
+      "displayQualifier": "Intensive-use example",
+      "id": "coding-agent-requests-intensive",
+      "label": "Coding-agent requests",
+      "note": "Intensive-use example based on Hausfather's modeled 170 kWh across 1,138 human Claude Code prompts: 149.38 Wh per prompt, rounded to 150 Wh per request. Water applies the project's inferred 1 mL/Wh direct and 6 mL/Wh broader conversions. This is one heavy user's modeled workload, not a generic request average.",
+      "serverEnergyBoundary": "Modeled data-center electricity for model calls triggered by one human coding-agent message, including automatic model and subagent calls represented in the usage logs. Separate human follow-ups count as new requests. External tool execution, network, and end-user device energy are not separately quantified.",
+      "serverWhPerUnit": 150,
+      "shortLabel": "Coding agent (intensive)",
       "sourceIds": [
-        "simon-couch-coding-agent",
+        "hausfather-agentic-ai",
+        "ippolito-what-uses-more",
         "scenario-methods"
       ],
-      "status": "estimated",
-      "step": 0.25,
-      "totalWaterMlPerUnit": 1950,
-      "totalWhPerUnit": 355,
-      "unitHint": "Hours of sustained agent use, not prompts",
-      "unitLabel": "hours"
+      "status": "inferred",
+      "step": 1,
+      "totalEnergyBoundary": "Same quantified data-center electricity as the cloud/source field; end-user device, network, embodied, and training energy are unquantified rather than zero.",
+      "totalWaterBoundary": "Project scenario applying 6 mL of broader water per Wh of modeled coding-agent data-center electricity; this total includes the direct-water amount.",
+      "totalWaterMlPerUnit": 900,
+      "totalWhPerUnit": 150,
+      "unitHint": "Count messages you send, including follow-ups. Automatic agent steps are included.",
+      "unitLabel": "requests"
     },
     {
       "category": "Media and search",
@@ -421,7 +418,7 @@
       "note": "Fixed reference bundle using the Series X global shooter average and one ENERGY STAR-certified 54.7-inch television; this is not a selectable or market-average device profile."
     }
   ],
-  "lastReviewed": "2026-07-23",
+  "lastReviewed": "2026-09-05",
   "methodSections": [
     {
       "id": "boundary-rules",
@@ -641,6 +638,8 @@
         "The current model rounds direct cooling water to roughly 1 mL per Wh of server energy and total water to roughly 6 mL per Wh once indirect electricity water is added back.",
         "Text prompts keep their own prompt-specific direct and total water values instead of using the generic 1-to-6 rule.",
         "Reasoning prompts, image generation, social video, streaming, browsing, and Zoom rows currently follow the broader proportional water rule unless a stronger prompt-specific figure exists.",
+        "The intensive coding-agent request row also uses this shared project scenario: 150 mL direct water and 900 mL broader water per request from its 150 Wh modeled energy value.",
+        "Applying the generic bridge to coding-agent electricity assumes the same average cooling and electricity-water intensities. It is not a provider-specific measurement, does not adopt Jon Ippolito's 7 mL/Wh choice, and adds no new PUE adjustment.",
         "Jon Ippolito's What Uses More? spreadsheet prompted a review of the generic coefficient. Its 7 mL/Wh selection is retained here as comparative synthesis, not adopted as a measured value.",
         "Using the spreadsheet's stated 0.3 gCO2/Wh factor, Mistral's 45 mL and 1.14 gCO2e figures imply 11.84 mL/Wh, not 13 mL/Wh. The current 6 mL/Wh broader-water rule therefore remains unchanged pending a boundary-matched source."
       ],
@@ -693,7 +692,7 @@
               "Your Digital Life generic bridge",
               "1 mL/Wh direct; 6 mL/Wh broader",
               "Applied to the calculator's row-specific cloud-side energy field",
-              "Retained for v0.2.0 pending stronger activity-specific evidence"
+              "Retained pending stronger activity-specific evidence"
             ]
           ],
           "title": "Evidence considered in the 2026 water-method review"
@@ -743,11 +742,11 @@
               "Used for both meeting rows"
             ],
             [
-              "Coding-agent use",
-              "325 mL per hour",
-              "1,950 mL per hour",
-              "1:6 water bridge",
-              "325 x 6 = 1,950"
+              "Coding-agent requests (intensive-use example)",
+              "150 mL per request",
+              "900 mL per request",
+              "150 Wh request row with the project's 1:6 water bridge",
+              "150 x 1 = 150 direct; 150 x 6 = 900 broader, including direct water"
             ],
             [
               "Gaming Console (Xbox Series X + TV)",
@@ -819,12 +818,12 @@
       "notes": [
         "Gen Z (Gamer) uses the non-AI student scenario as its base, stores the phone-versus-laptop split used in Section 3, and adds one hour of the fixed Xbox Series X plus television gaming reference.",
         "Gen Z (moderate AI use) uses the scenario's prompt, image, media, and Zoom quantities, then stores a laptop browsing bundle because the calculator still treats homework and browsing as one row.",
-        "Gen Z (vibe coder) uses the scenario's actual quantities, including 8 high-reasoning prompts, and stores the scenario's phone, laptop, and coding-agent device context for future UI use.",
+        "Gen Z (vibe coder) represents 15 illustrative agentic tasks as 15 human coding-agent requests under the calculator's evidence denominator; it does not claim 15 verified completed tasks. It keeps its 8 high-reasoning prompts and 15 text prompts as separate interactions and stores device context only for rows whose device energy is modeled.",
         "Worker (hosts Zoom meetings) stores TV Netflix, phone Instagram, laptop browsing, and the hosted-meeting device bundle even though the live row remains fixed."
       ],
       "sourceIds": [
         "scenario-methods",
-        "simon-couch-coding-agent",
+        "hausfather-agentic-ai",
         "mytton-zoom"
       ],
       "summary": "The presets use the four Section 3 scenarios as their names and activity patterns, apply the intended device context in the live device-aware streaming rows, and let maintained starter mixes add clearly identified calculator activities.",
@@ -855,9 +854,9 @@
             [
               "Gen Z (vibe coder)",
               "Scenario 3 in Section 3",
-              "1 coding-agent hour, 8 reasoning prompts, 15 text prompts, 2 images, 0.25 TikTok, 1 YouTube, 0.75 Netflix, 1 browsing block, 1 Zoom participant",
-              "Laptop coding, phone TikTok, phone YouTube, laptop Netflix, laptop browsing, laptop Zoom",
-              "Uses the scenario's actual prompt counts under the live calculator's heavier reasoning row"
+              "15 illustrative agentic tasks counted as 15 human coding-agent requests, 8 reasoning prompts, 15 text prompts, 2 images, 0.25 TikTok, 1 YouTube, 0.75 Netflix, 1 browsing block, 1 Zoom participant",
+              "Phone TikTok, phone YouTube, laptop Netflix, laptop browsing, laptop Zoom; no coding device modeled",
+              "Uses requests as the evidenced denominator and does not treat the illustrative tasks as verified completed outcomes"
             ],
             [
               "Worker (hosts Zoom meetings)",
@@ -1103,6 +1102,64 @@
         }
       ],
       "title": "Gaming Console (Xbox Series X + TV) method"
+    },
+    {
+      "id": "coding-agent-request-method",
+      "notes": [
+        "Functional unit: one human message sent to a coding agent. Count initial instructions, follow-ups, corrections, and unsuccessful requests. Each human follow-up is a new request. Do not count automatic model or subagent calls separately because they are represented in the usage logs; external tool execution itself is not separately quantified.",
+        "Energy arithmetic: 170,000 Wh / 1,138 typed human prompts = 149.38 Wh per prompt, rounded to 150 Wh per request for the calculator. Repeated model-call usage records were deduplicated by API message ID; the human-prompt denominator is not described as deduplicated.",
+        "The source's roughly 60 to 290 Wh per-prompt sensitivity reflects alternative modeling and cache assumptions. It is not a confidence interval for users and is not used as a generic population range.",
+        "The source workload is one intensive user's Claude Code use. Exact model versions and mix are not fully disclosed, no duration is assigned to a request, and the row does not claim a completed task or comparable outcome.",
+        "Water arithmetic transfers the project's existing AI water scenario: 150 Wh x 1 mL/Wh = 150 mL direct water; 150 Wh x 6 mL/Wh = 900 mL broader water. Broader water includes direct water, so the two values are not added.",
+        "The water transfer assumes the project's average cooling and electricity-water intensities apply to this modeled coding electricity. It is inferred teaching arithmetic, not provider-specific measurement or a coefficient reported by Hausfather or Ippolito.",
+        "Both energy columns remain 150 Wh because no additional end-user device or network energy is quantified. Missing components are outside the boundary rather than zero."
+      ],
+      "sourceIds": [
+        "hausfather-agentic-ai",
+        "ippolito-what-uses-more",
+        "scenario-methods",
+        "schneider-google-scale",
+        "lbnl-data-center-report"
+      ],
+      "summary": "The intensive coding-agent row counts human requests and rounds a modeled 149.38 Wh-per-prompt result to 150 Wh, then applies the project's existing inferred direct and broader water conversions.",
+      "tables": [
+        {
+          "columns": [
+            "Quantity",
+            "Calculation",
+            "Published value",
+            "Boundary"
+          ],
+          "rows": [
+            [
+              "Cloud/source energy",
+              "170,000 Wh / 1,138 human prompts = 149.38 Wh",
+              "150 Wh per request",
+              "Modeled data-center electricity represented in the author's deduplicated Claude Code logs"
+            ],
+            [
+              "Quantified broader energy",
+              "No additional device or network component modeled",
+              "150 Wh per request",
+              "Same quantified data-center electricity; omitted components are unquantified"
+            ],
+            [
+              "Direct water",
+              "150 Wh x 1 mL/Wh",
+              "150 mL per request",
+              "Transferred project direct-cooling scenario"
+            ],
+            [
+              "Broader water",
+              "150 Wh x 6 mL/Wh",
+              "900 mL per request",
+              "Transferred project broader-water scenario including direct water"
+            ]
+          ],
+          "title": "Intensive coding-agent request derivation"
+        }
+      ],
+      "title": "Coding-agent request method"
     }
   ],
   "presets": [
@@ -1162,12 +1219,11 @@
       }
     },
     {
-      "description": "Section 3 scenario with one hour of coding-agent use, reasoning queries, and reduced media time.",
+      "description": "Section 3 scenario with 15 illustrative agentic tasks, counted as 15 human coding-agent requests, plus separate reasoning and text requests and reduced media time.",
       "deviceSelections": {
         "cloud-docs-browsing": "laptop",
         "netflix": "laptop",
         "tiktok": "phone",
-        "vibe-coding": "laptop",
         "youtube": "phone",
         "zoom-participant": "laptop"
       },
@@ -1175,12 +1231,12 @@
       "label": "Gen Z (vibe coder)",
       "values": {
         "cloud-docs-browsing": 1,
+        "coding-agent-requests-intensive": 15,
         "image-generation": 2,
         "netflix": 0.75,
         "reasoning-prompts": 8,
         "text-prompts": 15,
         "tiktok": 0.25,
-        "vibe-coding": 1,
         "youtube": 1,
         "zoom-participant": 1
       }
@@ -1296,21 +1352,21 @@
         "Simon P. Couch"
       ],
       "id": "simon-couch-coding-agent",
-      "notes": "Useful for the vibe-coding scenario but should remain marked as estimated and napkin-math-derived.",
+      "notes": "Historical provenance for the retired hourly coding-agent row. Couch's personal token-log analysis remains illustrative evidence, but it does not support the former undocumented four-hour normalization or the new request coefficient.",
       "organization": "Simon P. Couch",
       "publishedDate": "2026-01-20",
       "sourceTier": "Tier 3",
       "sourceType": "Expert analysis",
       "tags": [
         "scenarios",
-        "prompting"
+        "prompting",
+        "historical provenance"
       ],
       "title": "Electricity use of AI coding agents",
       "url": "https://www.simonpcouch.com/blog/2026-01-20-cc-impact/",
       "usedFor": [
-        "coding-agent use row",
-        "Gen Z vibe-coder preset",
-        "cloud-side versus total-system bridge for high-intensity AI use"
+        "historical provenance for the retired coding-agent hour row",
+        "comparison context for variation in coding-agent workloads"
       ]
     },
     {
@@ -1463,7 +1519,7 @@
         "Jon Ippolito"
       ],
       "id": "ippolito-what-uses-more",
-      "notes": "External comparison and provenance source. Ippolito's spreadsheet prompted the image and water review, but underlying studies remain the evidentiary authority for adopted values.",
+      "notes": "External comparison and provenance source. Ippolito's spreadsheet prompted the image, water, and coding-agent review and supplies the action/depth comparison framework; underlying studies remain the evidentiary authority for adopted physical values. Its configured coding example and paragraph example are distinct and neither supplies the new 150 Wh request coefficient.",
       "organization": "Learn with AI",
       "publishedDate": "2025-06-25",
       "sourceTier": "Tier 3",
@@ -1471,13 +1527,15 @@
       "tags": [
         "comparators",
         "prompting",
-        "water"
+        "water",
+        "coding agents"
       ],
       "title": "What Uses More? AI Impact Calculator: sources",
       "url": "https://docs.google.com/spreadsheets/d/1xgvGhd6rmnBAEk9t2lesKlJeUy4TRQHrW6uWDSEVDFY/edit?gid=0#gid=0",
       "usedFor": [
         "provenance for the image-generation evidence review",
-        "external comparison for the generic water-conversion method"
+        "external comparison for the generic water-conversion method",
+        "discovery trail and action/depth framework for coding-agent comparisons"
       ]
     },
     {
@@ -1716,6 +1774,28 @@
       "usedFor": [
         "generic multiplayer-server architecture analogy",
         "gaming-console method"
+      ]
+    },
+    {
+      "authors": [
+        "Zeke Hausfather"
+      ],
+      "id": "hausfather-agentic-ai",
+      "notes": "Primary modeled evidence for the intensive coding-agent request example. The article reports 170 kWh across 1,138 typed human prompts from eight weeks of the author's Claude Code logs, with more than 14,000 model calls and 3.2 billion tokens. Repeated usage records were deduplicated by API message ID. The central estimate depends on published energy methods and a 10% cache-read energy assumption; the 1% to 25% cache sensitivity yields about 60 to 290 Wh per prompt. Exact Claude model versions and mix are not fully reported, no request duration is assigned, and one intensive user's Claude Code workload is not a generic average.",
+      "organization": "The Climate Brink",
+      "publishedDate": "2026-08-05",
+      "sourceTier": "Tier 2",
+      "sourceType": "Primary usage logs with modeled electricity",
+      "tags": [
+        "coding agents",
+        "modeled energy",
+        "prompting"
+      ],
+      "title": "The real energy use of agentic AI",
+      "url": "https://www.theclimatebrink.com/p/the-real-energy-use-of-agentic-ai",
+      "usedFor": [
+        "intensive coding-agent request energy reference",
+        "human-request counting rule and automatic-agent-work boundary"
       ]
     }
   ],

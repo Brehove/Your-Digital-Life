@@ -1,0 +1,44 @@
+{
+  "behaviorChanges": true,
+  "changes": [
+    "Replaced the live vibe-coding hourly row with coding-agent-requests-intensive, an explicitly qualified per-human-request activity.",
+    "Adopted 150 Wh per request from 170,000 Wh divided by 1,138 typed human prompts in Hausfather's modeled intensive Claude Code workload; automatic model and subagent calls represented in the logs remain inside that denominator.",
+    "Applied the existing inferred AI water scenario to the new row: 150 mL direct and 900 mL broader water per request, with broader water including direct water.",
+    "Removed the historical 30 Wh laptop increment and coding-device preset selection; omitted device, network, external tool execution, training, and embodied energy remain unquantified.",
+    "Changed the Gen Z vibe-coder starter from one coding-agent hour to 15 illustrative agentic tasks, counted as 15 human coding-agent requests without claiming verified completed outcomes, while preserving all other quantities and device selections.",
+    "Added optional activity displayQualifier and shortLabel fields, the requests unit, the operational-coding-request boundary, and an optional display_qualifier CSV column.",
+    "Preserved Couch as historical provenance and credited Ippolito separately for the discovery trail and action/depth framework; neither supplies the adopted 150 Wh coefficient.",
+    "Preserved all immutable v0.1.0 through v0.4.1 exports and release history."
+  ],
+  "collectionChanges": {
+    "activities": {
+      "added": ["coding-agent-requests-intensive"],
+      "modified": [],
+      "removed": ["vibe-coding"]
+    },
+    "sources": {
+      "added": ["hausfather-agentic-ai"],
+      "modified": ["ippolito-what-uses-more", "simon-couch-coding-agent"],
+      "removed": []
+    },
+    "deviceProfiles": {"added": [], "modified": [], "removed": []},
+    "presets": {"added": [], "modified": ["gen-z-vibe-coder"], "removed": []},
+    "methodSections": {
+      "added": ["coding-agent-request-method"],
+      "modified": ["preset-notes", "water-method"],
+      "removed": []
+    },
+    "externalComparisons": {
+      "added": ["ippolito-coding-request-energy-2026-09", "ippolito-coding-request-water-2026-09"],
+      "modified": [],
+      "removed": []
+    }
+  },
+  "previousSchemaVersion": "0.3.0",
+  "previousVersion": "0.4.1",
+  "releasedOn": "2026-09-05",
+  "schemaVersion": "1.0.0",
+  "scientificImpact": "The live coding activity changes from an unsupported hourly normalization to an intensive per-human-request modeled example. Energy is 150 Wh per request; direct and broader water are inferred project scenarios of 150 mL and 900 mL. The reference is not a generic user average or direct provider measurement.",
+  "summary": "Replaces the hourly coding-agent row with a qualified intensive per-request example and updates its evidence, water scenario, and starter preset.",
+  "version": "1.0.0"
+}

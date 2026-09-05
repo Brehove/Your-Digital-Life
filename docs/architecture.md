@@ -42,6 +42,11 @@ export. Added, modified, and removed stable IDs must match the current release
 decision exactly. Historical version directories and archives remain
 byte-identical while `latest/` advances.
 
+Activity records may include `displayQualifier` for a visible qualification and
+`shortLabel` for compact presentation. The portable activities CSV carries the
+qualification as the optional `display_qualifier` column so consumers do not
+lose a material boundary caveat when using the tabular export.
+
 ## Public contribution flow
 
 GitHub Issues and Discussions collect evidence and scope proposals. Pull

@@ -220,6 +220,9 @@ export function computePresetTotals(calculator, presetId) {
 
   for (const activity of calculator.activities) {
     const quantity = preset.values[activity.id] ?? 0;
+    if (activity.unitLabel === "requests" && (!Number.isInteger(quantity) || quantity < 0)) {
+      throw new Error(`${preset.id}.${activity.id} requires a nonnegative whole request count`);
+    }
     const selectedDevice =
       preset.deviceSelections[activity.id] ??
       activity.defaultDeviceId ??

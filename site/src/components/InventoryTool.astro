@@ -26,7 +26,7 @@ function displayGroup(activity: CalculatorActivity) {
 }
 const activityIcons: Record<string, string> = {
   "text-prompts": "sparkle", "reasoning-prompts": "brain", "image-generation": "image",
-  "vibe-coding": "terminal", tiktok: "tiktok", instagram: "instagram", snapchat: "snapchat",
+  "coding-agent-requests-intensive": "terminal", "vibe-coding": "terminal", tiktok: "tiktok", instagram: "instagram", snapchat: "snapchat",
   youtube: "youtube", netflix: "netflix", "cloud-docs-browsing": "globe",
   "gaming-console-xbox-series-x": "xbox", "zoom-participant": "video-camera", "zoom-host": "video-camera"
 };
@@ -35,6 +35,13 @@ function baseUnit(activity: CalculatorActivity) {
   if (activity.id === "gaming-console-xbox-series-x") return "player-hour";
   if (activity.unitLabel === "hours") return "hour";
   return activity.unitLabel.endsWith("s") ? activity.unitLabel.slice(0, -1) : activity.unitLabel;
+}
+function displayBaseRate(activity: CalculatorActivity) {
+  const prefix = activity.id === "coding-agent-requests-intensive" ? "~" : "";
+  return `${prefix}${activity.totalWhPerUnit} Wh`;
+}
+function accessibleActivityLabel(activity: CalculatorActivity) {
+  return `${activity.label}${activity.displayQualifier ? `, ${activity.displayQualifier}` : ""}`;
 }
 function activitySources(activity: CalculatorActivity) {
   return resolveCalculatorSources(activity.sourceIds, sourceMap, `calculator row "${activity.label}"`);
@@ -82,21 +89,27 @@ const payload = JSON.stringify({ activities, presets, devices }).replace(/</g, "
                   <article class="ydl-activity" data-activity={activity.id} data-group-id={group.id}>
                     <div class="ydl-activity-title">
                       <span class="ydl-icon" data-icon={activityIcons[activity.id]} aria-hidden="true"></span>
-                      <div><h3>{activity.label}</h3><p>{activity.unitHint}</p></div>
+                      <div>
+                        <h3>{activity.label}</h3>
+                        {activity.displayQualifier && <p class="ydl-qualifier">{activity.displayQualifier}</p>}
+                        <p id={`ydl-hint-${activity.id}`} class:list={{ "ydl-helper": Boolean(activity.displayQualifier) }}>{activity.unitHint}</p>
+                      </div>
                     </div>
                     <div class="ydl-base">
                       <b>Base</b>
-                      <span>1 {baseUnit(activity)} · <strong data-base-rate={activity.id}>{activity.totalWhPerUnit} Wh</strong>{" "}
-                        per {baseUnit(activity)}{activity.id === "image-generation" ? " · GPU-only floor" : ""}</span>
+                      <span>1 {baseUnit(activity)} · <strong data-base-rate={activity.id}>{displayBaseRate(activity)}</strong>{" "}
+                        {activity.id !== "coding-agent-requests-intensive" && <>per {baseUnit(activity)}</>}
+                        {activity.id === "image-generation" ? " · GPU-only floor" : ""}</span>
                     </div>
                     <div class="ydl-controls">
                       <div class="ydl-stepper">
                         <button type="button" data-step-down={activity.id} aria-label={`Decrease ${activity.label}`}>−</button>
                         <input id={`ydl-${activity.id}`} type="number" min="0" step={activity.step} value="0"
-                          inputmode="decimal" data-activity-input={activity.id} aria-label={activity.label}
-                          aria-describedby={`ydl-unit-${activity.id} ydl-base-help`} />
+                          inputmode={activity.unitLabel === "requests" ? "numeric" : "decimal"} data-activity-input={activity.id}
+                          aria-label={accessibleActivityLabel(activity)}
+                          aria-describedby={`ydl-unit-${activity.id} ydl-hint-${activity.id} ydl-base-help`} />
                         <button type="button" data-step-up={activity.id} aria-label={`Increase ${activity.label}`}>+</button>
-                        <span id={`ydl-unit-${activity.id}`}>{activity.unitLabel}</span>
+                        <span id={`ydl-unit-${activity.id}`} data-unit-label={activity.id}>{activity.unitLabel}</span>
                       </div>
                       {activity.deviceMode === "selectable" && activity.deviceSelectableIds.length > 0 && (
                         <select aria-label={`${activity.label} device`} data-device-select={activity.id}>
@@ -113,7 +126,7 @@ const payload = JSON.stringify({ activities, presets, devices }).replace(/</g, "
                         : `Device · ${defaultDevice?.label ?? "Fixed reference"} (fixed)`}</span>
                       <button type="button" class:list={["ydl-badge", `is-${activity.status}`]}
                         data-open-detail={activity.id}
-                        aria-label={`${activity.label}: ${activity.status}. View sources and assumptions`}>
+                        aria-label={`${accessibleActivityLabel(activity)}: ${activity.status}. View sources and assumptions`}>
                         {activity.status}<span aria-hidden="true"> ↗</span>
                       </button>
                     </div>
@@ -122,7 +135,10 @@ const payload = JSON.stringify({ activities, presets, devices }).replace(/</g, "
                         <h2 id={`ydl-detail-title-${activity.id}`}>{activity.label}</h2>
                         <button type="button" data-close-detail aria-label="Close sources and assumptions">Close ×</button>
                       </div>
-                      <p class="ydl-detail-status">{activity.status} · Base unit: 1 {baseUnit(activity)}</p>
+                      <p class="ydl-detail-status">
+                        {activity.status} · Base unit: 1 {baseUnit(activity)}
+                        {activity.id === "coding-agent-requests-intensive" && <> · Broader-system reference: {displayBaseRate(activity)}</>}
+                      </p>
                       <p>{activity.note}</p>
                       <dl class="ydl-detail-values">
                         <div><dt>Selected quantity</dt><dd data-detail-value="quantity">0 {activity.unitLabel}</dd></div>
@@ -219,18 +235,22 @@ const payload = JSON.stringify({ activities, presets, devices }).replace(/</g, "
     const formatter = new Intl.NumberFormat("en-US", { maximumFractionDigits: 2 });
     const cupFormatter = new Intl.NumberFormat("en-US", { maximumFractionDigits: 1 });
     const iconNames = {
-      "text-prompts":"sparkle","reasoning-prompts":"brain","image-generation":"image","vibe-coding":"terminal",
+      "text-prompts":"sparkle","reasoning-prompts":"brain","image-generation":"image","coding-agent-requests-intensive":"terminal","vibe-coding":"terminal",
       tiktok:"tiktok",instagram:"instagram",snapchat:"snapchat",youtube:"youtube",netflix:"netflix",
       "cloud-docs-browsing":"globe","gaming-console-xbox-series-x":"xbox","zoom-participant":"video-camera","zoom-host":"video-camera"
     };
     const shortLabels = {"text-prompts":"Text prompts","reasoning-prompts":"High-reasoning","image-generation":"Images",
-      "vibe-coding":"Coding agent","cloud-docs-browsing":"Browsing","gaming-console-xbox-series-x":"Gaming console",
+      "coding-agent-requests-intensive":"Coding agent (intensive)","vibe-coding":"Coding agent","cloud-docs-browsing":"Browsing","gaming-console-xbox-series-x":"Gaming console",
       "zoom-participant":"Zoom participant","zoom-host":"Zoom host",tiktok:"TikTok",instagram:"Instagram",
       snapchat:"Snapchat",youtube:"YouTube",netflix:"Netflix"};
     const groupFor = (activity) => activity.id === "cloud-docs-browsing" || activity.category === "Meetings" ? "work"
       : activity.category === "Media and search" ? "media" : activity.category === "Gaming" ? "gaming" : "ai";
     let driverMode = "totalEnergy", computed = [];
     const format = (value) => formatter.format(value);
+    const unitLabel = (activity, quantity) => quantity === 1
+      ? (activity.unitLabel.endsWith("s") ? activity.unitLabel.slice(0, -1) : activity.unitLabel)
+      : activity.unitLabel;
+    const wholeRequests = (activity) => activity?.unitLabel === "requests";
     const metricHtml = (value, unit) => `${format(value)} <small>${unit}</small>`;
     const selectedDevice = (activity) => root.querySelector(`[data-device-select="${activity.id}"]`)?.value
       || activity.defaultDeviceId || activity.deviceSelectableIds?.[0] || null;
@@ -263,7 +283,7 @@ const payload = JSON.stringify({ activities, presets, devices }).replace(/</g, "
         const item = document.createElement("li"); item.dataset.group = groupFor(row);
         const icon = document.createElement("span"); icon.className = "ydl-icon";
         icon.dataset.icon = iconNames[row.id]; icon.setAttribute("aria-hidden","true");
-        const name = document.createElement("span"); name.textContent = shortLabels[row.id] || row.label;
+        const name = document.createElement("span"); name.textContent = row.shortLabel || shortLabels[row.id] || row.label;
         const track = document.createElement("span"); track.className = "ydl-track";
         const fill = document.createElement("span"); fill.style.width = `${100 * row[driverMode] / axisMax}%`; track.append(fill);
         const value = document.createElement("strong"); value.textContent = `${format(row[driverMode])} ${unit}`;
@@ -286,7 +306,9 @@ const payload = JSON.stringify({ activities, presets, devices }).replace(/</g, "
       computed = activities.map((activity) => {
         const input = root.querySelector(`[data-activity-input="${activity.id}"]`);
         const parsed = Number.parseFloat(input?.value || "0");
-        const quantity = Number.isFinite(parsed) && parsed > 0 ? parsed : 0;
+        const quantity = Number.isFinite(parsed) && parsed > 0
+          ? (wholeRequests(activity) ? Math.round(parsed) : parsed)
+          : 0;
         return {...activity, quantity, serverEnergy:quantity*activity.serverWhPerUnit,
           totalEnergy:quantity*totalRate(activity), directWater:quantity*activity.directWaterMlPerUnit,
           totalWater:quantity*activity.totalWaterMlPerUnit};
@@ -303,13 +325,14 @@ const payload = JSON.stringify({ activities, presets, devices }).replace(/</g, "
       if (cups) cups.textContent=cupFormatter.format(totals.totalWater/236.588);
       computed.forEach((row) => {
         const card=root.querySelector(`[data-activity="${row.id}"]`); card?.classList.toggle("is-inactive",row.quantity===0);
-        const rate=root.querySelector(`[data-base-rate="${row.id}"]`); if(rate) rate.textContent=`${format(totalRate(row))} Wh`;
+        const rate=root.querySelector(`[data-base-rate="${row.id}"]`); if(rate) rate.textContent=`${row.id === "coding-agent-requests-intensive" ? "~" : ""}${format(totalRate(row))} Wh`;
+        const unit=root.querySelector(`[data-unit-label="${row.id}"]`); if(unit) unit.textContent=unitLabel(row,row.quantity);
         const down=root.querySelector(`[data-step-down="${row.id}"]`); if(down instanceof HTMLButtonElement) down.disabled=row.quantity<=0;
         const minutes=root.querySelector(`[data-minutes="${row.id}"]`);
         if(minutes instanceof HTMLElement){const show=row.unitLabel==="hours"&&row.quantity>0&&!Number.isInteger(row.quantity);
           minutes.hidden=!show;minutes.textContent=show?`${format(row.quantity*60)} minutes selected`:"";}
         const dialog=root.querySelector(`[data-detail-dialog="${row.id}"]`);
-        if(dialog){const values={quantity:`${format(row.quantity)} ${row.unitLabel}`,serverEnergy:`${format(row.serverEnergy)} Wh`,
+        if(dialog){const values={quantity:`${format(row.quantity)} ${unitLabel(row,row.quantity)}`,serverEnergy:`${format(row.serverEnergy)} Wh`,
           totalEnergy:`${format(row.totalEnergy)} Wh`,directWater:`${format(row.directWater)} mL`,totalWater:`${format(row.totalWater)} mL`};
           Object.entries(values).forEach(([key,value])=>{const node=dialog.querySelector(`[data-detail-value="${key}"]`);if(node)node.textContent=value;});}
       });
@@ -329,7 +352,23 @@ const payload = JSON.stringify({ activities, presets, devices }).replace(/</g, "
       setPresetState(id);render();
     }
     function markCustom(){setPresetState("");render();}
-    inputs.forEach((input)=>input.addEventListener("input",markCustom));
+    function normalizeRequestInput(input, allowEmpty=false){
+      const activity=activityMap.get(input.dataset.activityInput);
+      if(!wholeRequests(activity))return;
+      if(allowEmpty&&input.value==="")return;
+      const parsed=Number.parseFloat(input.value||"0");
+      input.value=String(Number.isFinite(parsed)?Math.max(0,Math.round(parsed)):0);
+    }
+    inputs.forEach((input)=>{
+      input.addEventListener("input",()=>{
+        normalizeRequestInput(input,true);
+        markCustom();
+      });
+      input.addEventListener("change",()=>{
+        normalizeRequestInput(input);
+        markCustom();
+      });
+    });
     selects.forEach((select)=>select.addEventListener("change",markCustom));
     presetButtons.forEach((button)=>button.addEventListener("click",()=>applyPreset(button.dataset.preset)));
     root.querySelector("[data-clear-all]")?.addEventListener("click",()=>applyPreset("clear"));
@@ -337,7 +376,8 @@ const payload = JSON.stringify({ activities, presets, devices }).replace(/</g, "
       const id=button.dataset.stepUp||button.dataset.stepDown,activity=activityMap.get(id);
       const input=root.querySelector(`[data-activity-input="${id}"]`);if(!(input instanceof HTMLInputElement)||!activity)return;
       const direction=button.hasAttribute("data-step-up")?1:-1;
-      input.value=String(Math.max(0,Math.round(((Number(input.value)||0)+direction*activity.step)*100)/100));markCustom();
+      const current=wholeRequests(activity)?Math.round(Number(input.value)||0):(Number(input.value)||0);
+      input.value=String(Math.max(0,Math.round((current+direction*activity.step)*100)/100));markCustom();
     }));
     root.querySelectorAll("[data-driver-mode]").forEach((button)=>button.addEventListener("click",()=>{
       driverMode=button.dataset.driverMode;root.querySelectorAll("[data-driver-mode]").forEach((candidate)=>{

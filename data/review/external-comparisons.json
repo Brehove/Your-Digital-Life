@@ -1,7 +1,7 @@
 {
-  "overlayVersion": "0.1.0",
-  "datasetVersion": "0.4.1",
-  "reviewedOn": "2026-07-14",
+  "overlayVersion": "1.0.0",
+  "datasetVersion": "1.0.0",
+  "reviewedOn": "2026-09-05",
   "status": "review-overlay",
   "compatibility": {
     "calculatorInput": false,
@@ -113,6 +113,91 @@
         "Future activity-specific provider measurements may replace generic conversions row by row."
       ],
       "lastReviewed": "2026-07-14"
+    },
+    {
+      "id": "ippolito-coding-request-energy-2026-09",
+      "comparatorId": "jon-ippolito-what-uses-more",
+      "topic": "Coding-agent request energy and functional unit",
+      "targetType": "activity",
+      "targetId": "coding-agent-requests-intensive",
+      "targetField": "serverWhPerUnit",
+      "disposition": "adapt",
+      "comparatorClaim": {
+        "displayValue": "Configured code example; no universal request coefficient adopted",
+        "unit": "configured action/depth comparison",
+        "boundary": "What Uses More? teaching-calculator configuration",
+        "derivation": "Ippolito's coding and paragraph examples separate the action being requested from the depth of AI work. They are distinct examples rather than evidence for a generic coding-request average."
+      },
+      "projectClaimBefore": {
+        "displayValue": "325 cloud/source; 355 total-system",
+        "unit": "Wh per coding-agent hour",
+        "boundary": "Historical internally normalized hourly row with a 30 Wh laptop allowance",
+        "derivation": "The retired row divided Couch's approximate 1,300 Wh-per-day estimate by an unsupported assumption of four active coding hours and added an internal 30 Wh laptop allowance."
+      },
+      "projectClaimAfter": {
+        "displayValue": "150",
+        "unit": "Wh per human coding-agent request",
+        "boundary": "Intensive-use example; modeled data-center electricity triggered by one human message, with automatic agent work included",
+        "derivation": "170,000 Wh / 1,138 typed human prompts = 149.38 Wh, rounded to 150 Wh; repeated model-call usage records were deduplicated by API message ID."
+      },
+      "evidenceSourceIds": ["hausfather-agentic-ai", "ippolito-what-uses-more", "scenario-methods"],
+      "evidenceUrl": "https://docs.google.com/spreadsheets/d/1xgvGhd6rmnBAEk9t2lesKlJeUy4TRQHrW6uWDSEVDFY/edit?gid=0#gid=0",
+      "evidenceLocator": "Measurements sheet, configured code example and separate paragraph example; Hausfather, Measuring my own footprint and footnote 1",
+      "accessedOn": "2026-09-05",
+      "decisionSummary": "Use Ippolito's action/depth framework to clarify the counted interaction, while adopting Hausfather's primary modeled logs for an explicitly intensive 150 Wh request example.",
+      "rationale": [
+        "The old hourly coefficient depended on an undocumented duration normalization.",
+        "Hausfather reports the human-prompt denominator and a deduplication rule, so the 149.38 Wh arithmetic is reproducible.",
+        "Ippolito's configured examples help explain interaction depth but do not establish the physical coefficient."
+      ],
+      "unresolvedQuestions": [
+        "Exact Claude model versions and mix are not fully disclosed.",
+        "One intensive user's modeled workload is not a generic request average.",
+        "Future provider measurements may justify separate workload tiers."
+      ],
+      "lastReviewed": "2026-09-05"
+    },
+    {
+      "id": "ippolito-coding-request-water-2026-09",
+      "comparatorId": "jon-ippolito-what-uses-more",
+      "topic": "Coding-agent request water scenario",
+      "targetType": "activity",
+      "targetId": "coding-agent-requests-intensive",
+      "targetField": "totalWaterMlPerUnit",
+      "disposition": "adapt",
+      "comparatorClaim": {
+        "displayValue": "7",
+        "unit": "mL per Wh",
+        "boundary": "Universal water conversion in What Uses More?",
+        "derivation": "Ippolito selects a midpoint heuristic across unlike water evidence."
+      },
+      "projectClaimBefore": {
+        "displayValue": "325 direct / 1,950 broader",
+        "unit": "mL per coding-agent hour",
+        "boundary": "Historical project 1:6 conversion applied to the retired 325 Wh hourly row",
+        "derivation": "325 Wh x 1 mL/Wh direct and x 6 mL/Wh broader."
+      },
+      "projectClaimAfter": {
+        "displayValue": "900",
+        "unit": "mL broader water per human coding-agent request",
+        "boundary": "Project teaching scenario transferred to the 150 Wh intensive-use energy example; broader water includes direct water",
+        "derivation": "150 Wh x 1 mL/Wh = 150 mL direct; 150 Wh x 6 mL/Wh = 900 mL broader."
+      },
+      "evidenceSourceIds": ["hausfather-agentic-ai", "ippolito-what-uses-more", "schneider-google-scale", "lbnl-data-center-report", "scenario-methods"],
+      "evidenceUrl": "https://docs.google.com/spreadsheets/d/1xgvGhd6rmnBAEk9t2lesKlJeUy4TRQHrW6uWDSEVDFY/edit?gid=1688264219#gid=1688264219",
+      "evidenceLocator": "Conversions sheet water comparison; data/methods/water-method.json shared AI conversion",
+      "accessedOn": "2026-09-05",
+      "decisionSummary": "Apply the project's existing 1 mL/Wh direct and 6 mL/Wh broader scenario to the new energy value, while keeping Ippolito's 7 mL/Wh choice as comparison rather than attribution.",
+      "rationale": [
+        "Joel selected the existing shared AI water scenario for consistency with the reasoning row.",
+        "The broader 900 mL value already includes the direct 150 mL and is not summed with it.",
+        "Neither Hausfather nor Ippolito measures provider-specific coding-request water."
+      ],
+      "unresolvedQuestions": [
+        "Cooling technology, serving location, electricity supply, and time are unknown.",
+        "The shared 6 mL/Wh broader scenario remains an internal assumption needing boundary-matched evidence."
+      ],
+      "lastReviewed": "2026-09-05"
     }
   ]
 }

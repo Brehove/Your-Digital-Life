@@ -3,7 +3,7 @@
     "Jon Ippolito"
   ],
   "id": "ippolito-what-uses-more",
-  "notes": "External comparison and provenance source. Ippolito's spreadsheet prompted the image and water review, but underlying studies remain the evidentiary authority for adopted values.",
+  "notes": "External comparison and provenance source. Ippolito's spreadsheet prompted the image, water, and coding-agent review and supplies the action/depth comparison framework; underlying studies remain the evidentiary authority for adopted physical values. Its configured coding example and paragraph example are distinct and neither supplies the new 150 Wh request coefficient.",
   "order": 13,
   "organization": "Learn with AI",
   "publishedDate": "2025-06-25",
@@ -12,12 +12,14 @@
   "tags": [
     "comparators",
     "prompting",
-    "water"
+    "water",
+    "coding agents"
   ],
   "title": "What Uses More? AI Impact Calculator: sources",
   "url": "https://docs.google.com/spreadsheets/d/1xgvGhd6rmnBAEk9t2lesKlJeUy4TRQHrW6uWDSEVDFY/edit?gid=0#gid=0",
   "usedFor": [
     "provenance for the image-generation evidence review",
-    "external comparison for the generic water-conversion method"
+    "external comparison for the generic water-conversion method",
+    "discovery trail and action/depth framework for coding-agent comparisons"
   ]
 }

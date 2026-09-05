@@ -15,10 +15,10 @@
   },
   {
     "scenario": "Gen Z Heavy AI User (Vibe Coder)",
-    "serverEnergyWh": 402,
-    "totalEnergyWh": 508,
-    "directWaterMl": 402,
-    "totalWaterMl": 2412
+    "serverEnergyWh": 2626.675,
+    "totalEnergyWh": 2695.05,
+    "directWaterMl": 2626.075,
+    "totalWaterMl": 15752.55
   },
   {
     "scenario": "Faculty Member (No AI, Hosts 1 Zoom Meeting)",
