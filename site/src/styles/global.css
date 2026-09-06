@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Syne:wght@700&display=swap");
 
 :root {
   --bg: #f4f0e7;
@@ -1809,7 +1809,7 @@ th {
 
 .landing-wordmark {
   color: #111;
-  font: 800 1.05rem/1 "Syne", sans-serif;
+  font: 700 1.05rem/1 "Syne", sans-serif;
   letter-spacing: 0.02em;
   text-decoration: none;
   text-transform: uppercase;
@@ -1827,8 +1827,8 @@ th {
 .landing-intro h1 {
   margin: 0;
   color: #111;
-  font: 800 clamp(2.1rem, 3.3vw, 3rem)/1.03 "Syne", sans-serif;
-  letter-spacing: -0.04em;
+  font: 700 clamp(2.8rem, 5vw, 4rem)/1.02 "Syne", sans-serif;
+  letter-spacing: -0.035em;
   text-transform: uppercase;
 }
 
@@ -1922,7 +1922,7 @@ th {
 
 .ydl-presets > span:first-child {
   margin-right: 0.35rem;
-  font: 800 0.68rem/1 "Syne", sans-serif;
+  font: 700 0.68rem/1 "Syne", sans-serif;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -1985,7 +1985,7 @@ th {
 
 .ydl-group summary h2 {
   margin: 0;
-  font: 800 0.9rem/1 "Syne", sans-serif;
+  font: 700 0.9rem/1 "Syne", sans-serif;
   text-transform: uppercase;
 }
 
@@ -2249,7 +2249,7 @@ th {
 
 .ydl-drivers h2 {
   margin: 0;
-  font: 800 1.2rem/1.15 "Syne", sans-serif;
+  font: 700 1.2rem/1.15 "Syne", sans-serif;
   text-transform: uppercase;
 }
 
@@ -2349,7 +2349,7 @@ th {
 }
 .ydl-dialog::backdrop { background: rgba(7,18,29,0.71); }
 .ydl-dialog-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
-.ydl-dialog-head h2 { margin: 0; font: 800 1.45rem/1.2 "Syne", sans-serif; }
+.ydl-dialog-head h2 { margin: 0; font: 700 1.45rem/1.2 "Syne", sans-serif; }
 .ydl-dialog-head button { min-height: 40px; padding: 0.4rem 0.75rem; border: 1px solid #111; border-radius: 20px; background: #fff; }
 .ydl-dialog p { margin: 1rem 0; font-size: 0.84rem; line-height: 1.7; }
 .ydl-detail-status { text-transform: capitalize; }
@@ -2358,7 +2358,7 @@ th {
 .ydl-boundary-note { padding-left: 0.75rem; border-left: 3px solid #999; }
 .ydl-source-links li { margin-bottom: 0.7rem; font-size: 0.82rem; line-height: 1.5; }
 .ydl-evidence-link { margin-top: 1.5rem; padding: 1.2rem; border: 1px solid #c9c4b9; border-radius: 12px; }
-.ydl-evidence-link h2 { margin: 0; font: 800 1.2rem/1.2 "Syne", sans-serif; }
+.ydl-evidence-link h2 { margin: 0; font: 700 1.2rem/1.2 "Syne", sans-serif; }
 .ydl-evidence-link p { margin: 0.45rem 0; font-size: 0.85rem; }
 .ydl-skip { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
 .ydl-skip:focus { z-index: 20; width: auto; height: auto; clip: auto; padding: 0.8rem; background: #fff; }
@@ -2427,7 +2427,7 @@ th {
 .body--document .hero h1,
 .body--document .page-header h1 {
   color: #111;
-  font: 800 clamp(2rem, 3vw, 2.7rem)/1.02 var(--font-display);
+  font: 700 clamp(2rem, 3vw, 2.7rem)/1.02 var(--font-display);
   letter-spacing: -0.045em;
   text-transform: uppercase;
 }
@@ -2444,7 +2444,7 @@ th {
   color: #9d3d21;
   font-family: var(--font-display);
   font-size: 0.72rem;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: 0.11em;
 }
 
@@ -2494,7 +2494,7 @@ th {
 .body--document .activity-intro h3 {
   color: #111;
   font-family: var(--font-display);
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.025em;
 }
 
@@ -2580,7 +2580,7 @@ th {
 .body--document .site-footer__title {
   color: #111;
   font-family: var(--font-display);
-  font-weight: 800;
+  font-weight: 700;
   text-transform: uppercase;
 }
 
@@ -2632,7 +2632,6 @@ th {
   }
 
   .landing-intro { padding: 2.2rem 2.7rem 1rem; }
-  .landing-intro h1 { font-size: clamp(1.9rem, 3vw, 2.7rem); }
   .landing-intro p { font-size: 0.8rem; }
   .landing-intro .landing-lead {
     margin-top: 1rem;
@@ -2861,7 +2860,7 @@ th {
   .landing-masthead nav { gap: 0.4rem; }
   .landing-masthead .ydl-pill { min-height: 36px; padding: 0.35rem 0.7rem; font-size: 0.65rem; }
   .landing-intro { padding: 1.55rem 1rem 0.95rem; }
-  .landing-intro h1 { font-size: 2.15rem; }
+  .landing-intro h1 { font-size: clamp(2.25rem, 9vw, 3rem); }
   .landing-intro .landing-lead { font-size: 1.08rem; line-height: 1.4; }
   .ydl-calculator { padding: 0 1rem 1.75rem; }
   .ydl-presets > span:first-child { width: 100%; }
