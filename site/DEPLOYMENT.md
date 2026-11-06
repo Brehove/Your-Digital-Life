@@ -12,11 +12,15 @@ Do not change these settings during repository cleanup:
 | Build root | `site` |
 | Build command | `npm run build` |
 | Asset output | `dist` (that is, `site/dist` from the repository root) |
-| Node version | `22.16.0`, pinned in `.node-version` |
+| Node version | `22.23.4`, pinned in `.node-version` |
 | Worker name | `your-digital-life` |
 | Custom domain | `https://your-digital-life.org` |
 
 `wrangler.jsonc` points the Worker at `./dist`. Keep both the Worker name and assets directory unchanged unless a separately reviewed deployment migration calls for it.
+
+Use the pinned Node version for local work and builds. The dependency tree requires
+Node 22.19.0 or newer; npm rejects incompatible runtimes through `.npmrc` in both
+the repository root and `site/`. GitHub Actions reads `site/.node-version`.
 
 ## Normal production workflow
 
