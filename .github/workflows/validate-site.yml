@@ -36,12 +36,19 @@ jobs:
       - name: Install locked data-tool dependencies
         run: npm ci
 
+      - name: Audit data-tool dependencies
+        run: npm audit --audit-level=high
+
       - name: Validate canonical data and generated products
         run: npm run data:verify
 
       - name: Install locked site dependencies
         working-directory: site
         run: npm ci
+
+      - name: Audit site dependencies
+        working-directory: site
+        run: npm audit --audit-level=high
 
       - name: Check Astro and TypeScript
         working-directory: site
